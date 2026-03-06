@@ -25,7 +25,7 @@
   --bg-void:     #0A0A0F;
   --bg-dark:     #0D0D15;
   --bg-base:     #1A1A2E;
-  --bg-card:     #1E1E2C;
+  --bg-card:     #1E1E28;
   --bg-raised:   #242438;
   --bg-hover:    #2A2A42;
 
@@ -51,7 +51,7 @@
   --c-legendary: #F59E0B;
   --c-mythic:    #E84393;
   --c-cosmic:    #22D3EE;
-  --c-set:       #C4274C;
+  --c-set:       #10B981;
   --c-cursed:    #A3E635;
   --c-divine:    #FFF1D0;
 
@@ -63,6 +63,9 @@
   --section-pad: clamp(64px, 8vw, 112px);
   --content-w:   1100px;
   --gutter:      clamp(16px, 4vw, 40px);
+
+  /* Pixel border step size */
+  --px: 4px;
 }
 
 /* ===================================================================
@@ -82,22 +85,73 @@ img { display: block; max-width: 100%; }
 button { cursor: pointer; border: none; background: none; font: inherit; }
 
 /* ===================================================================
-   SCANLINES
+   SCANLINES (subtle, safe z-index)
 =================================================================== */
-body::before {
+body::after {
   content: '';
   position: fixed; inset: 0;
   background: repeating-linear-gradient(
     0deg,
     transparent 0px, transparent 2px,
-    rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px
+    rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px
   );
   pointer-events: none;
-  z-index: 9998;
+  z-index: 100;
 }
 
-/* pixel cursor */
-body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect x='0' y='0' width='4' height='4' fill='%23FFD700'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23FFD700'/%3E%3Crect x='8' y='8' width='4' height='4' fill='%23FFD700'/%3E%3C/svg%3E") 0 0, crosshair; }
+/* ===================================================================
+   PIXEL FRAME — Core component matching app's PixelBorderShape
+   Uses clip-path to create stepped pixel corners
+=================================================================== */
+.px-frame {
+  --frame-color: rgba(255,215,0,0.22);
+  position: relative;
+  background: var(--bg-card);
+}
+/* Outer border with single-step pixel corners */
+.px-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--frame-color);
+  clip-path: polygon(
+    /* TL step */ var(--px) 0%, calc(100% - var(--px)) 0%,
+    /* TR step */ calc(100% - var(--px)) var(--px), 100% var(--px),
+    /* BR step */ 100% calc(100% - var(--px)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px)) 100%,
+    /* BL step */ var(--px) 100%, var(--px) calc(100% - var(--px)), 0% calc(100% - var(--px)),
+    /* TL close */ 0% var(--px), var(--px) var(--px)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+/* Inner inset line (1px inside) */
+.px-frame::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255,215,0,0.06);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hover glow variant */
+.px-frame--glow { transition: transform 0.2s, box-shadow 0.2s; }
+.px-frame--glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.06);
+}
+.px-frame--glow:hover::before { --frame-color: rgba(255,215,0,0.4); }
+
+/* Accent top-line variant */
+.px-frame--accent-top { overflow: hidden; }
+.px-frame--accent-top .px-accent {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.25s;
+  z-index: 2;
+}
+.px-frame--accent-top:hover .px-accent { background: var(--accent, var(--gold)); }
 
 /* ===================================================================
    UTILITIES
@@ -106,18 +160,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   max-width: var(--content-w);
   margin: 0 auto;
   padding: 0 var(--gutter);
-}
-.pixel-border {
-  border: 2px solid rgba(255,215,0,0.22);
-  box-shadow: inset 0 0 0 1px rgba(255,215,0,0.06), 0 0 30px rgba(255,215,0,0.04);
-  position: relative;
-}
-.pixel-border::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 1px solid rgba(255,215,0,0.05);
-  pointer-events: none;
 }
 .tag {
   font-family: var(--font-pixel);
@@ -222,7 +264,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   transition: background 0.15s, color 0.15s, box-shadow 0.15s;
   letter-spacing: 0.05em;
   white-space: nowrap;
-  cursor: pointer;
 }
 .nav__btn:hover {
   background: transparent;
@@ -234,7 +275,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   flex-direction: column;
   gap: 5px;
   padding: 6px;
-  cursor: pointer;
 }
 .nav__toggle span {
   display: block;
@@ -284,21 +324,12 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   background-position: center 20%;
   background-repeat: no-repeat;
   opacity: 0.28;
-  /* Smooth multi-directional fade into background */
   mask-image:
     radial-gradient(ellipse 80% 85% at 50% 45%,
-      black 0%,
-      black 30%,
-      rgba(0,0,0,0.7) 55%,
-      rgba(0,0,0,0.2) 75%,
-      transparent 100%);
+      black 0%, black 30%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.2) 75%, transparent 100%);
   -webkit-mask-image:
     radial-gradient(ellipse 80% 85% at 50% 45%,
-      black 0%,
-      black 30%,
-      rgba(0,0,0,0.7) 55%,
-      rgba(0,0,0,0.2) 75%,
-      transparent 100%);
+      black 0%, black 30%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.2) 75%, transparent 100%);
 }
 .hero__grid {
   position: absolute; inset: 0;
@@ -317,7 +348,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 0%, rgba(10,10,15,0.6) 60%, var(--bg-void) 100%);
 }
 .hero__particles { position: absolute; inset: 0; pointer-events: none; }
-.px {
+.px-particle {
   position: absolute;
   width: 3px; height: 3px;
   background: var(--gold);
@@ -381,6 +412,8 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: none; }
 }
+
+/* Pixel-frame buttons */
 .btn-appstore {
   display: inline-flex;
   align-items: center;
@@ -394,16 +427,16 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   letter-spacing: 0.05em;
   transition: background 0.15s, color 0.15s, box-shadow 0.2s, transform 0.15s;
   position: relative;
-  cursor: pointer;
-}
-.btn-appstore::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border: 1px solid rgba(255,215,0,0.2);
+  clip-path: polygon(
+    4px 0%, calc(100% - 4px) 0%,
+    calc(100% - 4px) 4px, 100% 4px,
+    100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%,
+    4px 100%, 4px calc(100% - 4px), 0% calc(100% - 4px),
+    0% 4px, 4px 4px
+  );
 }
 .btn-appstore:hover {
-  background: transparent;
+  background: var(--bg-void);
   color: var(--gold);
   box-shadow: 0 0 40px rgba(255,215,0,0.3);
   transform: translateY(-2px);
@@ -422,21 +455,24 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   transition: border-color 0.2s, color 0.2s;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Hero stat bar */
 .hero__stats {
   position: relative; z-index: 1;
   display: flex;
   gap: 0;
   margin-top: 72px;
-  border-top: 1px solid rgba(255,215,0,0.12);
+  border: 2px solid rgba(255,215,0,0.12);
   width: 100%;
-  max-width: 720px;
+  max-width: 780px;
   animation: fadeIn 1s var(--ease-out-expo) 0.7s both;
 }
 .hero__stat {
   flex: 1;
   padding: 20px 12px;
-  border-right: 1px solid rgba(255,215,0,0.08);
+  border-right: 2px solid rgba(255,215,0,0.08);
   text-align: center;
+  background: rgba(30,30,40,0.6);
 }
 .hero__stat:last-child { border-right: none; }
 .hero__stat-val {
@@ -490,51 +526,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   gap: clamp(32px, 5vw, 80px);
   align-items: center;
 }
-.about__mockup {
-  aspect-ratio: 9/18;
-  max-width: 260px;
-  margin: 0 auto;
-  background: var(--bg-card);
-  border: 2px solid rgba(255,215,0,0.22);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 60px rgba(255,215,0,0.06), inset 0 0 40px rgba(0,0,0,0.5);
-}
-.about__mockup-inner {
-  width: 100%; height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  padding: 24px;
-  background: linear-gradient(180deg, rgba(255,215,0,0.02) 0%, transparent 60%), var(--bg-card);
-}
-.about__mockup-label {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--text-lo);
-  letter-spacing: 0.18em;
-  text-align: center;
-}
-.about__mockup-icon {
-  width: 64px; height: 64px;
-  background: linear-gradient(135deg, var(--bg-raised), var(--bg-hover));
-  border: 2px solid rgba(255,215,0,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-}
-.about__mockup-img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  image-rendering: pixelated;
-}
 .about__text .section-body { max-width: 500px; }
 .about__badges {
   display: flex;
@@ -546,7 +537,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   font-family: var(--font-pixel);
   font-size: 7px;
   padding: 8px 12px;
-  border: 1px solid rgba(255,215,0,0.22);
+  border: 2px solid rgba(255,215,0,0.22);
   color: var(--gold);
   background: rgba(255,215,0,0.04);
   letter-spacing: 0.08em;
@@ -561,7 +552,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   border: 2px solid rgba(255,215,0,0.22);
   overflow: hidden;
   background: var(--bg-card);
-  box-shadow: 0 0 60px rgba(255,215,0,0.06);
 }
 .carousel__track {
   display: flex;
@@ -576,12 +566,24 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   flex-shrink: 0;
 }
 .carousel__slide img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
   object-position: top center;
   image-rendering: pixelated;
   display: block;
+}
+/* Fallback when image fails */
+.carousel__slide--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--bg-raised) 0%, var(--bg-card) 100%);
+}
+.carousel__slide--empty span {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
 }
 .carousel__btn {
   position: absolute;
@@ -595,7 +597,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transition: background 0.15s;
   z-index: 2;
   line-height: 1;
@@ -630,26 +631,23 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2px;
   margin-top: 52px;
-  border: 2px solid rgba(255,215,0,0.12);
 }
 .loop__step {
   background: var(--bg-card);
   padding: 32px 24px;
-  border-right: 1px solid rgba(255,215,0,0.07);
+  border: 2px solid rgba(255,215,0,0.08);
   position: relative;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
-.loop__step:last-child { border-right: none; }
-.loop__step:hover { background: var(--bg-raised); }
+.loop__step:hover { background: var(--bg-raised); border-color: rgba(255,215,0,0.2); }
 .loop__step-num {
   font-family: var(--font-pixel);
   font-size: 28px;
-  color: rgba(255,215,0,0.08);
+  color: rgba(255,215,0,0.06);
   position: absolute;
   top: 16px; right: 20px;
   line-height: 1;
 }
-.loop__step-icon { font-size: 28px; margin-bottom: 16px; display: block; }
 .loop__step-title {
   font-family: var(--font-pixel);
   font-size: 9px;
@@ -673,15 +671,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   position: relative;
   overflow: hidden;
 }
-.triple::before {
-  content: '';
-  position: absolute;
-  top: -200px; left: 50%;
-  transform: translateX(-50%);
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(255,215,0,0.04) 0%, transparent 70%);
-  pointer-events: none;
-}
 .triple__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -694,7 +683,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   border: 2px solid rgba(255,215,0,0.1);
   text-align: center;
   position: relative;
-  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  transition: border-color 0.25s, transform 0.25s;
   overflow: hidden;
 }
 .triple__card::before {
@@ -708,29 +697,11 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 .triple__card:hover {
   border-color: rgba(255,215,0,0.35);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,0,0.08);
 }
 .triple__card:hover::before { background: var(--card-accent, var(--gold)); }
 .triple__card--equip   { --card-accent: #60A5FA; }
 .triple__card--absorb  { --card-accent: #22C55E; }
 .triple__card--shrine  { --card-accent: #F59E0B; }
-.triple__icon {
-  width: 64px; height: 64px;
-  margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  border: 2px solid rgba(255,255,255,0.07);
-  background: var(--bg-raised);
-  position: relative;
-}
-.triple__icon::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border: 1px solid rgba(255,255,255,0.03);
-}
 .triple__number {
   font-family: var(--font-pixel);
   font-size: 7px;
@@ -784,14 +755,11 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   justify-content: flex-start;
   cursor: pointer;
 }
-.class-card:not(.class-card--coming):hover {
+.class-card:hover {
   border-color: rgba(255,215,0,0.35);
   background: var(--bg-raised);
   transform: translateY(-3px);
 }
-.class-card--coming { opacity: 0.45; cursor: default; }
-.class-card--coming:hover { opacity: 0.55; }
-
 .class-card__portrait {
   width: 88px; height: 88px;
   margin: 0 auto 14px;
@@ -847,20 +815,9 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   margin-top: auto;
   display: inline-block;
 }
-.coming-tag {
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  padding: 3px 6px;
-  background: rgba(255,215,0,0.08);
-  border: 1px solid rgba(255,215,0,0.15);
-  color: var(--gold);
-  letter-spacing: 0.12em;
-  margin-top: auto;
-  display: inline-block;
-}
 
 /* ===================================================================
-   CLASS MODAL (intro image on click)
+   CLASS MODAL
 =================================================================== */
 .class-modal-overlay {
   position: fixed; inset: 0;
@@ -888,9 +845,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   transform: translateY(24px) scale(0.97);
   transition: transform 0.3s var(--ease-out-expo);
 }
-.class-modal-overlay.open .class-modal {
-  transform: none;
-}
+.class-modal-overlay.open .class-modal { transform: none; }
 .class-modal__img {
   width: 100%;
   aspect-ratio: 9/14;
@@ -954,97 +909,9 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transition: background 0.2s;
 }
 .class-modal__close:hover { background: rgba(255,215,0,0.15); }
-
-/* ===================================================================
-   SCREENSHOTS
-=================================================================== */
-.screenshots {
-  padding: var(--section-pad) var(--gutter);
-  background: var(--bg-dark);
-}
-.screenshots__scroll {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding: 8px 0 20px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,215,0,0.2) transparent;
-  -webkit-overflow-scrolling: touch;
-  margin-top: 48px;
-}
-.screenshots__scroll::-webkit-scrollbar { height: 4px; }
-.screenshots__scroll::-webkit-scrollbar-track { background: transparent; }
-.screenshots__scroll::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.2); }
-.screenshot-frame {
-  flex: 0 0 auto;
-  width: clamp(260px, 42vw, 420px);
-  aspect-ratio: 16/9;
-  border: 2px solid rgba(255,215,0,0.18);
-  background: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-.screenshot-frame img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  image-rendering: pixelated;
-}
-.screenshot-frame:hover {
-  border-color: rgba(255,215,0,0.4);
-  box-shadow: 0 0 30px rgba(255,215,0,0.08);
-}
-.screenshot-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 20px;
-  text-align: center;
-}
-.screenshot-placeholder span:first-child { font-size: 28px; }
-.screenshot-placeholder-label {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  color: var(--text-lo);
-  letter-spacing: 0.12em;
-  line-height: 1.8;
-}
-.screenshot-num {
-  position: absolute;
-  top: 8px; left: 8px;
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  color: var(--text-lo);
-  letter-spacing: 0.1em;
-}
-.screenshot-zone-label {
-  position: absolute;
-  bottom: 8px; left: 0; right: 0;
-  font-family: var(--font-pixel);
-  font-size: 5.5px;
-  color: rgba(255,215,0,0.5);
-  letter-spacing: 0.1em;
-  text-align: center;
-  padding: 0 8px;
-}
-.screenshots__hint {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--text-lo);
-  letter-spacing: 0.15em;
-  text-align: center;
-  margin-top: 16px;
-}
 
 /* ===================================================================
    VIDEO
@@ -1063,7 +930,6 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   justify-content: center;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 .video-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 .video-placeholder { display: flex; flex-direction: column; align-items: center; gap: 16px; }
@@ -1105,11 +971,10 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 .feature-tile {
   background: var(--bg-card);
   padding: 28px 24px;
-  border: 1px solid rgba(255,215,0,0.08);
+  border: 2px solid rgba(255,215,0,0.08);
   transition: background 0.2s, border-color 0.2s;
 }
 .feature-tile:hover { background: var(--bg-raised); border-color: rgba(255,215,0,0.18); }
-.feature-tile__icon { font-size: 22px; margin-bottom: 16px; display: block; }
 .feature-tile__title {
   font-family: var(--font-pixel);
   font-size: 8px;
@@ -1121,110 +986,9 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 .feature-tile__desc { font-family: var(--font-body); font-size: 13px; color: var(--text-mid); line-height: 1.75; }
 
 /* ===================================================================
-   FLOORS
-=================================================================== */
-.floors { padding: var(--section-pad) var(--gutter); }
-.floors__track {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2px;
-  margin-top: 52px;
-}
-.floor-zone {
-  padding: 24px 18px;
-  border: 2px solid rgba(255,215,0,0.1);
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.2s;
-}
-.floor-zone:hover { border-color: rgba(255,215,0,0.25); }
-.floor-zone--1 { background: linear-gradient(135deg, #0D1117, #111827); }
-.floor-zone--2 { background: linear-gradient(135deg, #0D1117, #1a0d2e); }
-.floor-zone--3 { background: linear-gradient(135deg, #0D1117, #0d1f3a); }
-.floor-zone--4 { background: linear-gradient(135deg, #0D1117, #2d0d0d); }
-.floor-zone--5 { background: linear-gradient(135deg, #0D0D0F, #1a0a00); }
-.floor-zone--6 { background: linear-gradient(135deg, #0D1117, #0d2d0d); }
-.floor-zone--7 { background: linear-gradient(135deg, #0D1117, #2a1200); }
-.floor-zone--8 { background: linear-gradient(135deg, #0D0D15, #1a1440); }
-.floor-zone--9 { background: linear-gradient(135deg, #0A0A0F, #0a0a20); }
-.floor-zone--10 { background: linear-gradient(135deg, #050508, #080513); }
-.floor-zone__range {
-  font-family: var(--font-pixel);
-  font-size: clamp(13px, 2vw, 20px);
-  color: var(--gold);
-  margin-bottom: 4px;
-  line-height: 1;
-}
-.floor-zone__label {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  color: var(--text-lo);
-  letter-spacing: 0.12em;
-  margin-bottom: 14px;
-}
-.floor-zone__icon { font-size: 22px; margin-bottom: 10px; display: block; }
-.floor-zone__name {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--text-hi);
-  margin-bottom: 6px;
-  line-height: 1.5;
-}
-.floor-zone__boss {
-  font-family: var(--font-pixel);
-  font-size: 5.5px;
-  color: var(--red);
-  letter-spacing: 0.08em;
-  margin-top: 8px;
-  opacity: 0.8;
-}
-
-/* ===================================================================
-   RARITIES
-=================================================================== */
-.rarities { padding: var(--section-pad) var(--gutter); background: var(--bg-dark); }
-.rarities__list { display: flex; flex-direction: column; gap: 2px; margin-top: 52px; }
-.rarity-row {
-  display: grid;
-  grid-template-columns: 12px 140px 65px 200px 1fr;
-  align-items: center;
-  gap: 20px;
-  padding: 16px 24px;
-  background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.04);
-  transition: background 0.2s;
-}
-.rarity-row:hover { background: var(--bg-raised); }
-.rarity-row__dot { width: 12px; height: 12px; flex-shrink: 0; }
-.rarity-row__name { font-family: var(--font-pixel); font-size: 7px; letter-spacing: 0.08em; }
-.rarity-row__pct { font-family: var(--font-pixel); font-size: 7px; color: var(--text-lo); }
-.rarity-row__bar-wrap { height: 4px; background: rgba(255,255,255,0.05); position: relative; }
-.rarity-row__bar { height: 100%; background: var(--rcolor); }
-.rarity-row__affixes { font-family: var(--font-body); font-size: 13px; color: var(--text-mid); }
-.rarity-row__badge {
-  display: inline-block;
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  padding: 2px 5px;
-  border: 1px solid;
-  letter-spacing: 0.1em;
-  margin-left: 6px;
-  vertical-align: middle;
-}
-
-/* ===================================================================
    NO IAP
 =================================================================== */
 .no-iap { padding: var(--section-pad) var(--gutter); text-align: center; position: relative; overflow: hidden; }
-.no-iap::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(255,215,0,0.04) 0%, transparent 65%);
-  pointer-events: none;
-}
 .no-iap__pills { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
 .pill {
   font-family: var(--font-pixel);
@@ -1243,49 +1007,23 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 .pill-check { color: var(--green); font-size: 14px; }
 
 /* ===================================================================
-   META
+   META PROGRESSION
 =================================================================== */
-.meta { padding: var(--section-pad) var(--gutter); background: var(--bg-dark); }
-.meta__categories {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-  margin-bottom: 24px;
-}
-.meta-cat-btn {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  padding: 8px 14px;
-  border: 1px solid rgba(255,215,0,0.2);
-  color: var(--text-lo);
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.meta-cat-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(255,215,0,0.06); }
+.meta { padding: var(--section-pad) var(--gutter); }
 .meta__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2px;
+  margin-top: 52px;
 }
 .meta-card {
   background: var(--bg-card);
   padding: 24px 20px;
-  border: 1px solid rgba(255,215,0,0.08);
+  border: 2px solid rgba(255,215,0,0.08);
   transition: background 0.2s, border-color 0.2s;
 }
 .meta-card:hover { background: var(--bg-raised); border-color: rgba(255,215,0,0.2); }
-.meta-card__icon { font-size: 22px; margin-bottom: 14px; }
-.meta-card__category {
-  font-family: var(--font-pixel);
-  font-size: 5.5px;
-  letter-spacing: 0.12em;
-  margin-bottom: 8px;
-  opacity: 0.7;
-}
 .meta-card__title { font-family: var(--font-pixel); font-size: 7px; color: var(--gold); margin-bottom: 6px; line-height: 1.6; letter-spacing: 0.06em; }
-.meta-card__max { font-family: var(--font-pixel); font-size: 6px; color: var(--text-lo); margin-bottom: 8px; letter-spacing: 0.1em; }
 .meta-card__desc { font-family: var(--font-body); font-size: 12px; color: var(--text-mid); line-height: 1.7; }
 .meta-card__pips { display: flex; gap: 3px; margin-top: 14px; flex-wrap: wrap; }
 .pip { width: 14px; height: 4px; background: rgba(255,215,0,0.12); }
@@ -1294,7 +1032,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 /* ===================================================================
    FINAL CTA
 =================================================================== */
-.cta-final { padding: var(--section-pad) var(--gutter); text-align: center; position: relative; overflow: hidden; }
+.cta-final { padding: var(--section-pad) var(--gutter); text-align: center; position: relative; overflow: hidden; background: var(--bg-dark); }
 .cta-final__bg {
   position: absolute; inset: 0;
   background-image:
@@ -1305,7 +1043,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 }
 .cta-final__vignette {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 50% 50%, transparent 10%, var(--bg-void) 100%);
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, transparent 10%, var(--bg-dark) 100%);
 }
 .cta-final__content { position: relative; z-index: 1; }
 
@@ -1323,28 +1061,23 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 /* ===================================================================
    RESPONSIVE
 =================================================================== */
-@media (max-width: 900px) {
-  .floors__track { grid-template-columns: repeat(5, 1fr); }
-}
 @media (max-width: 800px) {
   .nav__links, .nav__btn { display: none; }
   .nav__toggle { display: flex; }
   .about__grid { grid-template-columns: 1fr; }
-  .about__mockup { max-width: 200px; }
+  .about__carousel { max-width: 200px; }
   .triple__grid { grid-template-columns: 1fr; }
-  .floors__track { grid-template-columns: repeat(2, 1fr); }
-  .rarity-row { grid-template-columns: 12px 1fr 60px; grid-template-rows: auto auto; }
-  .rarity-row__bar-wrap { display: none; }
-  .rarity-row__affixes { grid-column: 1 / -1; font-size: 12px; }
   .footer__inner { flex-direction: column; text-align: center; }
   .footer__links { justify-content: center; }
 }
-@media (max-width: 540px) {
-  .floors__track { grid-template-columns: repeat(2, 1fr); }
-  .hero__stats { flex-direction: column; }
-  .hero__stat { border-right: none; border-bottom: 1px solid rgba(255,215,0,0.08); }
-  .hero__stat:last-child { border-bottom: none; }
+@media (max-width: 600px) {
+  .hero__stats { flex-wrap: wrap; }
+  .hero__stat { flex: 1 1 calc(33.33% - 2px); border-bottom: 2px solid rgba(255,215,0,0.08); }
   .classes__grid { grid-template-columns: repeat(2, 1fr); }
+  .meta__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 400px) {
+  .hero__stat { flex: 1 1 calc(50% - 2px); }
 }
 </style>
 </head>
@@ -1354,7 +1087,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 <!-- CLASS MODAL -->
 <div class="class-modal-overlay" id="classModal" onclick="closeClassModal(event)">
   <div class="class-modal" id="classModalContent">
-    <button class="class-modal__close" onclick="closeClassModal(null, true)">✕</button>
+    <button class="class-modal__close" onclick="closeClassModal(null, true)">&#10005;</button>
     <div id="classModalImg"></div>
     <div class="class-modal__body">
       <p class="class-modal__name" id="classModalName"></p>
@@ -1370,16 +1103,15 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   <div class="nav__inner">
     <a href="#" class="nav__logo">
       LOOTSHRINE
-      <small>▸ PIXEL RPG</small>
+      <small>&#9656; PIXEL RPG</small>
     </a>
     <ul class="nav__links">
       <li><a href="#about">ABOUT</a></li>
       <li><a href="#classes">CLASSES</a></li>
       <li><a href="#gameplay">GAMEPLAY</a></li>
       <li><a href="#features">FEATURES</a></li>
-      <li><a href="#floors">FLOORS</a></li>
     </ul>
-    <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="nav__btn">▸ APP STORE</a>
+    <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="nav__btn">&#9656; APP STORE</a>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -1389,8 +1121,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     <a href="#classes">CLASSES</a>
     <a href="#gameplay">GAMEPLAY</a>
     <a href="#features">FEATURES</a>
-    <a href="#floors">FLOORS</a>
-    <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">▸ DOWNLOAD ON APP STORE</a>
+    <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">&#9656; DOWNLOAD ON APP STORE</a>
   </div>
 </nav>
 
@@ -1402,11 +1133,11 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   <div class="hero__particles" id="particles"></div>
 
   <div class="hero__content">
-    <p class="hero__eyebrow">▸ ROGUELITE RPG FOR iOS</p>
+    <p class="hero__eyebrow">&#9656; PREMIUM ROGUELITE RPG FOR iOS</p>
     <h1 class="hero__title">LOOT<br>SHRINE</h1>
     <p class="hero__title-sub">SLAY. LOOT. SACRIFICE.</p>
     <p class="hero__tagline">
-      Conquer 100 floors of dark fantasy. Every item is a decision —
+      Descend through 100 floors of dark fantasy. Every item is a decision &mdash;
       equip it, absorb it, or sacrifice it at the shrine for permanent power.
     </p>
     <div class="hero__ctas">
@@ -1414,9 +1145,9 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
         </svg>
-        DOWNLOAD FREE
+        GET IT ON THE APP STORE
       </a>
-      <a href="#gameplay" class="btn-outline">▸ WATCH GAMEPLAY</a>
+      <a href="#gameplay" class="btn-outline">&#9656; WATCH GAMEPLAY</a>
     </div>
   </div>
 
@@ -1434,15 +1165,15 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
       <span class="hero__stat-label">CLASSES</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">70+</span>
+      <span class="hero__stat-val">75+</span>
       <span class="hero__stat-label">ACHIEVEMENTS</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">32</span>
+      <span class="hero__stat-val">64</span>
       <span class="hero__stat-label">LEADERBOARDS</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">NO</span>
+      <span class="hero__stat-val">$0</span>
       <span class="hero__stat-label">MICROTRANSACTIONS</span>
     </div>
   </div>
@@ -1471,7 +1202,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
           One-handed portrait play. Turn-based pacing you control.
           Deep item synergies through set bonuses. Every floor a new puzzle to solve.
-          Guardian bosses every 10 floors — with the Primordial awaiting at Floor 100.
+          Guardian bosses every 10 floors &mdash; with The Origin awaiting at Floor 100.
         </p>
         <div class="about__badges reveal reveal-delay-4">
           <span class="badge">TURN-BASED</span>
@@ -1485,14 +1216,14 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
       <div class="reveal reveal-delay-2">
         <div class="about__carousel">
           <div class="carousel__track" id="carouselTrack">
-            <div class="carousel__slide"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.style.opacity='0'"></div>
-            <div class="carousel__slide"><img src="scr_classes.jpg" alt="Classes" onerror="this.style.opacity='0'"></div>
-            <div class="carousel__slide"><img src="scr_skills.jpg" alt="Skills" onerror="this.style.opacity='0'"></div>
-            <div class="carousel__slide"><img src="scr_item1.jpg" alt="Item" onerror="this.style.opacity='0'"></div>
-            <div class="carousel__slide"><img src="scr_item2.jpg" alt="Item" onerror="this.style.opacity='0'"></div>
-            <div class="carousel__slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="this.style.opacity='0'"></div>
-            <div class="carousel__slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="this.style.opacity='0'"></div>
-            <div class="carousel__slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="handleSlideError(this)"></div>
+            <div class="carousel__slide"><img src="scr_classes.jpg" alt="Classes" onerror="handleSlideError(this)"></div>
+            <div class="carousel__slide"><img src="scr_skills.jpg" alt="Skills" onerror="handleSlideError(this)"></div>
+            <div class="carousel__slide"><img src="scr_item1.jpg" alt="Items" onerror="handleSlideError(this)"></div>
+            <div class="carousel__slide"><img src="scr_item2.jpg" alt="Equipment" onerror="handleSlideError(this)"></div>
+            <div class="carousel__slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="handleSlideError(this)"></div>
+            <div class="carousel__slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="handleSlideError(this)"></div>
+            <div class="carousel__slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="handleSlideError(this)"></div>
           </div>
           <button class="carousel__btn carousel__btn--prev" onclick="carouselMove(-1)" aria-label="Previous">&#8249;</button>
           <button class="carousel__btn carousel__btn--next" onclick="carouselMove(1)" aria-label="Next">&#8250;</button>
@@ -1510,7 +1241,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   <div class="container">
     <span class="tag reveal">// THE LOOP</span>
     <h2 class="section-title reveal reveal-delay-1">HOW A RUN WORKS</h2>
-    <p class="section-body reveal reveal-delay-2">Every floor follows the same rhythm — but each decision changes everything.</p>
+    <p class="section-body reveal reveal-delay-2">Every floor follows the same rhythm &mdash; but each decision changes everything.</p>
     <div class="loop__steps">
       <div class="loop__step reveal reveal-delay-1">
         <span class="loop__step-num">01</span>
@@ -1520,7 +1251,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
       <div class="loop__step reveal reveal-delay-2">
         <span class="loop__step-num">02</span>
         <h3 class="loop__step-title">SHOP</h3>
-        <p class="loop__step-desc">Buy, absorb for temp stats, or let it pass. Reroll the shop — costs escalate per roll.</p>
+        <p class="loop__step-desc">Buy, absorb for temp stats, or let it pass. Reroll the shop &mdash; costs escalate per roll.</p>
       </div>
       <div class="loop__step reveal reveal-delay-3">
         <span class="loop__step-num">03</span>
@@ -1553,17 +1284,17 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
       <div class="triple__card triple__card--equip reveal reveal-delay-1">
         <p class="triple__number">01 / 03</p>
         <h3 class="triple__title">EQUIP</h3>
-        <p class="triple__desc">Slot the item into your build for immediate stat bonuses. Complete sets for powerful bonuses — but only 3 active sets at once forces real choices.</p>
+        <p class="triple__desc">Slot the item into your build for immediate stat bonuses. Complete sets for powerful bonuses &mdash; but only 3 active sets at once forces real choices.</p>
       </div>
       <div class="triple__card triple__card--absorb reveal reveal-delay-2">
         <p class="triple__number">02 / 03</p>
         <h3 class="triple__title">ABSORB</h3>
-        <p class="triple__desc">Consume the item for a temporary stat surge this battle. No turn cost — burn it for burst power when you're cornered and need an edge right now.</p>
+        <p class="triple__desc">Consume the item for a temporary stat surge this battle. No turn cost &mdash; burn it for burst power when you need an edge right now.</p>
       </div>
       <div class="triple__card triple__card--shrine reveal reveal-delay-3">
         <p class="triple__number">03 / 03</p>
         <h3 class="triple__title">SACRIFICE</h3>
-        <p class="triple__desc">Feed the shrine altar. Gain a fraction of the item's stats permanently — for this run. Higher-rarity sacrifices yield greater permanent gains. Critical sacrifices double the reward.</p>
+        <p class="triple__desc">Feed the shrine altar. Gain a fraction of the item's stats permanently for this run. Higher-rarity sacrifices yield greater gains. Critical sacrifices double the reward.</p>
       </div>
     </div>
   </div>
@@ -1583,12 +1314,11 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     </div>
 
     <div class="classes__grid">
-
       <div class="class-card reveal reveal-delay-1"
            onclick="openClassModal('knight_portrait.jpg','intro_knight.jpg','KNIGHT','The Last of the Iron Order','&quot;The Order may be gone, but its oath remains. I will not fall.&quot;','DEFAULT')">
         <div class="class-card__portrait">
           <img src="knight_portrait.jpg" alt="Knight" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">🛡️</div>
+          <div class="class-card__portrait-placeholder" style="display:none">&#x1F6E1;&#xFE0F;</div>
         </div>
         <p class="class-card__name">KNIGHT</p>
         <p class="class-card__title">THE LAST OF THE IRON ORDER</p>
@@ -1600,7 +1330,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
            onclick="openClassModal('rogue_portrait.jpg','intro_rogue.jpg','ROGUE','The Debt Collector','&quot;Everything has a price. I\'m just making sure I\'m not the one who pays.&quot;','UNLOCK: FLOOR 20')">
         <div class="class-card__portrait">
           <img src="rogue_portrait.jpg" alt="Rogue" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">🗡️</div>
+          <div class="class-card__portrait-placeholder" style="display:none">&#x1F5E1;&#xFE0F;</div>
         </div>
         <p class="class-card__name">ROGUE</p>
         <p class="class-card__title">THE DEBT COLLECTOR</p>
@@ -1612,7 +1342,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
            onclick="openClassModal('mage_portrait.jpg','intro_mage.jpg','MAGE','The Obsessed Scholar','&quot;Knowledge is power. And I intend to know everything.&quot;','UNLOCK: FLOOR 30')">
         <div class="class-card__portrait">
           <img src="mage_portrait.jpg" alt="Mage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">🔮</div>
+          <div class="class-card__portrait-placeholder" style="display:none">&#x1F52E;</div>
         </div>
         <p class="class-card__name">MAGE</p>
         <p class="class-card__title">THE OBSESSED SCHOLAR</p>
@@ -1624,7 +1354,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
            onclick="openClassModal('paladin_portrait.jpg','intro_paladin.jpg','PALADIN','The Fallen Saint','&quot;I have sinned. But even sinners can still save others.&quot;','UNLOCK: FLOOR 25')">
         <div class="class-card__portrait">
           <img src="paladin_portrait.jpg" alt="Paladin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">✝️</div>
+          <div class="class-card__portrait-placeholder" style="display:none">&#x271D;&#xFE0F;</div>
         </div>
         <p class="class-card__name">PALADIN</p>
         <p class="class-card__title">THE FALLEN SAINT</p>
@@ -1636,7 +1366,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
            onclick="openClassModal('vampire_portrait.jpg','intro_vampire.jpg','VAMPIRE','The Eternal Hunger','&quot;Immortality was a curse. This place makes it a gift.&quot;','UNLOCK: FLOOR 40')">
         <div class="class-card__portrait">
           <img src="vampire_portrait.jpg" alt="Vampire" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">🧛</div>
+          <div class="class-card__portrait-placeholder" style="display:none">&#x1F9DB;</div>
         </div>
         <p class="class-card__name">VAMPIRE</p>
         <p class="class-card__title">THE ETERNAL HUNGER</p>
@@ -1648,7 +1378,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
            onclick="openClassModal('necromancer_portrait.jpg','intro_necromancer.jpg','NECROMANCER','The Soul Merchant','&quot;The dead remember what the living forget. They remember everything.&quot;','UNLOCK: FLOOR 45')">
         <div class="class-card__portrait">
           <img src="necromancer_portrait.jpg" alt="Necromancer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">💀</div>
+          <div class="class-card__portrait-placeholder" style="display:none">&#x1F480;</div>
         </div>
         <p class="class-card__name">NECROMANCER</p>
         <p class="class-card__title">THE SOUL MERCHANT</p>
@@ -1660,14 +1390,13 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
            onclick="openClassModal('berserker_portrait.jpg','intro_berserker.jpg','BERSERKER','The Rage Unbound','&quot;Pain fades. Glory is forever. COME AND FACE ME!&quot;','UNLOCK: FLOOR 50')">
         <div class="class-card__portrait">
           <img src="berserker_portrait.jpg" alt="Berserker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">🪓</div>
+          <div class="class-card__portrait-placeholder" style="display:none">&#x1FA93;</div>
         </div>
         <p class="class-card__name">BERSERKER</p>
         <p class="class-card__title">THE RAGE UNBOUND</p>
         <p class="class-card__tagline">Damage scales with missing HP. Lethal at low health.</p>
         <span class="class-card__unlock-badge">FLOOR 50</span>
       </div>
-
     </div>
   </div>
 </section>
@@ -1680,9 +1409,9 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     <span class="tag reveal">// GAMEPLAY VIDEO</span>
     <h2 class="section-title reveal reveal-delay-1">WATCH IT IN ACTION</h2>
     <p class="section-body reveal reveal-delay-2" style="margin: 0 auto; max-width: 540px;">
-      See turn-based combat, loot decisions, shrine sacrifices, and guardian boss battles unfold.
+      Turn-based combat, loot decisions, shrine sacrifices, and guardian boss battles.
     </p>
-    <div class="video-container pixel-border reveal reveal-delay-3">
+    <div class="video-container reveal reveal-delay-3">
       <div class="video-placeholder">
         <div class="video-play-btn"></div>
         <p class="video-placeholder-label">GAMEPLAY TRAILER<br>COMING SOON</p>
@@ -1700,36 +1429,44 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     <h2 class="section-title reveal reveal-delay-1">BUILT FOR DEPTH</h2>
     <p class="section-body reveal reveal-delay-2">Every system designed to reward mastery and encourage experimentation.</p>
     <div class="features__grid">
-      <div class="feature-tile reveal reveal-delay-1">        <h3 class="feature-tile__title">TURN-BASED COMBAT</h3>
+      <div class="feature-tile reveal reveal-delay-1">
+        <h3 class="feature-tile__title">TURN-BASED COMBAT</h3>
         <p class="feature-tile__desc">No time pressure. Think through every action. Attack, defend, use skills, or manage your in-battle shop.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-2">        <h3 class="feature-tile__title">ROW-BASED ENEMIES</h3>
+      <div class="feature-tile reveal reveal-delay-2">
+        <h3 class="feature-tile__title">ROW-BASED ENEMIES</h3>
         <p class="feature-tile__desc">Up to 6 enemies in front/back rows. Front row falls, back row promotes. Target priority matters.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-3">        <h3 class="feature-tile__title">SET BONUSES</h3>
-        <p class="feature-tile__desc">Collect matching items to activate set bonuses. Only 3 sets can be active — choose your synergies carefully.</p>
+      <div class="feature-tile reveal reveal-delay-3">
+        <h3 class="feature-tile__title">SET BONUSES</h3>
+        <p class="feature-tile__desc">Collect matching items to activate set bonuses. Only 3 sets can be active &mdash; choose your synergies carefully.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-4">        <h3 class="feature-tile__title">SKILL TREES</h3>
+      <div class="feature-tile reveal reveal-delay-4">
+        <h3 class="feature-tile__title">SKILL TREES</h3>
         <p class="feature-tile__desc">Unlock nodes each run, reset on death. Class-specific trees define your combat style each attempt.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-5">        <h3 class="feature-tile__title">DIVINE ITEMS</h3>
-        <p class="feature-tile__desc">Ultra-rare boss-only divine loot with unique mechanics that break the rules. Cannot be sacrificed — only equipped.</p>
+      <div class="feature-tile reveal reveal-delay-5">
+        <h3 class="feature-tile__title">DIVINE ITEMS</h3>
+        <p class="feature-tile__desc">Ultra-rare boss-only divine loot with unique mechanics that break the rules. Cannot be sacrificed &mdash; only equipped.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-6">        <h3 class="feature-tile__title">MERCHANT SYSTEM</h3>
+      <div class="feature-tile reveal reveal-delay-6">
+        <h3 class="feature-tile__title">MERCHANT SYSTEM</h3>
         <p class="feature-tile__desc">The Shadow Peddler follows you through the tower, leveling up across runs with quests and rare artifacts.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-1">        <h3 class="feature-tile__title">ITEM MERGING</h3>
-        <p class="feature-tile__desc">Merge same-tier items to climb the rarity ladder: Legendary → Mythic → Cosmic. The highest tier items defy imagination.</p>
+      <div class="feature-tile reveal reveal-delay-1">
+        <h3 class="feature-tile__title">ITEM MERGING</h3>
+        <p class="feature-tile__desc">Merge same-tier items to climb the rarity ladder: Legendary, Mythic, Cosmic. The highest tier items defy imagination.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-2">        <h3 class="feature-tile__title">70+ ACHIEVEMENTS</h3>
-        <p class="feature-tile__desc">Full Game Center integration with 70+ achievements across progression, combat, collection and hidden milestones.</p>
+      <div class="feature-tile reveal reveal-delay-2">
+        <h3 class="feature-tile__title">75+ ACHIEVEMENTS</h3>
+        <p class="feature-tile__desc">Full Game Center integration with achievements across progression, combat, collection, and hidden milestones.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-3">        <h3 class="feature-tile__title">GHOST CHALLENGES</h3>
+      <div class="feature-tile reveal reveal-delay-3">
+        <h3 class="feature-tile__title">GHOST CHALLENGES</h3>
         <p class="feature-tile__desc">Challenge friends with shareable run codes. Race ghost runs and compare your builds head-to-head.</p>
       </div>
-
       <div class="feature-tile reveal reveal-delay-4">
-        <h3 class="feature-tile__title">32 LEADERBOARDS</h3>
+        <h3 class="feature-tile__title">64 LEADERBOARDS</h3>
         <p class="feature-tile__desc">Global and per-class Game Center leaderboards. Race for the highest floor, most enemies slain, or fastest runs.</p>
       </div>
     </div>
@@ -1748,12 +1485,50 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
       no energy timers, no ads. Every piece of content is yours from day one.
     </p>
     <div class="no-iap__pills reveal reveal-delay-3">
-      <div class="pill"><span class="pill-check">✓</span> NO ADS</div>
-      <div class="pill"><span class="pill-check">✓</span> NO IN-APP PURCHASES</div>
-      <div class="pill"><span class="pill-check">✓</span> NO ENERGY TIMERS</div>
-      <div class="pill"><span class="pill-check">✓</span> NO SUBSCRIPTIONS</div>
-      <div class="pill"><span class="pill-check">✓</span> FULL OFFLINE PLAY</div>
-      <div class="pill"><span class="pill-check">✓</span> ALL CONTENT INCLUDED</div>
+      <div class="pill"><span class="pill-check">&#10003;</span> NO ADS</div>
+      <div class="pill"><span class="pill-check">&#10003;</span> NO IN-APP PURCHASES</div>
+      <div class="pill"><span class="pill-check">&#10003;</span> NO ENERGY TIMERS</div>
+      <div class="pill"><span class="pill-check">&#10003;</span> NO SUBSCRIPTIONS</div>
+      <div class="pill"><span class="pill-check">&#10003;</span> FULL OFFLINE PLAY</div>
+      <div class="pill"><span class="pill-check">&#10003;</span> ALL CONTENT INCLUDED</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- META PROGRESSION -->
+<section class="meta section" id="meta">
+  <div class="container">
+    <span class="tag reveal">// BETWEEN RUNS</span>
+    <h2 class="section-title reveal reveal-delay-1">SOUL FORGE<br>UPGRADES</h2>
+    <p class="section-body reveal reveal-delay-2">Every run earns Soul Essence. Spend it on permanent upgrades that persist across all future attempts.</p>
+    <div class="meta__grid">
+      <div class="meta-card reveal reveal-delay-1">
+        <h3 class="meta-card__title">SOUL POWER</h3>
+        <p class="meta-card__desc">+1% starting Attack per level. Hit harder from floor one.</p>
+        <div class="meta-card__pips"><div class="pip active"></div><div class="pip active"></div><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      <div class="meta-card reveal reveal-delay-2">
+        <h3 class="meta-card__title">SOUL VITALITY</h3>
+        <p class="meta-card__desc">+1% starting HP per level. Survive deeper encounters.</p>
+        <div class="meta-card__pips"><div class="pip active"></div><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      <div class="meta-card reveal reveal-delay-3">
+        <h3 class="meta-card__title">LUCKY SOUL</h3>
+        <p class="meta-card__desc">+1% Magic Find per level. Better rarity drops.</p>
+        <div class="meta-card__pips"><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      <div class="meta-card reveal reveal-delay-4">
+        <h3 class="meta-card__title">SHRINE FAVOR</h3>
+        <p class="meta-card__desc">+5% sacrifice value per level. More stats from offerings.</p>
+        <div class="meta-card__pips"><div class="pip active"></div><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      <div class="meta-card reveal reveal-delay-5">
+        <h3 class="meta-card__title">SHOP MASTERY</h3>
+        <p class="meta-card__desc">-5% reroll cost per level. More chances to find the right gear.</p>
+        <div class="meta-card__pips"><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1765,18 +1540,18 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   <div class="cta-final__bg"></div>
   <div class="cta-final__vignette"></div>
   <div class="container cta-final__content">
-    <span class="tag reveal">// BEGIN YOUR ASCENT</span>
+    <span class="tag reveal">// BEGIN YOUR DESCENT</span>
     <h2 class="section-title reveal reveal-delay-1" style="color: var(--gold);">THE SHRINE<br>AWAITS.</h2>
     <p class="section-body reveal reveal-delay-2" style="margin: 0 auto 48px; max-width: 480px;">
       Download LootShrine and see how deep your build can take you.
-      Floor 100 — The Origin — has never been reached. Will you be the first?
+      Floor 100 &mdash; The Origin &mdash; has never been defeated. Will you be the first?
     </p>
     <div class="reveal reveal-delay-3">
       <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="btn-appstore">
         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
           <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
         </svg>
-        DOWNLOAD ON THE APP STORE
+        GET IT ON THE APP STORE
       </a>
     </div>
   </div>
@@ -1787,36 +1562,36 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   <div class="container footer__inner">
     <div class="footer__logo">LOOTSHRINE</div>
     <div class="footer__copy">
-      © 2026 LOOTSHRINE. ALL RIGHTS RESERVED.<br>
-      MADE WITH ❤️ FOR MOBILE ROGUELITE FANS.
+      &copy; 2026 LOOTSHRINE. ALL RIGHTS RESERVED.<br>
+      MADE WITH &#10084;&#65039; FOR MOBILE ROGUELITE FANS.
     </div>
     <ul class="footer__links">
       <li><a href="privacy.html">PRIVACY</a></li>
       <li><a href="support.html">SUPPORT</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#355d5059595a75595a5a41465d475c5b501b565a58">CONTACT</a></li>
+      <li><a href="mailto:contact@lootshrine.com">CONTACT</a></li>
     </ul>
   </div>
 </footer>
 
 <!-- JAVASCRIPT -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── Particles ─────────────────────────────────────────── */
 (function() {
-  const container = document.getElementById('particles');
+  var container = document.getElementById('particles');
   if (!container) return;
-  const count = window.innerWidth < 600 ? 18 : 36;
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('div');
-    p.className = 'px';
+  var count = window.innerWidth < 600 ? 18 : 36;
+  for (var i = 0; i < count; i++) {
+    var p = document.createElement('div');
+    p.className = 'px-particle';
     p.style.cssText = [
-      `left: ${Math.random() * 100}%`,
-      `top: ${40 + Math.random() * 55}%`,
-      `--d: ${5 + Math.random() * 8}s`,
-      `--del: ${Math.random() * 8}s`,
-      `--tx: ${(Math.random() - 0.5) * 60}px`,
-      `width: ${Math.random() > 0.6 ? 4 : 2}px`,
-      `height: ${Math.random() > 0.6 ? 4 : 2}px`,
-      `opacity: 0`,
+      'left:' + (Math.random() * 100) + '%',
+      'top:' + (40 + Math.random() * 55) + '%',
+      '--d:' + (5 + Math.random() * 8) + 's',
+      '--del:' + (Math.random() * 8) + 's',
+      '--tx:' + ((Math.random() - 0.5) * 60) + 'px',
+      'width:' + (Math.random() > 0.6 ? 4 : 2) + 'px',
+      'height:' + (Math.random() > 0.6 ? 4 : 2) + 'px',
+      'opacity:0'
     ].join(';');
     container.appendChild(p);
   }
@@ -1824,59 +1599,69 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 
 /* ── Scroll reveal ──────────────────────────────────────── */
 (function() {
-  const els = document.querySelectorAll('.reveal');
+  var els = document.querySelectorAll('.reveal');
   if (!els.length) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  els.forEach(el => io.observe(el));
+  els.forEach(function(el) { io.observe(el); });
 })();
 
 /* ── Mobile nav ─────────────────────────────────────────── */
 (function() {
-  const toggle = document.getElementById('navToggle');
-  const menu = document.getElementById('navMobile');
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMobile');
   if (!toggle || !menu) return;
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
+  toggle.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
   });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { menu.classList.remove('open'); });
+  });
 })();
 
 /* ── Nav border on scroll ───────────────────────────────── */
 (function() {
-  const nav = document.getElementById('nav');
+  var nav = document.getElementById('nav');
   if (!nav) return;
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', function() {
     nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,215,0,0.18)' : 'rgba(255,215,0,0.10)';
   }, { passive: true });
 })();
 
+/* ── Carousel slide error handler ───────────────────────── */
+function handleSlideError(img) {
+  var slide = img.parentElement;
+  slide.classList.add('carousel__slide--empty');
+  img.style.display = 'none';
+  var label = document.createElement('span');
+  label.textContent = img.alt || 'SCREENSHOT';
+  slide.appendChild(label);
+}
+
 /* ── Class Modal ────────────────────────────────────────── */
 function openClassModal(portraitImg, introImg, name, epithet, quote, unlock) {
-  const overlay = document.getElementById('classModal');
-  const imgEl = document.getElementById('classModalImg');
+  var overlay = document.getElementById('classModal');
+  var imgEl = document.getElementById('classModalImg');
   document.getElementById('classModalName').textContent = name;
   document.getElementById('classModalEpithet').textContent = epithet;
   document.getElementById('classModalQuote').innerHTML = quote;
   document.getElementById('classModalUnlock').textContent = unlock;
 
-  // Try intro image first, fall back to portrait
-  const img = new Image();
+  var img = new Image();
   img.onload = function() {
-    imgEl.innerHTML = `<img src="${introImg}" class="class-modal__img" alt="${name}">`;
+    imgEl.innerHTML = '<img src="' + introImg + '" class="class-modal__img" alt="' + name + '">';
   };
   img.onerror = function() {
-    // Fall back to portrait
-    const img2 = new Image();
+    var img2 = new Image();
     img2.onload = function() {
-      imgEl.innerHTML = `<img src="${portraitImg}" class="class-modal__img" alt="${name}" style="aspect-ratio:1/1">`;
+      imgEl.innerHTML = '<img src="' + portraitImg + '" class="class-modal__img" alt="' + name + '" style="aspect-ratio:1/1">';
     };
     img2.onerror = function() {
-      imgEl.innerHTML = `<div class="class-modal__img-placeholder">⚔️</div>`;
+      imgEl.innerHTML = '<div class="class-modal__img-placeholder">&#9876;&#65039;</div>';
     };
     img2.src = portraitImg;
   };
@@ -1892,42 +1677,29 @@ function closeClassModal(e, force) {
   document.body.style.overflow = '';
 }
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeClassModal(null, true);
-});
-
-/* ── Hide screenshot placeholder when image loads ─── */
-document.querySelectorAll('.screenshot-frame img').forEach(img => {
-  if (img.complete && img.naturalWidth > 0) {
-    const ph = img.nextElementSibling;
-    if (ph && ph.classList.contains('screenshot-placeholder')) ph.style.display = 'none';
-  } else {
-    img.onload = function() {
-      const ph = img.nextElementSibling;
-      if (ph && ph.classList.contains('screenshot-placeholder')) ph.style.display = 'none';
-    };
-  }
 });
 
 /* ── About Carousel ─────────────────────────────────────── */
 (function() {
-  const track = document.getElementById('carouselTrack');
-  const dotsContainer = document.getElementById('carouselDots');
+  var track = document.getElementById('carouselTrack');
+  var dotsContainer = document.getElementById('carouselDots');
   if (!track) return;
-  const slides = track.querySelectorAll('.carousel__slide');
-  const total = slides.length;
-  let current = 0;
-  let timer;
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
+  var slides = track.querySelectorAll('.carousel__slide');
+  var total = slides.length;
+  var current = 0;
+  var timer;
+  slides.forEach(function(_, i) {
+    var dot = document.createElement('div');
     dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goTo(i);
+    dot.onclick = function() { goTo(i); };
     dotsContainer.appendChild(dot);
   });
   function goTo(idx) {
     current = (idx + total) % total;
     track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dotsContainer.querySelectorAll('.carousel__dot').forEach((d, i) => {
+    dotsContainer.querySelectorAll('.carousel__dot').forEach(function(d, i) {
       d.classList.toggle('active', i === current);
     });
     resetTimer();
