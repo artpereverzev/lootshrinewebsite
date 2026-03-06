@@ -464,7 +464,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 .about__grid {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: clamp(32px, 5vw, 72px);
+  gap: clamp(32px, 5vw, 80px);
   align-items: center;
 }
 .about__mockup {
@@ -1309,6 +1309,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   .nav__toggle { display: flex; }
   .about__grid { grid-template-columns: 1fr; }
   .about__carousel { width: clamp(220px, 72vw, 320px); margin: 0 auto; }
+  .about__mockup { max-width: 200px; }
   .triple__grid { grid-template-columns: 1fr; }
   .floors__track { grid-template-columns: repeat(2, 1fr); }
   .rarity-row { grid-template-columns: 12px 1fr 60px; grid-template-rows: auto auto; }
@@ -2159,13 +2160,13 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     <ul class="footer__links">
       <li><a href="privacy.html">PRIVACY</a></li>
       <li><a href="support.html">SUPPORT</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#0c64696060634c606363787f647e656269226f6361">CONTACT</a></li>
+      <li><a href="mailto:hello@lootshrine.com">CONTACT</a></li>
     </ul>
   </div>
 </footer>
 
 <!-- JAVASCRIPT -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── Particles ─────────────────────────────────────────── */
 (function() {
   const container = document.getElementById('particles');
@@ -2300,4 +2301,12 @@ document.querySelectorAll('.screenshot-frame img').forEach(img => {
   }
   function resetTimer() {
     clearInterval(timer);
-    timer = setInterval(functio
+    timer = setInterval(function() { goTo(current + 1); }, 3200);
+  }
+  window.carouselMove = function(dir) { goTo(current + dir); };
+  resetTimer();
+})();
+</script>
+
+</body>
+</html>
