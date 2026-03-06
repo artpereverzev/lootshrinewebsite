@@ -529,6 +529,75 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   letter-spacing: 0.08em;
 }
 
+/* ── About Carousel ── */
+.about__carousel {
+  position: relative;
+  aspect-ratio: 9/19.5;
+  max-width: 240px;
+  margin: 0 auto;
+  border: 2px solid rgba(255,215,0,0.22);
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: 0 0 60px rgba(255,215,0,0.06);
+}
+.carousel__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+  will-change: transform;
+}
+.carousel__slide {
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  image-rendering: pixelated;
+  display: block;
+}
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px; height: 36px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,215,0,0.2);
+  color: var(--gold);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  z-index: 2;
+  line-height: 1;
+  padding: 0;
+}
+.carousel__btn:hover { background: rgba(255,215,0,0.15); }
+.carousel__btn--prev { left: 0; }
+.carousel__btn--next { right: 0; }
+.carousel__dots {
+  position: absolute;
+  bottom: 8px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  z-index: 2;
+}
+.carousel__dot {
+  width: 5px; height: 5px;
+  background: rgba(255,215,0,0.3);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.carousel__dot.active { background: var(--gold); }
+
 /* ===================================================================
    LOOP
 =================================================================== */
@@ -889,8 +958,8 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 .screenshots__scroll::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.2); }
 .screenshot-frame {
   flex: 0 0 auto;
-  width: clamp(180px, 30vw, 260px);
-  aspect-ratio: 9/19.5;
+  width: clamp(260px, 42vw, 420px);
+  aspect-ratio: 16/9;
   border: 2px solid rgba(255,215,0,0.18);
   background: var(--bg-card);
   display: flex;
@@ -1386,12 +1455,20 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="about__mockup pixel-border">
-          <div class="about__mockup-inner">
-            <!-- <img src="assets/screenshot-battle.png" alt="LootShrine Battle Screen" class="about__mockup-img" /> -->
-            <div class="about__mockup-icon">⚔️</div>
-            <span class="about__mockup-label">SCREENSHOT<br>COMING SOON</span>
+        <div class="about__carousel">
+          <div class="carousel__track" id="carouselTrack">
+            <div class="carousel__slide"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_classes.jpg" alt="Classes" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_skills.jpg" alt="Skills" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_item1.jpg" alt="Item" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_item2.jpg" alt="Item" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="this.style.opacity='0'"></div>
+            <div class="carousel__slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="this.style.opacity='0'"></div>
           </div>
+          <button class="carousel__btn carousel__btn--prev" onclick="carouselMove(-1)" aria-label="Previous">&#8249;</button>
+          <button class="carousel__btn carousel__btn--next" onclick="carouselMove(1)" aria-label="Next">&#8250;</button>
+          <div class="carousel__dots" id="carouselDots"></div>
         </div>
       </div>
     </div>
@@ -1535,38 +1612,40 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         <span class="class-card__unlock-badge">FLOOR 25</span>
       </div>
 
-      <!-- Coming Soon -->
-      <div class="class-card class-card--coming reveal reveal-delay-5">
+      <div class="class-card reveal reveal-delay-5"
+           onclick="openClassModal('vampire_portrait.jpg','intro_vampire.jpg','VAMPIRE','The Eternal Hunger','&quot;Immortality was a curse. This place makes it a gift.&quot;','UNLOCK: FLOOR 40')">
         <div class="class-card__portrait">
           <img src="vampire_portrait.jpg" alt="Vampire" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none;opacity:0.4">🧛</div>
+          <div class="class-card__portrait-placeholder" style="display:none">🧛</div>
         </div>
-        <p class="class-card__name" style="color: var(--text-lo);">VAMPIRE</p>
-        <p class="class-card__title" style="opacity:0.5">THE ETERNAL HUNGER</p>
-        <p class="class-card__tagline" style="opacity:0.5">Feeds on enemies. AoE confusion aura.</p>
-        <span class="coming-tag">COMING SOON</span>
+        <p class="class-card__name">VAMPIRE</p>
+        <p class="class-card__title">THE ETERNAL HUNGER</p>
+        <p class="class-card__tagline">Feeds on enemies. AoE confusion aura.</p>
+        <span class="class-card__unlock-badge">FLOOR 40</span>
       </div>
 
-      <div class="class-card class-card--coming reveal reveal-delay-6">
+      <div class="class-card reveal reveal-delay-6"
+           onclick="openClassModal('necromancer_portrait.jpg','intro_necromancer.jpg','NECROMANCER','The Soul Merchant','&quot;The dead remember what the living forget. They remember everything.&quot;','UNLOCK: FLOOR 45')">
         <div class="class-card__portrait">
           <img src="necromancer_portrait.jpg" alt="Necromancer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none;opacity:0.4">💀</div>
+          <div class="class-card__portrait-placeholder" style="display:none">💀</div>
         </div>
-        <p class="class-card__name" style="color: var(--text-lo);">NECROMANCER</p>
-        <p class="class-card__title" style="opacity:0.5">THE SOUL MERCHANT</p>
-        <p class="class-card__tagline" style="opacity:0.5">Commands the dead. Drains life from enemies.</p>
-        <span class="coming-tag">COMING SOON</span>
+        <p class="class-card__name">NECROMANCER</p>
+        <p class="class-card__title">THE SOUL MERCHANT</p>
+        <p class="class-card__tagline">Commands the dead. Drains life from enemies.</p>
+        <span class="class-card__unlock-badge">FLOOR 45</span>
       </div>
 
-      <div class="class-card class-card--coming reveal reveal-delay-7">
+      <div class="class-card reveal reveal-delay-7"
+           onclick="openClassModal('berserker_portrait.jpg','intro_berserker.jpg','BERSERKER','The Rage Unbound','&quot;Pain fades. Glory is forever. COME AND FACE ME!&quot;','UNLOCK: FLOOR 50')">
         <div class="class-card__portrait">
           <img src="berserker_portrait.jpg" alt="Berserker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none;opacity:0.4">🪓</div>
+          <div class="class-card__portrait-placeholder" style="display:none">🪓</div>
         </div>
-        <p class="class-card__name" style="color: var(--text-lo);">BERSERKER</p>
-        <p class="class-card__title" style="opacity:0.5">THE RAGE UNBOUND</p>
-        <p class="class-card__tagline" style="opacity:0.5">Damage scales with missing HP. Lethal at low health.</p>
-        <span class="coming-tag">COMING SOON</span>
+        <p class="class-card__name">BERSERKER</p>
+        <p class="class-card__title">THE RAGE UNBOUND</p>
+        <p class="class-card__tagline">Damage scales with missing HP. Lethal at low health.</p>
+        <span class="class-card__unlock-badge">FLOOR 50</span>
       </div>
 
     </div>
@@ -1697,50 +1776,37 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     <h2 class="section-title reveal reveal-delay-1">BUILT FOR DEPTH</h2>
     <p class="section-body reveal reveal-delay-2">Every system designed to reward mastery and encourage experimentation.</p>
     <div class="features__grid">
-      <div class="feature-tile reveal reveal-delay-1">
-        <span class="feature-tile__icon">⚔️</span>
-        <h3 class="feature-tile__title">TURN-BASED COMBAT</h3>
+      <div class="feature-tile reveal reveal-delay-1">        <h3 class="feature-tile__title">TURN-BASED COMBAT</h3>
         <p class="feature-tile__desc">No time pressure. Think through every action. Attack, defend, use skills, or manage your in-battle shop.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-2">
-        <span class="feature-tile__icon">👥</span>
-        <h3 class="feature-tile__title">ROW-BASED ENEMIES</h3>
+      <div class="feature-tile reveal reveal-delay-2">        <h3 class="feature-tile__title">ROW-BASED ENEMIES</h3>
         <p class="feature-tile__desc">Up to 6 enemies in front/back rows. Front row falls, back row promotes. Target priority matters.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-3">
-        <span class="feature-tile__icon">💍</span>
-        <h3 class="feature-tile__title">SET BONUSES</h3>
+      <div class="feature-tile reveal reveal-delay-3">        <h3 class="feature-tile__title">SET BONUSES</h3>
         <p class="feature-tile__desc">Collect matching items to activate set bonuses. Only 3 sets can be active — choose your synergies carefully.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-4">
-        <span class="feature-tile__icon">🌳</span>
-        <h3 class="feature-tile__title">SKILL TREES</h3>
+      <div class="feature-tile reveal reveal-delay-4">        <h3 class="feature-tile__title">SKILL TREES</h3>
         <p class="feature-tile__desc">Unlock nodes each run, reset on death. Class-specific trees define your combat style each attempt.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-5">
-        <span class="feature-tile__icon">🧿</span>
-        <h3 class="feature-tile__title">DIVINE ITEMS</h3>
+      <div class="feature-tile reveal reveal-delay-5">        <h3 class="feature-tile__title">DIVINE ITEMS</h3>
         <p class="feature-tile__desc">Ultra-rare boss-only divine loot with unique mechanics that break the rules. Cannot be sacrificed — only equipped.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-6">
-        <span class="feature-tile__icon">🏪</span>
-        <h3 class="feature-tile__title">MERCHANT SYSTEM</h3>
+      <div class="feature-tile reveal reveal-delay-6">        <h3 class="feature-tile__title">MERCHANT SYSTEM</h3>
         <p class="feature-tile__desc">The Shadow Peddler follows you through the tower, leveling up across runs with quests and rare artifacts.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-1">
-        <span class="feature-tile__icon">🔨</span>
-        <h3 class="feature-tile__title">ITEM MERGING</h3>
+      <div class="feature-tile reveal reveal-delay-1">        <h3 class="feature-tile__title">ITEM MERGING</h3>
         <p class="feature-tile__desc">Merge same-tier items to climb the rarity ladder: Legendary → Mythic → Cosmic. The highest tier items defy imagination.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-2">
-        <span class="feature-tile__icon">🎯</span>
-        <h3 class="feature-tile__title">70+ ACHIEVEMENTS</h3>
-        <p class="feature-tile__desc">Full Game Center integration with achievements and leaderboards. Prove your mastery across every class and floor.</p>
+      <div class="feature-tile reveal reveal-delay-2">        <h3 class="feature-tile__title">70+ ACHIEVEMENTS</h3>
+        <p class="feature-tile__desc">Full Game Center integration with 70+ achievements across progression, combat, collection and hidden milestones.</p>
       </div>
-      <div class="feature-tile reveal reveal-delay-3">
-        <span class="feature-tile__icon">👻</span>
-        <h3 class="feature-tile__title">GHOST CHALLENGES</h3>
+      <div class="feature-tile reveal reveal-delay-3">        <h3 class="feature-tile__title">GHOST CHALLENGES</h3>
         <p class="feature-tile__desc">Challenge friends with shareable run codes. Race ghost runs and compare your builds head-to-head.</p>
+      </div>
+
+      <div class="feature-tile reveal reveal-delay-4">
+        <h3 class="feature-tile__title">32 LEADERBOARDS</h3>
+        <p class="feature-tile__desc">Global and per-class Game Center leaderboards. Race for the highest floor, most enemies slain, or fastest runs.</p>
       </div>
     </div>
   </div>
@@ -1758,81 +1824,61 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 
       <div class="floor-zone floor-zone--1 reveal reveal-delay-1">
         <div class="floor-zone__range">1–10</div>
-        <div class="floor-zone__label">ZONE 1</div>
-        <span class="floor-zone__icon">🏰</span>
-        <div class="floor-zone__name">THE TOWER ENTRANCE</div>
+        <div class="floor-zone__label">ZONE 1</div>        <div class="floor-zone__name">THE TOWER ENTRANCE</div>
         <div class="floor-zone__boss">⚔ BOSS: THE STONE KING</div>
       </div>
 
       <div class="floor-zone floor-zone--2 reveal reveal-delay-2">
         <div class="floor-zone__range">11–20</div>
-        <div class="floor-zone__label">ZONE 2</div>
-        <span class="floor-zone__icon">💀</span>
-        <div class="floor-zone__name">THE CATACOMBS</div>
+        <div class="floor-zone__label">ZONE 2</div>        <div class="floor-zone__name">THE CATACOMBS</div>
         <div class="floor-zone__boss">⚔ BOSS: CHAOS DEMON</div>
       </div>
 
       <div class="floor-zone floor-zone--3 reveal reveal-delay-3">
         <div class="floor-zone__range">21–30</div>
-        <div class="floor-zone__label">ZONE 3</div>
-        <span class="floor-zone__icon">❄️</span>
-        <div class="floor-zone__name">THE FROZEN HEIGHTS</div>
+        <div class="floor-zone__label">ZONE 3</div>        <div class="floor-zone__name">THE FROZEN HEIGHTS</div>
         <div class="floor-zone__boss">⚔ BOSS: FROST WARDEN</div>
       </div>
 
       <div class="floor-zone floor-zone--4 reveal reveal-delay-4">
         <div class="floor-zone__range">31–40</div>
-        <div class="floor-zone__label">ZONE 4</div>
-        <span class="floor-zone__icon">🌑</span>
-        <div class="floor-zone__name">THE SHADOW REALM</div>
+        <div class="floor-zone__label">ZONE 4</div>        <div class="floor-zone__name">THE SHADOW REALM</div>
         <div class="floor-zone__boss">⚔ BOSS: SHADOW SOVEREIGN</div>
       </div>
 
       <div class="floor-zone floor-zone--5 reveal reveal-delay-5">
         <div class="floor-zone__range">41–50</div>
-        <div class="floor-zone__label">ZONE 5</div>
-        <span class="floor-zone__icon">🐉</span>
-        <div class="floor-zone__name">THE DRAGON'S LAIR</div>
+        <div class="floor-zone__label">ZONE 5</div>        <div class="floor-zone__name">THE DRAGON'S LAIR</div>
         <div class="floor-zone__boss">⚔ BOSS: ELDER WYRM</div>
       </div>
 
       <div class="floor-zone floor-zone--6 reveal reveal-delay-1">
         <div class="floor-zone__range">51–60</div>
-        <div class="floor-zone__label">ZONE 6</div>
-        <span class="floor-zone__icon">✨</span>
-        <div class="floor-zone__name">THE SHRINE SANCTUM</div>
+        <div class="floor-zone__label">ZONE 6</div>        <div class="floor-zone__name">THE SHRINE SANCTUM</div>
         <div class="floor-zone__boss">⚔ BOSS: RADIANT JUDGE</div>
       </div>
 
       <div class="floor-zone floor-zone--7 reveal reveal-delay-2">
         <div class="floor-zone__range">61–70</div>
-        <div class="floor-zone__label">ZONE 7</div>
-        <span class="floor-zone__icon">🌿</span>
-        <div class="floor-zone__name">THE CORRUPTED GARDENS</div>
+        <div class="floor-zone__label">ZONE 7</div>        <div class="floor-zone__name">THE CORRUPTED GARDENS</div>
         <div class="floor-zone__boss">⚔ BOSS: PLAGUE OVERLORD</div>
       </div>
 
       <div class="floor-zone floor-zone--8 reveal reveal-delay-3">
         <div class="floor-zone__range">71–80</div>
-        <div class="floor-zone__label">ZONE 8</div>
-        <span class="floor-zone__icon">⚙️</span>
-        <div class="floor-zone__name">THE CLOCKWORK HEIGHTS</div>
+        <div class="floor-zone__label">ZONE 8</div>        <div class="floor-zone__name">THE CLOCKWORK HEIGHTS</div>
         <div class="floor-zone__boss">⚔ BOSS: FORGE TITAN</div>
       </div>
 
       <div class="floor-zone floor-zone--9 reveal reveal-delay-4">
         <div class="floor-zone__range">81–90</div>
-        <div class="floor-zone__label">ZONE 9</div>
-        <span class="floor-zone__icon">📚</span>
-        <div class="floor-zone__name">THE ASTRAL LIBRARY</div>
+        <div class="floor-zone__label">ZONE 9</div>        <div class="floor-zone__name">THE ASTRAL LIBRARY</div>
         <div class="floor-zone__boss">⚔ BOSS: COSMIC ARBITER</div>
       </div>
 
       <div class="floor-zone floor-zone--10 reveal reveal-delay-5">
         <div class="floor-zone__range">91–100</div>
-        <div class="floor-zone__label">ZONE 10</div>
-        <span class="floor-zone__icon">🕳️</span>
-        <div class="floor-zone__name">THE ETERNAL ABYSS</div>
+        <div class="floor-zone__label">ZONE 10</div>        <div class="floor-zone__name">THE ETERNAL ABYSS</div>
         <div class="floor-zone__boss">⚔ FINAL: THE PRIMORDIAL</div>
       </div>
 
@@ -1945,9 +1991,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 
     <div class="meta__grid" style="margin-top: 52px;">
 
-      <div class="meta-card reveal reveal-delay-1">
-        <div class="meta-card__icon">🔥</div>
-        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
+      <div class="meta-card reveal reveal-delay-1">        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
         <p class="meta-card__title">SOUL POWER</p>
         <p class="meta-card__max">MAX RANK 10</p>
         <p class="meta-card__desc">+2% starting Attack per rank. Deals damage faster from floor 1.</p>
@@ -1958,9 +2002,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-2">
-        <div class="meta-card__icon">⚡</div>
-        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
+      <div class="meta-card reveal reveal-delay-2">        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
         <p class="meta-card__title">CRITICAL SOUL</p>
         <p class="meta-card__max">MAX RANK 5</p>
         <p class="meta-card__desc">+1% Crit Chance per rank. More crits, more burst. Requires Shrine Level 3.</p>
@@ -1969,9 +2011,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-3">
-        <div class="meta-card__icon">🎯</div>
-        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
+      <div class="meta-card reveal reveal-delay-3">        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
         <p class="meta-card__title">DEADLY PRECISION</p>
         <p class="meta-card__max">MAX RANK 5</p>
         <p class="meta-card__desc">+5% Crit Damage per rank. Turns good crits into catastrophic ones.</p>
@@ -1980,9 +2020,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-4">
-        <div class="meta-card__icon">💥</div>
-        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
+      <div class="meta-card reveal reveal-delay-4">        <p class="meta-card__category" style="color: #FF6B6B;">COMBAT</p>
         <p class="meta-card__title">SPLASH DAMAGE</p>
         <p class="meta-card__max">MAX RANK 6</p>
         <p class="meta-card__desc">Attacks deal splash to all enemies (3%→5%→8%→12%→18%→25%). Devastating with row enemies.</p>
@@ -1992,9 +2030,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-1">
-        <div class="meta-card__icon">❤️</div>
-        <p class="meta-card__category" style="color: #22C55E;">SURVIVAL</p>
+      <div class="meta-card reveal reveal-delay-1">        <p class="meta-card__category" style="color: #22C55E;">SURVIVAL</p>
         <p class="meta-card__title">SOUL VITALITY</p>
         <p class="meta-card__max">MAX RANK 10</p>
         <p class="meta-card__desc">+2% starting HP per rank. Stay alive longer. Sacrifice more.</p>
@@ -2005,9 +2041,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-2">
-        <div class="meta-card__icon">🛡️</div>
-        <p class="meta-card__category" style="color: #22C55E;">SURVIVAL</p>
+      <div class="meta-card reveal reveal-delay-2">        <p class="meta-card__category" style="color: #22C55E;">SURVIVAL</p>
         <p class="meta-card__title">IRON WILL</p>
         <p class="meta-card__max">MAX RANK 10</p>
         <p class="meta-card__desc">+2% starting Defense per rank. Reach deeper floors by taking less damage.</p>
@@ -2017,9 +2051,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-3">
-        <div class="meta-card__icon">💧</div>
-        <p class="meta-card__category" style="color: #22C55E;">SURVIVAL</p>
+      <div class="meta-card reveal reveal-delay-3">        <p class="meta-card__category" style="color: #22C55E;">SURVIVAL</p>
         <p class="meta-card__title">LIFEBLOOD</p>
         <p class="meta-card__max">MAX RANK 5</p>
         <p class="meta-card__desc">+1 Life on Hit per rank. Every attack becomes sustain. Incredible in long fights.</p>
@@ -2028,9 +2060,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-4">
-        <div class="meta-card__icon">✨</div>
-        <p class="meta-card__category" style="color: #FFD43B;">FORTUNE</p>
+      <div class="meta-card reveal reveal-delay-4">        <p class="meta-card__category" style="color: #FFD43B;">FORTUNE</p>
         <p class="meta-card__title">LUCKY SOUL</p>
         <p class="meta-card__max">MAX RANK 5</p>
         <p class="meta-card__desc">+2% Magic Find per rank. Better loot, more often. More sacrifices, more power.</p>
@@ -2040,9 +2070,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-1">
-        <div class="meta-card__icon">💰</div>
-        <p class="meta-card__category" style="color: #FFD43B;">FORTUNE</p>
+      <div class="meta-card reveal reveal-delay-1">        <p class="meta-card__category" style="color: #FFD43B;">FORTUNE</p>
         <p class="meta-card__title">GOLD RUSH</p>
         <p class="meta-card__max">MAX RANK 5</p>
         <p class="meta-card__desc">+5% Gold Find per rank. More gold means more rerolls and better shrine donations.</p>
@@ -2051,9 +2079,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-2">
-        <div class="meta-card__icon">🛒</div>
-        <p class="meta-card__category" style="color: #FFD43B;">FORTUNE</p>
+      <div class="meta-card reveal reveal-delay-2">        <p class="meta-card__category" style="color: #FFD43B;">FORTUNE</p>
         <p class="meta-card__title">SHOP MASTERY</p>
         <p class="meta-card__max">MAX RANK 5</p>
         <p class="meta-card__desc">-8% reroll cost per rank. More rolls per gold means you find the item you need.</p>
@@ -2062,9 +2088,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         </div>
       </div>
 
-      <div class="meta-card reveal reveal-delay-3">
-        <div class="meta-card__icon">🌀</div>
-        <p class="meta-card__category" style="color: #A855F7;">SPECIAL</p>
+      <div class="meta-card reveal reveal-delay-3">        <p class="meta-card__category" style="color: #A855F7;">SPECIAL</p>
         <p class="meta-card__title">SOUL HARVEST</p>
         <p class="meta-card__max">MAX RANK 5</p>
         <p class="meta-card__desc">+5% Soul Essence gain per rank. Unlock upgrades faster. The forge feeds itself.</p>
@@ -2249,6 +2273,37 @@ document.querySelectorAll('.screenshot-frame img').forEach(img => {
     };
   }
 });
+
+/* ── About Carousel ─────────────────────────────────────── */
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const dotsContainer = document.getElementById('carouselDots');
+  if (!track) return;
+  const slides = track.querySelectorAll('.carousel__slide');
+  const total = slides.length;
+  let current = 0;
+  let timer;
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goTo(i);
+    dotsContainer.appendChild(dot);
+  });
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dotsContainer.querySelectorAll('.carousel__dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    resetTimer();
+  }
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function() { goTo(current + 1); }, 3200);
+  }
+  window.carouselMove = function(dir) { goTo(current + dir); };
+  resetTimer();
+})();
 </script>
 
 </body>
