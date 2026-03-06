@@ -463,8 +463,8 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 }
 .about__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
+  grid-template-columns: 1fr auto;
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 .about__mockup {
@@ -532,13 +532,14 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 /* ── About Carousel ── */
 .about__carousel {
   position: relative;
-  aspect-ratio: 9/19.5;
-  max-width: 240px;
-  margin: 0 auto;
+  /* iPhone 16 Pro Max: 430 × 932pt */
+  aspect-ratio: 430/932;
+  width: clamp(220px, 28vw, 340px);
   border: 2px solid rgba(255,215,0,0.22);
   overflow: hidden;
   background: var(--bg-card);
-  box-shadow: 0 0 60px rgba(255,215,0,0.06);
+  box-shadow: 0 0 80px rgba(255,215,0,0.10), 0 0 0 1px rgba(255,215,0,0.06);
+  border-radius: 2px;
 }
 .carousel__track {
   display: flex;
@@ -1307,7 +1308,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   .nav__links, .nav__btn { display: none; }
   .nav__toggle { display: flex; }
   .about__grid { grid-template-columns: 1fr; }
-  .about__mockup { max-width: 200px; }
+  .about__carousel { width: clamp(220px, 72vw, 320px); margin: 0 auto; }
   .triple__grid { grid-template-columns: 1fr; }
   .floors__track { grid-template-columns: repeat(2, 1fr); }
   .rarity-row { grid-template-columns: 12px 1fr 60px; grid-template-rows: auto auto; }
@@ -2158,13 +2159,13 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     <ul class="footer__links">
       <li><a href="privacy.html">PRIVACY</a></li>
       <li><a href="support.html">SUPPORT</a></li>
-      <li><a href="mailto:hello@lootshrine.com">CONTACT</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#0c64696060634c606363787f647e656269226f6361">CONTACT</a></li>
     </ul>
   </div>
 </footer>
 
 <!-- JAVASCRIPT -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── Particles ─────────────────────────────────────────── */
 (function() {
   const container = document.getElementById('particles');
@@ -2299,12 +2300,4 @@ document.querySelectorAll('.screenshot-frame img').forEach(img => {
   }
   function resetTimer() {
     clearInterval(timer);
-    timer = setInterval(function() { goTo(current + 1); }, 3200);
-  }
-  window.carouselMove = function(dir) { goTo(current + dir); };
-  resetTimer();
-})();
-</script>
-
-</body>
-</html>
+    timer = setInterval(functio
