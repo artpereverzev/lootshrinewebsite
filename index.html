@@ -101,8 +101,7 @@ body::after {
    Applied globally to all interactive elements and cards
 =================================================================== */
 .nav__btn,
-.btn-appstore,
-.btn-outline,
+.btn-hero,
 .hero__stats,
 .badge,
 .loop__step,
@@ -113,8 +112,7 @@ body::after {
 .video-container,
 .feature-tile,
 .pill,
-.meta-card,
-.about__carousel {
+.meta-card {
   border-radius: 0;
 }
 
@@ -382,41 +380,40 @@ body::after {
   to   { opacity: 1; transform: none; }
 }
 
-/* Pixel-frame buttons */
-.btn-appstore {
+/* Hero CTA buttons — same size, same style */
+.btn-hero {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: var(--gold);
-  color: var(--bg-void);
-  padding: 16px 28px;
+  justify-content: center;
+  gap: 10px;
+  min-width: 240px;
+  padding: 18px 28px;
   border: 2px solid var(--gold);
   font-family: var(--font-pixel);
   font-size: 9px;
   letter-spacing: 0.05em;
   transition: background 0.15s, color 0.15s, box-shadow 0.2s, transform 0.15s;
-  position: relative;
 }
-.btn-appstore:hover {
-  background: var(--bg-void);
+.btn-hero svg { flex-shrink: 0; width: 18px; height: 18px; }
+.btn-hero--primary {
+  background: var(--gold);
+  color: var(--bg-void);
+}
+.btn-hero--primary:hover {
+  background: transparent;
   color: var(--gold);
   box-shadow: 0 0 40px rgba(255,215,0,0.3);
   transform: translateY(-2px);
 }
-.btn-appstore svg { flex-shrink: 0; width: 20px; height: 20px; }
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 24px;
-  border: 2px solid rgba(255,215,0,0.3);
-  font-family: var(--font-pixel);
-  font-size: 9px;
+.btn-hero--secondary {
+  background: transparent;
   color: var(--text-mid);
-  letter-spacing: 0.05em;
-  transition: border-color 0.2s, color 0.2s, transform 0.15s;
 }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.btn-hero--secondary:hover {
+  color: var(--gold);
+  box-shadow: 0 0 40px rgba(255,215,0,0.3);
+  transform: translateY(-2px);
+}
 
 /* Hero stat bar */
 .hero__stats {
@@ -476,24 +473,62 @@ body::after {
 }
 
 /* ===================================================================
-   ABOUT
+   ABOUT — full-bleed background carousel behind text
 =================================================================== */
 .about {
   padding: var(--section-pad) var(--gutter);
   background: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
 }
-.about__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
-  align-items: center;
+/* Background carousel layer */
+.about__bg {
+  position: absolute; inset: 0;
+  z-index: 0;
 }
-.about__text .section-body { max-width: 500px; }
+.about__bg-track {
+  position: absolute; inset: 0;
+}
+.about__bg-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.about__bg-slide.active { opacity: 1; }
+.about__bg-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  image-rendering: pixelated;
+}
+/* Smooth faded edges — radial + directional */
+.about__bg-fade {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 50%,
+      transparent 0%,
+      rgba(13,13,21,0.5) 50%,
+      var(--bg-dark) 100%);
+}
+.about__bg-overlay {
+  position: absolute; inset: 0;
+  background: rgba(13,13,21,0.65);
+}
+/* Content above background */
+.about__content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about__content .section-body { max-width: 580px; margin-left: auto; margin-right: auto; }
 .about__badges {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 32px;
+  justify-content: center;
 }
 .badge {
   font-family: var(--font-pixel);
@@ -504,85 +539,43 @@ body::after {
   background: rgba(255,215,0,0.04);
   letter-spacing: 0.08em;
 }
-
-/* ── About Carousel ── */
-.about__carousel {
-  position: relative;
-  aspect-ratio: 9/19.5;
-  max-width: 240px;
-  margin: 0 auto;
-  border: 2px solid rgba(255,215,0,0.22);
-  overflow: hidden;
-  background: var(--bg-card);
-}
-.carousel__track {
-  display: flex;
-  height: 100%;
-  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
-  will-change: transform;
-}
-.carousel__slide {
-  min-width: 100%;
-  height: 100%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.carousel__slide img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  image-rendering: pixelated;
-  display: block;
-}
-/* Fallback when image fails */
-.carousel__slide--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, var(--bg-raised) 0%, var(--bg-card) 100%);
-}
-.carousel__slide--empty span {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  color: var(--text-lo);
-  letter-spacing: 0.12em;
-}
-.carousel__btn {
+/* Arrow nav for background carousel */
+.about__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 28px; height: 36px;
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(255,215,0,0.2);
+  z-index: 2;
+  width: 36px; height: 48px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,215,0,0.15);
   color: var(--gold);
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s;
-  z-index: 2;
+  transition: background 0.15s, border-color 0.15s;
   line-height: 1;
   padding: 0;
 }
-.carousel__btn:hover { background: rgba(255,215,0,0.15); }
-.carousel__btn--prev { left: 0; }
-.carousel__btn--next { right: 0; }
-.carousel__dots {
-  position: absolute;
-  bottom: 8px;
-  left: 0; right: 0;
+.about__nav:hover { background: rgba(255,215,0,0.1); border-color: rgba(255,215,0,0.35); }
+.about__nav--prev { left: var(--gutter); }
+.about__nav--next { right: var(--gutter); }
+/* Dots */
+.about__dots {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
-  gap: 5px;
-  z-index: 2;
+  gap: 6px;
+  margin-top: 40px;
 }
-.carousel__dot {
-  width: 5px; height: 5px;
-  background: rgba(255,215,0,0.3);
+.about__dot {
+  width: 6px; height: 6px;
+  background: rgba(255,215,0,0.2);
   cursor: pointer;
   transition: background 0.2s;
 }
-.carousel__dot.active { background: var(--gold); }
+.about__dot.active { background: var(--gold); }
 
 /* ===================================================================
    LOOP
@@ -1026,8 +1019,6 @@ body::after {
 @media (max-width: 800px) {
   .nav__links, .nav__btn { display: none; }
   .nav__toggle { display: flex; }
-  .about__grid { grid-template-columns: 1fr; }
-  .about__carousel { max-width: 200px; }
   .triple__grid { grid-template-columns: 1fr; }
   .footer__inner { flex-direction: column; text-align: center; }
   .footer__links { justify-content: center; }
@@ -1098,7 +1089,7 @@ body::after {
   <div class="hero__particles" id="particles"></div>
 
   <div class="hero__content">
-    <p class="hero__eyebrow">&#9656; PREMIUM ROGUELITE RPG FOR iOS</p>
+    <p class="hero__eyebrow">ROGUELITE RPG FOR iOS</p>
     <h1 class="hero__title">LOOT<br>SHRINE</h1>
     <p class="hero__title-sub">SLAY. LOOT. SACRIFICE.</p>
     <p class="hero__tagline">
@@ -1106,13 +1097,13 @@ body::after {
       equip it, absorb it, or sacrifice it at the shrine for permanent power.
     </p>
     <div class="hero__ctas">
-      <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="btn-appstore">
+      <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="btn-hero btn-hero--primary">
         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
         </svg>
-        GET IT ON THE APP STORE
+        APP STORE
       </a>
-      <a href="#gameplay" class="btn-outline">&#9656; WATCH GAMEPLAY</a>
+      <a href="#gameplay" class="btn-hero btn-hero--secondary">WATCH GAMEPLAY</a>
     </div>
   </div>
 
@@ -1134,7 +1125,7 @@ body::after {
       <span class="hero__stat-label">ACHIEVEMENTS</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">64</span>
+      <span class="hero__stat-val">72</span>
       <span class="hero__stat-label">LEADERBOARDS</span>
     </div>
     <div class="hero__stat">
@@ -1153,49 +1144,50 @@ body::after {
 
 <!-- ABOUT -->
 <section class="about section" id="about">
-  <div class="container">
-    <div class="about__grid">
-      <div class="about__text">
-        <span class="tag reveal">// WHAT IS LOOTSHRINE</span>
-        <h2 class="section-title reveal reveal-delay-1">A ROGUELITE BUILT<br>AROUND LOOT CHOICES</h2>
-        <p class="section-body reveal reveal-delay-2">
-          LootShrine puts loot decisions at the center of every run. Every item you find
-          can be <strong style="color: var(--text-hi);">equipped</strong> for instant power,
-          <strong style="color: var(--text-hi);">absorbed</strong> for temporary buffs mid-battle,
-          or <strong style="color: var(--gold);">sacrificed at the Shrine</strong> for permanent stat gains that last the run.
-        </p>
-        <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
-          One-handed portrait play. Turn-based pacing you control.
-          Deep item synergies through set bonuses. Every floor a new puzzle to solve.
-          Guardian bosses every 10 floors &mdash; with The Origin awaiting at Floor 100.
-        </p>
-        <div class="about__badges reveal reveal-delay-4">
-          <span class="badge">TURN-BASED</span>
-          <span class="badge">PIXEL ART</span>
-          <span class="badge">ROGUELITE</span>
-          <span class="badge">DARK FANTASY</span>
-          <span class="badge">OFFLINE</span>
-          <span class="badge">NO ADS</span>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="about__carousel">
-          <div class="carousel__track" id="carouselTrack">
-            <div class="carousel__slide"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="handleSlideError(this)"></div>
-            <div class="carousel__slide"><img src="scr_classes.jpg" alt="Classes" onerror="handleSlideError(this)"></div>
-            <div class="carousel__slide"><img src="scr_skills.jpg" alt="Skills" onerror="handleSlideError(this)"></div>
-            <div class="carousel__slide"><img src="scr_item1.jpg" alt="Items" onerror="handleSlideError(this)"></div>
-            <div class="carousel__slide"><img src="scr_item2.jpg" alt="Equipment" onerror="handleSlideError(this)"></div>
-            <div class="carousel__slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="handleSlideError(this)"></div>
-            <div class="carousel__slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="handleSlideError(this)"></div>
-            <div class="carousel__slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="handleSlideError(this)"></div>
-          </div>
-          <button class="carousel__btn carousel__btn--prev" onclick="carouselMove(-1)" aria-label="Previous">&#8249;</button>
-          <button class="carousel__btn carousel__btn--next" onclick="carouselMove(1)" aria-label="Next">&#8250;</button>
-          <div class="carousel__dots" id="carouselDots"></div>
-        </div>
-      </div>
+  <!-- Background carousel -->
+  <div class="about__bg">
+    <div class="about__bg-track" id="aboutBgTrack">
+      <div class="about__bg-slide active"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.parentElement.style.display='none'"></div>
+      <div class="about__bg-slide"><img src="scr_classes.jpg" alt="Classes" onerror="this.parentElement.style.display='none'"></div>
+      <div class="about__bg-slide"><img src="scr_skills.jpg" alt="Skills" onerror="this.parentElement.style.display='none'"></div>
+      <div class="about__bg-slide"><img src="scr_item1.jpg" alt="Items" onerror="this.parentElement.style.display='none'"></div>
+      <div class="about__bg-slide"><img src="scr_item2.jpg" alt="Equipment" onerror="this.parentElement.style.display='none'"></div>
+      <div class="about__bg-slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="this.parentElement.style.display='none'"></div>
+      <div class="about__bg-slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="this.parentElement.style.display='none'"></div>
+      <div class="about__bg-slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="this.parentElement.style.display='none'"></div>
     </div>
+    <div class="about__bg-overlay"></div>
+    <div class="about__bg-fade"></div>
+  </div>
+
+  <!-- Arrows -->
+  <button class="about__nav about__nav--prev" onclick="aboutCarouselMove(-1)" aria-label="Previous">&#8249;</button>
+  <button class="about__nav about__nav--next" onclick="aboutCarouselMove(1)" aria-label="Next">&#8250;</button>
+
+  <!-- Text content -->
+  <div class="about__content">
+    <span class="tag reveal">// WHAT IS LOOTSHRINE</span>
+    <h2 class="section-title reveal reveal-delay-1">A ROGUELITE BUILT<br>AROUND LOOT CHOICES</h2>
+    <p class="section-body reveal reveal-delay-2">
+      LootShrine puts loot decisions at the center of every run. Every item you find
+      can be <strong style="color: var(--text-hi);">equipped</strong> for instant power,
+      <strong style="color: var(--text-hi);">absorbed</strong> for temporary buffs mid-battle,
+      or <strong style="color: var(--gold);">sacrificed at the Shrine</strong> for permanent stat gains that last the run.
+    </p>
+    <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
+      One-handed portrait play. Turn-based pacing you control.
+      Deep item synergies through set bonuses. Every floor a new puzzle to solve.
+      Guardian bosses every 10 floors &mdash; with The Origin awaiting at Floor 100.
+    </p>
+    <div class="about__badges reveal reveal-delay-4">
+      <span class="badge">TURN-BASED</span>
+      <span class="badge">PIXEL ART</span>
+      <span class="badge">ROGUELITE</span>
+      <span class="badge">DARK FANTASY</span>
+      <span class="badge">OFFLINE</span>
+      <span class="badge">NO ADS</span>
+    </div>
+    <div class="about__dots" id="aboutDots"></div>
   </div>
 </section>
 
@@ -1431,7 +1423,7 @@ body::after {
         <p class="feature-tile__desc">Challenge friends with shareable run codes. Race ghost runs and compare your builds head-to-head.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-4">
-        <h3 class="feature-tile__title">64 LEADERBOARDS</h3>
+        <h3 class="feature-tile__title">72 LEADERBOARDS</h3>
         <p class="feature-tile__desc">Global and per-class Game Center leaderboards. Race for the highest floor, most enemies slain, or fastest runs.</p>
       </div>
     </div>
@@ -1512,11 +1504,11 @@ body::after {
       Floor 100 &mdash; The Origin &mdash; has never been defeated. Will you be the first?
     </p>
     <div class="reveal reveal-delay-3">
-      <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="btn-appstore">
-        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+      <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="btn-hero btn-hero--primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
         </svg>
-        GET IT ON THE APP STORE
+        APP STORE
       </a>
     </div>
   </div>
@@ -1597,17 +1589,37 @@ body::after {
   }, { passive: true });
 })();
 
-/* ── Carousel slide error handler ───────────────────────── */
-function handleSlideError(img) {
-  var slide = img.parentElement;
-  slide.classList.add('carousel__slide--empty');
-  img.style.display = 'none';
-  var label = document.createElement('span');
-  label.textContent = img.alt || 'SCREENSHOT';
-  slide.appendChild(label);
-}
-
-/* ── Class Modal ────────────────────────────────────────── */
+/* ── About Background Carousel (crossfade) ──────────────── */
+(function() {
+  var track = document.getElementById('aboutBgTrack');
+  var dotsContainer = document.getElementById('aboutDots');
+  if (!track) return;
+  var slides = track.querySelectorAll('.about__bg-slide');
+  var total = slides.length;
+  var current = 0;
+  var timer;
+  slides.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'about__dot' + (i === 0 ? ' active' : '');
+    dot.onclick = function() { goTo(i); };
+    dotsContainer.appendChild(dot);
+  });
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    current = (idx + total) % total;
+    slides[current].classList.add('active');
+    dotsContainer.querySelectorAll('.about__dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    resetTimer();
+  }
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function() { goTo(current + 1); }, 4000);
+  }
+  window.aboutCarouselMove = function(dir) { goTo(current + dir); };
+  resetTimer();
+})();
 function openClassModal(portraitImg, introImg, name, epithet, quote, unlock) {
   var overlay = document.getElementById('classModal');
   var imgEl = document.getElementById('classModalImg');
@@ -1646,36 +1658,6 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeClassModal(null, true);
 });
 
-/* ── About Carousel ─────────────────────────────────────── */
-(function() {
-  var track = document.getElementById('carouselTrack');
-  var dotsContainer = document.getElementById('carouselDots');
-  if (!track) return;
-  var slides = track.querySelectorAll('.carousel__slide');
-  var total = slides.length;
-  var current = 0;
-  var timer;
-  slides.forEach(function(_, i) {
-    var dot = document.createElement('div');
-    dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
-    dot.onclick = function() { goTo(i); };
-    dotsContainer.appendChild(dot);
-  });
-  function goTo(idx) {
-    current = (idx + total) % total;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dotsContainer.querySelectorAll('.carousel__dot').forEach(function(d, i) {
-      d.classList.toggle('active', i === current);
-    });
-    resetTimer();
-  }
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(function() { goTo(current + 1); }, 3200);
-  }
-  window.carouselMove = function(dir) { goTo(current + dir); };
-  resetTimer();
-})();
 </script>
 
 </body>
