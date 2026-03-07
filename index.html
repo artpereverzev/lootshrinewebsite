@@ -483,8 +483,9 @@ body::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(32px, 5vw, 64px);
-  align-items: center;
+  align-items: stretch;
 }
+.about__text { display: flex; flex-direction: column; justify-content: center; }
 .about__text .section-body { max-width: 500px; }
 .about__badges {
   display: flex;
@@ -502,12 +503,12 @@ body::after {
   letter-spacing: 0.08em;
 }
 
-/* Right column: portrait screenshot hero */
+/* Right column: portrait screenshot — fills entire right side */
 .about__visual {
   position: relative;
-  aspect-ratio: 9/16;
-  max-width: 320px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 600px;
+  height: 100%;
   overflow: hidden;
 }
 .about__visual-track {
@@ -1019,7 +1020,7 @@ body::after {
   .nav__links, .nav__btn { display: none; }
   .nav__toggle { display: flex; }
   .about__grid { grid-template-columns: 1fr; }
-  .about__visual { max-width: 260px; }
+  .about__visual { min-height: 480px; }
   .triple__grid { grid-template-columns: 1fr; }
   .footer__inner { flex-direction: column; text-align: center; }
   .footer__links { justify-content: center; }
@@ -1170,7 +1171,7 @@ body::after {
           <span class="badge">NO ADS</span>
         </div>
       </div>
-      <div class="reveal reveal-delay-2">
+      <div class="reveal reveal-delay-2" style="height:100%">
         <div class="about__visual">
           <div class="about__visual-track" id="aboutBgTrack">
             <div class="about__visual-slide active"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.parentElement.style.display='none'"></div>
