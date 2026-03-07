@@ -473,62 +473,24 @@ body::after {
 }
 
 /* ===================================================================
-   ABOUT — full-bleed background carousel behind text
+   ABOUT — split: left text, right portrait screenshot bg
 =================================================================== */
 .about {
   padding: var(--section-pad) var(--gutter);
   background: var(--bg-dark);
-  position: relative;
-  overflow: hidden;
 }
-/* Background carousel layer */
-.about__bg {
-  position: absolute; inset: 0;
-  z-index: 0;
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
 }
-.about__bg-track {
-  position: absolute; inset: 0;
-}
-.about__bg-slide {
-  position: absolute; inset: 0;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-.about__bg-slide.active { opacity: 1; }
-.about__bg-slide img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  image-rendering: pixelated;
-}
-/* Smooth faded edges — radial + directional */
-.about__bg-fade {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 80% at 50% 50%,
-      transparent 0%,
-      rgba(13,13,21,0.5) 50%,
-      var(--bg-dark) 100%);
-}
-.about__bg-overlay {
-  position: absolute; inset: 0;
-  background: rgba(13,13,21,0.65);
-}
-/* Content above background */
-.about__content {
-  position: relative;
-  z-index: 1;
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: center;
-}
-.about__content .section-body { max-width: 580px; margin-left: auto; margin-right: auto; }
+.about__text .section-body { max-width: 500px; }
 .about__badges {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 32px;
-  justify-content: center;
 }
 .badge {
   font-family: var(--font-pixel);
@@ -539,17 +501,53 @@ body::after {
   background: rgba(255,215,0,0.04);
   letter-spacing: 0.08em;
 }
-/* Arrow nav for background carousel */
+
+/* Right column: portrait screenshot hero */
+.about__visual {
+  position: relative;
+  aspect-ratio: 9/16;
+  max-width: 320px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.about__visual-track {
+  position: absolute; inset: 0;
+}
+.about__visual-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.about__visual-slide.active { opacity: 1; }
+.about__visual-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  image-rendering: pixelated;
+}
+/* Smooth faded edges into bg-dark */
+.about__visual-fade {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 85% 90% at 50% 45%,
+      transparent 0%,
+      transparent 30%,
+      rgba(13,13,21,0.4) 55%,
+      rgba(13,13,21,0.75) 75%,
+      var(--bg-dark) 100%);
+  pointer-events: none;
+}
+/* Arrows */
 .about__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  width: 36px; height: 48px;
+  width: 32px; height: 44px;
   background: rgba(0,0,0,0.4);
   border: 1px solid rgba(255,215,0,0.15);
   color: var(--gold);
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -558,16 +556,17 @@ body::after {
   padding: 0;
 }
 .about__nav:hover { background: rgba(255,215,0,0.1); border-color: rgba(255,215,0,0.35); }
-.about__nav--prev { left: var(--gutter); }
-.about__nav--next { right: var(--gutter); }
+.about__nav--prev { left: 4px; }
+.about__nav--next { right: 4px; }
 /* Dots */
 .about__dots {
-  position: relative;
+  position: absolute;
+  bottom: 12px;
+  left: 0; right: 0;
   z-index: 2;
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin-top: 40px;
 }
 .about__dot {
   width: 6px; height: 6px;
@@ -1019,6 +1018,8 @@ body::after {
 @media (max-width: 800px) {
   .nav__links, .nav__btn { display: none; }
   .nav__toggle { display: flex; }
+  .about__grid { grid-template-columns: 1fr; }
+  .about__visual { max-width: 260px; }
   .triple__grid { grid-template-columns: 1fr; }
   .footer__inner { flex-direction: column; text-align: center; }
   .footer__links { justify-content: center; }
@@ -1144,50 +1145,50 @@ body::after {
 
 <!-- ABOUT -->
 <section class="about section" id="about">
-  <!-- Background carousel -->
-  <div class="about__bg">
-    <div class="about__bg-track" id="aboutBgTrack">
-      <div class="about__bg-slide active"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.parentElement.style.display='none'"></div>
-      <div class="about__bg-slide"><img src="scr_classes.jpg" alt="Classes" onerror="this.parentElement.style.display='none'"></div>
-      <div class="about__bg-slide"><img src="scr_skills.jpg" alt="Skills" onerror="this.parentElement.style.display='none'"></div>
-      <div class="about__bg-slide"><img src="scr_item1.jpg" alt="Items" onerror="this.parentElement.style.display='none'"></div>
-      <div class="about__bg-slide"><img src="scr_item2.jpg" alt="Equipment" onerror="this.parentElement.style.display='none'"></div>
-      <div class="about__bg-slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="this.parentElement.style.display='none'"></div>
-      <div class="about__bg-slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="this.parentElement.style.display='none'"></div>
-      <div class="about__bg-slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="this.parentElement.style.display='none'"></div>
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__text">
+        <span class="tag reveal">// WHAT IS LOOTSHRINE</span>
+        <h2 class="section-title reveal reveal-delay-1">A ROGUELITE BUILT<br>AROUND LOOT CHOICES</h2>
+        <p class="section-body reveal reveal-delay-2">
+          LootShrine puts loot decisions at the center of every run. Every item you find
+          can be <strong style="color: var(--text-hi);">equipped</strong> for instant power,
+          <strong style="color: var(--text-hi);">absorbed</strong> for temporary buffs mid-battle,
+          or <strong style="color: var(--gold);">sacrificed at the Shrine</strong> for permanent stat gains that last the run.
+        </p>
+        <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
+          One-handed portrait play. Turn-based pacing you control.
+          Deep item synergies through set bonuses. Every floor a new puzzle to solve.
+          Guardian bosses every 10 floors &mdash; with The Origin awaiting at Floor 100.
+        </p>
+        <div class="about__badges reveal reveal-delay-4">
+          <span class="badge">TURN-BASED</span>
+          <span class="badge">PIXEL ART</span>
+          <span class="badge">ROGUELITE</span>
+          <span class="badge">DARK FANTASY</span>
+          <span class="badge">OFFLINE</span>
+          <span class="badge">NO ADS</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="about__visual">
+          <div class="about__visual-track" id="aboutBgTrack">
+            <div class="about__visual-slide active"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.parentElement.style.display='none'"></div>
+            <div class="about__visual-slide"><img src="scr_classes.jpg" alt="Classes" onerror="this.parentElement.style.display='none'"></div>
+            <div class="about__visual-slide"><img src="scr_skills.jpg" alt="Skills" onerror="this.parentElement.style.display='none'"></div>
+            <div class="about__visual-slide"><img src="scr_item1.jpg" alt="Items" onerror="this.parentElement.style.display='none'"></div>
+            <div class="about__visual-slide"><img src="scr_item2.jpg" alt="Equipment" onerror="this.parentElement.style.display='none'"></div>
+            <div class="about__visual-slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="this.parentElement.style.display='none'"></div>
+            <div class="about__visual-slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="this.parentElement.style.display='none'"></div>
+            <div class="about__visual-slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+          <div class="about__visual-fade"></div>
+          <button class="about__nav about__nav--prev" onclick="aboutCarouselMove(-1)" aria-label="Previous">&#8249;</button>
+          <button class="about__nav about__nav--next" onclick="aboutCarouselMove(1)" aria-label="Next">&#8250;</button>
+          <div class="about__dots" id="aboutDots"></div>
+        </div>
+      </div>
     </div>
-    <div class="about__bg-overlay"></div>
-    <div class="about__bg-fade"></div>
-  </div>
-
-  <!-- Arrows -->
-  <button class="about__nav about__nav--prev" onclick="aboutCarouselMove(-1)" aria-label="Previous">&#8249;</button>
-  <button class="about__nav about__nav--next" onclick="aboutCarouselMove(1)" aria-label="Next">&#8250;</button>
-
-  <!-- Text content -->
-  <div class="about__content">
-    <span class="tag reveal">// WHAT IS LOOTSHRINE</span>
-    <h2 class="section-title reveal reveal-delay-1">A ROGUELITE BUILT<br>AROUND LOOT CHOICES</h2>
-    <p class="section-body reveal reveal-delay-2">
-      LootShrine puts loot decisions at the center of every run. Every item you find
-      can be <strong style="color: var(--text-hi);">equipped</strong> for instant power,
-      <strong style="color: var(--text-hi);">absorbed</strong> for temporary buffs mid-battle,
-      or <strong style="color: var(--gold);">sacrificed at the Shrine</strong> for permanent stat gains that last the run.
-    </p>
-    <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
-      One-handed portrait play. Turn-based pacing you control.
-      Deep item synergies through set bonuses. Every floor a new puzzle to solve.
-      Guardian bosses every 10 floors &mdash; with The Origin awaiting at Floor 100.
-    </p>
-    <div class="about__badges reveal reveal-delay-4">
-      <span class="badge">TURN-BASED</span>
-      <span class="badge">PIXEL ART</span>
-      <span class="badge">ROGUELITE</span>
-      <span class="badge">DARK FANTASY</span>
-      <span class="badge">OFFLINE</span>
-      <span class="badge">NO ADS</span>
-    </div>
-    <div class="about__dots" id="aboutDots"></div>
   </div>
 </section>
 
@@ -1594,7 +1595,7 @@ body::after {
   var track = document.getElementById('aboutBgTrack');
   var dotsContainer = document.getElementById('aboutDots');
   if (!track) return;
-  var slides = track.querySelectorAll('.about__bg-slide');
+  var slides = track.querySelectorAll('.about__visual-slide');
   var total = slides.length;
   var current = 0;
   var timer;
