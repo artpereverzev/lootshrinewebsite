@@ -106,9 +106,9 @@ body::after {
 .badge,
 .loop__step,
 .triple__card,
-.class-card,
-.class-card__portrait,
-.class-card__unlock-badge,
+.class-row,
+.class-row__portrait,
+.class-row__badge,
 .video-container,
 .feature-tile,
 .pill,
@@ -679,96 +679,148 @@ body::after {
 }
 
 /* ===================================================================
-   CLASSES
+   CLASSES — split: left card stack, right hero portrait crossfade
 =================================================================== */
 .classes { padding: var(--section-pad) var(--gutter); }
-.classes__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 52px;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.classes__grid {
+.classes__layout {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 2px;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: stretch;
 }
-.class-card {
-  background: var(--bg-card);
-  border: 2px solid rgba(255,215,0,0.1);
-  padding: 24px 16px;
-  text-align: center;
-  position: relative;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
-  overflow: hidden;
-  min-height: 240px;
+.classes__left {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+.classes__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 36px;
+}
+/* Compact horizontal class card */
+.class-row {
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.08);
   cursor: pointer;
+  transition: background 0.2s, border-color 0.25s, transform 0.15s;
 }
-.class-card:hover {
-  border-color: rgba(255,215,0,0.35);
+.class-row:hover,
+.class-row.active {
   background: var(--bg-raised);
-  transform: translateY(-3px);
+  border-color: rgba(255,215,0,0.3);
 }
-.class-card__portrait {
-  width: 88px; height: 88px;
-  margin: 0 auto 14px;
+.class-row.active { border-color: var(--gold); }
+.class-row:hover { transform: translateX(4px); }
+.class-row__portrait {
+  width: 52px; height: 52px;
   border: 2px solid rgba(255,215,0,0.18);
   background: var(--bg-raised);
   overflow: hidden;
-  position: relative;
   flex-shrink: 0;
 }
-.class-card__portrait img {
+.class-row__portrait img {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: top center;
   image-rendering: pixelated;
-  display: block;
 }
-.class-card__portrait-placeholder {
+.class-row__portrait-placeholder {
   width: 100%; height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 22px;
   background: linear-gradient(135deg, var(--bg-card), var(--bg-hover));
 }
-.class-card__name {
+.class-row__info { flex: 1; min-width: 0; }
+.class-row__name {
   font-family: var(--font-pixel);
   font-size: 7px;
   color: var(--gold);
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   line-height: 1.5;
 }
-.class-card__title {
-  font-family: var(--font-pixel);
-  font-size: 5.5px;
-  color: var(--text-lo);
-  letter-spacing: 0.07em;
-  margin-bottom: 6px;
-  line-height: 1.6;
-}
-.class-card__tagline {
+.class-row__tagline {
   font-family: var(--font-body);
   font-size: 11px;
   color: var(--text-mid);
-  line-height: 1.5;
-  margin-bottom: 10px;
+  line-height: 1.4;
 }
-.class-card__unlock-badge {
+.class-row__badge {
+  font-family: var(--font-pixel);
+  font-size: 5px;
+  padding: 3px 6px;
+  border: 1px solid rgba(255,215,0,0.2);
+  color: var(--text-lo);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Right column: hero portrait crossfade */
+.classes__visual {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  height: 100%;
+  overflow: hidden;
+}
+.classes__visual-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.classes__visual-slide.active { opacity: 1; }
+.classes__visual-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  image-rendering: pixelated;
+}
+.classes__visual-fade {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 85% 90% at 50% 45%,
+      transparent 0%,
+      transparent 30%,
+      rgba(10,10,15,0.4) 55%,
+      rgba(10,10,15,0.75) 75%,
+      var(--bg-void) 100%);
+  pointer-events: none;
+}
+/* Name overlay on hero image */
+.classes__visual-label {
+  position: absolute;
+  bottom: 28px; left: 0; right: 0;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.classes__visual-label.active {
+  opacity: 1;
+  transform: none;
+}
+.classes__visual-label__name {
+  font-family: var(--font-pixel);
+  font-size: clamp(12px, 2vw, 18px);
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,215,0,0.5), 0 2px 8px rgba(0,0,0,0.8);
+  margin-bottom: 4px;
+}
+.classes__visual-label__title {
   font-family: var(--font-pixel);
   font-size: 6px;
-  padding: 4px 8px;
-  border: 1px solid rgba(255,215,0,0.2);
-  color: var(--gold);
-  margin-top: auto;
-  display: inline-block;
+  color: var(--text-mid);
+  letter-spacing: 0.12em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.9);
 }
 
 /* ===================================================================
@@ -1021,6 +1073,8 @@ body::after {
   .nav__toggle { display: flex; }
   .about__grid { grid-template-columns: 1fr; }
   .about__visual { min-height: 480px; }
+  .classes__layout { grid-template-columns: 1fr; }
+  .classes__visual { min-height: 400px; }
   .triple__grid { grid-template-columns: 1fr; }
   .footer__inner { flex-direction: column; text-align: center; }
   .footer__links { justify-content: center; }
@@ -1028,7 +1082,6 @@ body::after {
 @media (max-width: 600px) {
   .hero__stats { flex-wrap: wrap; }
   .hero__stat { flex: 1 1 calc(33.33% - 2px); border-bottom: 2px solid rgba(255,215,0,0.08); }
-  .classes__grid { grid-template-columns: repeat(2, 1fr); }
   .meta__grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 400px) {
@@ -1264,97 +1317,119 @@ body::after {
 <!-- CLASSES -->
 <section class="classes section" id="classes">
   <div class="container">
-    <div class="classes__header">
-      <div>
+    <div class="classes__layout">
+      <!-- Left: header + class rows -->
+      <div class="classes__left">
         <span class="tag reveal">// CHARACTER CLASSES</span>
         <h2 class="section-title reveal reveal-delay-1">CHOOSE YOUR<br>CHAMPION</h2>
-        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">Seven distinct playstyles. Unlock deeper classes by surviving further floors. <span style="color: var(--gold);">Tap any class to learn their story.</span></p>
-      </div>
-    </div>
-
-    <div class="classes__grid">
-      <div class="class-card reveal reveal-delay-1"
-           onclick="openClassModal('knight_portrait.jpg','intro_knight.jpg','KNIGHT','The Last of the Iron Order','&quot;The Order may be gone, but its oath remains. I will not fall.&quot;','DEFAULT')">
-        <div class="class-card__portrait">
-          <img src="knight_portrait.jpg" alt="Knight" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">&#x1F6E1;&#xFE0F;</div>
+        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">Seven distinct playstyles. Unlock deeper classes by surviving further floors.</p>
+        <div class="classes__list">
+          <div class="class-row active reveal reveal-delay-1" data-class-idx="0"
+               onclick="openClassModal('knight_portrait.jpg','intro_knight.jpg','KNIGHT','The Last of the Iron Order','&quot;The Order may be gone, but its oath remains. I will not fall.&quot;','DEFAULT')">
+            <div class="class-row__portrait">
+              <img src="knight_portrait.jpg" alt="Knight" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F6E1;&#xFE0F;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">KNIGHT</p>
+              <p class="class-row__tagline">Immovable. A wall that strikes back.</p>
+            </div>
+            <span class="class-row__badge">DEFAULT</span>
+          </div>
+          <div class="class-row reveal reveal-delay-2" data-class-idx="1"
+               onclick="openClassModal('rogue_portrait.jpg','intro_rogue.jpg','ROGUE','The Debt Collector','&quot;Everything has a price. I\'m just making sure I\'m not the one who pays.&quot;','UNLOCK: FLOOR 20')">
+            <div class="class-row__portrait">
+              <img src="rogue_portrait.jpg" alt="Rogue" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F5E1;&#xFE0F;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">ROGUE</p>
+              <p class="class-row__tagline">Lethal crits. Vanishes when cornered.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 20</span>
+          </div>
+          <div class="class-row reveal reveal-delay-3" data-class-idx="2"
+               onclick="openClassModal('mage_portrait.jpg','intro_mage.jpg','MAGE','The Obsessed Scholar','&quot;Knowledge is power. And I intend to know everything.&quot;','UNLOCK: FLOOR 30')">
+            <div class="class-row__portrait">
+              <img src="mage_portrait.jpg" alt="Mage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F52E;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">MAGE</p>
+              <p class="class-row__tagline">Mana-fueled devastation. Frail but deadly.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 30</span>
+          </div>
+          <div class="class-row reveal reveal-delay-4" data-class-idx="3"
+               onclick="openClassModal('paladin_portrait.jpg','intro_paladin.jpg','PALADIN','The Fallen Saint','&quot;I have sinned. But even sinners can still save others.&quot;','UNLOCK: FLOOR 25')">
+            <div class="class-row__portrait">
+              <img src="paladin_portrait.jpg" alt="Paladin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x271D;&#xFE0F;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">PALADIN</p>
+              <p class="class-row__tagline">Holy warrior. Divine healing and protection.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 25</span>
+          </div>
+          <div class="class-row reveal reveal-delay-5" data-class-idx="4"
+               onclick="openClassModal('vampire_portrait.jpg','intro_vampire.jpg','VAMPIRE','The Eternal Hunger','&quot;Immortality was a curse. This place makes it a gift.&quot;','UNLOCK: FLOOR 40')">
+            <div class="class-row__portrait">
+              <img src="vampire_portrait.jpg" alt="Vampire" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F9DB;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">VAMPIRE</p>
+              <p class="class-row__tagline">Feeds on enemies. AoE confusion aura.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 40</span>
+          </div>
+          <div class="class-row reveal reveal-delay-6" data-class-idx="5"
+               onclick="openClassModal('necromancer_portrait.jpg','intro_necromancer.jpg','NECROMANCER','The Soul Merchant','&quot;The dead remember what the living forget. They remember everything.&quot;','UNLOCK: FLOOR 45')">
+            <div class="class-row__portrait">
+              <img src="necromancer_portrait.jpg" alt="Necromancer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F480;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">NECROMANCER</p>
+              <p class="class-row__tagline">Commands the dead. Drains life from enemies.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 45</span>
+          </div>
+          <div class="class-row reveal reveal-delay-7" data-class-idx="6"
+               onclick="openClassModal('berserker_portrait.jpg','intro_berserker.jpg','BERSERKER','The Rage Unbound','&quot;Pain fades. Glory is forever. COME AND FACE ME!&quot;','UNLOCK: FLOOR 50')">
+            <div class="class-row__portrait">
+              <img src="berserker_portrait.jpg" alt="Berserker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1FA93;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">BERSERKER</p>
+              <p class="class-row__tagline">Damage scales with missing HP. Lethal at low health.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 50</span>
+          </div>
         </div>
-        <p class="class-card__name">KNIGHT</p>
-        <p class="class-card__title">THE LAST OF THE IRON ORDER</p>
-        <p class="class-card__tagline">Immovable. A wall that strikes back.</p>
-        <span class="class-card__unlock-badge">DEFAULT</span>
       </div>
-
-      <div class="class-card reveal reveal-delay-2"
-           onclick="openClassModal('rogue_portrait.jpg','intro_rogue.jpg','ROGUE','The Debt Collector','&quot;Everything has a price. I\'m just making sure I\'m not the one who pays.&quot;','UNLOCK: FLOOR 20')">
-        <div class="class-card__portrait">
-          <img src="rogue_portrait.jpg" alt="Rogue" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">&#x1F5E1;&#xFE0F;</div>
+      <!-- Right: hero portrait crossfade -->
+      <div class="reveal reveal-delay-2" style="height:100%">
+        <div class="classes__visual" id="classesVisual">
+          <div class="classes__visual-slide active"><img src="intro_knight.jpg" alt="Knight" onerror="this.src='knight_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_rogue.jpg" alt="Rogue" onerror="this.src='rogue_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_mage.jpg" alt="Mage" onerror="this.src='mage_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_paladin.jpg" alt="Paladin" onerror="this.src='paladin_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_vampire.jpg" alt="Vampire" onerror="this.src='vampire_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_necromancer.jpg" alt="Necromancer" onerror="this.src='necromancer_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_berserker.jpg" alt="Berserker" onerror="this.src='berserker_portrait.jpg'"></div>
+          <div class="classes__visual-fade"></div>
+          <!-- Name labels -->
+          <div class="classes__visual-label active" data-label-idx="0"><p class="classes__visual-label__name">KNIGHT</p><p class="classes__visual-label__title">THE LAST OF THE IRON ORDER</p></div>
+          <div class="classes__visual-label" data-label-idx="1"><p class="classes__visual-label__name">ROGUE</p><p class="classes__visual-label__title">THE DEBT COLLECTOR</p></div>
+          <div class="classes__visual-label" data-label-idx="2"><p class="classes__visual-label__name">MAGE</p><p class="classes__visual-label__title">THE OBSESSED SCHOLAR</p></div>
+          <div class="classes__visual-label" data-label-idx="3"><p class="classes__visual-label__name">PALADIN</p><p class="classes__visual-label__title">THE FALLEN SAINT</p></div>
+          <div class="classes__visual-label" data-label-idx="4"><p class="classes__visual-label__name">VAMPIRE</p><p class="classes__visual-label__title">THE ETERNAL HUNGER</p></div>
+          <div class="classes__visual-label" data-label-idx="5"><p class="classes__visual-label__name">NECROMANCER</p><p class="classes__visual-label__title">THE SOUL MERCHANT</p></div>
+          <div class="classes__visual-label" data-label-idx="6"><p class="classes__visual-label__name">BERSERKER</p><p class="classes__visual-label__title">THE RAGE UNBOUND</p></div>
         </div>
-        <p class="class-card__name">ROGUE</p>
-        <p class="class-card__title">THE DEBT COLLECTOR</p>
-        <p class="class-card__tagline">Lethal crits. Vanishes when cornered.</p>
-        <span class="class-card__unlock-badge">FLOOR 20</span>
-      </div>
-
-      <div class="class-card reveal reveal-delay-3"
-           onclick="openClassModal('mage_portrait.jpg','intro_mage.jpg','MAGE','The Obsessed Scholar','&quot;Knowledge is power. And I intend to know everything.&quot;','UNLOCK: FLOOR 30')">
-        <div class="class-card__portrait">
-          <img src="mage_portrait.jpg" alt="Mage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">&#x1F52E;</div>
-        </div>
-        <p class="class-card__name">MAGE</p>
-        <p class="class-card__title">THE OBSESSED SCHOLAR</p>
-        <p class="class-card__tagline">Mana-fueled devastation. Frail but deadly.</p>
-        <span class="class-card__unlock-badge">FLOOR 30</span>
-      </div>
-
-      <div class="class-card reveal reveal-delay-4"
-           onclick="openClassModal('paladin_portrait.jpg','intro_paladin.jpg','PALADIN','The Fallen Saint','&quot;I have sinned. But even sinners can still save others.&quot;','UNLOCK: FLOOR 25')">
-        <div class="class-card__portrait">
-          <img src="paladin_portrait.jpg" alt="Paladin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">&#x271D;&#xFE0F;</div>
-        </div>
-        <p class="class-card__name">PALADIN</p>
-        <p class="class-card__title">THE FALLEN SAINT</p>
-        <p class="class-card__tagline">Holy warrior. Divine healing and protection.</p>
-        <span class="class-card__unlock-badge">FLOOR 25</span>
-      </div>
-
-      <div class="class-card reveal reveal-delay-5"
-           onclick="openClassModal('vampire_portrait.jpg','intro_vampire.jpg','VAMPIRE','The Eternal Hunger','&quot;Immortality was a curse. This place makes it a gift.&quot;','UNLOCK: FLOOR 40')">
-        <div class="class-card__portrait">
-          <img src="vampire_portrait.jpg" alt="Vampire" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">&#x1F9DB;</div>
-        </div>
-        <p class="class-card__name">VAMPIRE</p>
-        <p class="class-card__title">THE ETERNAL HUNGER</p>
-        <p class="class-card__tagline">Feeds on enemies. AoE confusion aura.</p>
-        <span class="class-card__unlock-badge">FLOOR 40</span>
-      </div>
-
-      <div class="class-card reveal reveal-delay-6"
-           onclick="openClassModal('necromancer_portrait.jpg','intro_necromancer.jpg','NECROMANCER','The Soul Merchant','&quot;The dead remember what the living forget. They remember everything.&quot;','UNLOCK: FLOOR 45')">
-        <div class="class-card__portrait">
-          <img src="necromancer_portrait.jpg" alt="Necromancer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">&#x1F480;</div>
-        </div>
-        <p class="class-card__name">NECROMANCER</p>
-        <p class="class-card__title">THE SOUL MERCHANT</p>
-        <p class="class-card__tagline">Commands the dead. Drains life from enemies.</p>
-        <span class="class-card__unlock-badge">FLOOR 45</span>
-      </div>
-
-      <div class="class-card reveal reveal-delay-7"
-           onclick="openClassModal('berserker_portrait.jpg','intro_berserker.jpg','BERSERKER','The Rage Unbound','&quot;Pain fades. Glory is forever. COME AND FACE ME!&quot;','UNLOCK: FLOOR 50')">
-        <div class="class-card__portrait">
-          <img src="berserker_portrait.jpg" alt="Berserker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="class-card__portrait-placeholder" style="display:none">&#x1FA93;</div>
-        </div>
-        <p class="class-card__name">BERSERKER</p>
-        <p class="class-card__title">THE RAGE UNBOUND</p>
-        <p class="class-card__tagline">Damage scales with missing HP. Lethal at low health.</p>
-        <span class="class-card__unlock-badge">FLOOR 50</span>
       </div>
     </div>
   </div>
@@ -1659,6 +1734,47 @@ function closeClassModal(e, force) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeClassModal(null, true);
 });
+
+/* ── Classes Hero Carousel (auto + hover sync) ─────────── */
+(function() {
+  var visual = document.getElementById('classesVisual');
+  if (!visual) return;
+  var slides = visual.querySelectorAll('.classes__visual-slide');
+  var labels = visual.querySelectorAll('.classes__visual-label');
+  var rows = document.querySelectorAll('.class-row');
+  var total = slides.length;
+  var current = 0;
+  var timer;
+  var hovering = false;
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    labels[current].classList.remove('active');
+    rows[current].classList.remove('active');
+    current = (idx + total) % total;
+    slides[current].classList.add('active');
+    labels[current].classList.add('active');
+    rows[current].classList.add('active');
+    if (!hovering) resetTimer();
+  }
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function() { goTo(current + 1); }, 3500);
+  }
+  rows.forEach(function(row) {
+    row.addEventListener('mouseenter', function() {
+      hovering = true;
+      clearInterval(timer);
+      var idx = parseInt(row.getAttribute('data-class-idx'));
+      if (!isNaN(idx)) goTo(idx);
+    });
+    row.addEventListener('mouseleave', function() {
+      hovering = false;
+      resetTimer();
+    });
+  });
+  resetTimer();
+})();
 
 </script>
 
