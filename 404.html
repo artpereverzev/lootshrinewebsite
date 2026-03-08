@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LootShrine</title>
+  <script>
+    // GitHub Pages serves this 404.html for any unknown path.
+    // If the path is /challenge/CODE, redirect to challenge page with code as query param.
+    // Otherwise, redirect to homepage.
+    var path = window.location.pathname;
+    var match = path.match(/^\/challenge\/([A-Za-z0-9]+)\/?$/);
+    if (match) {
+      // Rewrite to /challenge/?code=CODE (index.html handles it)
+      window.location.replace('/challenge/?code=' + match[1]);
+    } else {
+      window.location.replace('/');
+    }
+  </script>
+</head>
+<body></body>
+</html>
