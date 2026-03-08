@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LootShrine — Ghost Challenge</title>
+  <meta name="description" content="Accept a LootShrine Ghost Challenge! Can you beat this run?" />
+  <meta name="theme-color" content="#1A1A2E" />
+  <meta property="og:title" content="LootShrine — Ghost Challenge" />
+  <meta property="og:description" content="Someone challenged you! Tap to accept in LootShrine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://lootshrine.com/assets/og.png" />
+  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-void: #0A0A0F;
+      --bg-card: #1E1E28;
+      --gold: #FFD700;
+      --gold-dim: rgba(255,215,0,0.15);
+      --text-hi: #F5F5FA;
+      --text-mid: #A0A0C0;
+      --text-lo: #505068;
+      --font-pixel: "Press Start 2P", monospace;
+      --font-body: "Syne", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-void);
+      color: var(--text-hi);
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
+      pointer-events: none; z-index: 100;
+    }
+    .card {
+      max-width: 420px; width: 100%;
+      background: var(--bg-card);
+      border: 2px solid rgba(255,215,0,0.2);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .icon { font-size: 48px; margin-bottom: 20px; }
+    .title {
+      font-family: var(--font-pixel);
+      font-size: 14px;
+      color: var(--gold);
+      text-shadow: 0 0 30px rgba(255,215,0,0.4);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .subtitle {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      color: var(--text-lo);
+      letter-spacing: 0.2em;
+      margin-bottom: 28px;
+    }
+    .desc {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .code-box {
+      background: rgba(255,215,0,0.06);
+      border: 2px solid rgba(255,215,0,0.25);
+      padding: 16px;
+      margin-bottom: 28px;
+    }
+    .code-label {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      color: var(--text-lo);
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+    .code {
+      font-family: var(--font-pixel);
+      font-size: 22px;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      user-select: all;
+      cursor: pointer;
+    }
+    .code-hint {
+      font-family: var(--font-pixel);
+      font-size: 5px;
+      color: var(--text-lo);
+      margin-top: 8px;
+      letter-spacing: 0.1em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 28px;
+      border: 2px solid var(--gold);
+      background: var(--gold);
+      color: var(--bg-void);
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      background: transparent;
+      color: var(--gold);
+      box-shadow: 0 0 40px rgba(255,215,0,0.3);
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .or {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      color: var(--text-lo);
+      margin: 16px 0;
+      letter-spacing: 0.15em;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 24px;
+      border: 2px solid rgba(255,215,0,0.2);
+      background: transparent;
+      color: var(--text-mid);
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-note {
+      font-family: var(--font-pixel);
+      font-size: 5px;
+      color: var(--text-lo);
+      margin-top: 24px;
+      letter-spacing: 0.1em;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">&#x2694;&#xFE0F;</div>
+    <h1 class="title">GHOST CHALLENGE</h1>
+    <p class="subtitle">LOOTSHRINE</p>
+    <p class="desc">
+      Someone challenged you to beat their run!
+      Open LootShrine and enter the code below to accept.
+    </p>
+    <div class="code-box">
+      <p class="code-label">CHALLENGE CODE</p>
+      <p class="code" id="challengeCode" onclick="copyCode()">------</p>
+      <p class="code-hint" id="copyHint">TAP TO COPY</p>
+    </div>
+    <a href="https://apps.apple.com/app/lootshrine/id000000000" class="btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      GET LOOTSHRINE
+    </a>
+    <p class="or">OR ENTER CODE IN-APP</p>
+    <a href="/" class="btn-secondary">VISIT LOOTSHRINE.COM</a>
+    <p class="footer-note">CODE EXPIRES IN 7 DAYS</p>
+  </div>
+
+  <script>
+    // Extract code from URL:
+    // Path format: /challenge/ABC123 (direct, or via 404 redirect)
+    // Query format: /challenge/?code=ABC123 (from 404.html redirect)
+    var path = window.location.pathname;
+    var parts = path.replace(/\/$/, '').split('/');
+    var code = null;
+    
+    // Try path first: /challenge/ABC123
+    if (parts.length > 2 && parts[parts.length - 1].toUpperCase() !== 'INDEX.HTML') {
+      code = parts[parts.length - 1].toUpperCase();
+    }
+    
+    // Try query param: ?code=ABC123
+    if (!code) {
+      var params = new URLSearchParams(window.location.search);
+      var qCode = params.get('code');
+      if (qCode) code = qCode.toUpperCase();
+    }
+    
+    if (code) {
+      document.getElementById('challengeCode').textContent = code;
+    }
+    
+    // Try opening the app via custom scheme (fallback for older iOS)
+    if (code) {
+      var appUrl = 'lootshrine://challenge?code=' + code;
+      var timeout = setTimeout(function() {
+        // App didn't open — user stays on this page
+      }, 1500);
+      
+      window.addEventListener('blur', function() {
+        clearTimeout(timeout);
+      });
+      
+      // Attempt app open
+      window.location.href = appUrl;
+    }
+    
+    function copyCode() {
+      var codeEl = document.getElementById('challengeCode');
+      var text = codeEl.textContent;
+      if (text === '------') return;
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          document.getElementById('copyHint').textContent = 'COPIED!';
+          setTimeout(function() {
+            document.getElementById('copyHint').textContent = 'TAP TO COPY';
+          }, 2000);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
