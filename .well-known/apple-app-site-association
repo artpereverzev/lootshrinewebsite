@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "74ACD6YJJ6.com.tim.LootShrine",
+        "paths": [
+          "/challenge/*"
+        ]
+      }
+    ]
+  }
+}
