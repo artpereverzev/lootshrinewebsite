@@ -521,12 +521,18 @@ body::after {
   letter-spacing: 0.08em;
 }
 
-/* Right column: portrait screenshot — fills entire right side */
+/* Right column: portrait screenshot carousel */
 .about__visual {
   position: relative;
   width: 100%;
-  min-height: 600px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.about__visual-canvas {
+  position: relative;
+  flex: 1;
+  min-height: 500px;
   overflow: hidden;
 }
 .about__visual-track {
@@ -556,7 +562,7 @@ body::after {
       var(--bg-dark) 100%);
   pointer-events: none;
 }
-/* Arrows */
+/* Arrows — outside image canvas */
 .about__nav {
   position: absolute;
   top: 50%;
@@ -575,17 +581,14 @@ body::after {
   padding: 0;
 }
 .about__nav:hover { background: rgba(255,215,0,0.1); border-color: rgba(255,215,0,0.35); }
-.about__nav--prev { left: 4px; }
-.about__nav--next { right: 4px; }
-/* Dots */
+.about__nav--prev { left: -40px; }
+.about__nav--next { right: -40px; }
+/* Dots — below image canvas */
 .about__dots {
-  position: absolute;
-  bottom: 12px;
-  left: 0; right: 0;
-  z-index: 2;
   display: flex;
   justify-content: center;
   gap: 6px;
+  padding-top: 16px;
 }
 .about__dot {
   width: 6px; height: 6px;
@@ -1088,7 +1091,9 @@ body::after {
   .nav__links, .nav__btn { display: none; }
   .nav__toggle { display: flex; }
   .about__grid { grid-template-columns: 1fr; }
-  .about__visual { min-height: 480px; }
+  .about__visual-canvas { min-height: 480px; }
+  .about__nav--prev { left: -36px; }
+  .about__nav--next { right: -36px; }
   .classes__layout { grid-template-columns: 1fr; }
   .classes__visual { min-height: 400px; }
   .triple__grid { grid-template-columns: 1fr; }
@@ -1249,17 +1254,19 @@ body::after {
       </div>
       <div class="reveal reveal-delay-2" style="height:100%">
         <div class="about__visual">
-          <div class="about__visual-track" id="aboutBgTrack">
-            <div class="about__visual-slide active"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.parentElement.style.display='none'"></div>
-            <div class="about__visual-slide"><img src="scr_classes.jpg" alt="Classes" onerror="this.parentElement.style.display='none'"></div>
-            <div class="about__visual-slide"><img src="scr_skills.jpg" alt="Skills" onerror="this.parentElement.style.display='none'"></div>
-            <div class="about__visual-slide"><img src="scr_item1.jpg" alt="Items" onerror="this.parentElement.style.display='none'"></div>
-            <div class="about__visual-slide"><img src="scr_item2.jpg" alt="Equipment" onerror="this.parentElement.style.display='none'"></div>
-            <div class="about__visual-slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="this.parentElement.style.display='none'"></div>
-            <div class="about__visual-slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="this.parentElement.style.display='none'"></div>
-            <div class="about__visual-slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="this.parentElement.style.display='none'"></div>
+          <div class="about__visual-canvas">
+            <div class="about__visual-track" id="aboutBgTrack">
+              <div class="about__visual-slide active"><img src="scr_gameplay.jpg" alt="Gameplay" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_classes.jpg" alt="Classes" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_skills.jpg" alt="Skills" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_item1.jpg" alt="Items" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_item2.jpg" alt="Equipment" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_leaderboards.jpg" alt="Leaderboards" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_metaupgrades.jpg" alt="Meta Upgrades" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_codex_enemies.jpg" alt="Codex" onerror="this.parentElement.style.display='none'"></div>
+            </div>
+            <div class="about__visual-fade"></div>
           </div>
-          <div class="about__visual-fade"></div>
           <button class="about__nav about__nav--prev" onclick="aboutCarouselMove(-1)" aria-label="Previous">&#8249;</button>
           <button class="about__nav about__nav--next" onclick="aboutCarouselMove(1)" aria-label="Next">&#8250;</button>
           <div class="about__dots" id="aboutDots"></div>
