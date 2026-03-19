@@ -332,8 +332,9 @@ body::after {
     <div class="policy__highlight">
       <p class="policy__text">
         <strong>The short version:</strong> LootShrine does not collect, store, or sell your personal data.
-        There are no ads, no analytics trackers, no third-party SDKs harvesting your information.
-        Your game data stays on your device and in your iCloud account.
+        There are no ads and no third-party trackers harvesting your information.
+        We use privacy-focused analytics (TelemetryDeck) that collect no personal data,
+        and RevenueCat to manage your purchase. Your game data stays on your device and in your iCloud account.
       </p>
     </div>
 
@@ -342,6 +343,14 @@ body::after {
       <p class="policy__text">
         LootShrine does <strong>not</strong> collect any personal information. We do not require account creation,
         login credentials, email addresses, or any form of registration to play the game.
+      </p>
+      <p class="policy__text">
+        We collect <strong>anonymous, aggregated usage analytics</strong> through
+        <a href="https://telemetrydeck.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">TelemetryDeck</a>
+        to understand how the game is used (e.g. which floors players reach, which classes are popular).
+        This data contains no personal identifiers, no device IDs, no IP addresses, and cannot be
+        traced back to any individual user. TelemetryDeck is designed to be privacy-first and is
+        GDPR-compliant by default.
       </p>
     </div>
 
@@ -373,17 +382,24 @@ body::after {
     <div class="policy__section">
       <h2 class="policy__heading">4. THIRD-PARTY SERVICES</h2>
       <p class="policy__text">
-        LootShrine does <strong>not</strong> integrate any third-party analytics, advertising, or tracking services.
-        Specifically:
+        LootShrine uses the following third-party services:
       </p>
       <ul class="policy__list">
-        <li>No advertising SDKs (no ads are shown, ever)</li>
-        <li>No analytics or crash reporting services</li>
-        <li>No social media trackers</li>
-        <li>No data brokers or marketing platforms</li>
+        <li><strong><a href="https://telemetrydeck.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">TelemetryDeck</a></strong>
+          &mdash; Privacy-focused product analytics. Collects anonymous, aggregated signals with no personal
+          identifiers, no tracking across apps, and no user profiling. See
+          <a href="https://telemetrydeck.com/privacy" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">TelemetryDeck's Privacy Policy</a>.</li>
+        <li><strong><a href="https://www.revenuecat.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat</a></strong>
+          &mdash; Manages the initial app purchase and receipt validation. RevenueCat processes an anonymous
+          app user ID and purchase receipt to verify your transaction. It does not collect your name,
+          email, or any personal information. See
+          <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat's Privacy Policy</a>.</li>
+        <li><strong>Apple Game Center</strong> &mdash; Leaderboards, achievements, and friend challenges (managed entirely by Apple).</li>
+        <li><strong>Apple CloudKit</strong> &mdash; iCloud save sync (managed entirely by Apple).</li>
       </ul>
       <p class="policy__text">
-        The only external services used are Apple's own frameworks: Game Center, CloudKit, and the App Store.
+        LootShrine does <strong>not</strong> use any advertising SDKs, social media trackers,
+        data brokers, or marketing platforms. No ads are shown, ever.
       </p>
     </div>
 
@@ -391,9 +407,10 @@ body::after {
       <h2 class="policy__heading">5. IN-APP PURCHASES</h2>
       <p class="policy__text">
         LootShrine is a premium game with <strong>no in-app purchases</strong>.
-        All content is included with the initial purchase. No payment information is collected
-        or processed by LootShrine beyond the initial App Store transaction, which is handled
-        entirely by Apple.
+        All content is included with the initial purchase. The purchase transaction is processed
+        by the App Store and verified through
+        <a href="https://www.revenuecat.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat</a>
+        using an anonymous identifier. No payment information is collected or stored by LootShrine.
       </p>
     </div>
 
@@ -409,8 +426,10 @@ body::after {
     <div class="policy__section">
       <h2 class="policy__heading">7. DATA SHARING</h2>
       <p class="policy__text">
-        We do not sell, trade, rent, or otherwise share any user data with third parties.
-        Since we don't collect data, there is nothing to share.
+        We do not sell, trade, rent, or otherwise share any personal data with third parties.
+        Anonymous analytics signals are processed by TelemetryDeck, and anonymous purchase
+        receipts are processed by RevenueCat, as described above. Neither service receives
+        any personally identifiable information.
       </p>
     </div>
 
@@ -431,7 +450,7 @@ body::after {
 
     <div class="policy__contact">
       <p class="policy__contact-label">EMAIL US</p>
-      <a href="mailto:support@lootshrine.com" class="policy__contact-email">support@lootshrine.com</a>
+      <a href="/cdn-cgi/l/email-protection#53202623233c2127133f3c3c27203b213a3d367d303c3e" class="policy__contact-email"><span class="__cf_email__" data-cfemail="9feceaefeff0edebdff3f0f0ebecf7edf6f1fab1fcf0f2">[email&#160;protected]</span></a>
     </div>
 
   </div>
@@ -449,11 +468,4 @@ body::after {
     </div>
     <ul class="footer__links">
       <li><a href="privacy.html" style="color: var(--gold);">PRIVACY</a></li>
-      <li><a href="support.html">SUPPORT</a></li>
-      <li><a href="mailto:support@lootshrine.com">CONTACT</a></li>
-    </ul>
-  </div>
-</footer>
-
-</body>
-</html>
+      <li><a href="sup
