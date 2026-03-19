@@ -942,10 +942,10 @@ body::after {
 .video-section { padding: var(--section-pad) var(--gutter); }
 .video-container {
   margin-top: 48px;
-  max-width: 720px;
+  max-width: 320px;
   margin-left: auto;
   margin-right: auto;
-  aspect-ratio: 16/9;
+  aspect-ratio: 9/16;
   background: var(--bg-card);
   border: 2px solid rgba(255,215,0,0.18);
   display: flex;
@@ -1168,6 +1168,7 @@ body::after {
     <p class="hero__tagline">
       Descend through 100 floors of dark fantasy. Every item is a decision &mdash;
       equip it, absorb it, or sacrifice it at the shrine for permanent power.
+      <strong style="color: var(--gold);">Just $2.99. No ads. No IAP.</strong>
     </p>
     <div class="hero__ctas">
       <a href="https://apps.apple.com/app/lootshrine/id000000000" target="_blank" rel="noopener" class="btn-hero btn-hero--primary">
@@ -1198,11 +1199,15 @@ body::after {
       <span class="hero__stat-label">ACHIEVEMENTS</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">72</span>
+      <span class="hero__stat-val">72+</span>
       <span class="hero__stat-label">LEADERBOARDS</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">$0</span>
+      <span class="hero__stat-val">NO</span>
+      <span class="hero__stat-label">ADS</span>
+    </div>
+    <div class="hero__stat">
+      <span class="hero__stat-val">NO</span>
       <span class="hero__stat-label">MICROTRANSACTIONS</span>
     </div>
   </div>
@@ -1290,8 +1295,8 @@ body::after {
       </div>
       <div class="loop__step reveal reveal-delay-4">
         <span class="loop__step-num">04</span>
-        <h3 class="loop__step-title">DESCEND</h3>
-        <p class="loop__step-desc">Advance deeper into the tower. Enemies scale. New zones emerge. Guardian bosses every 10 floors.</p>
+        <h3 class="loop__step-title">ASCEND</h3>
+        <p class="loop__step-desc">Climb higher through the tower. Enemies scale. New zones emerge. Guardian bosses every 10 floors.</p>
       </div>
       <div class="loop__step reveal reveal-delay-5">
         <span class="loop__step-num">05</span>
@@ -1314,7 +1319,7 @@ body::after {
       <div class="triple__card triple__card--equip reveal reveal-delay-1">
         <p class="triple__number">01 / 03</p>
         <h3 class="triple__title">EQUIP</h3>
-        <p class="triple__desc">Slot the item into your build for immediate stat bonuses. Complete sets for powerful bonuses &mdash; but only 3 active sets at once forces real choices.</p>
+        <p class="triple__desc">Slot the item into your build for immediate stat bonuses. Complete sets for powerful set bonuses that transform your playstyle.</p>
       </div>
       <div class="triple__card triple__card--absorb reveal reveal-delay-2">
         <p class="triple__number">02 / 03</p>
@@ -1488,7 +1493,7 @@ body::after {
       </div>
       <div class="feature-tile reveal reveal-delay-3">
         <h3 class="feature-tile__title">SET BONUSES</h3>
-        <p class="feature-tile__desc">Collect matching items to activate set bonuses. Only 3 sets can be active &mdash; choose your synergies carefully.</p>
+        <p class="feature-tile__desc">Collect matching items to activate set bonuses. Each set rewards a different playstyle with unique effects.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-4">
         <h3 class="feature-tile__title">SKILL TREES</h3>
@@ -1504,7 +1509,7 @@ body::after {
       </div>
       <div class="feature-tile reveal reveal-delay-1">
         <h3 class="feature-tile__title">ITEM MERGING</h3>
-        <p class="feature-tile__desc">Merge same-tier items to climb the rarity ladder: Legendary, Mythic, Cosmic. The highest tier items defy imagination.</p>
+        <p class="feature-tile__desc">Merge two same-rarity items to create a higher tier. Climb from Common all the way through Uncommon, Rare, Epic, Legendary, Mythic, and Cosmic. Only Divine, Cursed, and Set items cannot be merged.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-2">
         <h3 class="feature-tile__title">75+ ACHIEVEMENTS</h3>
@@ -1512,11 +1517,11 @@ body::after {
       </div>
       <div class="feature-tile reveal reveal-delay-3">
         <h3 class="feature-tile__title">GHOST CHALLENGES</h3>
-        <p class="feature-tile__desc">Challenge friends with shareable run codes. Race ghost runs and compare your builds head-to-head.</p>
+        <p class="feature-tile__desc">Challenge friends with shareable run codes. Race ghost runs and compare your builds head-to-head. The winner earns bonus souls for meta progression.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-4">
-        <h3 class="feature-tile__title">72 LEADERBOARDS</h3>
-        <p class="feature-tile__desc">Global and per-class Game Center leaderboards. Race for the highest floor, most enemies slain, or fastest runs.</p>
+        <h3 class="feature-tile__title">72+ LEADERBOARDS</h3>
+        <p class="feature-tile__desc">Global and per-class Game Center leaderboards. Race for the highest floor, most enemies slain, fastest runs and more.</p>
       </div>
     </div>
   </div>
@@ -1540,44 +1545,6 @@ body::after {
       <div class="pill"><span class="pill-check">&#10003;</span> NO SUBSCRIPTIONS</div>
       <div class="pill"><span class="pill-check">&#10003;</span> FULL OFFLINE PLAY</div>
       <div class="pill"><span class="pill-check">&#10003;</span> ALL CONTENT INCLUDED</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- META PROGRESSION -->
-<section class="meta section" id="meta">
-  <div class="container">
-    <span class="tag reveal">// BETWEEN RUNS</span>
-    <h2 class="section-title reveal reveal-delay-1">SOUL FORGE<br>UPGRADES</h2>
-    <p class="section-body reveal reveal-delay-2">Every run earns Soul Essence. Spend it on permanent upgrades that persist across all future attempts.</p>
-    <div class="meta__grid">
-      <div class="meta-card reveal reveal-delay-1">
-        <h3 class="meta-card__title">SOUL POWER</h3>
-        <p class="meta-card__desc">+1% starting Attack per level. Hit harder from floor one.</p>
-        <div class="meta-card__pips"><div class="pip active"></div><div class="pip active"></div><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-      </div>
-      <div class="meta-card reveal reveal-delay-2">
-        <h3 class="meta-card__title">SOUL VITALITY</h3>
-        <p class="meta-card__desc">+1% starting HP per level. Survive deeper encounters.</p>
-        <div class="meta-card__pips"><div class="pip active"></div><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-      </div>
-      <div class="meta-card reveal reveal-delay-3">
-        <h3 class="meta-card__title">LUCKY SOUL</h3>
-        <p class="meta-card__desc">+1% Magic Find per level. Better rarity drops.</p>
-        <div class="meta-card__pips"><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-      </div>
-      <div class="meta-card reveal reveal-delay-4">
-        <h3 class="meta-card__title">SHRINE FAVOR</h3>
-        <p class="meta-card__desc">+5% sacrifice value per level. More stats from offerings.</p>
-        <div class="meta-card__pips"><div class="pip active"></div><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-      </div>
-      <div class="meta-card reveal reveal-delay-5">
-        <h3 class="meta-card__title">SHOP MASTERY</h3>
-        <p class="meta-card__desc">-5% reroll cost per level. More chances to find the right gear.</p>
-        <div class="meta-card__pips"><div class="pip active"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-      </div>
     </div>
   </div>
 </section>
@@ -1616,14 +1583,14 @@ body::after {
     </div>
     <ul class="footer__links">
       <li><a href="https://lootshrine.com/privacy/">PRIVACY</a></li>
-      <li><a href="mailto:support@lootshrine.com">SUPPORT</a></li>
-      <li><a href="mailto:support@lootshrine.com">CONTACT</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#e2919792928d9096a28e8d8d96918a908b8c87cc818d8f">SUPPORT</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#1a696f6a6a75686e5a7675756e69726873747f34797577">CONTACT</a></li>
     </ul>
   </div>
 </footer>
 
 <!-- JAVASCRIPT -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── Particles ─────────────────────────────────────────── */
 (function() {
   var container = document.getElementById('particles');
