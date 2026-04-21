@@ -435,6 +435,91 @@ body::after {
   /* pixel arrow shape via clip-path */
   clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
+/* nested sub-bullet inside a list item (for grouped detail lines) */
+.news-card__sub {
+  list-style: none;
+  padding: 10px 0 0 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.news-card__sub li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  padding-left: 20px;
+  position: relative;
+  opacity: 0.88;
+}
+.news-card__sub li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 6px;
+  height: 2px;
+  background: var(--text-lo);
+  opacity: 0.7;
+}
+
+/* Lead-in paragraph above sections in a major update card */
+.news-card__lead {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,215,0,0.1);
+  font-style: italic;
+}
+.news-card__lead strong { color: var(--gold); font-style: normal; }
+
+/* Section inside a news card */
+.news-card__section {
+  margin-top: 28px;
+}
+.news-card__section:first-of-type { margin-top: 0; }
+.news-card__section-head {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed rgba(255,215,0,0.18);
+}
+.news-card__section-title {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 16px;
+}
+.news-card__section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  opacity: 0.85;
+}
+.news-card__outro {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,215,0,0.1);
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
+  text-align: center;
+  line-height: 1.8;
+}
+.news-card__outro strong { color: var(--gold); }
 
 /* ===================================================================
    FINAL CTA
@@ -507,6 +592,8 @@ body::after {
 @media (max-width: 600px) {
   .news-card { padding: 24px 20px; }
   .news-card__version { font-size: 10px; padding: 8px 12px; }
+  .news-card__section-title { font-size: 8px; }
+  .news-card__lead { font-size: 14px; }
 }
 </style>
 </head>
@@ -568,11 +655,124 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.02 -->
+      <!-- v1.03 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.02</span>
+          <span class="news-card__version">v1.03</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">MAJOR UPDATE</span>
+        </div>
+        <h2 class="news-card__title">CONTENT + BALANCE + QUALITY OVERHAUL</h2>
+        <p class="news-card__lead">
+          A <strong>major content + balance + quality update</strong>. Every system got attention.
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW ELITE MODIFIERS (8 TOTAL)</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Teleporter</strong> &mdash; swaps rows with a front-row ally via VFX chain</li>
+            <li><strong style="color:var(--text-hi)">Linked</strong> &mdash; cannot be damaged while the linked ally lives (same-row targeting enforced)</li>
+            <li><strong style="color:var(--text-hi)">Phased</strong> &mdash; randomly becomes invulnerable; telegraph hidden via stealth buff</li>
+            <li><strong style="color:var(--text-hi)">Adaptive</strong> &mdash; gains resistance to repeated damage types</li>
+            <li><strong style="color:var(--text-hi)">Parasitic</strong> &mdash; drains HP from nearby allies</li>
+            <li><strong style="color:var(--text-hi)">Splitting</strong> &mdash; spawns a weaker copy on death</li>
+            <li><strong style="color:var(--text-hi)">Reflective</strong> &mdash; returns a portion of damage</li>
+            <li><strong style="color:var(--text-hi)">Explosive</strong> &mdash; detonates on death, hitting all enemies in row</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">BALANCE OVERHAUL</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Full enemy scaling rebalance across floors 1&ndash;100</li>
+            <li>Floor 10 Gatekeeper boss tuned for smoother Tier A difficulty</li>
+            <li>Player defense cap and level multiplier adjusted</li>
+            <li>Level-up reward scaling improved</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">SHRINE OVERHAUL</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              Prayer system completely reworked:
+              <ul class="news-card__sub">
+                <li>No more "Nothing" outcomes &mdash; every prayer rewards you</li>
+                <li>Blessings scale with current floor</li>
+                <li>Divine Favor now grants a Sanctuary blessing</li>
+                <li>Miracle (5% chance) correctly rolls a Legendary item</li>
+              </ul>
+            </li>
+            <li>New <strong style="color:var(--text-hi)">Empower</strong> tab &mdash; level up Set and Divine items with gold or sacrifice</li>
+            <li>Devotion perks renamed and reorganized (save-compatible)</li>
+            <li>Floor-scaled sacrifice rewards</li>
+            <li>Shrine header shows gold and stat icons for clarity</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">UI / UX POLISH</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Sacrifice and Empower tabs redesigned with stat comparisons and pixel borders</li>
+            <li>Boss phase indicators converted to pixel font</li>
+            <li>Combat VFX &mdash; linked chain overlays, teleport animations, phased stealth telegraphs</li>
+            <li>Improved tooltips across shop, shrine, inventory</li>
+            <li>Item cells now show side-by-side icon + stats in a 4-column grid</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LOCALIZATION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Full Russian localization covering all UI, achievements, items, skills, and lore</li>
+            <li>Fixed language-switching bug &mdash; in-game language changes apply instantly</li>
+            <li>Complete English string catalog rebuild for App Store language listing</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">PROGRESSION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Enhanced analytics (anonymous, privacy-preserving) to guide future balance patches</li>
+            <li>Achievement unlock tracking refined</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Resolved critical save-corruption affecting long runs with certain item combinations</li>
+            <li>Linked elite hardlock fixed (same-row targeting, button gating)</li>
+            <li>Miracle legendary drop now uses correct <code style="font-family:var(--font-pixel);font-size:11px;color:var(--gold)">forceRarity</code></li>
+            <li>Phased mechanic rewritten from broken per-turn counter to reliable cooldown</li>
+            <li>Combat button correctly disables for unreachable link-protected targets</li>
+            <li>Numerous concurrency and animation polish fixes</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          THANKS FOR PLAYING <strong>LOOTSHRINE</strong>. KEEP CLIMBING.
+        </p>
+      </article>
+
+      <!-- v1.02 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.02</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
         </div>
         <h2 class="news-card__title">BOSS REBALANCE &amp; NEW PLAYER IMPROVEMENTS</h2>
@@ -587,7 +787,7 @@ body::after {
       </article>
 
       <!-- v1.01 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.01</span>
           <span class="news-card__badge">GAME CENTER</span>
