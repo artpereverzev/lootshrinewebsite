@@ -4,13 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LootShrine — Ghost Challenge</title>
-  <meta name="description" content="Accept a LootShrine Ghost Challenge! Can you beat this run?" />
+  <meta name="description" content="Someone challenged you in LootShrine! Open the link on iOS to launch the app, or download LootShrine free from the App Store and enter the challenge code in-app." />
+
+  <!-- Per-player URLs — keep out of search index -->
+  <meta name="robots" content="noindex, nofollow" />
+
   <meta name="theme-color" content="#1A1A2E" />
+
+  <!-- Apple Smart App Banner (native install bar on iOS Safari) -->
+  <meta name="apple-itunes-app" content="app-id=6757924460" />
+  <meta name="apple-mobile-web-app-title" content="LootShrine" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="LootShrine" />
   <meta property="og:title" content="LootShrine — Ghost Challenge" />
   <meta property="og:description" content="Someone challenged you! Tap to accept in LootShrine." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://lootshrine.com/assets/og.png" />
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  <meta property="og:url" content="https://lootshrine.com/challenge/" />
+  <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
+  <meta property="og:image:alt" content="LootShrine — pixel art roguelite RPG for iOS" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LootShrine — Ghost Challenge" />
+  <meta name="twitter:description" content="Someone challenged you! Tap to accept in LootShrine." />
+  <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -51,7 +77,14 @@
       padding: 40px 32px;
       text-align: center;
     }
-    .icon { font-size: 48px; margin-bottom: 20px; }
+    .brand-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      display: block;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
     .title {
       font-family: var(--font-pixel);
       font-size: 14px;
@@ -124,11 +157,19 @@
       box-shadow: 0 0 40px rgba(255,215,0,0.3);
     }
     .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .reassure {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      color: var(--text-lo);
+      letter-spacing: 0.18em;
+      margin-top: 14px;
+      line-height: 1.8;
+    }
     .or {
       font-family: var(--font-pixel);
       font-size: 6px;
       color: var(--text-lo);
-      margin: 16px 0;
+      margin: 24px 0 16px;
       letter-spacing: 0.15em;
     }
     .btn-secondary {
@@ -159,7 +200,7 @@
 </head>
 <body>
   <div class="card">
-    <div class="icon">&#x2694;&#xFE0F;</div>
+    <img src="/apple-icon-180x180.png" class="brand-icon" alt="LootShrine" width="72" height="72" decoding="async">
     <h1 class="title">GHOST CHALLENGE</h1>
     <p class="subtitle">LOOTSHRINE</p>
     <p class="desc">
@@ -171,66 +212,99 @@
       <p class="code" id="challengeCode" onclick="copyCode()">------</p>
       <p class="code-hint" id="copyHint">TAP TO COPY</p>
     </div>
-    <a href="https://apps.apple.com/app/lootshrine/id000000000" class="btn">
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       GET LOOTSHRINE
     </a>
+    <p class="reassure">FREE DOWNLOAD &middot; FIRST 10 FLOORS FREE</p>
     <p class="or">OR ENTER CODE IN-APP</p>
     <a href="/" class="btn-secondary">VISIT LOOTSHRINE.COM</a>
     <p class="footer-note">CODE EXPIRES IN 7 DAYS</p>
   </div>
 
   <script>
-    // Extract code from URL:
-    // Path format: /challenge/ABC123 (direct, or via 404 redirect)
-    // Query format: /challenge/?code=ABC123 (from 404.html redirect)
-    var path = window.location.pathname;
-    var parts = path.replace(/\/$/, '').split('/');
-    var code = null;
-    
-    // Try path first: /challenge/ABC123
-    if (parts.length > 2 && parts[parts.length - 1].toUpperCase() !== 'INDEX.HTML') {
-      code = parts[parts.length - 1].toUpperCase();
-    }
-    
-    // Try query param: ?code=ABC123
-    if (!code) {
-      var params = new URLSearchParams(window.location.search);
-      var qCode = params.get('code');
-      if (qCode) code = qCode.toUpperCase();
-    }
-    
-    if (code) {
-      document.getElementById('challengeCode').textContent = code;
-    }
-    
-    // Try opening the app via custom scheme (fallback for older iOS)
-    if (code) {
-      var appUrl = 'lootshrine://challenge?code=' + code;
-      var timeout = setTimeout(function() {
-        // App didn't open — user stays on this page
-      }, 1500);
-      
-      window.addEventListener('blur', function() {
-        clearTimeout(timeout);
-      });
-      
-      // Attempt app open
-      window.location.href = appUrl;
-    }
-    
+    // ─────────────────────────────────────────────────────────────
+    // Challenge code extraction.
+    //
+    // On modern iOS, Universal Links (configured via
+    // /.well-known/apple-app-site-association) auto-open the app for
+    // /challenge/* paths when the app is installed. This page is the
+    // fallback shown only when the app is NOT installed, or the user
+    // is on a non-iOS browser, or in an in-app web view that doesn't
+    // honor Universal Links.
+    //
+    // Supported URL shapes:
+    //   /challenge/ABC123        ← direct path
+    //   /challenge/?code=ABC123  ← redirected from 404.html
+    // ─────────────────────────────────────────────────────────────
+    (function() {
+      var code = null;
+
+      var parts = window.location.pathname.replace(/\/+$/, '').split('/');
+      var last = parts[parts.length - 1];
+      if (last && last.toUpperCase() !== 'INDEX.HTML' && last.toUpperCase() !== 'CHALLENGE') {
+        code = last.toUpperCase();
+      }
+      if (!code) {
+        var qCode = new URLSearchParams(window.location.search).get('code');
+        if (qCode) code = qCode.toUpperCase();
+      }
+
+      var codeEl = document.getElementById('challengeCode');
+      var hintEl = document.getElementById('copyHint');
+
+      if (code) {
+        codeEl.textContent = code;
+      } else {
+        // No code in URL — soften the UI
+        codeEl.textContent = 'NO CODE';
+        codeEl.style.opacity = '0.5';
+        hintEl.textContent = 'OPEN A CHALLENGE LINK';
+      }
+
+      // Custom-scheme fallback for in-app browsers (Telegram, Twitter, etc.)
+      // that don't trigger Universal Links. Only attempt on iOS-family devices,
+      // and only when we have a code. iOS will silently no-op if the app isn't
+      // installed; on macOS/Windows it would show a noisy "cannot open" dialog,
+      // so we skip there.
+      if (code) {
+        var ua = navigator.userAgent || '';
+        var isIOS = /iPhone|iPad|iPod/.test(ua) ||
+                    (ua.indexOf('Mac') !== -1 && navigator.maxTouchPoints > 1);
+        if (isIOS) {
+          // Use replace() so this attempt doesn't pollute browser history.
+          setTimeout(function() {
+            window.location.replace('lootshrine://challenge?code=' + encodeURIComponent(code));
+          }, 50);
+        }
+      }
+    })();
+
     function copyCode() {
       var codeEl = document.getElementById('challengeCode');
+      var hintEl = document.getElementById('copyHint');
       var text = codeEl.textContent;
-      if (text === '------') return;
-      
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function() {
-          document.getElementById('copyHint').textContent = 'COPIED!';
-          setTimeout(function() {
-            document.getElementById('copyHint').textContent = 'TAP TO COPY';
-          }, 2000);
-        });
+      if (!text || text === '------' || text === 'NO CODE') return;
+
+      var done = function() {
+        hintEl.textContent = 'COPIED!';
+        setTimeout(function() { hintEl.textContent = 'TAP TO COPY'; }, 2000);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function() {});
+      } else {
+        // Legacy fallback
+        try {
+          var range = document.createRange();
+          range.selectNode(codeEl);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand('copy');
+          sel.removeAllRanges();
+          done();
+        } catch (e) {}
       }
     }
   </script>
