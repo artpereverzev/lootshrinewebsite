@@ -1,0 +1,8 @@
+# robots.txt for lootshrine.com
+# Allow all well-behaved crawlers.
+
+User-agent: *
+Allow: /
+Disallow: /challenge/
+
+Sitemap: https://lootshrine.com/sitemap.xml

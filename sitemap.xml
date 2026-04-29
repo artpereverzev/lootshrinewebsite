@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://lootshrine.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lootshrine.com/main_menu.jpg</image:loc>
+      <image:title>LootShrine — Slay. Loot. Sacrifice.</image:title>
+      <image:caption>Pixel art roguelite RPG for iOS</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_gameplay.jpg</image:loc>
+      <image:title>LootShrine turn-based combat</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_classes.jpg</image:loc>
+      <image:title>LootShrine class selection</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_skills.jpg</image:loc>
+      <image:title>LootShrine skill tree</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://lootshrine.com/news/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lootshrine.com/privacy/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>
