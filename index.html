@@ -202,22 +202,32 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
+  height: 62px;
   max-width: var(--content-w);
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
 .nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-pixel);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--gold);
   text-shadow: 0 0 18px rgba(255,215,0,0.5);
   white-space: nowrap;
   line-height: 1;
 }
+.nav__logo-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
 .nav__logo small {
   display: block;
-  font-size: 6px;
+  font-size: 7px;
   color: var(--text-lo);
   margin-top: 5px;
   letter-spacing: 0.25em;
@@ -229,7 +239,7 @@ body::after {
 }
 .nav__links a {
   font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 9px;
   color: var(--text-mid);
   letter-spacing: 0.08em;
   transition: color 0.2s;
@@ -237,7 +247,7 @@ body::after {
 .nav__links a:hover { color: var(--gold); }
 .nav__btn {
   font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 9px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -249,7 +259,7 @@ body::after {
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
-.nav__btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.nav__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 .nav__btn:hover {
   background: transparent;
   color: var(--gold);
@@ -280,7 +290,7 @@ body::after {
 .nav__mobile.open { display: flex; }
 .nav__mobile a {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 9px;
   color: var(--text-mid);
   letter-spacing: 0.1em;
   padding: 8px 0;
@@ -1142,8 +1152,11 @@ body::after {
 <nav class="nav" id="nav">
   <div class="nav__inner">
     <a href="#" class="nav__logo">
-      LOOTSHRINE
-      <small>&#9656; PIXEL RPG</small>
+      <img src="/apple-icon-180x180.png" class="nav__logo-icon" alt="LootShrine" width="32" height="32" decoding="async">
+      <span>
+        LOOTSHRINE
+        <small>&#9656; PIXEL RPG</small>
+      </span>
     </a>
     <ul class="nav__links">
       <li><a href="#about">ABOUT</a></li>
