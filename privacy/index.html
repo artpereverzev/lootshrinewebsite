@@ -100,17 +100,82 @@ body::after {
   margin-top: 5px;
   letter-spacing: 0.25em;
 }
-.nav__back {
+.nav__links {
+  display: flex; align-items: center;
+  gap: clamp(16px, 2.5vw, 32px);
+  list-style: none;
+}
+.nav__links a {
   font-family: var(--font-pixel);
   font-size: 7px;
   color: var(--text-mid);
   letter-spacing: 0.08em;
   transition: color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
-.nav__back:hover { color: var(--gold); }
+.nav__links a:hover,
+.nav__links a.active { color: var(--gold); }
+.nav__btn {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--bg-void);
+  padding: 10px 18px;
+  border: 2px solid var(--gold);
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border-radius: 0;
+}
+.nav__btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.nav__btn:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 16px rgba(255,215,0,0.2);
+}
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--gold);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav__mobile {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: rgba(10,10,15,0.97);
+  border-bottom: 1px solid rgba(255,215,0,0.12);
+  padding: 24px var(--gutter);
+  flex-direction: column;
+  gap: 20px;
+}
+.nav__mobile.open { display: flex; }
+.nav__mobile a {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text-mid);
+  letter-spacing: 0.1em;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.07);
+}
+.nav__mobile a:last-child { border-bottom: none; }
+.nav__mobile a.active { color: var(--gold); }
+
+@media (max-width: 800px) {
+  .nav__links, .nav__btn { display: none; }
+  .nav__toggle { display: flex; }
+}
 
 /* ── CONTENT ─────────────────────────────────────── */
 .container {
@@ -302,13 +367,36 @@ body::after {
 <body>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="nav__inner">
     <a href="/" class="nav__logo">
       LOOTSHRINE
       <small>&#9656; PIXEL RPG</small>
     </a>
-    <a href="/" class="nav__back">&#9666; BACK TO HOME</a>
+    <ul class="nav__links">
+      <li><a href="/#about">ABOUT</a></li>
+      <li><a href="/#classes">CLASSES</a></li>
+      <li><a href="/#gameplay">GAMEPLAY</a></li>
+      <li><a href="/#features">FEATURES</a></li>
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/privacy/" class="active">PRIVACY</a></li>
+    </ul>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="nav__btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      APP STORE
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile">
+    <a href="/#about">ABOUT</a>
+    <a href="/#classes">CLASSES</a>
+    <a href="/#gameplay">GAMEPLAY</a>
+    <a href="/#features">FEATURES</a>
+    <a href="/news/">NEWS</a>
+    <a href="/privacy/" class="active">PRIVACY</a>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">&#9656; DOWNLOAD ON APP STORE</a>
   </div>
 </nav>
 
@@ -473,6 +561,31 @@ body::after {
     </ul>
   </div>
 </footer>
+
+<script>
+/* ── Mobile nav ─────────────────────────────────────────── */
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMobile');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { menu.classList.remove('open'); });
+  });
+})();
+
+/* ── Nav border on scroll ───────────────────────────────── */
+(function() {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,215,0,0.18)' : 'rgba(255,215,0,0.10)';
+  }, { passive: true });
+})();
+</script>
 
 </body>
 </html>
