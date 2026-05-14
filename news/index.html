@@ -687,11 +687,97 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.5 -->
+      <!-- v1.5.1 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.5</span>
+          <span class="news-card__version">v1.5.1</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">BOSS UPDATE</span>
+        </div>
+        <h2 class="news-card__title">WARDENS OF THE ENDLESS CYCLE &mdash; 10 ETERNAL CLIMB BOSSES, SHUFFLED ORDER, NEW CODEX</h2>
+        <p class="news-card__lead">
+          Ten new Eternal Climb bosses, each with two phases and a signature mechanic.
+          <strong>No two Climb runs share the same boss order.</strong>
+          A new codex section catalogs them as you fight your way through.
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; 10 ETERNAL CLIMB BOSSES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              A brand-new boss roster exclusive to Eternal Climb. Each boss has 2 phases, a unique skill pool,
+              a signature mechanic, and full codex lore:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">Khoros the Ouroboros Warden</strong> &mdash; Cursed Bind</li>
+                <li><strong style="color:var(--text-hi)">Mavros the Veil-Stitcher</strong> &mdash; Veil Stitch</li>
+                <li><strong style="color:var(--text-hi)">Pyrrhion the Curse-Forger</strong> &mdash; Forge Strike</li>
+                <li><strong style="color:var(--text-hi)">Selene the Lantern of Names</strong> &mdash; Name Drain</li>
+                <li><strong style="color:var(--text-hi)">Janus-Khoros the Twin-Crowned</strong> &mdash; Twin Strike</li>
+                <li><strong style="color:var(--text-hi)">Chronara the Hourglass Witch</strong> &mdash; Time Reverse</li>
+                <li><strong style="color:var(--text-hi)">The Choir Without Tongues</strong> &mdash; Soundless Summon</li>
+                <li><strong style="color:var(--text-hi)">Vorthax the Architect</strong> &mdash; Tower Fortify</li>
+                <li><strong style="color:var(--text-hi)">Aurynn the Sun-Devourer</strong> &mdash; Solar Flare</li>
+                <li><strong style="color:var(--text-hi)">The Eye Beyond the Climb</strong> &mdash; Marked Sight</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; RUN-SHUFFLED BOSS ORDER</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Each Eternal Climb run shuffles the boss order. Floor 10 picks 1 of 10, floor 20 picks 1 of the remaining 9, and so on &mdash; no two runs share the same boss sequence.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; CODEX BESTIARY SECTION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">&ldquo;Wardens of the Endless Cycle&rdquo;</strong> &mdash; codex entries unlock as you encounter each boss.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">POLISHED</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Eternal Climb boss stats now normalize to the current floor for consistent difficulty regardless of which boss the shuffle picks.</li>
+            <li>Elite modifiers no longer stack on EC bosses &mdash; their kit + phase mechanics carry the encounter.</li>
+            <li>Chest gold costs rebalanced at low floors &mdash; early-game chests are finally affordable (a floor-1 Iron chest now costs <strong style="color:var(--text-hi)">~96 gold, down from 324</strong>).</li>
+            <li>Idle breathing animation amplified &mdash; enemies clearly breathe on screen instead of being still.</li>
+            <li>Flying enemies (bats, wisps, dragons, ghosts, eyes) now hover with an organic 2D drift path.</li>
+            <li>Elite enemies show a <strong style="color:var(--text-hi)">threat-tier rim glow</strong> &mdash; orange for 1 modifier, gold for 2, red-gold for 3+ &mdash; replacing the cluttered particle aura.</li>
+            <li>Phase 2 transition banners fire correctly for all Eternal Climb bosses.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXED</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Splitting elite copies in Eternal Climb now inherit the parent&rsquo;s stat normalization.</li>
+            <li>Phase 2 stat transition preserves floor-aware scaling instead of reverting to the boss&rsquo;s nominal-floor baseline.</li>
+            <li>Eternal Climb boss sprites correctly mapped to the atlas.</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          THANKS FOR CLIMBING. TAP THE <strong>HEART</strong> IN SETTINGS TO LEAVE A REVIEW.
+        </p>
+      </article>
+
+      <!-- v1.5 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
         </div>
         <h2 class="news-card__title">ETERNAL CLIMB &mdash; NEW MODE, NEW META, DEEPER BUILDS</h2>
@@ -772,7 +858,7 @@ body::after {
       </article>
 
       <!-- v1.4 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.4</span>
           <span class="news-card__badge">BALANCE &amp; LOCALIZATION</span>
@@ -864,7 +950,7 @@ body::after {
       </article>
 
       <!-- v1.3 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.3</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -977,7 +1063,7 @@ body::after {
       </article>
 
       <!-- v1.2 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal reveal-delay-4">
         <div class="news-card__header">
           <span class="news-card__version">v1.2</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
@@ -994,7 +1080,7 @@ body::after {
       </article>
 
       <!-- v1.1 -->
-      <article class="news-card reveal reveal-delay-4">
+      <article class="news-card reveal reveal-delay-5">
         <div class="news-card__header">
           <span class="news-card__version">v1.1</span>
           <span class="news-card__badge">GAME CENTER</span>
