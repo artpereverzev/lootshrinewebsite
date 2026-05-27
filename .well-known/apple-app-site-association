@@ -15,6 +15,10 @@
           {
             "/": "/mode/*",
             "comment": "Generic mode preselect (e.g. /mode/eternalClimb)"
+          },
+          {
+            "/": "/alchemist",
+            "comment": "Alchemist class preselect"
           }
         ]
       }
