@@ -188,6 +188,7 @@ body::after {
 .reveal-delay-3 { transition-delay: 0.24s; }
 .reveal-delay-4 { transition-delay: 0.32s; }
 .reveal-delay-5 { transition-delay: 0.40s; }
+.reveal-delay-6 { transition-delay: 0.48s; }
 
 /* ===================================================================
    NAV (identical to index.html)
@@ -687,11 +688,132 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.5.1 -->
+      <!-- v1.5.2 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.5.1</span>
+          <span class="news-card__version">v1.5.2</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">MAJOR UPDATE</span>
+        </div>
+        <h2 class="news-card__title">THE ALCHEMIST&rsquo;S CAMP &mdash; NEW CLASS, REDESIGNED SHRINE, ASCENSION PRAYERS</h2>
+        <p class="news-card__lead">
+          A brand-new playable class, the Shrine fully redesigned as a diegetic camp scene
+          with six interactive stations, a Quest Board overhaul with rewards 2&ndash;3&times; higher,
+          and a new top-tier <strong>Ascension</strong> prayer outcome.
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; ALCHEMIST CLASS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              The <strong style="color:var(--text-hi)">Alchemist</strong> channels absorbed shop items into permanent power.
+              <ul class="news-card__sub">
+                <li>Class skill <strong style="color:var(--text-hi)">EXPLOSIVE CONCOCTION</strong> &mdash; consumes every active absorb buff to deal AoE damage that scales with the buff count</li>
+                <li>Passive <strong style="color:var(--text-hi)">CONCENTRATED ESSENCE</strong> &mdash; amplifies absorbed stats by +30%</li>
+                <li>Exclusive <strong style="color:var(--text-hi)">ALEMBIC</strong> equipment slot</li>
+                <li>Full 28-skill skill tree plus 32 stat traits</li>
+                <li>Innate +10% bonus to all shrine sacrifices</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; THE CAMP</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              The Shrine is fully redesigned as a diegetic camp scene. Six interactive stations replace the old tabbed UI &mdash;
+              each is a place you can walk up to and tap, with its own animated sprite, ground shadow, and warm radial glow.
+              Drifting gold motes blow across the camp between battles.
+            </li>
+            <li>
+              <strong style="color:var(--text-hi)">Six camp stations:</strong>
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">SHRINE ALTAR</strong> &mdash; sacrifice items for permanent stats this run</li>
+                <li><strong style="color:var(--text-hi)">PRAY STONE</strong> &mdash; pray for a divine blessing, now rendered as a slot-machine spin strip</li>
+                <li><strong style="color:var(--text-hi)">FORGE</strong> &mdash; pay gold to Enhance an item with a new affix, or Reforge to reroll every affix on it</li>
+                <li><strong style="color:var(--text-hi)">ARMORY</strong> &mdash; inspect, equip, and swap gear between battles</li>
+                <li><strong style="color:var(--text-hi)">MERCHANT TENT</strong> &mdash; visit the merchant, donate gold, unlock relationship bonuses</li>
+                <li><strong style="color:var(--text-hi)">QUEST BOARD</strong> &mdash; take on Regular, Rare, and Legendary challenges</li>
+              </ul>
+            </li>
+            <li>
+              <strong style="color:var(--text-hi)">Camp Armory</strong> &mdash; full equipment grid with portrait, HP/XP bars, and stat row;
+              28-slot bag with class slot and merchant artifact. Items merge with the same flying-sprite + rarity glow + impact-flash + pixel-burst landing the battle inventory uses.
+            </li>
+            <li>
+              <strong style="color:var(--text-hi)">Camp Tutorial</strong> &mdash; new players are walked through every station via a guided spotlight + Continue tour. Existing players who already finished the tutorial skip the tour &mdash; their progress is respected.
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; QUEST BOARD OVERHAUL</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Daily and weekly quests are gone. The new structure is <strong style="color:var(--text-hi)">Regular / Rare / Legendary</strong> tiers.</li>
+            <li><strong style="color:var(--text-hi)">12 new Legendary quests</strong> added to the catalog.</li>
+            <li>Rare tier has a manual <strong style="color:var(--text-hi)">REFRESH RARES</strong> button (gold cost) instead of a 7-day calendar.</li>
+            <li>Completed quests now require a <strong style="color:var(--text-hi)">CLAIM</strong> tap &mdash; no more silent auto-grants.</li>
+            <li>Regular and Rare rewards boosted ~3&times;, Legendary boosted 2&times;.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; PRAYER SLOT STRIP &amp; ASCENSION TIER</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The Pray Stone replaces the old channeling bar with a <strong style="color:var(--text-hi)">slot-machine-style spin</strong> animation.</li>
+            <li>Five tiered outcomes &mdash; Nothing, Minor Blessing, Blessing, Divine Favor, Miracle, and the brand-new <strong style="color:var(--text-hi)">ASCENSION</strong> &mdash; cycle past with their actual sprite icons, then land on your roll.</li>
+            <li>Minor Blessing and Blessing tiers can now drop raw <strong style="color:var(--text-hi)">GOLD or XP</strong> instead of stat lines.</li>
+            <li><strong style="color:var(--gold)">ASCENSION</strong> &mdash; a new prayer outcome above Miracle. 1% chance to drop a guaranteed <strong style="color:var(--text-hi)">Set-rarity item</strong> &mdash; your fastest in-run path to a Set bonus.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">POLISHED</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Every camp sheet now sizes to its content &mdash; no more empty bands below the prayer strip or the forge selection.</li>
+            <li>Empower has a fully visual result phase with before/after stat comparison.</li>
+            <li>Burn-bar timing on the EMPOWER button matches the SACRIFICE flow exactly.</li>
+            <li>Slot strip lands on a single smooth bezier curve instead of ticking between speeds.</li>
+            <li>Camp station labels show a <strong style="color:var(--text-hi)">notification dot</strong> when an action is unfinished at that station.</li>
+            <li>Settings + Dev tools buttons added next to THE SHRINE header for parity with the battle pause menu.</li>
+            <li>Continue button from the shrine pause menu now resumes back at the camp, not an empty battle.</li>
+            <li>Quest reward boosts: Regular/Rare 3&times; gold + XP, Legendary 2&times;. Quest XP now goes to player XP instead of merchant XP.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXED</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Camp Armory now correctly equips and unequips merchant artifacts.</li>
+            <li>Class-slot items (Knight&rsquo;s Aegis, Alchemist&rsquo;s Alembic, etc.) report the right screen position for the merge fly-animation.</li>
+            <li>Prayer slot landing card icon matches the actual rolled reward.</li>
+            <li>Completed quests stay claimable when finished mid-battle instead of disappearing into the shrine.</li>
+            <li>Pixel burst on merge landing fires at the correct destination cell.</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          THANKS FOR CAMPING OUT. TAP THE <strong>HEART</strong> IN SETTINGS TO LEAVE A REVIEW.
+        </p>
+      </article>
+
+      <!-- v1.5.1 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.5.1</span>
           <span class="news-card__badge">BOSS UPDATE</span>
         </div>
         <h2 class="news-card__title">WARDENS OF THE ENDLESS CYCLE &mdash; 10 ETERNAL CLIMB BOSSES, SHUFFLED ORDER, NEW CODEX</h2>
@@ -775,7 +897,7 @@ body::after {
       </article>
 
       <!-- v1.5 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -858,7 +980,7 @@ body::after {
       </article>
 
       <!-- v1.4 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.4</span>
           <span class="news-card__badge">BALANCE &amp; LOCALIZATION</span>
@@ -950,7 +1072,7 @@ body::after {
       </article>
 
       <!-- v1.3 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal reveal-delay-4">
         <div class="news-card__header">
           <span class="news-card__version">v1.3</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1063,7 +1185,7 @@ body::after {
       </article>
 
       <!-- v1.2 -->
-      <article class="news-card reveal reveal-delay-4">
+      <article class="news-card reveal reveal-delay-5">
         <div class="news-card__header">
           <span class="news-card__version">v1.2</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
@@ -1080,7 +1202,7 @@ body::after {
       </article>
 
       <!-- v1.1 -->
-      <article class="news-card reveal reveal-delay-5">
+      <article class="news-card reveal reveal-delay-6">
         <div class="news-card__header">
           <span class="news-card__version">v1.1</span>
           <span class="news-card__badge">GAME CENTER</span>
