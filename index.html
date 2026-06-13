@@ -1064,6 +1064,120 @@ body::after {
 .feature-tile__desc { font-family: var(--font-body); font-size: 13px; color: var(--text-mid); line-height: 1.75; }
 
 /* ===================================================================
+   ETERNAL CLIMB (the endless mode)
+=================================================================== */
+.eternal {
+  padding: var(--section-pad) var(--gutter);
+  background: var(--bg-base);
+  position: relative;
+  overflow: hidden;
+}
+.eternal__hero {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+.eternal__hero .section-title { color: var(--gold); }
+.eternal__lead {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.6vw, 19px);
+  color: var(--text-hi);
+  line-height: 1.75;
+  margin-top: 16px;
+}
+.eternal__lead em {
+  color: var(--gold);
+  font-style: normal;
+}
+.eternal__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.eternal__image {
+  position: relative;
+  border: 2px solid rgba(255,215,0,0.2);
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  background: var(--bg-card);
+  box-shadow: 0 0 60px rgba(0,0,0,0.4);
+}
+.eternal__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.eternal__image-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 90% 90% at 50% 50%, transparent 40%, rgba(10,10,15,0.4) 100%);
+  pointer-events: none;
+}
+.eternal__image-tag {
+  position: absolute;
+  top: 14px; left: 14px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--bg-void);
+  background: var(--gold);
+  padding: 8px 12px;
+  letter-spacing: 0.15em;
+  line-height: 1;
+  z-index: 2;
+}
+.eternal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.eternal__chunk {
+  padding-left: 18px;
+  border-left: 2px solid rgba(255,215,0,0.25);
+}
+.eternal__chunk h3 {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.eternal__chunk p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+.eternal__chunk strong { color: var(--text-hi); }
+.eternal__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 64px;
+}
+.eternal__outro {
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-lo);
+  letter-spacing: 0.2em;
+  margin-top: 28px;
+  line-height: 1.8;
+}
+@media (max-width: 800px) {
+  .eternal__grid { grid-template-columns: 1fr; }
+  .eternal__image { aspect-ratio: 16/10; }
+}
+@media (max-width: 600px) {
+  .eternal__chunk { padding-left: 14px; }
+}
+
+/* ===================================================================
    NO IAP
 =================================================================== */
 .no-iap { padding: var(--section-pad) var(--gutter); text-align: center; position: relative; overflow: hidden; }
@@ -1810,6 +1924,88 @@ body::after {
         <p class="feature-tile__desc">Global and per-class Game Center leaderboards. Race for the highest floor, most enemies slain, fastest runs and more.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ETERNAL CLIMB -->
+<section class="eternal section" id="eternal">
+  <div class="container">
+
+    <div class="eternal__hero">
+      <span class="tag reveal">// THE ENDLESS MODE</span>
+      <h2 class="section-title reveal reveal-delay-1">ETERNAL CLIMB</h2>
+      <p class="eternal__lead reveal reveal-delay-2">
+        An endless, escalating descent where <em>you</em> choose how hard your own run gets.
+        No floor 100 finish line &mdash; only how far you can push before the dungeon finally wins.
+      </p>
+    </div>
+
+    <div class="eternal__grid">
+      <div class="eternal__image reveal reveal-delay-2">
+        <img src="eternal_climb_low.jpg" alt="LootShrine Eternal Climb mode — pixel art endless tower with stacking curses"
+             onerror="this.parentElement.style.display='none'">
+        <div class="eternal__image-vignette"></div>
+        <div class="eternal__image-tag">UNLOCKED AT FLOOR 11+</div>
+      </div>
+
+      <div class="eternal__content reveal reveal-delay-3">
+        <div class="eternal__chunk">
+          <h3>YOU SET THE STAKES</h3>
+          <p>
+            Every two floors the shrine offers you three curses &mdash; <strong>Enraged</strong>,
+            <strong>Vampiric</strong>, <strong>Fortified</strong>, regen auras, double-strikers,
+            and more. You pick one. It binds to your run permanently and applies to every enemy
+            from then on. <strong>Curses stack.</strong>
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>RISK = REWARD</h3>
+          <p>
+            Each run pays out <strong>Ancient Coins</strong>, the mode&rsquo;s own currency,
+            scaled to how deep you climbed <em>and</em> how many curses you bound.
+            Take the nastier draft and climb richer, or play it safe and bank smaller &mdash;
+            no correct answer, just how much pressure you&rsquo;ll carry.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>TEN WARDENS, SHUFFLED</h3>
+          <p>
+            Every tenth floor pits you against one of ten unique two-phase Wardens &mdash;
+            <strong>Khoros the Ouroboros Warden</strong>, <strong>Mavros the Veil-Stitcher</strong>,
+            <strong>Selene the Lantern of Names</strong>, <strong>the Eye Beyond the Climb</strong>,
+            and six more. The order shuffles each run, so no two climbs feel the same.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>CLIMB FOR THE LEADERBOARDS</h3>
+          <p>
+            Best Eternal depth and lifetime Ancient Coins both feed dedicated Game Center
+            leaderboards &mdash; global and per character class. A clean, comparable measure
+            of how good your runs really are. Spend coins on the <strong>Chests</strong>
+            meta-progression tab to make the next climb a little stronger.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="eternal__pills reveal reveal-delay-4">
+      <div class="pill">NO FLOOR CAP</div>
+      <div class="pill">STACKING CURSES</div>
+      <div class="pill">ANCIENT COINS</div>
+      <div class="pill">10 UNIQUE WARDENS</div>
+      <div class="pill">META PROGRESSION</div>
+      <div class="pill">LEADERBOARDS</div>
+    </div>
+
+    <p class="eternal__outro reveal reveal-delay-5">
+      NO TIMERS &middot; NO ADS &middot; NO PAY-TO-WIN &mdash; JUST HOW FAR YOU&rsquo;LL CLIMB.
+    </p>
+
   </div>
 </section>
 
