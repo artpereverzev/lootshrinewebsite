@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Tim Pereverzev, solo developer of LootShrine</title>
+  <meta name="description" content="LootShrine is built by Tim Pereverzev — a solo indie developer. The art, the systems, the localizations, the patch notes. Read about the why and the how, and where to reach me." />
+  <meta name="author" content="Tim Pereverzev" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1A1A2E" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://lootshrine.com/about/" />
+
+  <!-- Apple Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=6757924460" />
+  <meta name="apple-mobile-web-app-title" content="LootShrine" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="LootShrine" />
+  <meta property="og:title" content="About the developer — LootShrine is built by one person" />
+  <meta property="og:description" content="Tim Pereverzev, solo indie developer of LootShrine. The story behind the game, the philosophy, and where to find me." />
+  <meta property="og:type" content="profile" />
+  <meta property="profile:first_name" content="Tim" />
+  <meta property="profile:last_name" content="Pereverzev" />
+  <meta property="og:url" content="https://lootshrine.com/about/" />
+  <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
+  <meta property="og:image:alt" content="LootShrine — pixel art roguelite RPG for iOS" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About the developer — LootShrine is built by one person" />
+  <meta name="twitter:description" content="Tim Pereverzev, solo indie developer of LootShrine." />
+  <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<style>
+:root {
+  --bg-void:     #0A0A0F;
+  --bg-dark:     #0D0D15;
+  --bg-base:     #1A1A2E;
+  --bg-card:     #1E1E28;
+  --bg-raised:   #242438;
+
+  --text-hi:     #F5F5FA;
+  --text-mid:    #A0A0C0;
+  --text-lo:     #505068;
+
+  --gold:        #FFD700;
+  --gold-dim:    #8A6F00;
+  --gold-glow:   rgba(255,215,0,0.15);
+
+  --green:       #22C55E;
+
+  --font-pixel:  "Press Start 2P", monospace;
+  --font-body:   "Syne", sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --content-w:   860px;
+  --gutter:      clamp(16px, 4vw, 40px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-void);
+  color: var(--text-hi);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* Scanlines */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── NAV ─────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500;
+  background: rgba(10,10,15,0.88);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid rgba(255,215,0,0.1);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(255,215,0,0.5);
+  white-space: nowrap;
+  line-height: 1;
+}
+.nav__logo-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.nav__logo small {
+  display: block;
+  font-size: 7px;
+  color: var(--text-lo);
+  margin-top: 5px;
+  letter-spacing: 0.25em;
+}
+.nav__links {
+  display: flex; align-items: center;
+  gap: clamp(16px, 2.5vw, 32px);
+  list-style: none;
+}
+.nav__links a {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-mid);
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+.nav__links a:hover,
+.nav__links a.active { color: var(--gold); }
+.nav__btn {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--bg-void);
+  padding: 10px 18px;
+  border: 2px solid var(--gold);
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border-radius: 0;
+}
+.nav__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.nav__btn:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 16px rgba(255,215,0,0.2);
+}
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--gold);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav__mobile {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: rgba(10,10,15,0.97);
+  border-bottom: 1px solid rgba(255,215,0,0.12);
+  padding: 24px var(--gutter);
+  flex-direction: column;
+  gap: 20px;
+}
+.nav__mobile.open { display: flex; }
+.nav__mobile a {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-mid);
+  letter-spacing: 0.1em;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.07);
+}
+.nav__mobile a:last-child { border-bottom: none; }
+.nav__mobile a.active { color: var(--gold); }
+
+@media (max-width: 800px) {
+  .nav__links, .nav__btn { display: none; }
+  .nav__toggle { display: flex; }
+}
+
+/* ── CONTENT ─────────────────────────────────────── */
+.container {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.page-header {
+  padding: 120px var(--gutter) 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header__bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,215,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.page-header__vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 10%, var(--bg-void) 100%);
+}
+.page-header__content { position: relative; z-index: 1; }
+.page-header__tag {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  display: block;
+  opacity: 0.85;
+}
+.page-header__title {
+  font-family: var(--font-pixel);
+  font-size: clamp(16px, 3vw, 26px);
+  line-height: 1.6;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,215,0,0.35);
+  margin-bottom: 12px;
+}
+.page-header__sub {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
+}
+
+/* ── Dev portrait card ───────────────────────────── */
+.dev-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.18);
+  padding: 28px;
+  margin-bottom: 48px;
+  position: relative;
+}
+.dev-card__portrait {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  background: var(--bg-raised);
+  border: 2px solid rgba(255,215,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.dev-card__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.dev-card__portrait-placeholder {
+  font-family: var(--font-pixel);
+  font-size: 36px;
+  color: var(--gold);
+  opacity: 0.7;
+}
+.dev-card__info {
+  flex: 1;
+  min-width: 0;
+}
+.dev-card__name {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--text-hi);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.dev-card__role {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.dev-card__line {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .dev-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+  .dev-card__portrait { width: 100px; height: 100px; }
+}
+
+/* ── Body content (reuses policy patterns) ───────── */
+.policy { padding: 48px var(--gutter) 80px; }
+.policy__section { margin-bottom: 48px; }
+.policy__section:last-child { margin-bottom: 0; }
+
+.policy__heading {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255,215,0,0.1);
+}
+
+.policy__text {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.policy__text:last-child { margin-bottom: 0; }
+.policy__text strong { color: var(--text-hi); }
+.policy__text a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(255,215,0,0.3);
+  transition: border-color 0.2s;
+}
+.policy__text a:hover { border-bottom-color: var(--gold); }
+
+.policy__list {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 14px;
+  padding-left: 0;
+  list-style: none;
+}
+.policy__list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+}
+.policy__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+/* ── Final CTA ───────────────────────────────────── */
+.cta-card {
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.2);
+  padding: 36px 28px;
+  text-align: center;
+  margin-top: 48px;
+}
+.cta-card__label {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-lo);
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
+}
+.cta-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border: 2px solid var(--gold);
+  background: var(--gold);
+  color: var(--bg-void);
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  transition: background 0.15s, color 0.15s, box-shadow 0.2s;
+}
+.cta-card__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.cta-card__btn:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 40px rgba(255,215,0,0.3);
+}
+.cta-card__trust {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.2em;
+  margin-top: 18px;
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  padding: 40px var(--gutter) 32px;
+  border-top: 1px solid rgba(255,215,0,0.1);
+  background: var(--bg-void);
+}
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer__logo { font-family: var(--font-pixel); font-size: 11px; color: var(--gold); }
+.footer__copy {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
+  line-height: 2;
+  text-align: center;
+}
+.footer__links { display: flex; gap: 20px; list-style: none; }
+.footer__links a {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
+  transition: color 0.2s;
+}
+.footer__links a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .footer__inner { flex-direction: column; text-align: center; }
+  .footer__links { justify-content: center; }
+}
+</style>
+
+<!-- ===================================================================
+     STRUCTURED DATA (JSON-LD) — Person + AboutPage
+=================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://lootshrine.com/about/#about",
+      "url": "https://lootshrine.com/about/",
+      "name": "About — Tim Pereverzev, solo developer of LootShrine",
+      "inLanguage": "en-US",
+      "mainEntity": { "@id": "https://lootshrine.com/about/#tim" },
+      "isPartOf": { "@id": "https://lootshrine.com/#website" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://lootshrine.com/about/#tim",
+      "name": "Tim Pereverzev",
+      "givenName": "Tim",
+      "familyName": "Pereverzev",
+      "jobTitle": "Solo indie game developer",
+      "description": "Tim Pereverzev is the solo developer behind LootShrine, a free-to-try pixel art roguelite RPG for iOS.",
+      "url": "https://lootshrine.com/about/",
+      "image": "https://lootshrine.com/dev_portrait.jpg",
+      "worksFor": { "@id": "https://lootshrine.com/#org" },
+      "knowsAbout": [
+        "Indie game development",
+        "iOS game development",
+        "Roguelite RPG design",
+        "Pixel art",
+        "Game localization"
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">
+      <img src="../apple-icon-180x180.png" class="nav__logo-icon" alt="LootShrine" width="32" height="32" decoding="async">
+      <span>
+        LOOTSHRINE
+        <small>&#9656; PIXEL RPG</small>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="/#about">OVERVIEW</a></li>
+      <li><a href="/#classes">CLASSES</a></li>
+      <li><a href="/#gameplay">GAMEPLAY</a></li>
+      <li><a href="/#features">FEATURES</a></li>
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/about/" class="active">ABOUT</a></li>
+      <li><a href="/privacy/">PRIVACY</a></li>
+    </ul>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="nav__btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      APP STORE
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile">
+    <a href="/#about">OVERVIEW</a>
+    <a href="/#classes">CLASSES</a>
+    <a href="/#gameplay">GAMEPLAY</a>
+    <a href="/#features">FEATURES</a>
+    <a href="/news/">NEWS</a>
+    <a href="/about/" class="active">ABOUT</a>
+    <a href="/privacy/">PRIVACY</a>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">&#9656; DOWNLOAD ON APP STORE</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="page-header">
+  <div class="page-header__bg"></div>
+  <div class="page-header__vignette"></div>
+  <div class="page-header__content">
+    <span class="page-header__tag">// ABOUT THE DEVELOPER</span>
+    <h1 class="page-header__title">MEET TIM</h1>
+    <p class="page-header__sub">
+      The one-person studio behind LootShrine.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MAIN -->
+<section class="policy">
+  <div class="container">
+
+    <!-- Dev portrait + intro -->
+    <div class="dev-card">
+      <div class="dev-card__portrait">
+        <img src="/dev_portrait.jpg" alt="Tim Pereverzev"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="dev-card__portrait-placeholder" style="display:none">&#x2697;&#xFE0F;</div>
+      </div>
+      <div class="dev-card__info">
+        <p class="dev-card__name">TIM PEREVERZEV</p>
+        <p class="dev-card__role">SOLO INDIE DEVELOPER &middot; LOOTSHRINE</p>
+        <p class="dev-card__line">
+          Hi &mdash; I&rsquo;m Tim. I built LootShrine alone: the pixel art, the systems,
+          the localizations, the patch notes. It&rsquo;s the mobile RPG I always wished
+          was already in my pocket, so I made it.
+        </p>
+      </div>
+    </div>
+
+    <!-- Why I made this -->
+    <div class="policy__section">
+      <h2 class="policy__heading">WHY I MADE THIS</h2>
+      <p class="policy__text">
+        Mobile RPGs have so much potential. Turn-based depth. Deep loot. Build variety.
+        A phone is actually a great fit for the genre. But the category kept getting buried
+        under energy timers, ad breaks between turns, daily-login nag screens, and
+        pay-to-win shops that ruin every meaningful decision.
+      </p>
+      <p class="policy__text">
+        So I built the version I wanted to play: <strong>a complete roguelite you actually own</strong>.
+        No ads. No subscriptions. No energy. No pay-to-win. Ten floors free to try, one purchase
+        to unlock the full climb. That&rsquo;s the whole business model.
+      </p>
+    </div>
+
+    <!-- Solo journey -->
+    <div class="policy__section">
+      <h2 class="policy__heading">THE SOLO JOURNEY</h2>
+      <p class="policy__text">
+        Every system, every class, every line of merchant dialogue, every pixel of every
+        enemy sprite, every translation review &mdash; me. That&rsquo;s not a brag. It&rsquo;s a
+        commitment: when there&rsquo;s a bug, when there&rsquo;s a tough balance call, when
+        there&rsquo;s a question about why something works the way it does &mdash; it&rsquo;s me
+        on the other end of the email.
+      </p>
+      <p class="policy__text">
+        LootShrine has been in active development across years of nights and weekends.
+        The first public version shipped with seven classes and the core 100-floor tower.
+        Since then it&rsquo;s grown into something bigger than I expected &mdash; Eternal Climb,
+        ten new Wardens of the Endless Cycle, an eighth class (the Alchemist), a redesigned
+        camp, and a steady cadence of patch notes you can read on the
+        <a href="/news/">news page</a>.
+      </p>
+    </div>
+
+    <!-- Philosophy -->
+    <div class="policy__section">
+      <h2 class="policy__heading">THE PHILOSOPHY</h2>
+      <p class="policy__text">
+        The free 10 floors are a real demo, not a hook. They&rsquo;re long enough that you
+        can genuinely tell whether the game is for you. If it isn&rsquo;t, no harm done &mdash;
+        you keep the app, no one pesters you. If it is, one purchase unlocks the full
+        100-floor climb forever. No subscription tier. No cosmetic shop. No popups
+        offering to skip a cooldown for $4.99.
+      </p>
+      <p class="policy__text">
+        I think mobile players have been mistreated for a long time and have learned to
+        expect the worst. I want LootShrine to be a small piece of evidence that it
+        doesn&rsquo;t have to work that way.
+      </p>
+    </div>
+
+    <!-- What's next -->
+    <div class="policy__section">
+      <h2 class="policy__heading">WHAT&rsquo;S NEXT</h2>
+      <p class="policy__text">
+        The roadmap actually lives on the <a href="/news/">news page</a> &mdash; every patch
+        as it ships, no marketing spin, no &ldquo;coming soon&rdquo; teasers that quietly
+        get shelved. Recent releases have brought 10 Eternal Climb bosses, the Alchemist
+        class with its Alembic equipment slot and Explosive Concoction skill, the camp
+        redesign with six interactive stations, and a fully reworked Quest Board.
+      </p>
+      <p class="policy__text">
+        I&rsquo;m working on more content, deeper class identity, and continued localization
+        polish across the five supported languages. If you have ideas, suggestions, or
+        bugs to report &mdash; I read every email.
+      </p>
+    </div>
+
+    <!-- Find me -->
+    <div class="policy__section">
+      <h2 class="policy__heading">FIND ME</h2>
+      <ul class="policy__list">
+        <li><strong>Email:</strong> <a href="mailto:support@lootshrine.com">support@lootshrine.com</a> &mdash; goes straight to me.</li>
+        <li><strong>In-game:</strong> tap &ldquo;Need help or found a bug?&rdquo; in Settings to send a report.</li>
+        <li><strong>Press / creators:</strong> drop a note to <a href="mailto:support@lootshrine.com">support@lootshrine.com</a> &mdash; happy to chat about coverage, review codes, or interviews.</li>
+      </ul>
+      <p class="policy__text" style="margin-top: 14px;">
+        <em>(Social links coming soon. If you&rsquo;d like to be notified when there&rsquo;s a Twitter/X or Bluesky to follow, mention it in an email.)</em>
+      </p>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-card">
+      <p class="cta-card__label">// SEE WHAT I&rsquo;VE BEEN MAKING</p>
+      <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="cta-card__btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        TRY LOOTSHRINE FREE
+      </a>
+      <p class="cta-card__trust">FREE DOWNLOAD &middot; iOS 16+ &middot; OFFLINE PLAY &middot; NO ADS</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__logo">LOOTSHRINE</div>
+    <div class="footer__copy">
+      &copy; 2026 LOOTSHRINE. ALL RIGHTS RESERVED.<br>
+      MADE BY TIM PEREVERZEV.
+    </div>
+    <ul class="footer__links">
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/about/">ABOUT</a></li>
+      <li><a href="/privacy/">PRIVACY</a></li>
+      <li><a href="mailto:support@lootshrine.com">CONTACT</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* ── Mobile nav ─────────────────────────────────────────── */
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMobile');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { menu.classList.remove('open'); });
+  });
+})();
+
+/* ── Nav border on scroll ───────────────────────────────── */
+(function() {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,215,0,0.18)' : 'rgba(255,215,0,0.10)';
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
