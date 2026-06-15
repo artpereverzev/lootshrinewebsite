@@ -4,6 +4,7 @@
 
   <url>
     <loc>https://lootshrine.com/</loc>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -17,18 +18,86 @@
     </image:image>
     <image:image>
       <image:loc>https://lootshrine.com/scr_classes.jpg</image:loc>
-      <image:title>LootShrine class selection</image:title>
+      <image:title>LootShrine class selection — eight classes</image:title>
     </image:image>
     <image:image>
       <image:loc>https://lootshrine.com/scr_skills.jpg</image:loc>
       <image:title>LootShrine skill tree</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/eternal_climb_low.jpg</image:loc>
+      <image:title>LootShrine Eternal Climb — endless mode</image:title>
+      <image:caption>The Wardens of the Endless Cycle await beyond floor 11</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://lootshrine.com/news/</loc>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lootshrine.com/about/</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://lootshrine.com/avatar.jpeg</image:loc>
+      <image:title>Tim Pereverzev — solo developer of LootShrine</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://lootshrine.com/press/</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lootshrine.com/main_menu.jpg</image:loc>
+      <image:title>LootShrine key art</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_gameplay.jpg</image:loc>
+      <image:title>LootShrine gameplay screenshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_classes.jpg</image:loc>
+      <image:title>LootShrine class selection screenshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_skills.jpg</image:loc>
+      <image:title>LootShrine skill tree screenshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_item1.jpg</image:loc>
+      <image:title>LootShrine inventory screenshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_item2.jpg</image:loc>
+      <image:title>LootShrine equipment screenshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_leaderboards.jpg</image:loc>
+      <image:title>LootShrine Game Center leaderboards</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_metaupgrades.jpg</image:loc>
+      <image:title>LootShrine shrine meta upgrades</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_codex_enemies.jpg</image:loc>
+      <image:title>LootShrine codex of enemies</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_achievements.jpg</image:loc>
+      <image:title>LootShrine achievements</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lootshrine.com/eternal_climb_low.jpg</image:loc>
+      <image:title>LootShrine Eternal Climb key art</image:title>
+    </image:image>
   </url>
 
   <url>
