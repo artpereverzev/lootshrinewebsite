@@ -500,6 +500,15 @@ body::after {
   image-rendering: pixelated;
 }
 
+/* Screenshots are vertical iPhone captures — give them a phone-shaped frame
+   so nothing gets cropped. */
+.asset-grid--phone {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+.asset-grid--phone .asset__img {
+  aspect-ratio: 9 / 19.5;
+}
+
 /* Trailer */
 .trailer {
   position: relative;
@@ -898,8 +907,8 @@ body::after {
     <!-- ===== Assets ===== -->
     <div class="press__section" id="assets">
       <h2 class="press__heading">ASSETS &mdash; SCREENSHOTS</h2>
-      <p class="press__sub">Click DOWNLOAD on any tile to grab the JPG &mdash; or grab everything at once via the <a href="press_kit.zip" download style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">full press kit ZIP &uarr;</a> at the top. Native pixel art; please don't resave through a screenshot or editor unless you have to.</p>
-      <div class="asset-grid">
+      <p class="press__sub">Click DOWNLOAD on any tile to grab the JPG &mdash; or grab everything at once via the <a href="press_kit.zip" download style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">full press kit ZIP &uarr;</a> at the top. Native pixel art at the original iPhone aspect ratio; please don't resave through a screenshot or editor unless you have to.</p>
+      <div class="asset-grid asset-grid--phone">
         <div class="asset"><div class="asset__img"><img src="../scr_gameplay.jpg" alt="Gameplay" loading="lazy"></div><div class="asset__meta"><span class="asset__name">SCR_GAMEPLAY.JPG</span><a href="../scr_gameplay.jpg" download class="asset__dl">DOWNLOAD</a></div></div>
         <div class="asset"><div class="asset__img"><img src="../scr_classes.jpg" alt="Class selection" loading="lazy"></div><div class="asset__meta"><span class="asset__name">SCR_CLASSES.JPG</span><a href="../scr_classes.jpg" download class="asset__dl">DOWNLOAD</a></div></div>
         <div class="asset"><div class="asset__img"><img src="../scr_skills.jpg" alt="Skill tree" loading="lazy"></div><div class="asset__meta"><span class="asset__name">SCR_SKILLS.JPG</span><a href="../scr_skills.jpg" download class="asset__dl">DOWNLOAD</a></div></div>
