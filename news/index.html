@@ -191,6 +191,7 @@ body::after {
 .reveal-delay-6 { transition-delay: 0.48s; }
 .reveal-delay-7 { transition-delay: 0.56s; }
 .reveal-delay-8 { transition-delay: 0.64s; }
+.reveal-delay-9 { transition-delay: 0.72s; }
 
 /* ===================================================================
    NAV (identical to index.html)
@@ -703,11 +704,127 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.5.4 -->
+      <!-- v1.5.5 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.5.4</span>
+          <span class="news-card__version">v1.5.5</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">MAJOR UPDATE</span>
+        </div>
+        <h2 class="news-card__title">ACHIEVEMENT SCORE LEADERBOARD, SOUL REBIRTH &amp; SHARPER STAT ICONS</h2>
+        <p class="news-card__lead">
+          A content + polish update, plus a wave of fixes and a big localization push.
+          New worldwide Achievement Score leaderboard, a permanent <strong>Soul Rebirth</strong> revive in the Soul Forge,
+          optional cosmetic-only Supporter Packs, and a top-to-bottom redesign of stat icons.
+          &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; ACHIEVEMENT SCORE LEADERBOARD</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Every achievement you&rsquo;ve ever unlocked now adds up into a single <strong style="color:var(--text-hi)">Achievement Score</strong>, with its own worldwide leaderboard &mdash; <strong style="color:var(--text-hi)">Global</strong> and <strong style="color:var(--text-hi)">Friends</strong> tabs, just like Highest Floor and Soul Harvester.</li>
+            <li>It&rsquo;s a lifetime board, so it only ever climbs: every new unlock nudges you up the rankings.</li>
+            <li>Posts automatically &mdash; the moment an achievement pops, when you finish a run, and whenever you open the leaderboards. Nothing to manage.</li>
+            <li>Existing players: your prior achievements all count. Your score will appear the moment you launch the update.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; SOUL REBIRTH</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>A new permanent upgrade in the Soul Forge&rsquo;s <strong style="color:var(--text-hi)">Special</strong> tab. Once per run, when you&rsquo;d otherwise fall, you stand back up with a portion of your health and keep going.</li>
+            <li>Single-purchase safety net (no stacking, deliberately), priced as a meaningful late-game investment &mdash; insurance against that gut-punch moment where a deep run ends to one unlucky hit.</li>
+            <li>Intentionally a touch weaker than the <strong style="color:var(--text-hi)">Phoenix</strong> set&rsquo;s revive, so chasing Phoenix gear still matters. For everyone else, it&rsquo;s a hard-earned second chance.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; SUPPORTER PACKS (COSMETIC-ONLY)</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              Three optional Supporter Packs for players who want to support a solo developer.
+              <strong style="color:var(--gold)">No stats, no power, nothing pay-to-win.</strong>
+              Nothing in them affects a single point of damage.
+            </li>
+            <li>Each pack grants exclusive supporter portraits and frames that show on the leaderboards.</li>
+            <li>Browse any time from the new <strong style="color:var(--text-hi)">star button</strong> on the main menu (right next to Settings), or from any locked supporter cosmetic in the Customization screen.</li>
+            <li>The vast majority of portraits and frames in the game are still <strong style="color:var(--text-hi)">earned for free</strong> by playing &mdash; through achievements and character unlocks. The packs are purely a &ldquo;thank you&rdquo; option, never a requirement.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">A SHARPER LOOK &mdash; REDESIGNED STAT ICONS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Full redesign of stat icons into crisp, readable pixel art, displayed inside <strong style="color:var(--text-hi)">stat-colored pixel badges</strong> throughout the game.</li>
+            <li>Visible in item details, the Attack and Defend buttons, the Shrine (forge, offerings, prayer results), enemy stat cards, and the prayer slot strip.</li>
+            <li>
+              Color code reads at a glance:
+              <ul class="news-card__sub">
+                <li><strong style="color:#EF4444">Red</strong> &mdash; offense and health</li>
+                <li><strong style="color:#60A5FA">Blue</strong> &mdash; defense and mana</li>
+                <li><strong style="color:var(--gold)">Gold</strong> &mdash; crit and gold-find</li>
+                <li><strong style="color:#22C55E">Green</strong> &mdash; sustain</li>
+                <li><strong style="color:#C084FC">Purple</strong> &mdash; magic</li>
+              </ul>
+            </li>
+            <li>Fixed cosmetic frames with corner gems (<strong style="color:var(--text-hi)">Lightbearer</strong>, <strong style="color:var(--text-hi)">Archon</strong>, <strong style="color:var(--text-hi)">Eternal Patron</strong>) so the gems sit perfectly in each corner.</li>
+            <li>Added live frame previews inside the Supporter Pack cards.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES THAT MATTER</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              <strong style="color:var(--text-hi)">Achievements now fire when they should.</strong> A few were quietly broken:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">Pacifist</strong> (clear a floor using only Defend) had no trigger wired. It now works: clear a floor without a single Attack or skill &mdash; kills from thorns, damage-over-time, and reflect count.</li>
+                <li><strong style="color:var(--text-hi)">Ultimate Offering</strong> (sacrifice a Legendary at the Shrine) wasn&rsquo;t being tracked on the live sacrifice path. Fixed, and it now unlocks the instant you sacrifice instead of on a delay.</li>
+                <li>Sacrifice <strong style="color:var(--text-hi)">counting bug</strong> &mdash; each Shrine sacrifice was tallied twice, skewing the Shrine Master leaderboard and sacrifice-count achievements. Corrected.</li>
+              </ul>
+            </li>
+            <li><strong style="color:var(--text-hi)">Consistent look everywhere.</strong> Your chosen portrait and frame now display correctly across <em>all</em> leaderboards, not just the ones you&rsquo;ve recently topped.</li>
+            <li><strong style="color:var(--text-hi)">Smoother camp Armory.</strong> Tapping items to view their details is now fast and smooth, even for items with full stat comparisons.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">BIG LOCALIZATION PASS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>A large translation sweep so the whole game reads naturally in <strong style="color:var(--text-hi)">English, Spanish, French, Japanese, Russian, and Simplified Chinese</strong>.</li>
+            <li>
+              This update closes dozens of gaps, including:
+              <ul class="news-card__sub">
+                <li>The Customization and Supporter Packs screens, plus every cosmetic portrait and frame name.</li>
+                <li>The full Codex &mdash; Bestiary, Items, Lore, and the Compendium&rsquo;s Stats card (every stat description, formula, and cap), cursed-item names, and gameplay tips.</li>
+                <li>Quest board titles, Eternal Climb curse names and descriptions, and new battle status effects (Exposed, Bleeding, and others).</li>
+                <li>Leaderboard subtitles, the Alchemist achievements, and assorted menu strings.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          THIS UPDATE WAS SHAPED HEAVILY BY <strong>PLAYER FEEDBACK</strong>. KEEP THE SUGGESTIONS COMING &mdash; I&rsquo;LL KEEP BUILDING. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.5.4 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.5.4</span>
           <span class="news-card__badge">CONTENT + POLISH</span>
         </div>
         <h2 class="news-card__title">NEW EVENTS, CAMP UPGRADES, AND IMPORTANT FIXES</h2>
@@ -768,7 +885,7 @@ body::after {
       </article>
 
       <!-- v1.5.3 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.3</span>
           <span class="news-card__badge">HOTFIX</span>
@@ -784,7 +901,7 @@ body::after {
       </article>
 
       <!-- v1.5.2 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.2</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -905,7 +1022,7 @@ body::after {
       </article>
 
       <!-- v1.5.1 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal reveal-delay-4">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.1</span>
           <span class="news-card__badge">BOSS UPDATE</span>
@@ -991,7 +1108,7 @@ body::after {
       </article>
 
       <!-- v1.5 -->
-      <article class="news-card reveal reveal-delay-4">
+      <article class="news-card reveal reveal-delay-5">
         <div class="news-card__header">
           <span class="news-card__version">v1.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1074,7 +1191,7 @@ body::after {
       </article>
 
       <!-- v1.4 -->
-      <article class="news-card reveal reveal-delay-5">
+      <article class="news-card reveal reveal-delay-6">
         <div class="news-card__header">
           <span class="news-card__version">v1.4</span>
           <span class="news-card__badge">BALANCE &amp; LOCALIZATION</span>
@@ -1166,7 +1283,7 @@ body::after {
       </article>
 
       <!-- v1.3 -->
-      <article class="news-card reveal reveal-delay-6">
+      <article class="news-card reveal reveal-delay-7">
         <div class="news-card__header">
           <span class="news-card__version">v1.3</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1279,7 +1396,7 @@ body::after {
       </article>
 
       <!-- v1.2 -->
-      <article class="news-card reveal reveal-delay-7">
+      <article class="news-card reveal reveal-delay-8">
         <div class="news-card__header">
           <span class="news-card__version">v1.2</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
@@ -1296,7 +1413,7 @@ body::after {
       </article>
 
       <!-- v1.1 -->
-      <article class="news-card reveal reveal-delay-8">
+      <article class="news-card reveal reveal-delay-9">
         <div class="news-card__header">
           <span class="news-card__version">v1.1</span>
           <span class="news-card__badge">GAME CENTER</span>
