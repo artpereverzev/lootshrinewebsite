@@ -1362,8 +1362,8 @@ body::after {
       "genre": ["Roguelite", "RPG", "Turn-based", "Dark Fantasy"],
       "gamePlatform": ["iOS", "iPhone", "iPad"],
       "applicationCategory": "GameApplication",
-      "operatingSystem": "iOS 16+",
-      "inLanguage": ["en", "ru", "zh-Hans", "fr", "es"],
+      "operatingSystem": "iOS 17+",
+      "inLanguage": ["en", "ru", "zh-Hans", "fr", "es", "ja"],
       "playMode": "SinglePlayer",
       "publisher": {
         "@type": "Organization",
@@ -1437,7 +1437,7 @@ body::after {
           "name": "Are there ads or in-app purchases?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No ads, ever. The only in-app purchase is the one-time unlock for floors 11–100. There are no subscriptions, no consumables, no loot boxes, and no pay-to-win mechanics."
+            "text": "No ads, ever. The main in-app purchase is the one-time unlock for floors 11–100. There are also optional cosmetic-only Supporter Packs — supporter portraits and frames that never affect gameplay, stats, or balance. No subscriptions, no consumables, no loot boxes, and nothing pay-to-win."
           }
         },
         {
@@ -1461,7 +1461,7 @@ body::after {
           "name": "What devices and iOS versions are supported?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "LootShrine runs on iPhone and iPad with iOS 16 or later."
+            "text": "LootShrine runs on iPhone and iPad with iOS 17 or later."
           }
         },
         {
@@ -1477,7 +1477,7 @@ body::after {
           "name": "What languages does LootShrine support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "English, Russian, Simplified Chinese, French, and Spanish. The game uses your device's language automatically and lets you switch in-game."
+            "text": "Six languages: English, Spanish, French, Japanese, Russian, and Simplified Chinese. The game uses your device's language automatically and lets you switch in-game."
           }
         }
       ]
@@ -1569,7 +1569,7 @@ body::after {
       </a>
       <a href="#gameplay" class="btn-hero btn-hero--secondary">WATCH GAMEPLAY</a>
     </div>
-    <p class="hero__trust">FREE DOWNLOAD &middot; iOS 16+ &middot; OFFLINE PLAY &middot; NO ADS</p>
+    <p class="hero__trust">FREE DOWNLOAD &middot; iOS 17+ &middot; OFFLINE PLAY &middot; NO ADS</p>
   </div>
 
   <div class="hero__stats">
@@ -1586,11 +1586,11 @@ body::after {
       <span class="hero__stat-label">CLASSES</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">75+</span>
+      <span class="hero__stat-val">90+</span>
       <span class="hero__stat-label">ACHIEVEMENTS</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">72+</span>
+      <span class="hero__stat-val">73+</span>
       <span class="hero__stat-label">LEADERBOARDS</span>
     </div>
     <div class="hero__stat">
@@ -1599,7 +1599,7 @@ body::after {
     </div>
     <div class="hero__stat">
       <span class="hero__stat-val">NO</span>
-      <span class="hero__stat-label">MICROTRANSACTIONS</span>
+      <span class="hero__stat-label">PAY-TO-WIN</span>
     </div>
   </div>
 
@@ -1752,7 +1752,7 @@ body::after {
             <span class="class-row__badge">DEFAULT</span>
           </div>
           <div class="class-row reveal reveal-delay-2" data-class-idx="1"
-               onclick="openClassModal('rogue_portrait.jpg','intro_rogue.jpg','ROGUE','The Debt Collector','&quot;Everything has a price. I\'m just making sure I\'m not the one who pays.&quot;','UNLOCK: FLOOR 20')">
+               onclick="openClassModal('rogue_portrait.jpg','intro_rogue.jpg','ROGUE','The Debt Collector','&quot;Everything has a price. I\'m just making sure I\'m not the one who pays.&quot;','DEFAULT')">
             <div class="class-row__portrait">
               <img src="rogue_portrait.jpg" alt="Rogue" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F5E1;&#xFE0F;</div>
@@ -1761,7 +1761,7 @@ body::after {
               <p class="class-row__name">ROGUE</p>
               <p class="class-row__tagline">Lethal crits. Vanishes when cornered.</p>
             </div>
-            <span class="class-row__badge">FLOOR 20</span>
+            <span class="class-row__badge">DEFAULT</span>
           </div>
           <div class="class-row reveal reveal-delay-3" data-class-idx="2"
                onclick="openClassModal('mage_portrait.jpg','intro_mage.jpg','MAGE','The Obsessed Scholar','&quot;Knowledge is power. And I intend to know everything.&quot;','UNLOCK: FLOOR 30')">
@@ -1824,7 +1824,7 @@ body::after {
             <span class="class-row__badge">FLOOR 50</span>
           </div>
           <div class="class-row reveal reveal-delay-8" data-class-idx="7"
-               onclick="openClassModal('alchemist_1.jpg','intro_alchemist.jpg','ALCHEMIST','The Essence Hoarder','&quot;Everything dissolves into power. You just need patience &mdash; and a strong enough crucible.&quot;','UNLOCK: FLOOR 55')">
+               onclick="openClassModal('alchemist_1.jpg','intro_alchemist.jpg','ALCHEMIST','The Essence Hoarder','&quot;Everything dissolves into power. You just need patience &mdash; and a strong enough crucible.&quot;','UNLOCK: FLOOR 15')">
             <div class="class-row__portrait">
               <img src="alchemist_1.jpg" alt="Alchemist" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x2697;&#xFE0F;</div>
@@ -1833,7 +1833,7 @@ body::after {
               <p class="class-row__name">ALCHEMIST</p>
               <p class="class-row__tagline">Hoards absorbed buffs. Detonates them as massive AoE.</p>
             </div>
-            <span class="class-row__badge">FLOOR 55</span>
+            <span class="class-row__badge">FLOOR 15</span>
           </div>
         </div>
       </div>
@@ -2004,7 +2004,7 @@ body::after {
         <p class="feature-tile__desc">Merge two same-rarity items to create a higher tier. Climb from Common all the way through Uncommon, Rare, Epic, Legendary, Mythic, and Cosmic. Only Divine, Cursed, and Set items cannot be merged.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-2">
-        <h3 class="feature-tile__title">75+ ACHIEVEMENTS</h3>
+        <h3 class="feature-tile__title">90+ ACHIEVEMENTS</h3>
         <p class="feature-tile__desc">Full Game Center integration with achievements across progression, combat, collection, and hidden milestones.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-3">
@@ -2012,7 +2012,7 @@ body::after {
         <p class="feature-tile__desc">Challenge friends with shareable run codes. Race ghost runs and compare your builds head-to-head. The winner earns bonus souls for meta progression.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-4">
-        <h3 class="feature-tile__title">72+ LEADERBOARDS</h3>
+        <h3 class="feature-tile__title">73+ LEADERBOARDS</h3>
         <p class="feature-tile__desc">Global and per-class Game Center leaderboards. Race for the highest floor, most enemies slain, fastest runs and more.</p>
       </div>
     </div>
@@ -2026,9 +2026,11 @@ body::after {
   <div class="container">
     <span class="tag reveal">// OUR PROMISE</span>
     <h2 class="section-title reveal reveal-delay-1" style="color: var(--gold);">TRY FREE.<br>PAY ONCE.<br>OWN EVERYTHING.</h2>
-    <p class="section-body reveal reveal-delay-2" style="margin: 0 auto; max-width: 540px;">
+    <p class="section-body reveal reveal-delay-2" style="margin: 0 auto; max-width: 560px;">
       Download free. Play the first 10 floors with no payment, no signup, no nags.
       If you love it, one purchase unlocks the full 100-floor climb &mdash; forever.
+      Optional <strong style="color: var(--gold);">cosmetic-only Supporter Packs</strong>
+      let you back a solo developer with portraits and frames &mdash; never gameplay.
       No subscriptions, no loot boxes, no energy timers, no ads, nothing pay-to-win.
     </p>
     <div class="no-iap__pills reveal reveal-delay-3">
@@ -2076,9 +2078,11 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">ARE THERE ADS OR IN-APP PURCHASES?</summary>
         <p class="faq__a">
-          No ads, ever. The only in-app purchase is the one-time unlock for floors 11&ndash;100.
-          There are no subscriptions, no consumables, no loot boxes, and no pay-to-win mechanics.
-          Pay once, own everything.
+          No ads, ever. The main in-app purchase is the one-time unlock for floors 11&ndash;100.
+          There are also <strong>optional cosmetic-only Supporter Packs</strong> &mdash; supporter
+          portraits and frames that never affect gameplay, stats, or balance. The vast majority of
+          portraits and frames are still earned for free through achievements and unlocks.
+          No subscriptions, no loot boxes, and nothing pay-to-win.
         </p>
       </details>
 
@@ -2101,7 +2105,7 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">WHAT DEVICES AND iOS VERSIONS ARE SUPPORTED?</summary>
         <p class="faq__a">
-          LootShrine runs on iPhone and iPad with iOS 16 or later.
+          LootShrine runs on iPhone and iPad with iOS 17 or later.
         </p>
       </details>
 
@@ -2117,7 +2121,7 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">WHAT LANGUAGES DOES LOOTSHRINE SUPPORT?</summary>
         <p class="faq__a">
-          English, Russian, Simplified Chinese, French, and Spanish. The game uses your
+          Six languages: English, Spanish, French, Japanese, Russian, and Simplified Chinese. The game uses your
           device&rsquo;s language automatically and lets you switch in-game.
         </p>
       </details>
