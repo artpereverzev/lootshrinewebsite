@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I Built LootShrine — A Solo iOS Roguelite Devlog | Tim Pereverzev</title>
+  <meta name="description" content="How I built LootShrine — a solo iOS roguelite RPG — using SwiftUI, SpriteKit, CloudKit, Game Center, and ChatGPT-generated pixel art. A first-person devlog on architecture, sprite atlases, animation timing, backward-compatible saves, and shipping to the App Store solo." />
+  <meta name="author" content="Tim Pereverzev" />
+  <meta name="keywords" content="LootShrine, indie dev, solo dev, iOS game, SwiftUI game, SpriteKit, CloudKit, Game Center, pixel art, roguelite, RPG, devlog, mobile game development, Redux Swift" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1A1A2E" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://lootshrine.com/devlog/" />
+
+  <!-- Apple Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=6757924460" />
+  <meta name="apple-mobile-web-app-title" content="LootShrine" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="LootShrine" />
+  <meta property="og:title" content="How I Built LootShrine — A Solo iOS Roguelite Devlog" />
+  <meta property="og:description" content="Tim Pereverzev's devlog on building LootShrine — SwiftUI + SpriteKit, atlas-based pixel art, CloudKit-only backend, and shipping to the App Store as a solo developer." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://lootshrine.com/devlog/" />
+  <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
+  <meta property="og:image:alt" content="LootShrine — pixel art roguelite RPG for iOS" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="article:author" content="Tim Pereverzev" />
+  <meta property="article:published_time" content="2026-07-07" />
+  <meta property="article:section" content="Devlog" />
+  <meta property="article:tag" content="Indie Development" />
+  <meta property="article:tag" content="SwiftUI" />
+  <meta property="article:tag" content="SpriteKit" />
+  <meta property="article:tag" content="iOS" />
+  <meta property="article:tag" content="Roguelite" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How I Built LootShrine — A Solo iOS Roguelite Devlog" />
+  <meta name="twitter:description" content="Tim Pereverzev's devlog on building LootShrine — SwiftUI + SpriteKit, atlas-based pixel art, CloudKit-only backend, and shipping solo." />
+  <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<style>
+:root {
+  --bg-void:     #0A0A0F;
+  --bg-dark:     #0D0D15;
+  --bg-base:     #1A1A2E;
+  --bg-card:     #1E1E28;
+  --bg-raised:   #242438;
+
+  --text-hi:     #F5F5FA;
+  --text-mid:    #A0A0C0;
+  --text-lo:     #505068;
+
+  --gold:        #FFD700;
+  --gold-dim:    #8A6F00;
+  --gold-glow:   rgba(255,215,0,0.15);
+
+  --green:       #22C55E;
+
+  --font-pixel:  "Press Start 2P", monospace;
+  --font-body:   "Syne", sans-serif;
+  --font-mono:   "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --content-w:   760px;
+  --gutter:      clamp(16px, 4vw, 40px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-void);
+  color: var(--text-hi);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* Scanlines */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── NAV ─────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500;
+  background: rgba(10,10,15,0.88);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid rgba(255,215,0,0.1);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(255,215,0,0.5);
+  white-space: nowrap;
+  line-height: 1;
+}
+.nav__logo-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.nav__logo small {
+  display: block;
+  font-size: 7px;
+  color: var(--text-lo);
+  margin-top: 5px;
+  letter-spacing: 0.25em;
+}
+.nav__links {
+  display: flex; align-items: center;
+  gap: clamp(10px, 1.4vw, 22px);
+  list-style: none;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+.nav__links a {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav__links a:hover,
+.nav__links a.active { color: var(--gold); }
+.nav__btn {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--bg-void);
+  padding: 10px 18px;
+  border: 2px solid var(--gold);
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+.nav__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.nav__btn:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 16px rgba(255,215,0,0.2);
+}
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--gold);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav__mobile {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: rgba(10,10,15,0.97);
+  border-bottom: 1px solid rgba(255,215,0,0.12);
+  padding: 24px var(--gutter);
+  flex-direction: column;
+  gap: 20px;
+}
+.nav__mobile.open { display: flex; }
+.nav__mobile a {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-mid);
+  letter-spacing: 0.1em;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.07);
+}
+.nav__mobile a:last-child { border-bottom: none; }
+.nav__mobile a.active { color: var(--gold); }
+
+@media (max-width: 1024px) {
+  .nav__links, .nav__btn { display: none; }
+  .nav__toggle { display: flex; }
+}
+
+/* ── HEADER ─────────────────────────────────────── */
+.container {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.page-header {
+  padding: 120px var(--gutter) 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header__bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,215,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.page-header__vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 10%, var(--bg-void) 100%);
+}
+.page-header__content { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+.page-header__tag {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  display: block;
+  opacity: 0.85;
+}
+.page-header__title {
+  font-family: var(--font-pixel);
+  font-size: clamp(16px, 3vw, 26px);
+  line-height: 1.6;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,215,0,0.35);
+  margin-bottom: 16px;
+}
+.page-header__sub {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
+}
+
+/* ── Byline card ─────────────────────────────────── */
+.byline {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.15);
+  padding: 20px 24px;
+  margin: 48px auto 0;
+  max-width: 720px;
+}
+.byline__avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: var(--bg-raised);
+  border: 2px solid rgba(255,215,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.byline__avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+.byline__avatar-placeholder {
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  color: var(--gold);
+  opacity: 0.7;
+}
+.byline__body {
+  flex: 1;
+  min-width: 0;
+}
+.byline__name {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--text-hi);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.byline__meta {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+}
+.byline__meta a { color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3); }
+
+@media (max-width: 500px) {
+  .byline { flex-direction: column; text-align: center; padding: 20px; }
+}
+
+/* ── Table of contents ───────────────────────────── */
+.toc {
+  background: var(--bg-card);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin: 40px auto 0;
+  max-width: 720px;
+}
+.toc__label {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+}
+.toc__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+.toc__list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+.toc__list a {
+  color: var(--text-mid);
+  transition: color 0.15s;
+  border-bottom: 1px solid transparent;
+}
+.toc__list a:hover {
+  color: var(--gold);
+  border-bottom-color: rgba(255,215,0,0.3);
+}
+.toc__list li::before {
+  content: '▸ ';
+  color: var(--gold);
+  opacity: 0.5;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+}
+@media (min-width: 600px) {
+  .toc__list { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Article body ────────────────────────────────── */
+.article { padding: 48px var(--gutter) 80px; }
+.article__lead {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.4vw, 19px);
+  color: var(--text-hi);
+  line-height: 1.75;
+  margin: 48px 0 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,215,0,0.12);
+}
+.article__section { margin-bottom: 56px; }
+.article__section:last-child { margin-bottom: 0; }
+.article__heading {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: var(--gold);
+  line-height: 1.75;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(255,215,0,0.1);
+  scroll-margin-top: 80px;
+}
+.article__text {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+.article__text:last-child { margin-bottom: 0; }
+.article__text strong { color: var(--text-hi); font-weight: 700; }
+.article__text em { color: var(--text-mid); font-style: italic; }
+.article__text a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(255,215,0,0.3);
+  transition: border-color 0.2s;
+}
+.article__text a:hover { border-bottom-color: var(--gold); }
+.article__text code,
+.article__list code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--gold);
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.18);
+  padding: 1px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.article__list {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin: 0 0 18px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.article__list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+}
+.article__list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  opacity: 0.7;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.article__list li strong { color: var(--text-hi); font-weight: 700; }
+.article__list li code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--gold);
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.18);
+  padding: 1px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* Callout box (pull-quote style) */
+.article__callout {
+  background: var(--bg-card);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-hi);
+  line-height: 1.75;
+  font-style: italic;
+}
+.article__callout strong { color: var(--gold); font-style: normal; }
+
+/* ── Final CTA card ──────────────────────────────── */
+.article__cta {
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.22);
+  padding: 36px 28px;
+  text-align: center;
+  margin-top: 64px;
+}
+.article__cta-label {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-lo);
+  letter-spacing: 0.18em;
+  margin-bottom: 20px;
+}
+.article__cta-title {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.article__cta-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 500px;
+  margin: 0 auto 24px;
+}
+.article__cta-body a { color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3); }
+.article__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border: 2px solid var(--gold);
+  background: var(--gold);
+  color: var(--bg-void);
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  transition: background 0.15s, color 0.15s, box-shadow 0.2s;
+}
+.article__cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.article__cta-btn:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 40px rgba(255,215,0,0.3);
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  padding: 40px var(--gutter) 32px;
+  border-top: 1px solid rgba(255,215,0,0.1);
+  background: var(--bg-void);
+}
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer__logo { font-family: var(--font-pixel); font-size: 11px; color: var(--gold); }
+.footer__copy {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
+  line-height: 2;
+  text-align: center;
+}
+.footer__copy a { color: var(--gold); }
+.footer__links { display: flex; gap: 20px; list-style: none; }
+.footer__links a {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
+  transition: color 0.2s;
+}
+.footer__links a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .footer__inner { flex-direction: column; text-align: center; }
+  .footer__links { justify-content: center; }
+}
+</style>
+
+<!-- ===================================================================
+     STRUCTURED DATA (JSON-LD) — BlogPosting + BreadcrumbList
+=================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://lootshrine.com/devlog/#post",
+      "headline": "How I Built LootShrine — A Solo iOS Roguelite Devlog",
+      "description": "A first-person devlog on building LootShrine — a solo iOS roguelite RPG — with SwiftUI, SpriteKit, CloudKit, Game Center, and ChatGPT-generated pixel art.",
+      "author": {
+        "@type": "Person",
+        "@id": "https://lootshrine.com/about/#tim",
+        "name": "Tim Pereverzev",
+        "url": "https://lootshrine.com/about/"
+      },
+      "publisher": { "@id": "https://lootshrine.com/#org" },
+      "datePublished": "2026-07-07",
+      "dateModified": "2026-07-07",
+      "inLanguage": "en-US",
+      "url": "https://lootshrine.com/devlog/",
+      "image": "https://lootshrine.com/main_menu.jpg",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://lootshrine.com/devlog/"
+      },
+      "about": { "@id": "https://lootshrine.com/#game" },
+      "keywords": "LootShrine, indie iOS game, SwiftUI, SpriteKit, CloudKit, Game Center, roguelite, pixel art, solo developer, Redux Swift"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "LootShrine", "item": "https://lootshrine.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Devlog", "item": "https://lootshrine.com/devlog/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">
+      <img src="../apple-icon-180x180.png" class="nav__logo-icon" alt="LootShrine" width="32" height="32" decoding="async">
+      <span>
+        LOOTSHRINE
+        <small>&#9656; PIXEL RPG</small>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="/#about">OVERVIEW</a></li>
+      <li><a href="/#classes">CLASSES</a></li>
+      <li><a href="/#gameplay">GAMEPLAY</a></li>
+      <li><a href="/#features">FEATURES</a></li>
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/devlog/" class="active">DEVLOG</a></li>
+      <li><a href="/about/">ABOUT</a></li>
+      <li><a href="/press/">PRESS</a></li>
+      <li><a href="/privacy/">PRIVACY</a></li>
+    </ul>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="nav__btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      APP STORE
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile">
+    <a href="/#about">OVERVIEW</a>
+    <a href="/#classes">CLASSES</a>
+    <a href="/#gameplay">GAMEPLAY</a>
+    <a href="/#features">FEATURES</a>
+    <a href="/news/">NEWS</a>
+    <a href="/devlog/" class="active">DEVLOG</a>
+    <a href="/about/">ABOUT</a>
+    <a href="/press/">PRESS</a>
+    <a href="/privacy/">PRIVACY</a>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">&#9656; DOWNLOAD ON APP STORE</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="page-header">
+  <div class="page-header__bg"></div>
+  <div class="page-header__vignette"></div>
+  <div class="page-header__content">
+    <span class="page-header__tag">// DEVLOG &middot; JULY 2026</span>
+    <h1 class="page-header__title">HOW I BUILT LOOTSHRINE&mdash;<br>A SOLO iOS ROGUELITE</h1>
+    <p class="page-header__sub">
+      A first-person devlog on the architecture, the pixel-art pipeline, the animation trickery,
+      the "no backend" bet, and everything I learned shipping to the App Store alone.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="article">
+  <div class="container">
+
+    <!-- Byline -->
+    <div class="byline">
+      <div class="byline__avatar">
+        <img src="../avatar.jpeg" alt="Tim Pereverzev" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="byline__avatar-placeholder" style="display:none">&#x2697;&#xFE0F;</div>
+      </div>
+      <div class="byline__body">
+        <p class="byline__name">TIM PEREVERZEV</p>
+        <p class="byline__meta">SOLO DEVELOPER &middot; PUBLISHED JULY 7, 2026 &middot; <a href="/about/">MORE ABOUT TIM</a></p>
+      </div>
+    </div>
+
+    <!-- TOC -->
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc__label">// CONTENTS</p>
+      <ul class="toc__list">
+        <li><a href="#how-it-started">How it all started</a></li>
+        <li><a href="#stack">Stack &amp; architecture</a></li>
+        <li><a href="#sprites">Sprite rendering &amp; atlases</a></li>
+        <li><a href="#art">Where the art came from</a></li>
+        <li><a href="#spritekit">Why the SpriteKit layer appeared</a></li>
+        <li><a href="#effects">Two-part effects</a></li>
+        <li><a href="#breathing">"Breathing" and flying mobs</a></li>
+        <li><a href="#backend">No backend: CloudKit + Game Center</a></li>
+        <li><a href="#saves">Backward-compatible saves</a></li>
+        <li><a href="#ai">Tools and AI</a></li>
+        <li><a href="#outcome">How it all ended up</a></li>
+      </ul>
+    </nav>
+
+    <!-- Lead -->
+    <p class="article__lead">
+      Hey everyone. I want to share my first real experience building a mobile game for iOS &mdash; a roguelite.
+      It was a pet project that, to my own surprise, grew into an App Store release, so I&rsquo;ll cover both the idea and the technical bits. Hope it&rsquo;s an interesting read.
+    </p>
+
+    <!-- Section: How it started -->
+    <div class="article__section">
+      <h2 class="article__heading" id="how-it-started">HOW IT ALL STARTED</h2>
+      <p class="article__text">
+        I was taking an iOS development course and figured the best way to actually retain the material was to build a few real projects.
+        One of them became <strong>LootShrine</strong> &mdash;
+        <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener">link to the App Store</a>.
+      </p>
+      <p class="article__text">
+        It&rsquo;s a roguelite focused on inventory management and turn-based combat: multiple modes (an endless mode and a "story" run across 100 floors),
+        you climb a tower of 100 floors, collect loot, equip it, or <strong>sacrifice</strong> items at the shrine for permanent power that lasts the run.
+        Every item is a choice: equip it, "absorb" it for a temporary battle buff, or sacrifice it.
+        A shout-out to <strong>Megaloot</strong>, which inspired me &mdash; the idea for a game like this partly came from playing it,
+        since I couldn&rsquo;t find anything comparable on mobile.
+      </p>
+      <p class="article__text">
+        Next &mdash; how it actually works under the hood.
+      </p>
+    </div>
+
+    <!-- Section: Stack -->
+    <div class="article__section">
+      <h2 class="article__heading" id="stack">STACK &amp; ARCHITECTURE</h2>
+      <p class="article__text">
+        Let me note one key constraint I set from the start: <strong>no custom backend</strong> &mdash; only Apple&rsquo;s built-in services,
+        because I didn&rsquo;t want to over-complicate things (and it&rsquo;s expensive right now).
+        This was a conscious decision (for a solo project I don&rsquo;t have the time or the interest to also stand up and maintain a server),
+        and it shaped a lot of the architecture: saves, sync, competitive features &mdash;
+        everything is wrapped into CloudKit and Game Center (more on this below).
+      </p>
+      <p class="article__text">
+        The base stack is pure <strong>SwiftUI</strong> (iOS 17+/macOS 14+), no third-party UI frameworks.
+        Only two external SPM dependencies: <strong>RevenueCat</strong> for in-app purchases and <strong>TelemetryDeck</strong> for analytics.
+        I want to specifically call out TelemetryDeck &mdash; it&rsquo;s a privacy-first solution: only anonymous aggregated statistics,
+        nothing tied to the player&rsquo;s identity (which makes App Store review easier, and makes it easier for players to install a game
+        that isn&rsquo;t asking for extra permissions). Everything else is Apple&rsquo;s native stack.
+      </p>
+      <p class="article__text">
+        Architecturally I went with a <strong>Redux-like approach</strong> rather than MVVM or a ready-made engine
+        (though that variant would definitely have simplified some development), and here&rsquo;s why it turned out to be a good fit for the game
+        (or at least I think so):
+      </p>
+      <ul class="article__list">
+        <li><strong>Single source of truth.</strong> All game state lives in one <code>Codable</code> struct <code>GameState</code>
+          (with sub-states inside: <code>RunState</code>, <code>PlayerState</code>, <code>BattleState</code>, <code>ShopState</code>, <code>MetaState</code>, etc.).
+          For a game this matters: dozens of screens need to see a consistent state.</li>
+        <li><strong>Actions describe events.</strong> There&rsquo;s one <code>enum GameAction</code> that lists everything that can happen in the game:
+          <code>playerAttack</code>, <code>purchaseItem</code>, <code>sacrificeItem</code>, <code>advanceFloor</code>, <code>endRun</code>, and so on.</li>
+        <li><strong>Reducers are pure functions</strong> of the form <code>(State, Action) -&gt; State</code>, with no side effects: no I/O, no network, no hidden random state inside.
+          Turn-based combat maps beautifully onto the model &ldquo;state &rarr; action &rarr; new state&rdquo;.</li>
+        <li><strong>Store built on <code>@Observable</code>.</strong> I use the native <code>Observation</code> from iOS 17 (<code>@Observable</code>)
+          rather than <code>ObservableObject</code>/Combine &mdash; less boilerplate and more precise view invalidation.</li>
+        <li><strong>Views just dispatch.</strong> Views never mutate state directly, only <code>store.dispatch(.action)</code>.</li>
+      </ul>
+      <p class="article__text">
+        Separately about <strong>reducer orchestration</strong>: there&rsquo;s a root <code>gameReducer</code> that receives an action
+        and delegates it to specialized sub-reducers &mdash; <code>BattleReducers</code>, <code>ShopReducers</code>, <code>ShrineReducers</code>,
+        <code>RunReducers</code>, <code>EventReducers</code>, <code>MetaReducers</code>, and others.
+        So the root reducer is a dispatcher, and all the domain logic is broken up across modules.
+        This decomposition helps a lot when combat logic grows: my combat reducer file is already several thousand lines,
+        and without splitting it, it would be hell.
+      </p>
+      <p class="article__text">
+        Content (items, enemies, sets, zones) partially lives in JSON, partially in declarative Swift tables.
+        Side effects (saves, sound, item generation, Game Center, cloud) are moved to a separate services layer.
+      </p>
+    </div>
+
+    <!-- Section: Sprites -->
+    <div class="article__section">
+      <h2 class="article__heading" id="sprites">SPRITE RENDERING: ATLASES ON TOP OF SWIFTUI</h2>
+      <p class="article__text">
+        All the pixel art &mdash; enemies, items, skill icons &mdash; is <strong>rendered in SwiftUI by slicing large texture atlases</strong>.
+        Meaning I don&rsquo;t store thousands of separate PNGs (in some cases I do have individual PNG/JPG assets,
+        but atlases are the main approach); instead, I keep big atlas sheets and cut out the needed frame:
+        <code>Image(uiImage:)</code> with <code>interpolation(.none)</code> (so the pixel art stays crisp),
+        and offset/crop based on the sprite&rsquo;s coordinates in the atlas.
+        That&rsquo;s how monster sprites, item icon grids, and skill-tree icons are all done.
+      </p>
+      <div class="article__callout">
+        Important note: <strong>the sprites themselves are SwiftUI.</strong> I brought in SpriteKit later, and only for one layer &mdash; visual effects.
+      </div>
+    </div>
+
+    <!-- Section: Art -->
+    <div class="article__section">
+      <h2 class="article__heading" id="art">WHERE THE ART CAME FROM: CHATGPT + ASEPRITE</h2>
+      <p class="article__text">
+        I&rsquo;m not an artist or an art director, but let me say a bit about the &ldquo;graphics pipeline&rdquo; too.
+        I <strong>generated sprites, icons, status effects, and art in ChatGPT</strong>, and then finished them by hand:
+        centered them, cleaned them up, normalized them to a common size, and packed them into texture atlases in
+        <strong>Aseprite</strong> (a pixel-art editor).
+        Those big atlases I mentioned above are the result of hand-assembly in Aseprite.
+        Generation gives you starting pieces fast, but without manual polish and careful atlas layout,
+        it just doesn&rsquo;t fly in-game.
+      </p>
+    </div>
+
+    <!-- Section: SpriteKit layer -->
+    <div class="article__section">
+      <h2 class="article__heading" id="spritekit">FINE POINT #1 &mdash; WHY THE SPRITEKIT LAYER APPEARED</h2>
+      <p class="article__text">
+        Originally the game was <strong>fully SwiftUI</strong>, including hit effects, deaths, and so on &mdash;
+        I drew them as SwiftUI overlays on top of combat.
+        And a problem emerged: <strong>animation timing in SwiftUI is unreliable</strong> (or maybe I just don&rsquo;t know how to prepare it),
+        because it&rsquo;s tied to the view lifecycle. An effect could cut off mid-play, play at the wrong time,
+        or not play at all during a redraw.
+      </p>
+      <p class="article__text">
+        I thought about it and decided to move all combat VFX into a <strong>transparent <code>SKScene</code> (SpriteKit)</strong>
+        overlaid on top of SwiftUI combat. SpriteKit gives reliable <code>SKAction.sequence</code> with predictable timing
+        that doesn&rsquo;t depend on SwiftUI redraws.
+        Essentially, one scene replaced a pack of SwiftUI overlays (attack effects + death &ldquo;puffs&rdquo;).
+      </p>
+      <p class="article__text">
+        But a <strong>bridge appeared between the two layers</strong>, and this is exactly the bottleneck I plan to refactor
+        (because even at this level of graphics complexity, it burns quite a lot of resources):
+      </p>
+      <ul class="article__list">
+        <li>SwiftUI is responsible for positioning sprites on screen. I measure their coordinates via SwiftUI
+          (shared coordinate space / <code>GeometryReader</code>) and <strong>pass them into <code>SKScene</code></strong>
+          as positions where the effect should hit.</li>
+        <li>Inside the scene, coordinates are <strong>converted</strong> from the SwiftUI system into the SpriteKit system
+          (SpriteKit has an inverted Y axis &mdash; origin at the bottom).</li>
+        <li>Further, effects with &ldquo;attachment&rdquo; &mdash; like dripping poison, bleed, or DOT &mdash;
+          <strong>follow the sprite frame-by-frame</strong>: the scene, on each frame&rsquo;s <code>update</code>,
+          repositions the emitters onto the current coordinates of the &ldquo;floating&rdquo; sprites.</li>
+      </ul>
+      <p class="article__text">
+        It works &mdash; but essentially I have two render pipelines (SwiftUI + SpriteKit) living side by side
+        and syncing via passing coordinates every frame. That&rsquo;s the point for optimization:
+        I want to move to a more performant, cohesive scheme so I&rsquo;m not shuttling positions back and forth.
+      </p>
+    </div>
+
+    <!-- Section: Two-part effects -->
+    <div class="article__section">
+      <h2 class="article__heading" id="effects">FINE POINT #2 &mdash; TWO-PART EFFECTS</h2>
+      <p class="article__text">
+        Each hit/skill effect is assembled from <strong>two layers</strong>:
+      </p>
+      <ul class="article__list">
+        <li><strong>Frame animation from an atlas</strong> &mdash; a sprite strip played via
+          <code>SKAction.animate(with: textures, timePerFrame:)</code>.
+          Textures are cached in <code>SKTexture</code> ahead of time so they aren&rsquo;t assembled on the fly.</li>
+        <li><strong>SpriteKit particles</strong> &mdash; <code>SKEmitterNode</code> on top (sparks, splashes, DOT drips, etc.).</li>
+      </ul>
+      <p class="article__text">
+        Crits, by the way, are a separately layered animation on top of the base hit,
+        and &ldquo;kill&rdquo; is a sequence: first the attack effect plays, and after it completes &mdash; the death effect.
+        It&rsquo;s all fire-and-forget: nodes remove themselves after playing.
+      </p>
+    </div>
+
+    <!-- Section: Breathing -->
+    <div class="article__section">
+      <h2 class="article__heading" id="breathing">FINE POINT #3 &mdash; &ldquo;BREATHING&rdquo; AND FLYING MOBS</h2>
+      <p class="article__text">
+        Mobs aren&rsquo;t static &mdash; they have an idle animation, a <strong>custom SwiftUI animation/<code>ViewModifier</code></strong>:
+      </p>
+      <ul class="article__list">
+        <li><strong>&ldquo;Breathing&rdquo;</strong> &mdash; a slight <strong>non-uniform scaling</strong> of the sprite (stretch),
+          anchored to the sprite&rsquo;s &ldquo;feet&rdquo; so the mob looks like it&rsquo;s breathing rather than jumping.
+          Originally I did a simple vertical &ldquo;bob&rdquo; (a hop), but it read as cartoonish and interfered with the breathing &mdash;
+          in the end I kept just the breathing, which looks more &ldquo;expensive.&rdquo;</li>
+        <li><strong>Flying enemies</strong> get a <strong>hover offset</strong> on top of the breathing &mdash;
+          the modifier adds organic float along a 2D trajectory.</li>
+      </ul>
+      <p class="article__text">
+        So it&rsquo;s all an honest SwiftUI animation layer on top of atlas sprites, no SpriteKit.
+      </p>
+    </div>
+
+    <!-- Section: Backend -->
+    <div class="article__section">
+      <h2 class="article__heading" id="backend">NO BACKEND: CLOUDKIT + GAME CENTER</h2>
+      <p class="article__text">
+        As I said at the start, the game <strong>has no custom backend</strong> &mdash; everything is built on Apple&rsquo;s native stack.
+      </p>
+      <p class="article__text">
+        <strong>Game Center (GameKit)</strong> handles the competitive side:
+      </p>
+      <ul class="article__list">
+        <li><strong>Leaderboards</strong> &mdash; over 73 of them (global and per-class, on various metrics: floor, bosses, gold, souls, etc.).</li>
+        <li><strong>Achievements</strong> &mdash; 90+.</li>
+        <li>Score submission is fault-tolerant: if there&rsquo;s no network or the submit fails, the result goes into an
+          <strong>offline queue</strong> and gets re-sent later (with persistence), so nothing is lost.</li>
+      </ul>
+      <p class="article__text">
+        <strong>CloudKit</strong> handles everything to do with player data and social features
+        (specifically CloudKit, not Game Center):
+      </p>
+      <ul class="article__list">
+        <li><strong>Cloud saves</strong> and their sync across devices
+          (for family-shared devices: if someone bought the full version of the game, family members&rsquo; devices get the full version too).</li>
+        <li><strong>Ghost Challenges</strong> &mdash; you can challenge a friend with a shared code;
+          the &ldquo;ghost&rdquo; run goes through the public CloudKit DB, and players &ldquo;play&rdquo; against each other.</li>
+        <li><strong>Hall of the Fallen</strong> &mdash; a public pool of recently-dead runs from other players,
+          which you can try to &ldquo;beat&rdquo; without codes and without friends.</li>
+        <li><strong>Player profiles</strong> (cosmetics/avatars for leaderboard display).</li>
+      </ul>
+      <p class="article__text">
+        This approach gave me a free and reliable infrastructure without a server side &mdash;
+        for a solo dev, that&rsquo;s a huge savings of effort.
+      </p>
+    </div>
+
+    <!-- Section: Saves -->
+    <div class="article__section">
+      <h2 class="article__heading" id="saves">BONUS CHALLENGE &mdash; BACKWARD-COMPATIBLE SAVES</h2>
+      <p class="article__text">
+        Since the game is already released and people have saves, and I&rsquo;m still supporting and updating the game &mdash;
+        adding new content &mdash; any change to the state schema can <strong>break someone&rsquo;s progress</strong>.
+        <code>Codable</code> turned out to be treacherous here (I broke my own saves locally a couple of times, though never in production):
+        if you add a new <strong>non-optional</strong> field to a state struct, the old-save decoder crashes with <code>keyNotFound</code>,
+        even if the property has a default.
+      </p>
+      <div class="article__callout">
+        So I gave myself an iron rule: <strong>new fields in state &mdash; only <code style="color:var(--gold);background:none;border:none;padding:0;">Optional?</code> with <code style="color:var(--gold);background:none;border:none;padding:0;">= nil</code></strong>,
+        and read via <code style="color:var(--gold);background:none;border:none;padding:0;">?? &lt;default&gt;</code>.
+      </div>
+    </div>
+
+    <!-- Section: AI -->
+    <div class="article__section">
+      <h2 class="article__heading" id="ai">TOOLS AND AI</h2>
+      <p class="article__text">
+        And of course during development I couldn&rsquo;t manage without agents (sorry) &mdash;
+        I use <strong>Claude</strong> from Anthropic. Plus ChatGPT for art generation (see above).
+        AI is good at accelerating routine work and drafts, but the architecture, atlas assembly, and balance polish
+        all still have to live in my head and be done by hand.
+      </p>
+    </div>
+
+    <!-- Section: Outcome -->
+    <div class="article__section">
+      <h2 class="article__heading" id="outcome">HOW IT ALL ENDED UP</h2>
+      <p class="article__text">
+        What started as a course pet project turned into a real App Store game:
+        solo development, native stack, Redux architecture, a SwiftUI + SpriteKit hybrid,
+        and the entire infrastructure on CloudKit + Game Center with no backend of my own.
+        Along the way I got hands-on with a bunch of things &mdash;
+        from the limits of SwiftUI in animations to schema evolution in production.
+      </p>
+      <p class="article__text">
+        If you have questions, I&rsquo;ll happily answer them.
+        Thanks for reading!
+      </p>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="article__cta">
+      <p class="article__cta-label">// TRY IT ON YOUR PHONE</p>
+      <h3 class="article__cta-title">DOWNLOAD LOOTSHRINE FREE</h3>
+      <p class="article__cta-body">
+        First 10 floors free on the App Store. If you&rsquo;d like to see the systems this article is about
+        in action, that&rsquo;s the best place to start. Questions? Email me at
+        <a href="mailto:support@lootshrine.com">support@lootshrine.com</a> &mdash; goes straight to me.
+      </p>
+      <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="article__cta-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        APP STORE
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__logo">LOOTSHRINE</div>
+    <div class="footer__copy">
+      &copy; 2026 LOOTSHRINE. ALL RIGHTS RESERVED.<br>
+      MADE BY <a href="/about/">TIM PEREVERZEV</a>.
+    </div>
+    <ul class="footer__links">
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/devlog/">DEVLOG</a></li>
+      <li><a href="/about/">ABOUT</a></li>
+      <li><a href="/press/">PRESS</a></li>
+      <li><a href="/privacy/">PRIVACY</a></li>
+      <li><a href="mailto:support@lootshrine.com">CONTACT</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Mobile nav */
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMobile');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { menu.classList.remove('open'); });
+  });
+})();
+
+/* Nav border on scroll */
+(function() {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,215,0,0.18)' : 'rgba(255,215,0,0.10)';
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
