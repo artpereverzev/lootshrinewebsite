@@ -208,6 +208,7 @@ body::after {
 .reveal-delay-7 { transition-delay: 0.56s; }
 .reveal-delay-8 { transition-delay: 0.64s; }
 .reveal-delay-9 { transition-delay: 0.72s; }
+.reveal-delay-10 { transition-delay: 0.80s; }
 
 /* ===================================================================
    NAV
@@ -1585,7 +1586,7 @@ body::after {
       <span class="hero__stat-label">ENEMIES</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">9</span>
+      <span class="hero__stat-val">10</span>
       <span class="hero__stat-label">CLASSES</span>
     </div>
     <div class="hero__stat">
@@ -1646,7 +1647,7 @@ body::after {
           <div class="about__visual-canvas">
             <div class="about__visual-track" id="aboutBgTrack">
               <div class="about__visual-slide active"><img src="scr_gameplay.jpg" alt="LootShrine turn-based combat — pixel art hero facing dark fantasy enemies" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="scr_classes.jpg" alt="LootShrine class selection screen — Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_classes.jpg" alt="LootShrine class selection screen — Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster, Monk" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="scr_skills.jpg" alt="LootShrine skill tree — class-specific abilities and synergies" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="scr_item1.jpg" alt="LootShrine inventory and item rarities — equip, absorb, or sacrifice loot" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="scr_item2.jpg" alt="LootShrine equipment screen — pixel art item icons and stat comparison" onerror="this.parentElement.style.display='none'"></div>
@@ -1740,7 +1741,7 @@ body::after {
       <div class="classes__left">
         <span class="tag reveal">// CHARACTER CLASSES</span>
         <h2 class="section-title reveal reveal-delay-1">CHOOSE YOUR<br>CHAMPION</h2>
-        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">Nine distinct playstyles. Unlock new classes by surviving further floors.</p>
+        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">Ten distinct playstyles. Unlock new classes by surviving further floors.</p>
         <div class="classes__list">
           <div class="class-row active reveal reveal-delay-1" data-class-idx="0"
                onclick="openClassModal('knight_portrait.jpg','intro_knight.jpg','KNIGHT','The Last of the Iron Order','&quot;The Order may be gone, but its oath remains. I will not fall.&quot;','DEFAULT')">
@@ -1850,6 +1851,18 @@ body::after {
             </div>
             <span class="class-row__badge">FLOOR 35</span>
           </div>
+          <div class="class-row reveal reveal-delay-10" data-class-idx="9"
+               onclick="openClassModal('monk_portrait.jpg','intro_monk.jpg','MONK','Master Jin, The Unbroken Chain','&quot;The temple taught stillness. I chose motion. The chain answers to neither.&quot;','DEFAULT')">
+            <div class="class-row__portrait">
+              <img src="monk_portrait.jpg" alt="Monk" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F94B;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">MONK</p>
+              <p class="class-row__tagline">Every fist builds Combo. Cash it in for a devastating flurry.</p>
+            </div>
+            <span class="class-row__badge">DEFAULT</span>
+          </div>
         </div>
       </div>
       <div class="reveal reveal-delay-2" style="height:100%">
@@ -1863,6 +1876,7 @@ body::after {
           <div class="classes__visual-slide"><img src="intro_berserker.jpg" alt="Berserker" onerror="this.src='berserker_portrait.jpg'"></div>
           <div class="classes__visual-slide"><img src="intro_alchemist.jpg" alt="Alchemist" onerror="this.src='alchemist_1.jpg'"></div>
           <div class="classes__visual-slide"><img src="intro_beastmaster.jpg" alt="Beastmaster" onerror="this.src='beastmaster_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_monk.jpg" alt="Monk" onerror="this.src='monk_portrait.jpg'"></div>
           <div class="classes__visual-fade"></div>
           <div class="classes__visual-label active" data-label-idx="0"><p class="classes__visual-label__name">KNIGHT</p><p class="classes__visual-label__title">THE LAST OF THE IRON ORDER</p></div>
           <div class="classes__visual-label" data-label-idx="1"><p class="classes__visual-label__name">ROGUE</p><p class="classes__visual-label__title">THE DEBT COLLECTOR</p></div>
@@ -1873,6 +1887,7 @@ body::after {
           <div class="classes__visual-label" data-label-idx="6"><p class="classes__visual-label__name">BERSERKER</p><p class="classes__visual-label__title">THE RAGE UNBOUND</p></div>
           <div class="classes__visual-label" data-label-idx="7"><p class="classes__visual-label__name">ALCHEMIST</p><p class="classes__visual-label__title">THE ESSENCE HOARDER</p></div>
           <div class="classes__visual-label" data-label-idx="8"><p class="classes__visual-label__name">BEASTMASTER</p><p class="classes__visual-label__title">KAEL, THE PACK LEADER</p></div>
+          <div class="classes__visual-label" data-label-idx="9"><p class="classes__visual-label__name">MONK</p><p class="classes__visual-label__title">MASTER JIN, THE UNBROKEN CHAIN</p></div>
         </div>
       </div>
     </div>
