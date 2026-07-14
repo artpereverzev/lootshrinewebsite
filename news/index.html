@@ -194,6 +194,7 @@ body::after {
 .reveal-delay-9 { transition-delay: 0.72s; }
 .reveal-delay-10 { transition-delay: 0.80s; }
 .reveal-delay-11 { transition-delay: 0.88s; }
+.reveal-delay-12 { transition-delay: 0.96s; }
 
 /* ===================================================================
    NAV (identical to index.html)
@@ -708,11 +709,87 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.5.7 -->
+      <!-- v1.5.8 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.5.7</span>
+          <span class="news-card__version">v1.5.8</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">POLISH &amp; FIX</span>
+        </div>
+        <h2 class="news-card__title">SHOW OFF YOUR COLORS &mdash; NAMEPLATES NOW VISIBLE TO EVERYONE &amp; LEADERBOARDS FIT SMALL SCREENS</h2>
+        <p class="news-card__lead">
+          Hey, it&rsquo;s Tim. Small, focused update this time &mdash; but one of these fixes is something
+          a lot of you asked about directly. <strong>Supporter nameplates finally do what they were always
+          meant to do</strong>, and the leaderboards behave themselves on smaller screens.
+          &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">YOUR NAMEPLATE IS NOW VISIBLE TO EVERYONE</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              When nameplates arrived, they had a quiet flaw: the animated background behind your name &mdash;
+              the gradient-and-particle plate that supporters unlock &mdash; only showed up on your own device.
+              You&rsquo;d pick a gorgeous plate, admire it on your own row, and nobody else in the tower could
+              actually see it. Which kind of defeats the point of showing off.
+            </li>
+            <li>
+              That&rsquo;s fixed. Your nameplate now travels with you and displays to other players:
+              <ul class="news-card__sub">
+                <li>On the <strong style="color:var(--text-hi)">global and friends leaderboards</strong>, behind your row.</li>
+                <li>In the <strong style="color:var(--text-hi)">Hall of the Fallen</strong> &mdash; on your fallen-run cards, so your final stands look the part.</li>
+                <li>On <strong style="color:var(--text-hi)">friend-challenge cards</strong>, when you send a run someone&rsquo;s way.</li>
+              </ul>
+            </li>
+            <li>Your portrait and frame already crossed over to other players; now your nameplate rides along with them, so your <strong style="color:var(--text-hi)">whole look is consistent everywhere</strong> the tower sees you &mdash; not just in your own reflection.</li>
+            <li>
+              A couple of practical notes, since a few of you will ask:
+              <ul class="news-card__sub">
+                <li>Nameplates are a <strong style="color:var(--gold)">supporter cosmetic &mdash; purely visual, no gameplay power</strong>. If you don&rsquo;t have one set, nothing changes for you.</li>
+                <li>Like your avatar and frame, your nameplate propagates to other players the next time you post a score (finish a run). Play a run after updating and the rest of the tower will start seeing it.</li>
+                <li>Everyone sees the correct plates once they&rsquo;re on this version &mdash; and portraits and frames are completely unaffected by the change.</li>
+              </ul>
+            </li>
+            <li>
+              <em>For the curious:</em> the reason this was broken is that the nameplate was being matched to
+              you by an identifier that Game Center deliberately scrambles between players for privacy, so
+              the lookup only ever found your own plate. The fix routes the nameplate through the same channel
+              your avatar and frame already use &mdash; one that every device can read &mdash; so it Just Works now.
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LEADERBOARDS FIT YOUR SCREEN AGAIN</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>With the roster now at ten classes, the class-filter row across the top of the leaderboards had quietly outgrown its space &mdash; on smaller iPhones the <strong style="color:var(--text-hi)">All + class buttons ran off the right edge</strong>, dragging the rest of the board with them and clipping names and scores.</li>
+            <li>The filter row is now <strong style="color:var(--text-hi)">horizontally scrollable</strong>: it takes exactly the width it&rsquo;s given, so nothing spills off-screen. Swipe the row to reach any class, and the leaderboard underneath stays properly aligned.</li>
+            <li>On larger screens it looks the same as before &mdash; this only kicks in when space is tight.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LOCALIZATION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Both changes ship fully translated in all <strong style="color:var(--text-hi)">10 supported languages</strong>: English, German, Spanish, French, Italian, Japanese, Korean, Portuguese (Brazil), Russian, and Simplified Chinese.</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          THIS ONE CAME STRAIGHT FROM YOUR REPORTS. CLIMB WELL, AND WEAR YOUR COLORS PROUDLY. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.5.7 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.5.7</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
         </div>
         <h2 class="news-card__title">ENTER THE MONK &mdash; TENTH CLASS, LIVE COSMETIC PREVIEWS &amp; BIGGER RIVALRIES</h2>
@@ -831,7 +908,7 @@ body::after {
       </article>
 
       <!-- v1.5.6 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.6</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -936,7 +1013,7 @@ body::after {
       </article>
 
       <!-- v1.5.5 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1052,7 +1129,7 @@ body::after {
       </article>
 
       <!-- v1.5.4 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal reveal-delay-4">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.4</span>
           <span class="news-card__badge">CONTENT + POLISH</span>
@@ -1115,7 +1192,7 @@ body::after {
       </article>
 
       <!-- v1.5.3 -->
-      <article class="news-card reveal reveal-delay-4">
+      <article class="news-card reveal reveal-delay-5">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.3</span>
           <span class="news-card__badge">HOTFIX</span>
@@ -1131,7 +1208,7 @@ body::after {
       </article>
 
       <!-- v1.5.2 -->
-      <article class="news-card reveal reveal-delay-5">
+      <article class="news-card reveal reveal-delay-6">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.2</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1252,7 +1329,7 @@ body::after {
       </article>
 
       <!-- v1.5.1 -->
-      <article class="news-card reveal reveal-delay-6">
+      <article class="news-card reveal reveal-delay-7">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.1</span>
           <span class="news-card__badge">BOSS UPDATE</span>
@@ -1338,7 +1415,7 @@ body::after {
       </article>
 
       <!-- v1.5 -->
-      <article class="news-card reveal reveal-delay-7">
+      <article class="news-card reveal reveal-delay-8">
         <div class="news-card__header">
           <span class="news-card__version">v1.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1421,7 +1498,7 @@ body::after {
       </article>
 
       <!-- v1.4 -->
-      <article class="news-card reveal reveal-delay-8">
+      <article class="news-card reveal reveal-delay-9">
         <div class="news-card__header">
           <span class="news-card__version">v1.4</span>
           <span class="news-card__badge">BALANCE &amp; LOCALIZATION</span>
@@ -1513,7 +1590,7 @@ body::after {
       </article>
 
       <!-- v1.3 -->
-      <article class="news-card reveal reveal-delay-9">
+      <article class="news-card reveal reveal-delay-10">
         <div class="news-card__header">
           <span class="news-card__version">v1.3</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1626,7 +1703,7 @@ body::after {
       </article>
 
       <!-- v1.2 -->
-      <article class="news-card reveal reveal-delay-10">
+      <article class="news-card reveal reveal-delay-11">
         <div class="news-card__header">
           <span class="news-card__version">v1.2</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
@@ -1643,7 +1720,7 @@ body::after {
       </article>
 
       <!-- v1.1 -->
-      <article class="news-card reveal reveal-delay-11">
+      <article class="news-card reveal reveal-delay-12">
         <div class="news-card__header">
           <span class="news-card__version">v1.1</span>
           <span class="news-card__badge">GAME CENTER</span>
