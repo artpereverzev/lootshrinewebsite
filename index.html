@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LootShrine — Free-to-try pixel art roguelite RPG for iOS</title>
-  <meta name="description" content="LootShrine is a free-to-try pixel art roguelite RPG for iOS. Play the first 10 floors free; unlock the full 100-floor climb with a one-time purchase. Collect legendary loot, build powerful item sets, and sacrifice to the shrine for permanent power. No ads. No subscriptions." />
+  <meta name="description" content="LootShrine is a free-to-try pixel art roguelite RPG for iOS. Play the first 10 floors free; unlock the full 120-floor climb with a one-time purchase. Collect legendary loot, build powerful item sets, and sacrifice to the shrine for permanent power. No ads. No subscriptions." />
   <meta name="keywords" content="roguelite, RPG, pixel art, iOS game, iPhone game, roguelike, turn-based, dark fantasy, mobile RPG, indie game, no ads, no subscriptions" />
   <meta name="author" content="LootShrine" />
   <meta name="robots" content="index, follow" />
@@ -209,6 +209,10 @@ body::after {
 .reveal-delay-8 { transition-delay: 0.64s; }
 .reveal-delay-9 { transition-delay: 0.72s; }
 .reveal-delay-10 { transition-delay: 0.80s; }
+.reveal-delay-11 { transition-delay: 0.88s; }
+.reveal-delay-12 { transition-delay: 0.96s; }
+.reveal-delay-13 { transition-delay: 1.04s; }
+.reveal-delay-14 { transition-delay: 1.12s; }
 
 /* ===================================================================
    NAV
@@ -1358,14 +1362,14 @@ body::after {
       "@id": "https://lootshrine.com/#game",
       "name": "LootShrine",
       "alternateName": "LootShrine: Slay. Loot. Sacrifice.",
-      "description": "A free-to-try pixel art roguelite RPG for iOS. Ascend through 100 floors of dark fantasy. Equip, absorb, or sacrifice loot at the shrine for permanent power.",
+      "description": "A free-to-try pixel art roguelite RPG for iOS. Ascend through 120 floors of dark fantasy. Equip, absorb, or sacrifice loot at the shrine for permanent power.",
       "url": "https://lootshrine.com/",
       "image": "https://lootshrine.com/main_menu.jpg",
       "genre": ["Roguelite", "RPG", "Turn-based", "Dark Fantasy"],
       "gamePlatform": ["iOS", "iPhone", "iPad"],
       "applicationCategory": "GameApplication",
       "operatingSystem": "iOS 17+",
-      "inLanguage": ["en", "fr", "de", "it", "ja", "ko", "pt", "ru", "zh-Hans", "es"],
+      "inLanguage": ["en", "fr", "de", "it", "ja", "ko", "pt-BR", "ru", "zh-Hans", "es"],
       "playMode": "SinglePlayer",
       "publisher": {
         "@type": "Organization",
@@ -1423,7 +1427,7 @@ body::after {
           "name": "Is LootShrine free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Download from the App Store and play the first 10 floors free, with no signup, no ads, and no time limit. If you defeat the floor 10 boss and want to keep climbing, the full 100-floor game unlocks with a single one-time purchase."
+            "text": "Yes. Download from the App Store and play the first 10 floors free, with no signup, no ads, and no time limit. If you defeat the floor 10 boss and want to keep climbing, the full 120-floor game unlocks with a single one-time purchase."
           }
         },
         {
@@ -1439,7 +1443,7 @@ body::after {
           "name": "Are there ads or in-app purchases?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No ads, ever. The main in-app purchase is the one-time unlock for floors 11–100. There are also optional cosmetic-only Supporter Packs — supporter portraits and frames that never affect gameplay, stats, or balance. No subscriptions, no consumables, no loot boxes, and nothing pay-to-win."
+            "text": "No ads, ever. The main in-app purchase is the one-time unlock for floors 11–120. There are also optional cosmetic-only Supporter Packs — supporter portraits and frames that never affect gameplay, stats, or balance. No subscriptions, no consumables, no loot boxes, and nothing pay-to-win."
           }
         },
         {
@@ -1479,7 +1483,7 @@ body::after {
           "name": "What languages does LootShrine support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ten languages: English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Simplified Chinese, and Spanish. The game uses your device's language automatically and lets you switch in-game."
+            "text": "Ten languages: English, French, German, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Simplified Chinese, and Spanish. The game uses your device's language automatically and lets you switch in-game."
           }
         }
       ]
@@ -1560,7 +1564,7 @@ body::after {
     <h1 class="hero__title">LOOT<br>SHRINE</h1>
     <p class="hero__title-sub">SLAY. LOOT. SACRIFICE.</p>
     <p class="hero__tagline">
-      Ascend through 100 floors of dark fantasy. Every item is a decision &mdash;
+      Ascend through 120 floors of dark fantasy. Every item is a decision &mdash;
       equip it, absorb it, or sacrifice it at the shrine for permanent power.
       <strong style="color: var(--gold);">Free to download. Play the first 10 floors free, then unlock the full climb with a one-time purchase.</strong>
     </p>
@@ -1578,15 +1582,15 @@ body::after {
 
   <div class="hero__stats">
     <div class="hero__stat">
-      <span class="hero__stat-val">100</span>
+      <span class="hero__stat-val">120</span>
       <span class="hero__stat-label">FLOORS</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">160+</span>
+      <span class="hero__stat-val">200+</span>
       <span class="hero__stat-label">ENEMIES</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">10</span>
+      <span class="hero__stat-val">14</span>
       <span class="hero__stat-label">CLASSES</span>
     </div>
     <div class="hero__stat">
@@ -1631,7 +1635,7 @@ body::after {
         <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
           One-handed portrait play. Turn-based pacing you control.
           Deep item synergies through set bonuses. Every floor a new puzzle to solve.
-          Guardian bosses every 10 floors &mdash; with The Origin awaiting at Floor 100.
+          Guardian bosses every 10 floors &mdash; The Origin at Floor 100, and past that, The Unwritten awaits at Floor 120.
         </p>
         <div class="about__badges reveal reveal-delay-4">
           <span class="badge">TURN-BASED</span>
@@ -1647,7 +1651,7 @@ body::after {
           <div class="about__visual-canvas">
             <div class="about__visual-track" id="aboutBgTrack">
               <div class="about__visual-slide active"><img src="scr_gameplay.jpg" alt="LootShrine turn-based combat — pixel art hero facing dark fantasy enemies" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="scr_classes.jpg" alt="LootShrine class selection screen — Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster, Monk" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="scr_classes.jpg" alt="LootShrine class selection screen — Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster, Monk, Ranger, Chronomancer, Ronin, Stormcaller" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="scr_skills.jpg" alt="LootShrine skill tree — class-specific abilities and synergies" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="scr_item1.jpg" alt="LootShrine inventory and item rarities — equip, absorb, or sacrifice loot" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="scr_item2.jpg" alt="LootShrine equipment screen — pixel art item icons and stat comparison" onerror="this.parentElement.style.display='none'"></div>
@@ -1741,7 +1745,7 @@ body::after {
       <div class="classes__left">
         <span class="tag reveal">// CHARACTER CLASSES</span>
         <h2 class="section-title reveal reveal-delay-1">CHOOSE YOUR<br>CHAMPION</h2>
-        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">Ten distinct playstyles. Unlock new classes by surviving further floors.</p>
+        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">Fourteen distinct playstyles. Unlock new classes by surviving further floors.</p>
         <div class="classes__list">
           <div class="class-row active reveal reveal-delay-1" data-class-idx="0"
                onclick="openClassModal('knight_portrait.jpg','intro_knight.jpg','KNIGHT','The Last of the Iron Order','&quot;The Order may be gone, but its oath remains. I will not fall.&quot;','DEFAULT')">
@@ -1863,6 +1867,54 @@ body::after {
             </div>
             <span class="class-row__badge">DEFAULT</span>
           </div>
+          <div class="class-row reveal reveal-delay-11" data-class-idx="10"
+               onclick="openClassModal('ranger_portrait.jpg','intro_ranger.jpg','RANGER','Sylva, The Huntress','&quot;Every target tells you where it will die. You just have to listen.&quot;','UNLOCK: FLOOR 60')">
+            <div class="class-row__portrait">
+              <img src="ranger_portrait.jpg" alt="Ranger" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F3F9;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">RANGER</p>
+              <p class="class-row__tagline">Marks the quarry. Deadeye sharpens every shot.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 60</span>
+          </div>
+          <div class="class-row reveal reveal-delay-12" data-class-idx="11"
+               onclick="openClassModal('chronomancer_portrait.jpg','intro_chronomancer.jpg','CHRONOMANCER','Vael, The Timekeeper','&quot;Time is not a river. It is a page. And every page can be rewritten.&quot;','UNLOCK: FLOOR 70')">
+            <div class="class-row__portrait">
+              <img src="chronomancer_portrait.jpg" alt="Chronomancer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x23F3;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">CHRONOMANCER</p>
+              <p class="class-row__tagline">Bends turn order. Rewinds the moments you regret.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 70</span>
+          </div>
+          <div class="class-row reveal reveal-delay-13" data-class-idx="12"
+               onclick="openClassModal('ronin_portrait.jpg','intro_ronin.jpg','RONIN','Kenzo, The Wandering Blade','&quot;A hundred strikes waste the blade. I need only one.&quot;','UNLOCK: FLOOR 80')">
+            <div class="class-row__portrait">
+              <img src="ronin_portrait.jpg" alt="Ronin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F977;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">RONIN</p>
+              <p class="class-row__tagline">Weathers the blow. Answers with one drawing cut.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 80</span>
+          </div>
+          <div class="class-row reveal reveal-delay-14" data-class-idx="13"
+               onclick="openClassModal('stormcaller_portrait.jpg','intro_stormcaller.jpg','STORMCALLER','Zari, The Tempest','&quot;I do not fight a man. I fight the room he stands in.&quot;','UNLOCK: FLOOR 90')">
+            <div class="class-row__portrait">
+              <img src="stormcaller_portrait.jpg" alt="Stormcaller" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x26A1;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">STORMCALLER</p>
+              <p class="class-row__tagline">Wields storms. Every strike fuels the next.</p>
+            </div>
+            <span class="class-row__badge">FLOOR 90</span>
+          </div>
         </div>
       </div>
       <div class="reveal reveal-delay-2" style="height:100%">
@@ -1877,6 +1929,10 @@ body::after {
           <div class="classes__visual-slide"><img src="intro_alchemist.jpg" alt="Alchemist" onerror="this.src='alchemist_1.jpg'"></div>
           <div class="classes__visual-slide"><img src="intro_beastmaster.jpg" alt="Beastmaster" onerror="this.src='beastmaster_portrait.jpg'"></div>
           <div class="classes__visual-slide"><img src="intro_monk.jpg" alt="Monk" onerror="this.src='monk_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_ranger.jpg" alt="Ranger" onerror="this.src='ranger_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_chronomancer.jpg" alt="Chronomancer" onerror="this.src='chronomancer_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_ronin.jpg" alt="Ronin" onerror="this.src='ronin_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="intro_stormcaller.jpg" alt="Stormcaller" onerror="this.src='stormcaller_portrait.jpg'"></div>
           <div class="classes__visual-fade"></div>
           <div class="classes__visual-label active" data-label-idx="0"><p class="classes__visual-label__name">KNIGHT</p><p class="classes__visual-label__title">THE LAST OF THE IRON ORDER</p></div>
           <div class="classes__visual-label" data-label-idx="1"><p class="classes__visual-label__name">ROGUE</p><p class="classes__visual-label__title">THE DEBT COLLECTOR</p></div>
@@ -1888,9 +1944,167 @@ body::after {
           <div class="classes__visual-label" data-label-idx="7"><p class="classes__visual-label__name">ALCHEMIST</p><p class="classes__visual-label__title">THE ESSENCE HOARDER</p></div>
           <div class="classes__visual-label" data-label-idx="8"><p class="classes__visual-label__name">BEASTMASTER</p><p class="classes__visual-label__title">KAEL, THE PACK LEADER</p></div>
           <div class="classes__visual-label" data-label-idx="9"><p class="classes__visual-label__name">MONK</p><p class="classes__visual-label__title">MASTER JIN, THE UNBROKEN CHAIN</p></div>
+          <div class="classes__visual-label" data-label-idx="10"><p class="classes__visual-label__name">RANGER</p><p class="classes__visual-label__title">SYLVA, THE HUNTRESS</p></div>
+          <div class="classes__visual-label" data-label-idx="11"><p class="classes__visual-label__name">CHRONOMANCER</p><p class="classes__visual-label__title">VAEL, THE TIMEKEEPER</p></div>
+          <div class="classes__visual-label" data-label-idx="12"><p class="classes__visual-label__name">RONIN</p><p class="classes__visual-label__title">KENZO, THE WANDERING BLADE</p></div>
+          <div class="classes__visual-label" data-label-idx="13"><p class="classes__visual-label__name">STORMCALLER</p><p class="classes__visual-label__title">ZARI, THE TEMPEST</p></div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BEYOND THE ORIGIN -->
+<section class="eternal section" id="beyond">
+  <div class="container">
+
+    <div class="eternal__hero">
+      <span class="tag reveal">// FLOORS 101&ndash;120</span>
+      <h2 class="section-title reveal reveal-delay-1">BEYOND THE ORIGIN</h2>
+      <p class="eternal__lead reveal reveal-delay-2">
+        The Primordial holds the Origin at Floor 100. <em>Something older is waiting past it.</em>
+        Twenty new floors across two acts &mdash; free, included in the base game.
+      </p>
+    </div>
+
+    <div class="eternal__grid">
+      <div class="eternal__image reveal reveal-delay-2">
+        <img src="beyond_the_origin.jpg" alt="LootShrine Beyond the Origin — floors 101 to 120, puzzle-based encounters"
+             onerror="this.parentElement.style.display='none'">
+        <div class="eternal__image-vignette"></div>
+        <div class="eternal__image-tag">FLOORS 101&ndash;120</div>
+      </div>
+
+      <div class="eternal__content reveal reveal-delay-3">
+        <div class="eternal__chunk">
+          <h3>TWENTY MORE FLOORS, TWO ACTS</h3>
+          <p>
+            The climb continues straight through the Origin &mdash; no menu, no reset.
+            New music for both acts, story beats on the way up, and an <strong>ending sequence</strong>
+            for anyone who reaches the top.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>EVERY FIGHT IS A PUZZLE</h3>
+          <p>
+            Beyond isn&rsquo;t bigger numbers on the same enemies. Every fight has a rule you have to
+            read before you can win: enemies that <strong>reflect everything except skills</strong>,
+            <strong>linked wards</strong> that fall together or not at all, <strong>phase-shifting
+            skins</strong> that refuse damage until the moment turns, and <strong>living glyphs</strong>
+            that rewrite the rules while they breathe.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>TWO NEW GUARDIANS</h3>
+          <p>
+            <strong>THE THRESHOLD WARDEN</strong> at 110, and at 120 &mdash;
+            <strong style="color:var(--gold)">THE UNWRITTEN</strong>. Both come with escorts, so the
+            final stretch is a fight against a <em>formation</em>, not a single healthbar.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>~30 NEW ENEMIES, FULL BESTIARY</h3>
+          <p>
+            Named enemies with Codex entries, unique behaviors, and pixel-art VFX. Every fight up
+            there earns its place in the record.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="eternal__pills reveal reveal-delay-4">
+      <div class="pill">20 NEW FLOORS</div>
+      <div class="pill">2 NEW GUARDIANS</div>
+      <div class="pill">~30 NEW ENEMIES</div>
+      <div class="pill">PUZZLE ENCOUNTERS</div>
+      <div class="pill">NEW MUSIC &amp; STORY</div>
+      <div class="pill">FREE (BASE GAME)</div>
+    </div>
+
+    <p class="eternal__outro reveal reveal-delay-5">
+      THE TOWER NEVER ENDED AT THE ORIGIN &mdash; GO FIND OUT WHAT&rsquo;S BEEN WRITING IT.
+    </p>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THE AUTHOR'S WORD -->
+<section class="eternal section" id="words">
+  <div class="container">
+
+    <div class="eternal__hero">
+      <span class="tag reveal">// THE META LAYER</span>
+      <h2 class="section-title reveal reveal-delay-1">THE AUTHOR&rsquo;S WORD</h2>
+      <p class="eternal__lead reveal reveal-delay-2">
+        A permanent meta system that carries across every future run. Compose your <em>Word</em>
+        from Fragments you collect past the Origin &mdash; <strong>sockets, Ink, and real build decisions</strong>.
+      </p>
+    </div>
+
+    <div class="eternal__grid">
+      <div class="eternal__image reveal reveal-delay-2">
+        <img src="authors_word.jpg" alt="LootShrine The Author's Word — 37 Fragments, three kinds, composed into a permanent meta"
+             onerror="this.parentElement.style.display='none'">
+        <div class="eternal__image-vignette"></div>
+        <div class="eternal__image-tag">37 FRAGMENTS</div>
+      </div>
+
+      <div class="eternal__content reveal reveal-delay-3">
+        <div class="eternal__chunk">
+          <h3>GLYPHS &mdash; RAW STATLINES</h3>
+          <p>
+            Attack, Max HP, crit, defense, gold find, lifesteal, thorns. Straight, honest stat gains
+            that stack the way you&rsquo;d expect.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>VERBS &mdash; TRIGGERED RULES</h3>
+          <p>
+            Rules that fire mid-combat. Silence the enemy on turn one, delete a target outright,
+            cheat death once per run, auto-win a whole floor. Every Verb rewrites how a battle plays.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>CLAUSES &mdash; GRAFTED ABILITIES</h3>
+          <p>
+            Abilities lifted from other heroes and slotted into <em>yours</em>. Run the Monk&rsquo;s
+            combo on a Knight. Summon a companion as a Mage. Class boundaries stop being walls.
+          </p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>SOCKETS COST INK</h3>
+          <p>
+            Sockets are limited and every Fragment costs Ink, so your Word is a real build decision.
+            Merge duplicates to raise a Fragment&rsquo;s tier, or salvage them for Souls. More sockets,
+            deeper Ink, and rarer drops are earned in the Soul Forge&rsquo;s new <strong>Words</strong> tab.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="eternal__pills reveal reveal-delay-4">
+      <div class="pill">37 FRAGMENTS</div>
+      <div class="pill">GLYPHS &middot; VERBS &middot; CLAUSES</div>
+      <div class="pill">PERMANENT META</div>
+      <div class="pill">MERGE OR SALVAGE</div>
+      <div class="pill">SOUL FORGE UPGRADES</div>
+      <div class="pill">FREE (BASE GAME)</div>
+    </div>
+
+    <p class="eternal__outro reveal reveal-delay-5">
+      SOMETHING WROTE THE TOWER. NOW YOU CAN WRITE YOUR OWN.
+    </p>
+
   </div>
 </section>
 
@@ -2060,7 +2274,7 @@ body::after {
     <h2 class="section-title reveal reveal-delay-1" style="color: var(--gold);">TRY FREE.<br>PAY ONCE.<br>OWN EVERYTHING.</h2>
     <p class="section-body reveal reveal-delay-2" style="margin: 0 auto; max-width: 560px;">
       Download free. Play the first 10 floors with no payment, no signup, no nags.
-      If you love it, one purchase unlocks the full 100-floor climb &mdash; forever.
+      If you love it, one purchase unlocks the full 120-floor climb &mdash; forever.
       Optional <strong style="color: var(--gold);">cosmetic-only Supporter Packs</strong>
       let you back a solo developer with portraits and frames &mdash; never gameplay.
       No subscriptions, no loot boxes, no energy timers, no ads, nothing pay-to-win.
@@ -2094,7 +2308,7 @@ body::after {
         <p class="faq__a">
           Yes. Download from the App Store and play the first 10 floors free, with no signup,
           no ads, and no time limit. If you defeat the floor 10 boss and want to keep climbing,
-          the full 100-floor game unlocks with a single one-time purchase.
+          the full 120-floor game unlocks with a single one-time purchase.
         </p>
       </details>
 
@@ -2110,7 +2324,7 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">ARE THERE ADS OR IN-APP PURCHASES?</summary>
         <p class="faq__a">
-          No ads, ever. The main in-app purchase is the one-time unlock for floors 11&ndash;100.
+          No ads, ever. The main in-app purchase is the one-time unlock for floors 11&ndash;120.
           There are also <strong>optional cosmetic-only Supporter Packs</strong> &mdash; supporter
           portraits and frames that never affect gameplay, stats, or balance. The vast majority of
           portraits and frames are still earned for free through achievements and unlocks.
@@ -2153,7 +2367,7 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">WHAT LANGUAGES DOES LOOTSHRINE SUPPORT?</summary>
         <p class="faq__a">
-          Ten languages: English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Simplified Chinese, and Spanish. The game uses your
+          Ten languages: English, French, German, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Simplified Chinese, and Spanish. The game uses your
           device&rsquo;s language automatically and lets you switch in-game.
         </p>
       </details>
@@ -2173,7 +2387,7 @@ body::after {
     <h2 class="section-title reveal reveal-delay-1" style="color: var(--gold);">THE SHRINE<br>AWAITS.</h2>
     <p class="section-body reveal reveal-delay-2" style="margin: 0 auto 48px; max-width: 480px;">
       Download LootShrine and see how far your build can take you.
-      Floor 100 &mdash; The Origin &mdash; has never been defeated. Will you be the first?
+      Floor 120 &mdash; The Unwritten &mdash; waits at the top of the tower. Will you be the first to reach it?
     </p>
     <div class="reveal reveal-delay-3">
       <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="btn-hero btn-hero--primary">
