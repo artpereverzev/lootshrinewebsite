@@ -196,6 +196,7 @@ body::after {
 .reveal-delay-11 { transition-delay: 0.88s; }
 .reveal-delay-12 { transition-delay: 0.96s; }
 .reveal-delay-13 { transition-delay: 1.04s; }
+.reveal-delay-14 { transition-delay: 1.12s; }
 
 /* ===================================================================
    NAV (identical to index.html)
@@ -710,11 +711,109 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.6.0 -->
+      <!-- v1.6.1 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.6.0</span>
+          <span class="news-card__version">v1.6.1</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">PERFORMANCE &amp; FIXES</span>
+        </div>
+        <h2 class="news-card__title">COOLER, SMOOTHER, SHARPER &mdash; WHOLE-GAME PERFORMANCE PASS &amp; NEW SHATTER DEATH VFX</h2>
+        <p class="news-card__lead">
+          Hey, it&rsquo;s Tim. This one is almost entirely under the hood &mdash; and it&rsquo;s the update
+          I&rsquo;m happiest about in a while. LootShrine got a <strong>top-to-bottom performance pass</strong>:
+          battles run smoother, your phone runs cooler, and the battery lasts noticeably longer on a long
+          session. Along the way defeated enemies got a new death effect, and four bugs got squashed &mdash;
+          including one that could genuinely stall the tutorial. &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE BIG ONE &mdash; THE WHOLE GAME IS LIGHTER</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              If you&rsquo;ve ever finished a long session and noticed your phone was warm, that was real,
+              and it was my fault. A game screen only needs to redraw when something <em>changes</em> &mdash;
+              but LootShrine was redrawing constantly, even when you were standing still in the shrine reading
+              your stats. A few drifting gold motes were enough to keep the whole screen re-rendering every
+              frame, forever. Multiply that across the menu, shrine, skill tree, leaderboards, customization,
+              and battle, and the game was quietly doing a <em>lot</em> of work to show you a still image.
+            </li>
+            <li>
+              That&rsquo;s fixed everywhere. All the ambient motion &mdash; drifting motes, glowing pulses,
+              breathing icons, shimmering frames, the camp fire &mdash; now runs on the system&rsquo;s own
+              animation engine instead of being redrawn by the game each frame.
+              <strong style="color:var(--text-hi)">The animations all look exactly the same.</strong>
+              Nothing was removed or slowed down; the game just stopped doing the work by hand.
+            </li>
+            <li>
+              What you should notice:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">Idle screens are genuinely idle.</strong> Sitting in the shrine, menu or skill tree now costs a fraction of what it did.</li>
+                <li><strong style="color:var(--text-hi)">Battles are smoother</strong>, especially the messy ones &mdash; six enemies on screen with splash damage flying was the worst case, and it&rsquo;s the case that improved most.</li>
+                <li><strong style="color:var(--text-hi)">Less heat, longer battery.</strong> The difference is biggest on long runs, which is exactly when it mattered least before.</li>
+              </ul>
+            </li>
+            <li>
+              <em>For the curious:</em> on my test device, an idle screen went from a state where the display
+              was being fully re-composited sixty times a second to one where the game does essentially
+              nothing between your taps. Heavy combat moments that used to peg well past a full CPU core now
+              sit comfortably under half of one. <strong style="color:var(--text-hi)">Older devices should feel this the most.</strong>
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NEW &mdash; ENEMIES SHATTER INTO PIXELS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Defeated enemies used to simply fade out under the death poof. Now they <strong style="color:var(--text-hi)">break apart</strong> &mdash; the sprite shatters into a burst of pixel chunks that fly outward, tumble, and fall, timed to the exact moment the death effect lands.</li>
+            <li>It&rsquo;s a small thing, but kills read much better now, particularly when you wipe several enemies at once: each one bursts in turn instead of the whole row quietly disappearing.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Loot flying to your bag.</strong> Occasionally an item &mdash; usually one out of a multi-drop &mdash; would snap instantly into your bag instead of flying there. The animation was being swallowed before it started. Every drop now makes the full arc.</li>
+            <li><strong style="color:var(--text-hi)">Enemies vanishing early.</strong> When one attack killed several enemies, all the corpses disappeared at once while the death effects were still playing out one by one, so later bursts went off over empty ground. Each enemy now stays on the field until <em>its own</em> death effect fires.</li>
+            <li><strong style="color:var(--text-hi)">Tutorial could stall.</strong> If you hit hard enough to destroy the training dummy in a single blow, the tutorial could get stuck waiting for a defeat that had already happened &mdash; leaving you with no target and a greyed-out attack button. Fixed on both ends; a one-shot kill now advances the tutorial correctly.</li>
+            <li><strong style="color:var(--text-hi)">Companions missing after the tutorial.</strong> If you had summon Fragments socketed in The Word, your companions weren&rsquo;t appearing in the run that continues out of the tutorial. They now show up from the first Floor 1 battle, as intended. (Beastmasters were losing their starting pet the same way.)</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">UPGRADE BADGES NOW ON BY DEFAULT</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The little arrow that marks a bag or shop item as better than what you&rsquo;re wearing has been in Settings since 1.6.0 &mdash; but tucked behind a toggle, which meant most people never knew it existed. It&rsquo;s now <strong style="color:var(--text-hi)">on by default</strong> for anyone who hasn&rsquo;t already made a choice about it.</li>
+            <li>If you&rsquo;d rather read your own gear, it&rsquo;s one tap to turn off, and the sensitivity slider is still there &mdash; dial it down and only significant upgrades get flagged. If you turned badges <em>off</em> before this update, they stay off.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LOCALIZATION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>No new text this time &mdash; the whole update is performance, effects and fixes, so every language is already up to date. All <strong style="color:var(--text-hi)">10 supported languages</strong> carry the changes: English, German, Spanish, French, Italian, Japanese, Korean, Portuguese (Brazil), Russian, and Simplified Chinese.</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          NOTHING ABOUT THE GAME CHANGED &mdash; SAME TOWER, JUST LIGHTER TO CARRY. CLIMB WELL, AND STAY COOL. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.6.0 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.6.0</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
         </div>
         <h2 class="news-card__title">THE AUTHOR&rsquo;S WORD &mdash; FOUR NEW HEROES, TWENTY NEW FLOORS, AND A TOWER THAT NO LONGER ENDS</h2>
@@ -887,7 +986,7 @@ body::after {
       </article>
 
       <!-- v1.5.8 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.8</span>
           <span class="news-card__badge">POLISH &amp; FIX</span>
@@ -963,7 +1062,7 @@ body::after {
       </article>
 
       <!-- v1.5.7 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.7</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1084,7 +1183,7 @@ body::after {
       </article>
 
       <!-- v1.5.6 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal reveal-delay-4">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.6</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1189,7 +1288,7 @@ body::after {
       </article>
 
       <!-- v1.5.5 -->
-      <article class="news-card reveal reveal-delay-4">
+      <article class="news-card reveal reveal-delay-5">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1305,7 +1404,7 @@ body::after {
       </article>
 
       <!-- v1.5.4 -->
-      <article class="news-card reveal reveal-delay-5">
+      <article class="news-card reveal reveal-delay-6">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.4</span>
           <span class="news-card__badge">CONTENT + POLISH</span>
@@ -1368,7 +1467,7 @@ body::after {
       </article>
 
       <!-- v1.5.3 -->
-      <article class="news-card reveal reveal-delay-6">
+      <article class="news-card reveal reveal-delay-7">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.3</span>
           <span class="news-card__badge">HOTFIX</span>
@@ -1384,7 +1483,7 @@ body::after {
       </article>
 
       <!-- v1.5.2 -->
-      <article class="news-card reveal reveal-delay-7">
+      <article class="news-card reveal reveal-delay-8">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.2</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1505,7 +1604,7 @@ body::after {
       </article>
 
       <!-- v1.5.1 -->
-      <article class="news-card reveal reveal-delay-8">
+      <article class="news-card reveal reveal-delay-9">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.1</span>
           <span class="news-card__badge">BOSS UPDATE</span>
@@ -1591,7 +1690,7 @@ body::after {
       </article>
 
       <!-- v1.5 -->
-      <article class="news-card reveal reveal-delay-9">
+      <article class="news-card reveal reveal-delay-10">
         <div class="news-card__header">
           <span class="news-card__version">v1.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1674,7 +1773,7 @@ body::after {
       </article>
 
       <!-- v1.4 -->
-      <article class="news-card reveal reveal-delay-10">
+      <article class="news-card reveal reveal-delay-11">
         <div class="news-card__header">
           <span class="news-card__version">v1.4</span>
           <span class="news-card__badge">BALANCE &amp; LOCALIZATION</span>
@@ -1766,7 +1865,7 @@ body::after {
       </article>
 
       <!-- v1.3 -->
-      <article class="news-card reveal reveal-delay-11">
+      <article class="news-card reveal reveal-delay-12">
         <div class="news-card__header">
           <span class="news-card__version">v1.3</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1879,7 +1978,7 @@ body::after {
       </article>
 
       <!-- v1.2 -->
-      <article class="news-card reveal reveal-delay-12">
+      <article class="news-card reveal reveal-delay-13">
         <div class="news-card__header">
           <span class="news-card__version">v1.2</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
@@ -1896,7 +1995,7 @@ body::after {
       </article>
 
       <!-- v1.1 -->
-      <article class="news-card reveal reveal-delay-13">
+      <article class="news-card reveal reveal-delay-14">
         <div class="news-card__header">
           <span class="news-card__version">v1.1</span>
           <span class="news-card__badge">GAME CENTER</span>
