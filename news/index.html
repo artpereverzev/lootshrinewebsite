@@ -197,6 +197,7 @@ body::after {
 .reveal-delay-12 { transition-delay: 0.96s; }
 .reveal-delay-13 { transition-delay: 1.04s; }
 .reveal-delay-14 { transition-delay: 1.12s; }
+.reveal-delay-15 { transition-delay: 1.20s; }
 
 /* ===================================================================
    NAV (identical to index.html)
@@ -711,11 +712,108 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.6.1 -->
+      <!-- v1.6.2 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.6.1</span>
+          <span class="news-card__version">v1.6.2</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">SHRINE REWORK</span>
+        </div>
+        <h2 class="news-card__title">THE STONE WAKES &mdash; PRAY STONE &amp; DONATION ALTAR REBUILT AROUND REAL DECISIONS</h2>
+        <p class="news-card__lead">
+          Hey, it&rsquo;s Tim. The whole game runs on one idea: <strong>every item is a decision</strong> &mdash;
+          equip it, absorb it, or sacrifice it forever. This update is about the one place that idea
+          didn&rsquo;t apply: <em>the shrine</em>. The pray stone handed out blessings you stacked without
+          thinking, and the donation altar took a capped trickle of gold you dumped without noticing.
+          Neither asked you anything. Both got rebuilt. &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE PRAY STONE SLEEPS &mdash; AND WAKES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Praying used to be a button you pressed a few times every floor. Each blessing stacked on the last, so a run quietly accumulated a pile of buffs nobody could remember choosing.</li>
+            <li>Now the stone <strong style="color:var(--text-hi)">sleeps</strong>. It wakes after floor 1, then every tenth floor &mdash; 20, 30, 40 &mdash; all the way to 110. Each waking offers you <strong style="color:var(--text-hi)">two blessings drawn from a pool of twenty-four</strong>, art and all. Tap one to read exactly what it does before you commit. Take one.</li>
+            <li>The rule that makes it interesting: <strong style="color:var(--gold)">only one blessing is active at a time.</strong> Choose a new one and the old one goes. So every waking is a real question &mdash; keep building around what you have, or trade it for what&rsquo;s on offer? Blessings you take don&rsquo;t return that run, which means the pool thins as you climb and the late wakings ask harder questions than the early ones.</li>
+            <li>
+              Three details worth knowing:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">The offer waits for you.</strong> Leave the camp without choosing and the two blessings stay on the stone &mdash; on the next floor, and the one after &mdash; until the stone&rsquo;s next waking rolls a fresh pair. Forgetting doesn&rsquo;t cost you the gift.</li>
+                <li><strong style="color:var(--text-hi)">Walking away isn&rsquo;t free.</strong> Your current blessing burns out when the stone wakes again, whether you choose a new one or not. Declining used to be the quietly optimal move; now the choice is real in both directions.</li>
+                <li><strong style="color:var(--text-hi)">You can see what&rsquo;s guiding you.</strong> Your active blessing shows as its own icon in the battle buff strip &mdash; tap it for the full detail. Blessings with an armed state (Second Dawn&rsquo;s revive, Stonewill&rsquo;s first-hit shield) show separately while they&rsquo;re primed.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">DONATIONS &mdash; THE CAP IS GONE, THE ROAD IS LONG</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The old altar accepted a couple of donations per floor and paid out a random stat bump. Telemetry was blunt about it: almost nobody used it, and I don&rsquo;t blame you.</li>
+            <li>Now <strong style="color:var(--text-hi)">every coin counts, with no cap</strong> &mdash; the altar always takes your gold. And instead of random crumbs, donations feed one long road with <strong style="color:var(--text-hi)">eight named milestones, from 1,000 gold all the way to 1,000,000</strong>. Each milestone pays permanent rewards for the rest of the run: extra sacrifice and absorb capacity, flat Attack, Defense and HP, crit. Tap any milestone on the track to see exactly what it pays before you save toward it.</li>
+            <li>
+              The little things that make it feel right:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">A slider, not buttons.</strong> Donate any amount from 100 gold up to everything you&rsquo;re carrying &mdash; one drag, then MAX when you&rsquo;re feeling devout. The number on screen is exactly the number spent.</li>
+                <li><strong style="color:var(--text-hi)">Devotion makes coins heavier.</strong> Shrine devotion perks and the Shrine Favor upgrade in the Soul Forge make each donated coin count for more on the track &mdash; late-game builds can genuinely chase the 1M stone.</li>
+                <li><strong style="color:var(--text-hi)">Your progress is visible in battle.</strong> Milestone rewards that stay armed &mdash; the Kindled Altar&rsquo;s bonus sacrifices, the shop&rsquo;s Rare guarantee &mdash; show as pips in the buff strip, same as everything else that&rsquo;s live in a fight.</li>
+              </ul>
+            </li>
+            <li>Between the stone and the altar, the camp is now a place where you <em>make decisions</em>, not a place where you press buttons on the way to the next floor.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">MORE OPTIMIZATION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>1.6.1 was the big performance pass; this update keeps going. The camp, the menus and the skill tree now sit <strong style="color:var(--text-hi)">completely still</strong> when you do &mdash; zero background work on idle screens &mdash; and each hit in combat costs less to process, which adds up fast in splash-damage fights. Cooler device, longer battery, especially on long sessions and older hardware.</li>
+            <li>One follow-up on a 1.6.1 feature: the mid-battle pop-up that offered Reduced Effects when your device ran hot <strong style="color:var(--text-hi)">is gone</strong>. It meant well, but it interrupted fights at exactly the wrong moment. The Reduced Effects switch is still in Settings, one tap away, whenever you want it &mdash; the game just won&rsquo;t tap you on the shoulder about it mid-swing.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Splitting elites could end the battle early.</strong> If the last enemy of a floor&rsquo;s last battle had the split-on-death modifier and died quickly, the battle could count itself as won while the split was still happening &mdash; sending you to the shrine past two newly-spawned halves. The victory check now waits for the whole death to resolve, spawns included.</li>
+            <li><strong style="color:var(--text-hi)">The Continue alert was living in the past.</strong> Leaving the shrine could warn you about &ldquo;remaining prayers&rdquo; &mdash; a thing that no longer exists. It now tells you what&rsquo;s actually true: whether a waking is still unclaimed at the stone.</li>
+            <li><strong style="color:var(--text-hi)">Translation pass.</strong> A batch of strings that showed in English regardless of your language &mdash; including several shrine and battle labels &mdash; now translate properly. Found four, audited the rest of the game, fixed thirty-plus.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LOCALIZATION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Everything above &mdash; twenty-four blessing names and descriptions, eight milestone cards, every new label and alert &mdash; ships day one in all <strong style="color:var(--text-hi)">10 supported languages</strong>: English, German, Spanish, French, Italian, Japanese, Korean, Portuguese (Brazil), Russian, and Simplified Chinese.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE DISCORD IS OPEN</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>This build adds a <strong style="color:var(--text-hi)">Discord button on the main menu</strong> &mdash; the official LootShrine server is live. Patch notes, dev updates, build talk, and a bug-reports channel I actually read. If you&rsquo;ve ever wanted to tell me which blessing is overpowered, that&rsquo;s the place: <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" style="color:var(--gold); border-bottom:1px solid rgba(255,215,0,0.3);">discord.gg/McptmPeddx</a></li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          NO CONTENT GATED, NOTHING REMOVED, NO PURCHASE INVOLVED. SAME TOWER, BETTER DECISIONS. KEEP CLIMBING. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.6.1 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.6.1</span>
           <span class="news-card__badge">PERFORMANCE &amp; FIXES</span>
         </div>
         <h2 class="news-card__title">COOLER, SMOOTHER, SHARPER &mdash; WHOLE-GAME PERFORMANCE PASS &amp; NEW SHATTER DEATH VFX</h2>
@@ -811,7 +909,7 @@ body::after {
       </article>
 
       <!-- v1.6.0 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.0</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -986,7 +1084,7 @@ body::after {
       </article>
 
       <!-- v1.5.8 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.8</span>
           <span class="news-card__badge">POLISH &amp; FIX</span>
@@ -1062,7 +1160,7 @@ body::after {
       </article>
 
       <!-- v1.5.7 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal reveal-delay-4">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.7</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1183,7 +1281,7 @@ body::after {
       </article>
 
       <!-- v1.5.6 -->
-      <article class="news-card reveal reveal-delay-4">
+      <article class="news-card reveal reveal-delay-5">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.6</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1288,7 +1386,7 @@ body::after {
       </article>
 
       <!-- v1.5.5 -->
-      <article class="news-card reveal reveal-delay-5">
+      <article class="news-card reveal reveal-delay-6">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1404,7 +1502,7 @@ body::after {
       </article>
 
       <!-- v1.5.4 -->
-      <article class="news-card reveal reveal-delay-6">
+      <article class="news-card reveal reveal-delay-7">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.4</span>
           <span class="news-card__badge">CONTENT + POLISH</span>
@@ -1467,7 +1565,7 @@ body::after {
       </article>
 
       <!-- v1.5.3 -->
-      <article class="news-card reveal reveal-delay-7">
+      <article class="news-card reveal reveal-delay-8">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.3</span>
           <span class="news-card__badge">HOTFIX</span>
@@ -1483,7 +1581,7 @@ body::after {
       </article>
 
       <!-- v1.5.2 -->
-      <article class="news-card reveal reveal-delay-8">
+      <article class="news-card reveal reveal-delay-9">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.2</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1604,7 +1702,7 @@ body::after {
       </article>
 
       <!-- v1.5.1 -->
-      <article class="news-card reveal reveal-delay-9">
+      <article class="news-card reveal reveal-delay-10">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.1</span>
           <span class="news-card__badge">BOSS UPDATE</span>
@@ -1690,7 +1788,7 @@ body::after {
       </article>
 
       <!-- v1.5 -->
-      <article class="news-card reveal reveal-delay-10">
+      <article class="news-card reveal reveal-delay-11">
         <div class="news-card__header">
           <span class="news-card__version">v1.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1773,7 +1871,7 @@ body::after {
       </article>
 
       <!-- v1.4 -->
-      <article class="news-card reveal reveal-delay-11">
+      <article class="news-card reveal reveal-delay-12">
         <div class="news-card__header">
           <span class="news-card__version">v1.4</span>
           <span class="news-card__badge">BALANCE &amp; LOCALIZATION</span>
@@ -1865,7 +1963,7 @@ body::after {
       </article>
 
       <!-- v1.3 -->
-      <article class="news-card reveal reveal-delay-12">
+      <article class="news-card reveal reveal-delay-13">
         <div class="news-card__header">
           <span class="news-card__version">v1.3</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1978,7 +2076,7 @@ body::after {
       </article>
 
       <!-- v1.2 -->
-      <article class="news-card reveal reveal-delay-13">
+      <article class="news-card reveal reveal-delay-14">
         <div class="news-card__header">
           <span class="news-card__version">v1.2</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
@@ -1995,7 +2093,7 @@ body::after {
       </article>
 
       <!-- v1.1 -->
-      <article class="news-card reveal reveal-delay-14">
+      <article class="news-card reveal reveal-delay-15">
         <div class="news-card__header">
           <span class="news-card__version">v1.1</span>
           <span class="news-card__badge">GAME CENTER</span>
