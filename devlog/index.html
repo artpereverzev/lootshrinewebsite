@@ -13,6 +13,13 @@
   <!-- Canonical -->
   <link rel="canonical" href="https://lootshrine.com/devlog/" />
 
+  <!-- Language alternates -->
+  <link rel="alternate" hreflang="en" href="https://lootshrine.com/devlog/" />
+  <link rel="alternate" hreflang="ru" href="https://lootshrine.com/ru/" />
+  <link rel="alternate" hreflang="ko" href="https://lootshrine.com/ko/" />
+  <link rel="alternate" hreflang="ja" href="https://lootshrine.com/ja/" />
+  <link rel="alternate" hreflang="x-default" href="https://lootshrine.com/devlog/" />
+
   <!-- Apple Smart App Banner -->
   <meta name="apple-itunes-app" content="app-id=6757924460" />
   <meta name="apple-mobile-web-app-title" content="LootShrine" />
@@ -183,6 +190,56 @@ body::after {
   color: var(--gold);
   box-shadow: 0 0 16px rgba(255,215,0,0.2);
 }
+
+/* ── LANGUAGE SWITCHER ───────────────────────────── */
+.lang { position: relative; flex-shrink: 0; margin-left: 10px; }
+.lang__btn {
+  font-family: var(--font-pixel); font-size: 8px; color: var(--text-mid);
+  letter-spacing: 0.06em; padding: 9px 10px;
+  border: 1px solid rgba(255,215,0,0.25); background: transparent;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s; cursor: pointer;
+}
+.lang__btn:hover { color: var(--gold); border-color: var(--gold); }
+.lang__btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+.lang__menu {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0;
+  background: rgba(10,10,15,0.97);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,215,0,0.25);
+  min-width: 132px; list-style: none; padding: 4px; z-index: 600;
+}
+.lang__menu.open { display: block; }
+.lang__menu a {
+  display: block; font-family: var(--font-pixel); font-size: 8px;
+  color: var(--text-mid); padding: 10px; letter-spacing: 0.08em;
+  transition: background 0.15s, color 0.15s;
+}
+.lang__menu a:hover { background: rgba(255,215,0,0.1); color: var(--gold); }
+.lang__menu a.active { color: var(--gold); }
+.nav__mobile-lang {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding-top: 16px; margin-top: 4px;
+  border-top: 1px solid rgba(255,215,0,0.12);
+}
+.nav__mobile-lang a {
+  font-family: var(--font-pixel); font-size: 8px; color: var(--text-lo);
+  letter-spacing: 0.1em; padding: 7px 11px;
+  border: 1px solid rgba(255,215,0,0.2);
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav__mobile-lang a:hover, .nav__mobile-lang a.active { color: var(--gold); border-color: var(--gold); }
+.footer__lang {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  width: 100%; padding-top: 20px; margin-top: 4px;
+  border-top: 1px solid rgba(255,215,0,0.08);
+}
+.footer__lang a {
+  font-family: var(--font-pixel); font-size: 6px; color: var(--text-lo);
+  letter-spacing: 0.12em; transition: color 0.2s;
+}
+.footer__lang a:hover, .footer__lang a.active { color: var(--gold); }
+
 .nav__toggle {
   display: none;
   flex-direction: column;
@@ -221,7 +278,7 @@ body::after {
 .nav__mobile a.active { color: var(--gold); }
 
 @media (max-width: 1100px) {
-  .nav__links, .nav__btn { display: none; }
+  .nav__links, .nav__btn, .lang { display: none; }
   .nav__toggle { display: flex; }
 }
 
@@ -651,6 +708,18 @@ body::after {
       <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       APP STORE
     </a>
+    <div class="lang">
+      <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        EN
+      </button>
+      <ul class="lang__menu" id="langMenu">
+        <li><a href="/devlog/" class="active" hreflang="en">ENGLISH</a></li>
+        <li><a href="/ru/" hreflang="ru">РУССКИЙ</a></li>
+        <li><a href="/ko/" hreflang="ko">한국어</a></li>
+        <li><a href="/ja/" hreflang="ja">日本語</a></li>
+      </ul>
+    </div>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -1012,6 +1081,29 @@ body::after {
 </footer>
 
 <script>
+
+/* ── Language dropdown ──────────────────────────────────── */
+(function() {
+  var btn = document.getElementById('langBtn');
+  var menu = document.getElementById('langMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function(e) {
+    if (!menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
 /* Mobile nav */
 (function() {
   var toggle = document.getElementById('navToggle');

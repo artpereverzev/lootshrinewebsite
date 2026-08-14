@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LootShrine — Privacy Policy</title>
-  <meta name="description" content="LootShrine Privacy Policy. We respect your privacy. No ads, no tracking, no data selling. Read our full privacy practices and third-party service disclosures." />
-  <meta name="author" content="LootShrine" />
+  <title>開発者について — LootShrine を一人で作る Tim Pereverzev</title>
+  <meta name="description" content="LootShrine は個人インディー開発者 Tim Pereverzev が作っています。アート、システム、ローカライズ、パッチノートまですべて。なぜ・どう作っているのか、そして連絡先について。" />
+  <meta name="author" content="Tim Pereverzev" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#1A1A2E" />
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://lootshrine.com/privacy/" />
+  <link rel="canonical" href="https://lootshrine.com/ja/about/" />
 
   <!-- Language alternates -->
-  <link rel="alternate" hreflang="en" href="https://lootshrine.com/privacy/" />
-  <link rel="alternate" hreflang="ru" href="https://lootshrine.com/ru/privacy/" />
-  <link rel="alternate" hreflang="ko" href="https://lootshrine.com/ko/privacy/" />
-  <link rel="alternate" hreflang="ja" href="https://lootshrine.com/ja/privacy/" />
-  <link rel="alternate" hreflang="x-default" href="https://lootshrine.com/privacy/" />
+  <link rel="alternate" hreflang="en" href="https://lootshrine.com/about/" />
+  <link rel="alternate" hreflang="ru" href="https://lootshrine.com/ru/about/" />
+  <link rel="alternate" hreflang="ko" href="https://lootshrine.com/ko/about/" />
+  <link rel="alternate" hreflang="ja" href="https://lootshrine.com/ja/about/" />
+  <link rel="alternate" hreflang="x-default" href="https://lootshrine.com/about/" />
 
   <!-- Apple Smart App Banner -->
   <meta name="apple-itunes-app" content="app-id=6757924460" />
@@ -25,17 +25,20 @@
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="LootShrine" />
-  <meta property="og:title" content="LootShrine — Privacy Policy" />
-  <meta property="og:description" content="Privacy Policy for LootShrine. No ads. No tracking. No data selling." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://lootshrine.com/privacy/" />
+  <meta property="og:title" content="開発者について — LootShrine は一人で作られています" />
+  <meta property="og:description" content="LootShrine の個人インディー開発者 Tim Pereverzev。ゲームの背景、哲学、連絡先について。" />
+  <meta property="og:type" content="profile" />
+  <meta property="profile:first_name" content="Tim" />
+  <meta property="profile:last_name" content="Pereverzev" />
+  <meta property="og:url" content="https://lootshrine.com/about/" />
   <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
-  <meta property="og:locale" content="en_US" />
+  <meta property="og:image:alt" content="LootShrine — pixel art roguelite RPG for iOS" />
+  <meta property="og:locale" content="ja_JP" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LootShrine — Privacy Policy" />
-  <meta name="twitter:description" content="No ads. No tracking. No data selling." />
+  <meta name="twitter:title" content="開発者について — LootShrine は一人で作られています" />
+  <meta name="twitter:description" content="LootShrine の個人インディー開発者 Tim Pereverzev。" />
   <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -313,11 +316,13 @@ body::after {
   text-shadow: 0 0 30px rgba(255,215,0,0.35);
   margin-bottom: 12px;
 }
-.page-header__date {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  color: var(--text-lo);
-  letter-spacing: 0.15em;
+.page-header__sub {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .divider {
@@ -325,13 +330,80 @@ body::after {
   background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
 }
 
-/* Policy content */
-.policy {
-  padding: 48px var(--gutter) 80px;
-}
-.policy__section {
+/* ── Dev portrait card ───────────────────────────── */
+.dev-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.18);
+  padding: 28px;
   margin-bottom: 48px;
+  position: relative;
 }
+.dev-card__portrait {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  background: var(--bg-raised);
+  border: 2px solid rgba(255,215,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.dev-card__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.dev-card__portrait-placeholder {
+  font-family: var(--font-pixel);
+  font-size: 36px;
+  color: var(--gold);
+  opacity: 0.7;
+}
+.dev-card__info {
+  flex: 1;
+  min-width: 0;
+}
+.dev-card__name {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--text-hi);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.dev-card__role {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.dev-card__line {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .dev-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+  .dev-card__portrait { width: 100px; height: 100px; }
+}
+
+/* ── Body content (reuses policy patterns) ───────── */
+.policy { padding: 48px var(--gutter) 80px; }
+.policy__section { margin-bottom: 48px; }
 .policy__section:last-child { margin-bottom: 0; }
 
 .policy__heading {
@@ -353,10 +425,13 @@ body::after {
   margin-bottom: 14px;
 }
 .policy__text:last-child { margin-bottom: 0; }
-
-.policy__text strong {
-  color: var(--text-hi);
+.policy__text strong { color: var(--text-hi); }
+.policy__text a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(255,215,0,0.3);
+  transition: border-color 0.2s;
 }
+.policy__text a:hover { border-bottom-color: var(--gold); }
 
 .policy__list {
   font-family: var(--font-body);
@@ -383,38 +458,46 @@ body::after {
   opacity: 0.4;
 }
 
-/* Highlight box */
-.policy__highlight {
+/* ── Final CTA ───────────────────────────────────── */
+.cta-card {
   background: var(--bg-card);
-  border: 2px solid rgba(255,215,0,0.15);
-  padding: 24px;
-  margin-bottom: 14px;
-}
-.policy__highlight .policy__text { margin-bottom: 0; }
-
-/* Contact card */
-.policy__contact {
-  background: var(--bg-card);
-  border: 2px solid rgba(255,215,0,0.15);
-  padding: 28px;
+  border: 2px solid rgba(255,215,0,0.2);
+  padding: 36px 28px;
   text-align: center;
   margin-top: 48px;
 }
-.policy__contact-label {
+.cta-card__label {
   font-family: var(--font-pixel);
   font-size: 7px;
   color: var(--text-lo);
-  letter-spacing: 0.15em;
-  margin-bottom: 12px;
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
 }
-.policy__contact-email {
+.cta-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border: 2px solid var(--gold);
+  background: var(--gold);
+  color: var(--bg-void);
   font-family: var(--font-pixel);
-  font-size: 10px;
-  color: var(--gold);
-  text-shadow: 0 0 20px rgba(255,215,0,0.3);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  transition: background 0.15s, color 0.15s, box-shadow 0.2s;
 }
-.policy__contact-email:hover {
-  text-shadow: 0 0 30px rgba(255,215,0,0.6);
+.cta-card__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.cta-card__btn:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 40px rgba(255,215,0,0.3);
+}
+.cta-card__trust {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.2em;
+  margin-top: 18px;
 }
 
 /* ── FOOTER ──────────────────────────────────────── */
@@ -456,6 +539,45 @@ body::after {
   .footer__links { justify-content: center; }
 }
 </style>
+
+<!-- ===================================================================
+     STRUCTURED DATA (JSON-LD) — Person + AboutPage
+=================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://lootshrine.com/about/#about",
+      "url": "https://lootshrine.com/about/",
+      "name": "About — Tim Pereverzev, solo developer of LootShrine",
+      "inLanguage": "en-US",
+      "mainEntity": { "@id": "https://lootshrine.com/about/#tim" },
+      "isPartOf": { "@id": "https://lootshrine.com/#website" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://lootshrine.com/about/#tim",
+      "name": "Tim Pereverzev",
+      "givenName": "Tim",
+      "familyName": "Pereverzev",
+      "jobTitle": "Solo indie game developer",
+      "description": "Tim Pereverzev is the solo developer behind LootShrine, a free-to-try pixel art roguelite RPG for iOS.",
+      "url": "https://lootshrine.com/about/",
+      "image": "https://lootshrine.com/avatar.jpeg",
+      "worksFor": { "@id": "https://lootshrine.com/#org" },
+      "knowsAbout": [
+        "Indie game development",
+        "iOS game development",
+        "Roguelite RPG design",
+        "Pixel art",
+        "Game localization"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -471,15 +593,15 @@ body::after {
       </span>
     </a>
     <ul class="nav__links">
-      <li><a href="/#about">OVERVIEW</a></li>
-      <li><a href="/#classes">CLASSES</a></li>
-      <li><a href="/#gameplay">GAMEPLAY</a></li>
-      <li><a href="/#features">FEATURES</a></li>
-      <li><a href="/news/">NEWS</a></li>
-      <li><a href="/devlog/">DEVLOG</a></li>
-      <li><a href="/about/">ABOUT</a></li>
-      <li><a href="/press/">PRESS</a></li>
-      <li><a href="/privacy/" class="active">PRIVACY</a></li>
+      <li><a href="/ja/#about">概要</a></li>
+      <li><a href="/ja/#classes">クラス</a></li>
+      <li><a href="/ja/#gameplay">ゲームプレイ</a></li>
+      <li><a href="/ja/#features">特徴</a></li>
+      <li><a href="/news/">ニュース</a></li>
+      <li><a href="/devlog/">開発日誌</a></li>
+      <li><a href="/ja/about/" class="active">開発者</a></li>
+      <li><a href="/ja/press/">プレス</a></li>
+      <li><a href="/ja/privacy/">プライバシー</a></li>
     </ul>
     <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="nav__btn">
       <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -488,13 +610,13 @@ body::after {
     <div class="lang">
       <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        EN
+        JA
       </button>
       <ul class="lang__menu" id="langMenu">
-        <li><a href="/privacy/" class="active" hreflang="en">ENGLISH</a></li>
-        <li><a href="/ru/privacy/" hreflang="ru">РУССКИЙ</a></li>
-        <li><a href="/ko/privacy/" hreflang="ko">한국어</a></li>
-        <li><a href="/ja/privacy/" hreflang="ja">日本語</a></li>
+        <li><a href="/about/" hreflang="en">ENGLISH</a></li>
+        <li><a href="/ru/about/" hreflang="ru">РУССКИЙ</a></li>
+        <li><a href="/ko/about/" hreflang="ko">한국어</a></li>
+        <li><a href="/ja/about/" class="active" hreflang="ja">日本語</a></li>
       </ul>
     </div>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu">
@@ -502,16 +624,16 @@ body::after {
     </button>
   </div>
   <div class="nav__mobile" id="navMobile">
-    <a href="/#about">OVERVIEW</a>
-    <a href="/#classes">CLASSES</a>
-    <a href="/#gameplay">GAMEPLAY</a>
-    <a href="/#features">FEATURES</a>
-    <a href="/news/">NEWS</a>
-    <a href="/devlog/">DEVLOG</a>
-    <a href="/about/">ABOUT</a>
-    <a href="/press/">PRESS</a>
-    <a href="/privacy/" class="active">PRIVACY</a>
-    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">&#9656; DOWNLOAD ON APP STORE</a>
+    <a href="/ja/#about">概要</a>
+    <a href="/ja/#classes">クラス</a>
+    <a href="/ja/#gameplay">ゲームプレイ</a>
+    <a href="/ja/#features">特徴</a>
+    <a href="/news/">ニュース</a>
+    <a href="/devlog/">開発日誌</a>
+    <a href="/ja/about/" class="active">開発者</a>
+    <a href="/ja/press/">プレス</a>
+    <a href="/ja/privacy/">プライバシー</a>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">&#9656; APP STORE でダウンロード</a>
   </div>
 </nav>
 
@@ -520,169 +642,139 @@ body::after {
   <div class="page-header__bg"></div>
   <div class="page-header__vignette"></div>
   <div class="page-header__content">
-    <span class="page-header__tag">// LEGAL</span>
-    <h1 class="page-header__title">PRIVACY POLICY</h1>
-    <p class="page-header__date">EFFECTIVE: JULY 29, 2026</p>
+    <span class="page-header__tag">// 開発者について</span>
+    <h1 class="page-header__title">TIM について</h1>
+    <p class="page-header__sub">
+      LootShrine を作る一人だけのスタジオ。
+    </p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- POLICY CONTENT -->
-<main class="policy">
+<!-- MAIN -->
+<section class="policy">
   <div class="container">
 
-    <div class="policy__highlight">
+    <!-- Dev portrait + intro -->
+    <div class="dev-card">
+      <div class="dev-card__portrait">
+        <img src="../avatar.jpeg" alt="Tim Pereverzev"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="dev-card__portrait-placeholder" style="display:none">&#x2697;&#xFE0F;</div>
+      </div>
+      <div class="dev-card__info">
+        <p class="dev-card__name">TIM PEREVERZEV</p>
+        <p class="dev-card__role">個人インディー開発者 &middot; LOOTSHRINE</p>
+        <p class="dev-card__line">
+          こんにちは、Tim です。LootShrine は一人のプロジェクトです。ピクセルアート、システム、
+          テキスト、ローカライズ、パッチノート — すべて自分でやっています。スマホで遊べる
+          奥深いターン制ルートローグライトが欲しかったのに見つからなかったので、
+          空き時間に自分で作り、今も作り続けています。
+        </p>
+      </div>
+    </div>
+
+    <!-- Why I made this -->
+    <div class="policy__section">
+      <h2 class="policy__heading">なぜ作ったのか</h2>
       <p class="policy__text">
-        <strong>The short version:</strong> LootShrine does not collect, store, or sell your personal data.
-        There are no ads and no third-party trackers harvesting your information.
-        We use privacy-focused analytics (TelemetryDeck) that collect no personal data,
-        and RevenueCat to manage your purchase. Your game data stays on your device and in your iCloud account.
+        スマホで、本物の戦利品とビルドの多様性がある奥深いターン制ローグライトを遊びたかったのです
+        &mdash; PC で遊んでいた Megaloot のようなものです。iOS で探してみましたが、まったく見つかりませんでした。
+        いちばん近いものでさえ、スタミナタイマー、ターン間の広告、デイリーログインの催促、
+        そしてプレイヤーの選択を静かに台無しにするペイ・トゥ・ウィンのショップに埋もれていました。
+      </p>
+      <p class="policy__text">
+        そこで<strong>自分が遊びたかったバージョン</strong>を作りました。広告なし、サブスクなし、
+        スタミナなし、ペイ・トゥ・ウィンなし。10 フロアは無料でお試し、1 回の購入で残りすべてが解放されます。
+        ビジネスモデルはこれだけです &mdash; ほかに売りつけるものは何もありません。
       </p>
     </div>
 
+    <!-- Solo journey -->
     <div class="policy__section">
-      <h2 class="policy__heading">1. WHAT WE COLLECT</h2>
+      <h2 class="policy__heading">一人での道のり</h2>
       <p class="policy__text">
-        LootShrine does <strong>not</strong> collect any personal information. We do not require account creation,
-        login credentials, email addresses, or any form of registration to play the game.
+        自分ひとりです。すべてのシステム、すべてのクラス、商人のすべてのセリフ、
+        すべての敵スプライト、すべての翻訳チェックまで。自慢したいのではなく、
+        メールの向こう側に誰がいるのかを正確に知っておいてほしいからです。バグがあったとき、
+        バランスの判断が難しいとき、「なぜこう動くのか」という質問があったとき、答えるのは自分です。
       </p>
       <p class="policy__text">
-        We collect <strong>anonymous, aggregated usage analytics</strong> through
-        <a href="https://telemetrydeck.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">TelemetryDeck</a>
-        to understand how the game is used (e.g. which floors players reach, which classes are popular).
-        This data contains no personal identifiers, no device IDs, no IP addresses, and cannot be
-        traced back to any individual user. TelemetryDeck is designed to be privacy-first and is
-        GDPR-compliant by default.
+        最初のバージョンは約 3 か月で作って世に出しました。それ以来、夜と週末に作り続けていて、
+        正直なところ当初の計画よりずっと大きくなりました: エターナルクライム、終わりなき円環の守護者 10 体、
+        7 つの新クラス（アルケミスト、ビーストマスター、モンク、レンジャー、クロノマンサー、
+        ローニン、ストームコーラー）、始まりの階層を越える 20 フロア、メタ層「作者の言葉」、
+        再設計されたキャンプ、生きた戦闘ペットを連れて戦うコンパニオンシステム、そして
+        <a href="/news/">ニュースページ</a>で読める継続的なアップデート。
       </p>
     </div>
 
+    <!-- Philosophy -->
     <div class="policy__section">
-      <h2 class="policy__heading">2. GAME DATA & STORAGE</h2>
+      <h2 class="policy__heading">考え方</h2>
       <p class="policy__text">
-        All game progress, save data, and settings are stored <strong>locally on your device</strong>.
-        If you enable iCloud sync, your save data is stored in your personal iCloud account
-        via Apple's CloudKit framework. This data is governed by
-        <a href="https://www.apple.com/legal/privacy/" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">Apple's Privacy Policy</a>.
+        無料の 10 フロアは<strong>撒き餌ではなく、本物の体験版</strong>です。このゲームが自分に
+        合うかどうかを正直に判断できるだけの長さがあります。合わなければそれで構いません &mdash;
+        アプリはそのままで、しつこく催促されることもありません。合うなら、1 回の購入で 120 フロア
+        すべてが永久に解放されます。サブスクの階層も、ゲームプレイに影響する課金も、
+        クールダウンを 4.99 ドルでスキップしませんかというポップアップもありません。任意の
+        コスメティック・サポーターパックは、ポートレートやフレームで個人開発者を支援する手段であり
+        &mdash; ゲームプレイに影響することは決してなく、必須でもありません。
       </p>
       <p class="policy__text">
-        We do not have access to your iCloud data. We cannot read, modify, or delete your cloud saves.
+        モバイルのプレイヤーは長いあいだ雑に扱われてきたと思います &mdash; 最悪を予想するのが
+        当たり前になるほど長く。LootShrine が「そうである必要はない」という小さな証拠に
+        なればと思っています。
       </p>
     </div>
 
+    <!-- What's next -->
     <div class="policy__section">
-      <h2 class="policy__heading">3. GAME CENTER</h2>
+      <h2 class="policy__heading">これから</h2>
       <p class="policy__text">
-        LootShrine uses Apple's Game Center for leaderboards, achievements, and friend challenges.
-        Game Center data (your player name, scores, and achievements) is managed entirely by Apple.
-        We access your Game Center friends list solely to enable Ghost Challenge invitations between friends.
+        ロードマップは実質<a href="/news/">ニュースページ</a>そのものです: 実際にリリースされたパッチだけを、
+        誇張なく、静かに棚上げされる「近日公開」もなしに。最近のアップデートでは、エターナルクライムのボス 10 体、
+        7 つの新クラス、始まりの階層を越える 101&ndash;120 階、メタ層「作者の言葉」、
+        祈りの石が眠り目覚めるよう作り直された祭壇、そして全体的なパフォーマンス改善が加わりました。
       </p>
       <p class="policy__text">
-        We do not store, transmit, or share your Game Center data with any third party.
+        現在は、さらなるコンテンツ、クラスごとの個性の強化、そしてゲームの 10 言語すべてにわたる
+        ローカライズの改善に取り組んでいます。アイデアや提案、バグ報告があれば &mdash;
+        すべてのメールに目を通しています。
+      </p>
+      <p class="policy__text">
+        技術的な面 &mdash; SwiftUI + SpriteKit、Redux スタイルの状態管理、アトラスベースのピクセルアート、
+        そしてバックエンドなしで CloudKit と Game Center だけで動かす仕組み &mdash; に興味があれば、
+        <a href="/devlog/">開発日誌</a>（英語）にまとめてあります。
       </p>
     </div>
 
+    <!-- Find me -->
     <div class="policy__section">
-      <h2 class="policy__heading">4. THIRD-PARTY SERVICES</h2>
-      <p class="policy__text">
-        LootShrine uses the following third-party services:
-      </p>
+      <h2 class="policy__heading">連絡先</h2>
       <ul class="policy__list">
-        <li><strong><a href="https://telemetrydeck.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">TelemetryDeck</a></strong>
-          &mdash; Privacy-focused product analytics. Collects anonymous, aggregated signals with no personal
-          identifiers, no tracking across apps, and no user profiling. See
-          <a href="https://telemetrydeck.com/privacy" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">TelemetryDeck's Privacy Policy</a>.</li>
-        <li><strong><a href="https://www.revenuecat.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat</a></strong>
-          &mdash; Manages all in-app purchases and receipt validation, including the one-time full-game
-          unlock and the optional Supporter Packs. RevenueCat processes an anonymous app user ID and
-          purchase receipts to verify your transactions. It does not collect your name, email, or any
-          personal information. See
-          <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat's Privacy Policy</a>.</li>
-        <li><strong>Apple Game Center</strong> &mdash; Leaderboards, achievements, and friend challenges (managed entirely by Apple).</li>
-        <li><strong>Apple CloudKit</strong> &mdash; iCloud save sync (managed entirely by Apple).</li>
+        <li><strong>メール:</strong> <a href="mailto:support@lootshrine.com">support@lootshrine.com</a> &mdash; 直接自分に届きます。</li>
+        <li><strong>ゲーム内:</strong> 設定 &rarr;「ヘルプ・バグ報告」からレポートを送れます。</li>
+        <li><strong>プレス / クリエイター:</strong> <a href="mailto:support@lootshrine.com">support@lootshrine.com</a> &mdash; 記事、レビュー用コード、インタビューのご相談を歓迎します。</li>
       </ul>
-      <p class="policy__text">
-        LootShrine does <strong>not</strong> use any advertising SDKs, social media trackers,
-        data brokers, or marketing platforms. No ads are shown, ever.
+      <p class="policy__text" style="margin-top: 14px;">
+        <em>（公式 Discord が開設されています &mdash; ゲームのメインメニューにリンクがあります。Twitter/X や Bluesky ができたら知りたい方はメールでお知らせください。）</em>
       </p>
     </div>
 
-    <div class="policy__section">
-      <h2 class="policy__heading">5. IN-APP PURCHASES</h2>
-      <p class="policy__text">
-        LootShrine is free to download. The first 10 floors can be played without any payment.
-        Unlocking the full game (floors 11&ndash;120) is a one-time in-app purchase.
-      </p>
-      <p class="policy__text">
-        There are also <strong>optional Supporter Packs</strong> &mdash; cosmetic-only purchases that
-        grant supporter portraits, frames, and nameplates. They <strong>never affect gameplay, stats, or balance</strong>.
-        Buying them is entirely optional and never required to play any part of the game.
-      </p>
-      <p class="policy__text">
-        Beyond the full-game unlock and the optional Supporter Packs, there are no other in-app
-        purchases &mdash; no consumables, no subscriptions, no loot boxes, and no advertising.
-      </p>
-      <p class="policy__text">
-        All purchase transactions are processed by the App Store and verified through
-        <a href="https://www.revenuecat.com" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat</a>
-        using an anonymous identifier. No payment information is collected or stored by LootShrine.
-      </p>
-      <p class="policy__text">
-        <strong>Refund requests.</strong> If you ask Apple for a refund, Apple may ask us for information
-        to help it decide. With your consent, RevenueCat responds on our behalf with a minimal set of facts:
-        whether the purchase was successfully delivered and is working, that a free trial of the content was
-        available before purchase, and our stated preference &mdash; which is to let Apple decide. No gameplay
-        data, playtime, or personal information is shared. This happens only if you initiate a refund request.
-      </p>
-    </div>
-
-    <div class="policy__section">
-      <h2 class="policy__heading">6. CHILDREN'S PRIVACY</h2>
-      <p class="policy__text">
-        LootShrine does not knowingly collect any personal information from children or adults.
-        Since no personal data is collected from any user, the app is compliant with COPPA
-        (Children's Online Privacy Protection Act) and similar regulations.
-      </p>
-    </div>
-
-    <div class="policy__section">
-      <h2 class="policy__heading">7. DATA SHARING</h2>
-      <p class="policy__text">
-        We do not sell, trade, rent, or otherwise share any personal data with third parties.
-        Anonymous analytics signals are processed by TelemetryDeck, and anonymous purchase
-        receipts are processed by RevenueCat, as described above. Neither service receives
-        any personally identifiable information.
-      </p>
-      <p class="policy__text">
-        The one exception is refund handling: if you request a refund, the limited purchase-delivery
-        facts described in Section 5 are shared with Apple to help resolve your request.
-      </p>
-    </div>
-
-    <div class="policy__section">
-      <h2 class="policy__heading">8. CHANGES TO THIS POLICY</h2>
-      <p class="policy__text">
-        If we update this Privacy Policy, the changes will be posted on this page with a
-        revised effective date. Since LootShrine collects no data, significant changes are unlikely.
-      </p>
-    </div>
-
-    <div class="policy__section">
-      <h2 class="policy__heading">9. CONTACT</h2>
-      <p class="policy__text">
-        If you have questions about this Privacy Policy or anything else, reach out:
-      </p>
-    </div>
-
-    <div class="policy__contact">
-      <p class="policy__contact-label">EMAIL US</p>
-      <a href="mailto:support@lootshrine.com" class="policy__contact-email">support@lootshrine.com</a>
+    <!-- Final CTA -->
+    <div class="cta-card">
+      <p class="cta-card__label">// 作っているものを見てみる</p>
+      <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="cta-card__btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        LOOTSHRINE を無料で試す
+      </a>
+      <p class="cta-card__trust">無料ダウンロード &middot; iOS 17+ &middot; オフラインプレイ &middot; 広告なし</p>
     </div>
 
   </div>
-</main>
-
-<div class="divider"></div>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -690,15 +782,15 @@ body::after {
     <div class="footer__logo">LOOTSHRINE</div>
     <div class="footer__copy">
       &copy; 2026 LOOTSHRINE. ALL RIGHTS RESERVED.<br>
-      MADE BY <a href="/about/" style="color: var(--gold);">TIM PEREVERZEV</a>.
+      制作: TIM PEREVERZEV.
     </div>
     <ul class="footer__links">
-      <li><a href="/news/">NEWS</a></li>
-      <li><a href="/devlog/">DEVLOG</a></li>
+      <li><a href="/news/">ニュース</a></li>
+      <li><a href="/devlog/">開発日誌</a></li>
       <li><a href="/about/">ABOUT</a></li>
-      <li><a href="/press/">PRESS</a></li>
-      <li><a href="/privacy/" style="color: var(--gold);">PRIVACY</a></li>
-      <li><a href="mailto:support@lootshrine.com">CONTACT</a></li>
+      <li><a href="/ja/press/">プレス</a></li>
+      <li><a href="/ja/privacy/">プライバシー</a></li>
+      <li><a href="mailto:support@lootshrine.com">お問い合わせ</a></li>
     </ul>
   </div>
 </footer>
