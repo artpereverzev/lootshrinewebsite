@@ -205,6 +205,7 @@ body::after {
 .reveal-delay-13 { transition-delay: 1.04s; }
 .reveal-delay-14 { transition-delay: 1.12s; }
 .reveal-delay-15 { transition-delay: 1.20s; }
+.reveal-delay-16 { transition-delay: 1.28s; }
 
 /* ===================================================================
    NAV (identical to index.html)
@@ -816,11 +817,189 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.6.2 -->
+      <!-- v1.6.3 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.6.2</span>
+          <span class="news-card__version">v1.6.3</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">CONTENT + FIXES</span>
+        </div>
+        <h2 class="news-card__title">THE BOARD FILLS UP &mdash; 40 QUESTS, 20 DIVINE ITEMS, 6 EVENTS, AND SOME BROKEN PROMISES KEPT</h2>
+        <p class="news-card__lead">
+          Hey, it&rsquo;s Tim. This one is mostly about <strong>things that ask you a question</strong>.
+          Forty new quests, twenty new divine items, six new events. And running underneath all of it,
+          a smaller and slightly more embarrassing theme &mdash; <strong>several things in this game were
+          promising you something they didn&rsquo;t deliver.</strong> Backstab advertised a guaranteed dodge
+          and gave you a coin flip. Merchant skills said &ldquo;this run&rdquo; and lasted forever.
+          Those are fixed too. &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE QUEST BOARD IS A PROPER SYSTEM NOW</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The board was the weakest screen in the camp. Three quests, and once you cleared them the tab was dead for the rest of the run. Worse, <strong style="color:var(--text-hi)">rewards were locked in the moment you accepted</strong> &mdash; so taking a quest early, when your Magic Find and gold multipliers were low, permanently gave you a worse payout than taking the same quest later.</li>
+            <li><strong style="color:var(--text-hi)">Forty new quests</strong>, spread across daily and rare. The board now <strong style="color:var(--text-hi)">refills</strong> as you clear it instead of draining toward empty, so there&rsquo;s always something live on it.</li>
+            <li><strong style="color:var(--text-hi)">Six new kinds of objective</strong>, covering the loops the board never touched: selling back to the shop, picking up loot, earning gold, gearing up, elite fights, and using your class skill. Combined with the camp objectives &mdash; sacrificing, merging, forging, donating, claiming blessings, activating set bonuses &mdash; nearly everything you actually do now counts toward <em>something</em>.</li>
+            <li><strong style="color:var(--text-hi)">Legendary quests climb their own ladder.</strong> Clear one and a harder version takes its place, with a bigger payout. Clear that, and it steps up again. The legendary tab doesn&rsquo;t run dry; it just gets steeper.</li>
+            <li>
+              Two details worth knowing:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--gold)">Rewards are calculated when you claim, not when you accept.</strong> Take a quest on floor 5 and cash it in on floor 40 and you&rsquo;re paid at floor-40 rates. Accepting early is no longer a quiet mistake.</li>
+                <li><strong style="color:var(--text-hi)">It looks the part now.</strong> Parchment notices pinned to wood, instead of a list of rows. Small thing. It reads like a board you&rsquo;d actually walk up to.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">TWENTY NEW DIVINE ITEMS &mdash; THE COLLECTION DOUBLES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Divine items went from <strong style="color:var(--text-hi)">21 to 41</strong>. They still drop the same way: from bosses and divine chests, rare and run-defining.</li>
+            <li>
+              What changed is the design brief. <strong style="color:var(--text-hi)">Each new one carries its own rule rather than a larger number.</strong> A few of them:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">The Unwriting Edge</strong> &mdash; <em>&ldquo;It does not cut armour. It cuts the sentence that said there was armour.&rdquo;</em></li>
+                <li><strong style="color:var(--text-hi)">Verdict Everlasting</strong> &mdash; <em>&ldquo;The Judge does not strike. It simply continues to be right, loudly.&rdquo;</em></li>
+                <li><strong style="color:var(--text-hi)">The Hungering Coil</strong> &mdash; <em>&ldquo;It does not want the world. It wants the next thing, forever.&rdquo;</em></li>
+                <li><strong style="color:var(--text-hi)">Wyrmscale Grips</strong> &mdash; <em>&ldquo;Three scales thick. The fourth blow is the one that counts.&rdquo;</em></li>
+                <li><strong style="color:var(--text-hi)">Crown of the Repeated Hour</strong> &mdash; <em>&ldquo;You have already worn this. You will wear it again in a moment.&rdquo;</em></li>
+                <li><strong style="color:var(--text-hi)">Warden&rsquo;s Last Refusal</strong> &mdash; <em>&ldquo;The Warden&rsquo;s post has one rule: not through here. Not yet.&rdquo;</em></li>
+              </ul>
+            </li>
+            <li>I&rsquo;d rather you found out what they do by finding them, so that&rsquo;s all you get here.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">SIX NEW EVENTS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The descent gets six new encounters, and most of them are <em>trades</em> rather than gifts.</li>
+            <li><strong style="color:var(--text-hi)">The Vaultkeeper</strong> &mdash; a ledger-keeper in grey, pen already uncapped. <em>&ldquo;Everyone needs something sooner than they can afford it.&rdquo;</em> He lends now. He collects later.</li>
+            <li><strong style="color:var(--text-hi)">The Mask Merchant</strong> &mdash; three masks on a pole, facing outward. <em>&ldquo;They are not jewellery. Whichever you take, you take to the end.&rdquo;</em> She deals in scars you keep.</li>
+            <li><strong style="color:var(--text-hi)">The Mirror That Lies</strong> &mdash; a sheet of silvered glass, taller than you, and your reflection is already holding its weapon differently to yours. You fight yourself.</li>
+            <li><strong style="color:var(--text-hi)">The Stray</strong> &mdash; something large lying against a wall, breathing badly. It&rsquo;s been in a fight and it didn&rsquo;t win. It watches you approach without getting up.</li>
+            <li><strong style="color:var(--text-hi)">The Two Doors</strong> &mdash; the corridor forks. One door is scratched over with tally marks; the other has handprints on it, and they aren&rsquo;t all the same size. Your choice changes the battle ahead <strong>before you walk into it</strong>.</li>
+            <li><strong style="color:var(--text-hi)">The Hollow Choir</strong> &mdash; five robed shapes, hoods empty, holding a note that was already here. They&rsquo;ll trade <strong style="color:var(--text-hi)">two unspent skill points for a glyph from the Author&rsquo;s Word</strong>, up to three times a run. And they always hand one over &mdash; <strong>even if you already own every glyph</strong>, because a duplicate is still worth salvaging. No dead trades.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE STRAY, AND THE PACK THAT HAD NO DOOR</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Adopting the Stray <strong style="color:var(--text-hi)">costs you nothing to keep.</strong> It fights alongside your chosen companions rather than pushing one out of the pack &mdash; it&rsquo;s a bonus ally, not a trade.</li>
+            <li><strong style="color:var(--text-hi)">The pack picker is findable now.</strong> It existed. You could not reasonably discover it.</li>
+            <li><strong style="color:var(--text-hi)">A newly unlocked beast fills a free slot on its own</strong>, instead of unlocking into nothing and waiting for you to notice.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">YOU CAN PROTECT AN ITEM NOW</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>This one came straight from bug reports, and every one of them was the same story: <em>I had the piece I was building around, I hit Sacrifice All, and it was gone.</em></li>
+            <li><strong style="color:var(--gold)">Star an item and every bulk operation skips it.</strong> Sell All, Sacrifice All, sell by rarity, sacrifice by rarity &mdash; all of them step over a favourited piece. The one thing you were saving cannot be swept away by a mistimed tap.</li>
+            <li>The star shows up where you need to see it, too: the altar, the forge and the empower cells all display it, alongside the upgrade arrow.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">TWO NEW LEGENDARY MERCHANT ARTIFACTS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">The Golden Horseshoe</strong> &mdash; <em>&ldquo;Nailed above every honest trader&rsquo;s door. The cutpurses of the lower floors have learned to walk the other way.&rdquo;</em> Nothing can be taken from you. Not from your bag, not off your back. It also pays <strong>10% more hero XP and gold</strong>.</li>
+            <li><strong style="color:var(--text-hi)">Message in a Bottle</strong> &mdash; <em>&ldquo;The letter inside is never the same twice, and it is never signed. Whoever is sending these knows exactly how deep you have gone.&rdquo;</em> A parcel waits for you on <strong>every new floor</strong>, and your Magic Find decides what&rsquo;s inside.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">TWO PROMISES, NOW KEPT</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">The Rogue&rsquo;s Backstab.</strong> It advertised a guaranteed dodge and delivered a coin flip. That&rsquo;s not a tuning problem, that&rsquo;s the description being wrong. Now it arms <strong style="color:var(--text-hi)">Vanish</strong> &mdash; a real buff, visible in the strip &mdash; and <strong>the next enemy attack misses outright.</strong> It waits until it&rsquo;s spent. No timer, no roll.</li>
+            <li><strong style="color:var(--text-hi)">Merchant skills.</strong> They now appear as <strong>buff pips in battle</strong>, with their own art, so you can actually see what you bought. And they last <strong>one run</strong> rather than forever &mdash; which is what the description always said they did.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">WORD FRAGMENTS CAN NO LONGER BE LOST</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              A few of you reported glyphs disappearing between sessions. You were right, and there wasn&rsquo;t one cause &mdash; there were three:
+              <ul class="news-card__sub">
+                <li>a rewrite racing cloud sync, where whichever finished last won</li>
+                <li>a merge that could bring already-spent copies back and then lose the live ones</li>
+                <li>a save arriving from the cloud emptier than the one already on your device, and being trusted anyway</li>
+              </ul>
+            </li>
+            <li>All three are closed. The device&rsquo;s copy is never overwritten by a thinner one, spent fragments stay spent, and rewrites can&rsquo;t collide with a sync any more.</li>
+            <li>And because this is exactly the kind of bug that comes back the next time someone adds a field: there&rsquo;s now an <strong style="color:var(--text-hi)">audit that fails loudly</strong> if new save data is ever added without merge rules attached. It&rsquo;s the fix for the <em>class</em> of bug, not just these three.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">SMALLER THINGS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Eighteen new prestige avatars</strong>, for achievements that never had one.</li>
+            <li><strong style="color:var(--text-hi)">A launch screen with proper credit</strong> &mdash; the people who helped build this get their names on it.</li>
+            <li><strong style="color:var(--text-hi)">A force-refresh button on the leaderboards</strong>, for when you know your score landed and the board hasn&rsquo;t caught up.</li>
+            <li><strong style="color:var(--text-hi)">Surpassing a fallen run pays souls that scale with how deep that run went.</strong> Beating a ghost from floor 80 is worth more than beating one from floor 12, which it always should have been.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">A battle could stall when an enemy died to a lingering effect.</strong> If the killing blow came from something already on the field &mdash; a burn tick, a delayed effect &mdash; rather than a direct hit, the turn could fail to hand back to you. Resolved.</li>
+            <li><strong style="color:var(--text-hi)">Stun wore the wrong icon.</strong> It was showing frost. It&rsquo;s lightning now.</li>
+            <li><strong style="color:var(--text-hi)">Enemy status badges overflowed their row</strong> when an enemy carried enough effects at once. They fit now.</li>
+            <li><strong style="color:var(--text-hi)">Layout on iPhone SE and 17e.</strong> A batch of small-screen problems: cut-off borders, a quest banner sitting off-screen, and a pause button overlapping the EXP bar. All fixed on both.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LOCALIZATION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Everything above &mdash; forty quest descriptions, twenty divine items with their lore, six events with every branch and outcome, two artifacts, and every new label and alert &mdash; ships <strong style="color:var(--text-hi)">day one in all 10 supported languages</strong>: English, German, Spanish, French, Italian, Japanese, Korean, Portuguese (Brazil), Russian, and Simplified Chinese.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE DISCORD</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The server&rsquo;s still the fastest way to reach me &mdash; patch talk, build chat, and a bug-reports channel I genuinely read. Several fixes in this update came from there, including the word-fragment loss and the Sacrifice All complaint that became the favourite star: <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" style="color:var(--gold); border-bottom:1px solid rgba(255,215,0,0.3);">discord.gg/McptmPeddx</a></li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          A GAME THAT LIES TO YOU IN SMALL WAYS IS TIRING TO PLAY, EVEN WHEN YOU CAN&rsquo;T NAME WHY. KEEP CLIMBING. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.6.2 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.6.2</span>
           <span class="news-card__badge">SHRINE REWORK</span>
         </div>
         <h2 class="news-card__title">THE STONE WAKES &mdash; PRAY STONE &amp; DONATION ALTAR REBUILT AROUND REAL DECISIONS</h2>
@@ -915,7 +1094,7 @@ body::after {
       </article>
 
       <!-- v1.6.1 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.1</span>
           <span class="news-card__badge">PERFORMANCE &amp; FIXES</span>
@@ -1013,7 +1192,7 @@ body::after {
       </article>
 
       <!-- v1.6.0 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.0</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1188,7 +1367,7 @@ body::after {
       </article>
 
       <!-- v1.5.8 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal reveal-delay-4">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.8</span>
           <span class="news-card__badge">POLISH &amp; FIX</span>
@@ -1264,7 +1443,7 @@ body::after {
       </article>
 
       <!-- v1.5.7 -->
-      <article class="news-card reveal reveal-delay-4">
+      <article class="news-card reveal reveal-delay-5">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.7</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1385,7 +1564,7 @@ body::after {
       </article>
 
       <!-- v1.5.6 -->
-      <article class="news-card reveal reveal-delay-5">
+      <article class="news-card reveal reveal-delay-6">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.6</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1490,7 +1669,7 @@ body::after {
       </article>
 
       <!-- v1.5.5 -->
-      <article class="news-card reveal reveal-delay-6">
+      <article class="news-card reveal reveal-delay-7">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1606,7 +1785,7 @@ body::after {
       </article>
 
       <!-- v1.5.4 -->
-      <article class="news-card reveal reveal-delay-7">
+      <article class="news-card reveal reveal-delay-8">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.4</span>
           <span class="news-card__badge">CONTENT + POLISH</span>
@@ -1669,7 +1848,7 @@ body::after {
       </article>
 
       <!-- v1.5.3 -->
-      <article class="news-card reveal reveal-delay-8">
+      <article class="news-card reveal reveal-delay-9">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.3</span>
           <span class="news-card__badge">HOTFIX</span>
@@ -1685,7 +1864,7 @@ body::after {
       </article>
 
       <!-- v1.5.2 -->
-      <article class="news-card reveal reveal-delay-9">
+      <article class="news-card reveal reveal-delay-10">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.2</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1806,7 +1985,7 @@ body::after {
       </article>
 
       <!-- v1.5.1 -->
-      <article class="news-card reveal reveal-delay-10">
+      <article class="news-card reveal reveal-delay-11">
         <div class="news-card__header">
           <span class="news-card__version">v1.5.1</span>
           <span class="news-card__badge">BOSS UPDATE</span>
@@ -1892,7 +2071,7 @@ body::after {
       </article>
 
       <!-- v1.5 -->
-      <article class="news-card reveal reveal-delay-11">
+      <article class="news-card reveal reveal-delay-12">
         <div class="news-card__header">
           <span class="news-card__version">v1.5</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -1975,7 +2154,7 @@ body::after {
       </article>
 
       <!-- v1.4 -->
-      <article class="news-card reveal reveal-delay-12">
+      <article class="news-card reveal reveal-delay-13">
         <div class="news-card__header">
           <span class="news-card__version">v1.4</span>
           <span class="news-card__badge">BALANCE &amp; LOCALIZATION</span>
@@ -2067,7 +2246,7 @@ body::after {
       </article>
 
       <!-- v1.3 -->
-      <article class="news-card reveal reveal-delay-13">
+      <article class="news-card reveal reveal-delay-14">
         <div class="news-card__header">
           <span class="news-card__version">v1.3</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
@@ -2180,7 +2359,7 @@ body::after {
       </article>
 
       <!-- v1.2 -->
-      <article class="news-card reveal reveal-delay-14">
+      <article class="news-card reveal reveal-delay-15">
         <div class="news-card__header">
           <span class="news-card__version">v1.2</span>
           <span class="news-card__badge">BALANCE &amp; POLISH</span>
@@ -2197,7 +2376,7 @@ body::after {
       </article>
 
       <!-- v1.1 -->
-      <article class="news-card reveal reveal-delay-15">
+      <article class="news-card reveal reveal-delay-16">
         <div class="news-card__header">
           <span class="news-card__version">v1.1</span>
           <span class="news-card__badge">GAME CENTER</span>
