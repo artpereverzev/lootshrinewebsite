@@ -647,6 +647,45 @@ body::after {
 }
 .news-card__outro strong { color: var(--gold); }
 
+/* Compact data table inside a news card */
+.news-card__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 4px;
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+.news-card__table th {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 2px solid rgba(255,215,0,0.22);
+  white-space: nowrap;
+}
+.news-card__table td {
+  color: var(--text-mid);
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255,215,0,0.08);
+  font-variant-numeric: tabular-nums;
+}
+.news-card__table td:first-child {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text-hi);
+  letter-spacing: 0.08em;
+}
+.news-card__table td.was { color: var(--text-lo); text-decoration: line-through; }
+.news-card__table td.now { color: var(--gold); font-weight: 700; }
+.news-card__table tr:last-child td { border-bottom: none; }
+@media (max-width: 600px) {
+  .news-card__table { font-size: 13px; }
+  .news-card__table th, .news-card__table td { padding: 7px 6px; }
+}
+
+
 /* ===================================================================
    FINAL CTA
 =================================================================== */
@@ -807,11 +846,220 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.6.3 -->
+      <!-- v1.6.4 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.6.3</span>
+          <span class="news-card__version">v1.6.4</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">IDENTITY + REBALANCE</span>
+        </div>
+        <h2 class="news-card__title">THE LONG CLIMB &mdash; TITLES, LIFETIME LEADERBOARDS, SIX DEATH ANIMATIONS &amp; TWO REBALANCES</h2>
+        <p class="news-card__lead">
+          Hey, it&rsquo;s Tim. This one is mostly about <strong>the part of the game that outlives a
+          single run</strong>. A name people can see on the board. A leaderboard that counts every floor
+          you have ever climbed rather than your one best night. Enemies that die as the thing they
+          actually were. And running underneath it, a theme I&rsquo;m rather less proud of &mdash;
+          <em>several numbers in this game were not the numbers I thought they were.</em> They are all
+          in here, named. &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">TITLES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Thirty titles</strong>, worn under your name on the leaderboards and on Rivals cards.</li>
+            <li>They sit below your nickname wherever other players can see you, and they pair with the nameplate you already own &mdash; the whole line reads as one piece of identity rather than two settings. Set yours in <strong style="color:var(--text-hi)">Avatar Customization</strong>, in the new <strong style="color:var(--text-hi)">Titles</strong> section beside Nameplates.</li>
+            <li>
+              Supporter-pack exclusive, on the same ladder as nameplates:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">First pack</strong> &mdash; 5 titles</li>
+                <li><strong style="color:var(--text-hi)">Second pack</strong> &mdash; 10 (the first five included)</li>
+                <li><strong style="color:var(--text-hi)">Third pack</strong> &mdash; 15 (all twenty-five before it included)</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">TOWER CLIMBER &mdash; TWO NEW LEADERBOARDS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Not your best run. <strong style="color:var(--gold)">Every floor you have ever climbed, added up.</strong></li>
+            <li>Highest Floor rewards the one night everything went right. This one rewards the hundred nights it didn&rsquo;t, and it is the board most of you have quietly been topping for months without anywhere to show it.</li>
+            <li>
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">Tower Climber</strong> &mdash; lifetime floors across all Adventure runs</li>
+                <li><strong style="color:var(--text-hi)">Eternal Climb: Tower Climber</strong> &mdash; the same, kept entirely separate</li>
+              </ul>
+            </li>
+            <li>The two never mix. Infinite runs can&rsquo;t flood the campaign rankings, and a campaign climb can&rsquo;t be padded by an endless one. Both are split by class, like everything else on the boards.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">SIX WAYS TO FALL APART</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Every enemy in the game used to disintegrate identically &mdash; sliced into a grid and blown outward. It reads well once. It reads well the four-hundredth time too, which is the problem.</li>
+            <li>
+              Enemies now come apart <strong style="color:var(--text-hi)">according to what they are made of</strong>:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">Shatter</strong> &mdash; stone, steel, crystal, armour, mimics. Chunks blow outward and fall.</li>
+                <li><strong style="color:var(--text-hi)">Crumble</strong> &mdash; vermin, insects, plants, unarmoured beasts. Fine fragments drop straight down into a low cloud of dust.</li>
+                <li><strong style="color:var(--text-hi)">Ash</strong> &mdash; fire, bone, spores, paper. Dissolves from the top down and drifts, swaying, tinted to its own biome.</li>
+                <li><strong style="color:var(--text-hi)">Vapour</strong> &mdash; wraiths, shades, wisps, divine light. Stretches upward, narrows, thins into nothing.</li>
+                <li><strong style="color:var(--text-hi)">Splatter</strong> &mdash; slimes, jellies, oozes, blooms. Blobs arc sideways, land, squash flat, and stay a moment before they sink.</li>
+                <li><strong style="color:var(--text-hi)">Implode</strong> &mdash; the Cosmic Abyss and the Shadow Realm&rsquo;s rifts. A brief outward hitch, then everything falls inward to a pinpoint of light.</li>
+              </ul>
+            </li>
+            <li>The differences are <em>directional</em> on purpose &mdash; outward, straight down, drifting down, upward, sideways, inward. That is what the eye actually reads at a glance; six variations on &ldquo;outward burst, different colour&rdquo; would have looked like one effect.</li>
+            <li><strong style="color:var(--text-hi)">Nothing here rolls dice.</strong> A shade will never explode into rubble. 153 of the 175 enemy types are assigned by hand; the rest crumble, which suits anything small and organic.</li>
+            <li>Bosses don&rsquo;t get a seventh animation. They get <strong style="color:var(--text-hi)">their own</strong> style, played bigger and slower, with a flash and a shockwave on top &mdash; a Forge Titan still shatters, the Primordial still implodes.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE OFFERING, REBALANCED</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>This is a nerf, and a large one. The whole ladder moved up <strong style="color:var(--text-hi)">six to ten times</strong>.</li>
+          </ul>
+          <table class="news-card__table">
+            <thead>
+              <tr><th>TIER</th><th>WAS</th><th>NOW</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>I</td><td class="was">1,000</td><td class="now">10,000</td></tr>
+              <tr><td>II</td><td class="was">5,000</td><td class="now">50,000</td></tr>
+              <tr><td>III</td><td class="was">10,000</td><td class="now">150,000</td></tr>
+              <tr><td>IV</td><td class="was">50,000</td><td class="now">450,000</td></tr>
+              <tr><td>V</td><td class="was">100,000</td><td class="now">900,000</td></tr>
+              <tr><td>VI</td><td class="was">250,000</td><td class="now">1,500,000</td></tr>
+              <tr><td>VII</td><td class="was">500,000</td><td class="now">3,000,000</td></tr>
+              <tr><td>VIII</td><td class="was">1,000,000</td><td class="now">6,000,000</td></tr>
+            </tbody>
+          </table>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--gold)">The rewards are untouched.</strong> The price moved, not the goods &mdash; every tier still gives exactly what it gave before.</li>
+            <li>The reasoning: the track was hitting its ceiling far too easily and had stopped being a decision. A thing you complete by default is not a choice, it is a checklist. Now the eighth tier is a genuine target, and there is an achievement waiting for anyone who reaches it in a single run.</li>
+            <li>Runs already in progress keep every tier they have claimed. The next unclaimed one simply costs the new amount.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE DIVINE MERCHANT</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Also a nerf &mdash; but mostly it was a bug, and I&rsquo;d rather say so plainly.</li>
+            <li>The perk was <strong style="color:var(--text-hi)">rolling for a divine item on every reroll</strong>. It was never meant to. That roll belongs to the moment a shop is generated, once. Rerolls are cheap and unbounded, so every press of the button was another ticket, and with deep-floor gold you could hold reroll and finish the entire divine collection inside one run.</li>
+            <li>
+              Two changes:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">Rerolling now carries zero divine chance.</strong> Not lower &mdash; zero.</li>
+                <li>The roll that was always meant to be there is halved, <strong style="color:var(--text-hi)">2% &rarr; 1%</strong>.</li>
+              </ul>
+            </li>
+            <li>In practice, a full climb from floor 1 to 100 passes roughly <strong style="color:var(--text-hi)">230 battle shops</strong> &mdash; most floors have two to four battles, not one &mdash; so expect around <strong style="color:var(--text-hi)">two divine sightings a run</strong>, and about a 90% chance of at least one.</li>
+            <li><strong style="color:var(--text-hi)">Boss chests are untouched, and I deliberately did not raise them.</strong> They didn&rsquo;t get better; the shortcut got closed. Chests after bosses were always meant to be the real home for divines, with the merchant as a rare lucky sighting rather than the supply line. That is the shape the game is back to.</li>
+            <li>Every divine item is exactly as strong as it was. The perk still exists and still does what its text says. Only the frequency moved.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE WORD ARTIFACT GOES DEEPER</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Clauses</strong> now begin dropping at <strong style="color:var(--text-hi)">floor 50</strong>, and <strong style="color:var(--text-hi)">verbs</strong> at <strong style="color:var(--text-hi)">floor 60</strong> &mdash; both rare, and both scaling with depth.</li>
+            <li>Past floor 60 a single run can turn up glyphs, clauses or verbs, which is the first point in the game where all three are on the table at once.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FOUR NEW ACHIEVEMENTS, FOUR NEW AVATARS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              All four live at the Shrine.
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--text-hi)">First Light</strong> &mdash; claim your first Blessing at the Prayer Stone &rarr; <em>The Pilgrim</em></li>
+                <li><strong style="color:var(--text-hi)">Faith Rewarded</strong> &mdash; ten Blessings &rarr; <em>The Devotee</em></li>
+                <li><strong style="color:var(--text-hi)">Voice of the Stone</strong> &mdash; one hundred Blessings &rarr; <em>The Stone Saint</em></li>
+                <li><strong style="color:var(--text-hi)">The Eighth Offering</strong> &mdash; carry the Offering to its final tier in a single run &rarr; <em>The Golden Tithe</em></li>
+              </ul>
+            </li>
+            <li>The Blessing counter is lifetime and starts from this update, so existing prayers don&rsquo;t count backwards. Sorry &mdash; there was nothing to count them with before now.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">QUALITY OF LIFE</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Leaderboards</strong> &mdash; a refresh button in the header, and long scores now read on two lines so names and titles stop getting clipped by a seven-figure gold total.</li>
+            <li><strong style="color:var(--text-hi)">Main menu</strong> &mdash; illustrated icons for New Adventure, the Shrine, Rivals, Leaderboards and the Word Artifact.</li>
+            <li><strong style="color:var(--text-hi)">Tooltips</strong> &mdash; elite modifiers explain themselves the first time you meet one, and the game now tells you when two items can be merged. Every tip can be switched off in Settings.</li>
+            <li><strong style="color:var(--text-hi)">Beastmaster</strong> &mdash; the pack picker is findable, and free pet slots fill properly.</li>
+            <li><strong style="color:var(--text-hi)">Battle shop</strong> &mdash; prices no longer overflow their cells at four figures. The gold icon is gone, replaced by a &ldquo;G&rdquo; after the number, and gold reads identically everywhere in battle.</li>
+            <li><strong style="color:var(--text-hi)">Fallen runs</strong> &mdash; surpassing a fallen climber now awards soul essence that scales with the floor you did it on, instead of a flat figure.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">SMALL SCREENS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>If you play on an SE or a mini, a good part of this build is quietly for you.</li>
+            <li>Equipment, bag and shop cells now share one width contract, so the columns line up and the reroll button lands where it should at any slot count. The merchant&rsquo;s level badge no longer wraps &ldquo;Lv10&rdquo; onto two lines.</li>
+            <li>On boss floors, the crown and the phase pips sat a full 15pt off the health bar on an SE while sitting flush against it on a Pro Max &mdash; they scale together now, and so does the gap under the ATK/DEF chip. The back row&rsquo;s ATK/DEF numbers were the last two enemy numbers in the game still drawing in the system font instead of the pixel one.</li>
+            <li>One that only ever appeared in <strong style="color:var(--text-hi)">Russian and French</strong>: a four-figure shop price rendered as &ldquo;1&nbsp;&nbsp;&nbsp;&nbsp;000&rdquo;, because the digit-grouping character in those locales is a no-break space and the pixel font paints it as a full square block.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><em>Two of these came from you.</em></li>
+            <li><strong style="color:var(--text-hi)">Broken Banner (Ronin)</strong> &mdash; the set bonus reported as &ldquo;not working&rdquo; was a text error. The set always did exactly what its code said; two of its tiers simply described the wrong effect. The descriptions now match the set.</li>
+            <li><strong style="color:var(--text-hi)">Trapper&rsquo;s Vestments</strong> &mdash; the mark really does slow enemies now, as it always claimed to.</li>
+            <li><strong style="color:var(--text-hi)">Hemorrhage</strong> &mdash; a health potion no longer clears the bleed the instant you drink it.</li>
+            <li><strong style="color:var(--text-hi)">Speedrun leaderboards</strong> &mdash; the in-app board was rendering times as hundredths of a second while every run submits whole seconds, so a 35-minute climb showed as &ldquo;0:21.00&rdquo;. It now agrees with the pause menu, both run summaries, and Game Center. Separately, the floor-100 board was accepting runs from Beyond the Origin &mdash; which starts at floor 101 &mdash; on a board that means &ldquo;cleared floors 1 through 100&rdquo;. It doesn&rsquo;t any more.</li>
+            <li><strong style="color:var(--text-hi)">Skill trees</strong> &mdash; several perks listed effects that did nothing at all, and a handful of nodes shared a name with another node in the same class. Audited across all fourteen.</li>
+            <li><strong style="color:var(--text-hi)">Boss mechanics</strong> &mdash; the mechanic banner could get stranded across the arena until the next floor.</li>
+            <li><strong style="color:var(--text-hi)">Phoenix Rebirth</strong> &mdash; once per floor. It always was; the text just never said so.</li>
+            <li><strong style="color:var(--text-hi)">Purchases</strong> &mdash; clearer errors when the App Store is unreachable, a purchase is awaiting approval, or a restore finds nothing to restore. Game Center sign-in and score submission are more reliable.</li>
+            <li><strong style="color:var(--text-hi)">Localization</strong> &mdash; text that could be clipped or misaligned in languages other than English, across all ten.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">KEEP CLIMBING</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The two rebalances are the changes I&rsquo;m least certain about, and you will run into both of them long before I do. Tell me how they feel &mdash; the Offering especially. The <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" style="color:var(--gold); border-bottom:1px solid rgba(255,215,0,0.3);">Discord</a> is the fastest way to reach me.</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          SEVERAL NUMBERS IN THIS GAME WERE NOT THE NUMBERS I THOUGHT THEY WERE. THEY ARE ALL NAMED ABOVE. KEEP CLIMBING. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.6.3 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.6.3</span>
           <span class="news-card__badge">CONTENT + FIXES</span>
         </div>
         <h2 class="news-card__title">THE BOARD FILLS UP &mdash; 40 QUESTS, 20 DIVINE ITEMS, 6 EVENTS, AND SOME BROKEN PROMISES KEPT</h2>
@@ -945,6 +1193,7 @@ body::after {
           </div>
           <ul class="news-card__list">
             <li><strong style="color:var(--text-hi)">Eighteen new prestige avatars</strong>, for achievements that never had one.</li>
+            <li><strong style="color:var(--text-hi)">A launch screen with proper credit</strong> &mdash; the people who helped build this get their names on it.</li>
             <li><strong style="color:var(--text-hi)">A force-refresh button on the leaderboards</strong>, for when you know your score landed and the board hasn&rsquo;t caught up.</li>
             <li><strong style="color:var(--text-hi)">Surpassing a fallen run pays souls that scale with how deep that run went.</strong> Beating a ghost from floor 80 is worth more than beating one from floor 12, which it always should have been.</li>
           </ul>
@@ -986,7 +1235,7 @@ body::after {
       </article>
 
       <!-- v1.6.2 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.2</span>
           <span class="news-card__badge">SHRINE REWORK</span>
@@ -1083,7 +1332,7 @@ body::after {
       </article>
 
       <!-- v1.6.1 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.1</span>
           <span class="news-card__badge">PERFORMANCE &amp; FIXES</span>
@@ -1181,7 +1430,7 @@ body::after {
       </article>
 
       <!-- v1.6.0 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.0</span>
           <span class="news-card__badge">MAJOR UPDATE</span>
