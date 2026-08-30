@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Codex — LootShrine classes, skills &amp; skill trees</title>
-  <meta name="description" content="Complete LootShrine reference: all 14 classes with passives, class slots, active skills and full 60-node skill trees — 840 nodes in total — plus every divine skill. Generated from the game data for build planning." />
+  <title>Codex — LootShrine classes, skills, skill trees &amp; item sets</title>
+  <meta name="description" content="Complete LootShrine reference: all 14 classes with passives, class slots, active skills and full 60-node skill trees — 840 nodes — plus all 34 item sets with every piece and bonus tier, and every divine skill. Generated from the game data for build planning." />
   <meta name="author" content="LootShrine" />
   <meta name="keywords" content="LootShrine classes, LootShrine skill tree, LootShrine build guide, Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster, Monk, Ranger, Chronomancer, Ronin, Stormcaller, divine skills" />
   <meta name="robots" content="index, follow" />
@@ -21,7 +21,7 @@
   <!-- Open Graph -->
   <meta property="og:site_name" content="LootShrine" />
   <meta property="og:title" content="LootShrine Codex — every class, skill and skill tree" />
-  <meta property="og:description" content="All 14 classes, 840 skill-tree nodes, and every divine skill. The complete build-planning reference." />
+  <meta property="og:description" content="All 14 classes, 840 skill-tree nodes, 34 item sets and every divine skill. The complete build-planning reference." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lootshrine.com/codex/" />
   <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
@@ -30,7 +30,7 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="LootShrine Codex — every class, skill and skill tree" />
-  <meta name="twitter:description" content="All 14 classes, 840 skill-tree nodes, and every divine skill." />
+  <meta name="twitter:description" content="All 14 classes, 840 skill-tree nodes, 34 item sets and every divine skill." />
   <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -520,6 +520,8 @@ body::after {
   border: 1px solid rgba(255,215,0,0.16); transition: color .15s, border-color .15s, background .15s;
 }
 .cdx-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(255,215,0,0.06); }
+.cdx-sectionnav { margin-bottom: 40px; gap: 8px; }
+.cdx-sectionnav a { font-size: 8px; padding: 10px 13px; border-color: rgba(255,215,0,0.26); color: var(--text-hi); }
 /* unlock table */
 .cdx-table { width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 14px; }
 .cdx-table th {
@@ -601,6 +603,56 @@ body::after {
 .cdx-nodes li b { color: var(--text-hi); font-weight: 700; }
 .cdx-nodes li.minor { opacity: .62; font-size: 12.5px; }
 .cdx-nodes li.minor::before { clip-path: none; width: 4px; height: 4px; opacity: .4; top: 9px; }
+
+/* ── SETS ────────────────────────────────────────── */
+.cdx-setgroup {
+  font-family: var(--font-pixel); font-size: 9px; color: var(--text-hi);
+  letter-spacing: 0.12em; margin: 24px 0 10px; display: flex; align-items: center; gap: 9px;
+}
+.cdx-setgroup span { color: var(--gold); }
+.cdx-set { background: var(--bg-card); border: 1px solid rgba(255,215,0,0.12); margin-bottom: 8px; scroll-margin-top: 76px; }
+.cdx-set[open] { border-color: rgba(255,215,0,0.3); }
+.cdx-set:hover { border-color: rgba(255,215,0,0.24); }
+.cdx-set__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 13px 40px 13px 14px; cursor: pointer; list-style: none; position: relative;
+}
+.cdx-set__head::-webkit-details-marker { display: none; }
+.cdx-set__head::after {
+  content: '+'; position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-pixel); font-size: 13px; color: var(--gold); line-height: 1;
+}
+.cdx-set[open] .cdx-set__head::after { content: '\2212'; }
+.cdx-set__n { font-family: var(--font-pixel); font-size: 9px; color: var(--text-hi); letter-spacing: 0.04em; line-height: 1.6; }
+.cdx-set__meta { font-family: var(--font-pixel); font-size: 6px; color: var(--text-lo); letter-spacing: 0.14em; white-space: nowrap; }
+.cdx-set__body { padding: 2px 14px 18px; }
+.cdx-set__flav {
+  font-family: var(--font-body); font-size: 14px; color: var(--text-mid);
+  font-style: italic; line-height: 1.7; padding-bottom: 14px; margin-bottom: 14px;
+  border-bottom: 1px dashed rgba(255,215,0,0.14);
+}
+.cdx-set__cols { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 700px) { .cdx-set__cols { grid-template-columns: minmax(0,0.85fr) minmax(0,1.15fr); } }
+.cdx-set__k { font-family: var(--font-pixel); font-size: 6px; color: var(--gold); letter-spacing: 0.18em; margin-bottom: 10px; }
+.cdx-pieces, .cdx-bonuses { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+.cdx-pieces li {
+  display: flex; justify-content: space-between; gap: 10px; align-items: baseline;
+  font-family: var(--font-body); font-size: 13.5px; color: var(--text-mid);
+  padding-bottom: 6px; border-bottom: 1px solid rgba(255,215,0,0.07);
+}
+.cdx-pieces li:last-child { border-bottom: none; }
+.cdx-pieces li b { color: var(--text-hi); font-weight: 700; }
+.cdx-pieces li span { font-family: var(--font-pixel); font-size: 6px; color: var(--text-lo); letter-spacing: 0.12em; white-space: nowrap; }
+.cdx-bonuses li {
+  font-family: var(--font-body); font-size: 13.5px; color: var(--text-mid); line-height: 1.7;
+  padding-left: 46px; position: relative;
+}
+.cdx-bonus__n {
+  position: absolute; left: 0; top: 1px;
+  font-family: var(--font-pixel); font-size: 6px; color: var(--bg-void);
+  background: var(--gold); padding: 4px 5px; letter-spacing: 0.06em; line-height: 1;
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -610,7 +662,7 @@ body::after {
   "@id": "https://lootshrine.com/codex/#page",
   "url": "https://lootshrine.com/codex/",
   "name": "LootShrine Codex — classes, skills and skill trees",
-  "description": "Complete reference for all 14 LootShrine classes: passives, class slots, active skills and full 60-node skill trees, plus every divine skill.",
+  "description": "Complete reference for all 14 LootShrine classes and all 34 item sets: passives, class slots, active skills, 840 skill-tree nodes, set pieces and bonus tiers, plus every divine skill.",
   "inLanguage": "en-US",
   "isPartOf": { "@id": "https://lootshrine.com/#website" },
   "about": { "@id": "https://lootshrine.com/#game" },
@@ -706,7 +758,7 @@ body::after {
       so what you read here is exactly what the game shows.
     </p>
     <div class="cdx-stats">
-      <span>14 CLASSES</span><span>17 CLASS SKILLS</span><span>7 DIVINE SKILLS</span><span>840 NODES</span>
+      <span>14 CLASSES</span><span>17 CLASS SKILLS</span><span>7 DIVINE SKILLS</span><span>840 NODES</span><span>34 SETS</span>
     </div>
   </div>
 </section>
@@ -715,6 +767,15 @@ body::after {
 
 <section class="codex">
   <div class="container">
+
+
+    <nav class="cdx-jump cdx-sectionnav" aria-label="Jump to section">
+      <a href="#how-to-read">HOW TO READ</a>
+      <a href="#unlock-order">UNLOCK ORDER</a>
+      <a href="#classes">CLASSES</a>
+      <a href="#sets">SETS</a>
+      <a href="#divine-skills">DIVINE SKILLS</a>
+    </nav>
 
     <div class="cdx-section">
       <h2 class="cdx-h" id="how-to-read">HOW TO READ THIS</h2>
@@ -2702,6 +2763,784 @@ body::after {
       </details>
     </div>
 
+    <div class="cdx-section">
+      <h2 class="cdx-h" id="sets">SETS</h2>
+      <div class="cdx-callout"><strong>Bonuses are tiered and cumulative.</strong> Wear 2 pieces of a set and you get its 2-piece bonus. Wear 3 and you get the 2-piece <em>and</em> the 3-piece. A 4-piece set wearing all four gets all three tiers.</div>
+      <div class="cdx-callout"><strong>Only 3 set bonuses can be active at once.</strong> If you somehow have more, the game keeps the three sets you have the most pieces of and ignores the rest. Two 2-piece sets and one 4-piece set is a perfectly normal endgame shape.</div>
+      <p class="cdx-p"><strong>Anyone can wear any set.</strong> The class restriction is on what <em>drops</em>, not what you can equip &mdash; if a Knight finds a Stormcaller piece, they can wear it and get the bonus.</p>
+      <p class="cdx-p">So the six universal sets are the only ones you can find before floor 20, and your own class&rsquo;s two become the common case from floor 30. A few events (Treasure Chest, Mimic, the reforge) roll without a class filter, so they can hand you another class&rsquo;s pieces from floor 20 on.</p>
+      <p class="cdx-p"><strong>The Reliquary event is the one place you choose.</strong> It offers an explicit "Universal Relic" or "Class Relic" pick &mdash; the only targeted way to chase a specific set.</p>
+      <p class="cdx-p"><strong>Set items also appear in the shop from floor 31</strong>, if you&rsquo;ve taken the merchant&rsquo;s Treasure Hunter skill. Below 31 the chance is exactly zero, no matter what.</p>
+      <p class="cdx-p">---</p>
+      <p class="cdx-p" style="margin-top:18px;"><strong>What drops, and when:</strong></p>
+      <div class="cdx-scroll"><table class="cdx-table" style="max-width:520px;">
+        <thead><tr><th>FLOOR</th><th>WHAT CAN DROP</th></tr></thead><tbody>
+          <tr><td class="cdx-table__floor">1&ndash;9</td><td>No set pieces at all</td></tr>
+          <tr><td class="cdx-table__floor">10&ndash;19</td><td>Universal sets only</td></tr>
+          <tr><td class="cdx-table__floor">20&ndash;29</td><td>Class + universal, weighted 60% toward universal</td></tr>
+          <tr><td class="cdx-table__floor">30+</td><td>Class + universal, weighted 70% toward class</td></tr>
+        </tbody></table></div>
+      <h3 class="cdx-sub" style="margin-top:32px;">ALL 34 SETS AT A GLANCE</h3>
+      <div class="cdx-scroll"><table class="cdx-table">
+        <thead><tr><th>SET</th><th>CLASS</th><th>PCS</th><th>SLOTS</th></tr></thead><tbody>
+          <tr><td class="cdx-table__cls"><strong>Fortune&rsquo;s Favor</strong></td><td class="cdx-table__floor"><em>Universal</em></td><td class="cdx-table__floor">3</td><td>Amulet, Ring, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Warrior&rsquo;s Resolve</strong></td><td class="cdx-table__floor"><em>Universal</em></td><td class="cdx-table__floor">3</td><td>Weapon, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Survivor&rsquo;s Instinct</strong></td><td class="cdx-table__floor"><em>Universal</em></td><td class="cdx-table__floor">3</td><td>Armor, Helmet, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Scholar&rsquo;s Wisdom</strong></td><td class="cdx-table__floor"><em>Universal</em></td><td class="cdx-table__floor">3</td><td>Weapon, Helmet, Ring</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Phoenix Rebirth</strong></td><td class="cdx-table__floor"><em>Universal</em></td><td class="cdx-table__floor">2</td><td>Amulet, Ring</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Adventurer&rsquo;s Luck</strong></td><td class="cdx-table__floor"><em>Universal</em></td><td class="cdx-table__floor">2</td><td>Boots, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Iron Fortress</strong></td><td class="cdx-table__floor">Knight</td><td class="cdx-table__floor">4</td><td>Weapon, Shield, Armor, Helmet</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Crusader&rsquo;s Wrath</strong></td><td class="cdx-table__floor">Knight</td><td class="cdx-table__floor">3</td><td>Weapon, Gloves, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Shadow Dancer</strong></td><td class="cdx-table__floor">Rogue</td><td class="cdx-table__floor">4</td><td>Weapon, Armor, Boots, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Viper&rsquo;s Fang</strong></td><td class="cdx-table__floor">Rogue</td><td class="cdx-table__floor">3</td><td>Weapon, Amulet, Ring</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Apothecary&rsquo;s Vestments</strong></td><td class="cdx-table__floor">Alchemist</td><td class="cdx-table__floor">4</td><td>Armor, Boots, Helmet, Amulet</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Quicksilver Crucible</strong></td><td class="cdx-table__floor">Alchemist</td><td class="cdx-table__floor">3</td><td>Weapon, Ring, Shield</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Ascetic&rsquo;s Wrappings</strong></td><td class="cdx-table__floor">Monk</td><td class="cdx-table__floor">4</td><td>Helmet, Weapon, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Mountain Sage&rsquo;s Vestments</strong></td><td class="cdx-table__floor">Monk</td><td class="cdx-table__floor">3</td><td>Helmet, Boots, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Marksman&rsquo;s Regalia</strong></td><td class="cdx-table__floor">Ranger</td><td class="cdx-table__floor">4</td><td>Armor, Weapon, Helmet, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Trapper&rsquo;s Vestments</strong></td><td class="cdx-table__floor">Ranger</td><td class="cdx-table__floor">3</td><td>Helmet, Boots, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Broken Banner</strong></td><td class="cdx-table__floor">Ronin</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Stone Garden</strong></td><td class="cdx-table__floor">Ronin</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Divine Aegis</strong></td><td class="cdx-table__floor">Paladin</td><td class="cdx-table__floor">4</td><td>Weapon, Shield, Armor, Helmet</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Crusader&rsquo;s Judgment</strong></td><td class="cdx-table__floor">Paladin</td><td class="cdx-table__floor">3</td><td>Weapon, Amulet, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Archmage&rsquo;s Regalia</strong></td><td class="cdx-table__floor">Mage</td><td class="cdx-table__floor">4</td><td>Weapon, Armor, Helmet, Amulet</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Barrier Weaver</strong></td><td class="cdx-table__floor">Mage</td><td class="cdx-table__floor">3</td><td>Weapon, Shield, Ring</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Tempest&rsquo;s Reach</strong></td><td class="cdx-table__floor">Stormcaller</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Amulet</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Stormwarden&rsquo;s Aegis</strong></td><td class="cdx-table__floor">Stormcaller</td><td class="cdx-table__floor">3</td><td>Weapon, Ring, Shield</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Wildcaller&rsquo;s Regalia</strong></td><td class="cdx-table__floor">Beastmaster</td><td class="cdx-table__floor">4</td><td>Weapon, Armor, Amulet, Ring</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Mooncursed Pelt</strong></td><td class="cdx-table__floor">Beastmaster</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Hourglass Regalia</strong></td><td class="cdx-table__floor">Chronomancer</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Warden of Hours</strong></td><td class="cdx-table__floor">Chronomancer</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Bloodlord&rsquo;s Raiment</strong></td><td class="cdx-table__floor">Vampire</td><td class="cdx-table__floor">4</td><td>Weapon, Armor, Amulet, Ring</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Nightstalker&rsquo;s Shroud</strong></td><td class="cdx-table__floor">Vampire</td><td class="cdx-table__floor">3</td><td>Armor, Helmet, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Soul Harvester</strong></td><td class="cdx-table__floor">Necromancer</td><td class="cdx-table__floor">4</td><td>Weapon, Armor, Helmet, Amulet</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Death&rsquo;s Embrace</strong></td><td class="cdx-table__floor">Necromancer</td><td class="cdx-table__floor">3</td><td>Weapon, Ring, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Deathwish</strong></td><td class="cdx-table__floor">Berserker</td><td class="cdx-table__floor">4</td><td>Weapon, Armor, Helmet, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>Warlord&rsquo;s Fury</strong></td><td class="cdx-table__floor">Berserker</td><td class="cdx-table__floor">3</td><td>Weapon, Shield, Boots</td></tr>
+        </tbody></table></div>
+      <h3 class="cdx-sub" style="margin-top:32px;">UNIVERSAL SETS</h3>
+      <p class="cdx-note">The only sets that can drop before floor 20.</p>
+        <details class="cdx-set" id="set-fortune-s-favor">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Fortune&rsquo;s Favor</span>
+            <span class="cdx-set__meta">UNIVERSAL &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Lucky items that attract wealth and rare finds.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Lucky Charm</b><span>Amulet</span></li>
+                <li><b>Ring of Fortune</b><span>Ring</span></li>
+                <li><b>Lucky Striders</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +30% Gold Find, +15% Magic Find &middot; -50% Reroll Cost</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Fortune&rsquo;s Blessing: +50% gold from every kill</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-warrior-s-resolve">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Warrior&rsquo;s Resolve</span>
+            <span class="cdx-set__meta">UNIVERSAL &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Battle-worn equipment that enhances core combat abilities.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Veteran&rsquo;s Blade</b><span>Weapon</span></li>
+                <li><b>Battle-Worn Mail</b><span>Armor</span></li>
+                <li><b>Warrior&rsquo;s Grips</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +12 Attack, +8 Defense</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +40 Max HP, +5% Crit</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-survivor-s-instinct">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Survivor&rsquo;s Instinct</span>
+            <span class="cdx-set__meta">UNIVERSAL &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Gear that keeps you alive when all seems lost.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Survivor&rsquo;s Leathers</b><span>Armor</span></li>
+                <li><b>Hood of the Survivor</b><span>Helmet</span></li>
+                <li><b>Escape Artist Boots</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +50 Max HP, +3 Life Regen</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +15 Defense, +8% Dodge</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-scholar-s-wisdom">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Scholar&rsquo;s Wisdom</span>
+            <span class="cdx-set__meta">UNIVERSAL &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Learned equipment that enhances mental acuity.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Sage&rsquo;s Staff</b><span>Weapon</span></li>
+                <li><b>Thinking Cap</b><span>Helmet</span></li>
+                <li><b>Ring of Insight</b><span>Ring</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +2 MP</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +15% Spell Damage, +10% XP</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-phoenix-rebirth">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Phoenix Rebirth</span>
+            <span class="cdx-set__meta">UNIVERSAL &middot; 2 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Blessed by the phoenix, granting a second chance at life.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Phoenix Feather</b><span>Amulet</span></li>
+                <li><b>Phoenix Ember</b><span>Ring</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> Revive once per floor with 50% HP</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-adventurer-s-luck">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Adventurer&rsquo;s Luck</span>
+            <span class="cdx-set__meta">UNIVERSAL &middot; 2 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Well-traveled gear blessed with good fortune.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Wanderer&rsquo;s Boots</b><span>Boots</span></li>
+                <li><b>Treasure Hunter&rsquo;s Gloves</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Gold, +20% Magic Find, +10% XP</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <h3 class="cdx-sub" style="margin-top:32px;">CLASS SETS</h3>
+      <p class="cdx-note">Class decides what <em>drops</em>, not what you can wear &mdash; anyone can equip any set.</p>
+      <p class="cdx-setgroup">&#x1F6E1;&#xFE0F; <span>KNIGHT</span></p>
+        <details class="cdx-set" id="set-iron-fortress">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Iron Fortress</span>
+            <span class="cdx-set__meta">KNIGHT &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Armor worn by the legendary Fortress Knights, empowering Bulwark beyond limits.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Fortress Bastion</b><span>Weapon</span></li>
+                <li><b>Fortress Aegis</b><span>Shield</span></li>
+                <li><b>Fortress Plate</b><span>Armor</span></li>
+                <li><b>Fortress Crown</b><span>Helmet</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +25 Defense, +10% Block</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Bulwark shield +50% (75% HP)</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Bulwark explodes on break/expire for AOE damage</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-crusader-s-wrath">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Crusader&rsquo;s Wrath</span>
+            <span class="cdx-set__meta">KNIGHT &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Holy armor that empowers attacks while shielded.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Crusader&rsquo;s Judgment</b><span>Weapon</span></li>
+                <li><b>Crusader&rsquo;s Vengeance</b><span>Gloves</span></li>
+                <li><b>Crusader&rsquo;s March</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20 Thorns, +15 Defense</li>
+                <li><span class="cdx-bonus__n">3-PC</span> While Bulwark active, +40% ATK on attacks</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F5E1;&#xFE0F; <span>ROGUE</span></p>
+        <details class="cdx-set" id="set-shadow-dancer">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Shadow Dancer</span>
+            <span class="cdx-set__meta">ROGUE &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Gear infused with shadow magic, perfecting the art of the killing blow.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Shadowfang</b><span>Weapon</span></li>
+                <li><b>Shadowweave Cloak</b><span>Armor</span></li>
+                <li><b>Shadowstep Treads</b><span>Boots</span></li>
+                <li><b>Shadow Grip</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Crit, +10% Dodge</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Backstab always crits</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Backstab resets on kill (once/turn)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-viper-s-fang">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Viper&rsquo;s Fang</span>
+            <span class="cdx-set__meta">ROGUE &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Venomous blades that coat every Backstab in lethal poison.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Viper&rsquo;s Kiss</b><span>Weapon</span></li>
+                <li><b>Venomheart Pendant</b><span>Amulet</span></li>
+                <li><b>Serpent&rsquo;s Coil</b><span>Ring</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15 Attack, +20% Extra Attack</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Backstab poisons (5% HP/turn, 3 turns)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x2697;&#xFE0F; <span>ALCHEMIST</span></p>
+        <details class="cdx-set" id="set-apothecary-s-vestments">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Apothecary&rsquo;s Vestments</span>
+            <span class="cdx-set__meta">ALCHEMIST &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Stained robes of a master apothecary &mdash; every absorbed reagent becomes medicine.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Apothecary&rsquo;s Robe</b><span>Armor</span></li>
+                <li><b>Distiller&rsquo;s Boots</b><span>Boots</span></li>
+                <li><b>Reagent Mask</b><span>Helmet</span></li>
+                <li><b>Pendant of Cures</b><span>Amulet</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Lifesteal, +3 HP Regen, +15% Healing Power</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Absorbing a shop item also cleanses 1 random debuff</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Absorbing a shop item also heals 12% of max HP</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-quicksilver-crucible">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Quicksilver Crucible</span>
+            <span class="cdx-set__meta">ALCHEMIST &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Forged from the residue of a thousand surges &mdash; the brew remembers every drop.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Quicksilver Staff</b><span>Weapon</span></li>
+                <li><b>Crucible Signet</b><span>Ring</span></li>
+                <li><b>Alembic Bulwark</b><span>Shield</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +30 Spell Damage, +10% Crit Chance</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Brew Surge counts each consumed absorb buff as 2 stacks (effective cap doubled)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F94B; <span>MONK</span></p>
+        <details class="cdx-set" id="set-ascetic-s-wrappings">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Ascetic&rsquo;s Wrappings</span>
+            <span class="cdx-set__meta">MONK &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Simple cloth bindings, worn smooth by ten thousand strikes. The chain never breaks.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Ascetic&rsquo;s Headwrap</b><span>Helmet</span></li>
+                <li><b>Ascetic&rsquo;s Staff</b><span>Weapon</span></li>
+                <li><b>Ascetic&rsquo;s Robe</b><span>Armor</span></li>
+                <li><b>Ascetic&rsquo;s Bindings</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Attack, +10% Extra Attack</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Crit, +15% Crit Dmg &middot; Full Combo: every strike lands twice</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +20% ATK, +10% Extra Attack &middot; Full Combo: attacks splash 40% to all foes</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-mountain-sage-s-vestments">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Mountain Sage&rsquo;s Vestments</span>
+            <span class="cdx-set__meta">MONK &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Robes of a master who moved like water and stood like stone. Stillness within motion.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Sage&rsquo;s Circlet</b><span>Helmet</span></li>
+                <li><b>Sage&rsquo;s Sandals</b><span>Boots</span></li>
+                <li><b>Sage&rsquo;s Wraps</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +12% Max HP, +8% Lifesteal</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% DEF, +10% ATK &middot; Each Combo point also grants +2% Defense</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F3F9; <span>RANGER</span></p>
+        <details class="cdx-set" id="set-marksman-s-regalia">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Marksman&rsquo;s Regalia</span>
+            <span class="cdx-set__meta">RANGER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">The regalia of a hunter who never looses an arrow in vain. Every shot finds the mark.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Marksman&rsquo;s Guard</b><span>Armor</span></li>
+                <li><b>Marksman&rsquo;s Longbow</b><span>Weapon</span></li>
+                <li><b>Marksman&rsquo;s Hood</b><span>Helmet</span></li>
+                <li><b>Marksman&rsquo;s Bracers</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Crit Damage</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit &middot; Each Mark grants +5% Crit Damage vs that target</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% ATK &middot; At max Marks your attacks pierce all Defense</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-trapper-s-vestments">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Trapper&rsquo;s Vestments</span>
+            <span class="cdx-set__meta">RANGER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Snare-lined leathers for the patient hunter. What is Marked cannot run, and its death feeds the next.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Trapper&rsquo;s Cowl</b><span>Helmet</span></li>
+                <li><b>Trapper&rsquo;s Treads</b><span>Boots</span></li>
+                <li><b>Trapper&rsquo;s Grips</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; Marks slow the target (−5% ATK per Mark)</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% DEF &middot; A Marked enemy that dies scatters its FULL Marks to ALL foes</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F977; <span>RONIN</span></p>
+        <details class="cdx-set" id="set-broken-banner">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Broken Banner</span>
+            <span class="cdx-set__meta">RONIN &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">His house burned; its colours did not. He wears the torn standard as armour now, and every draw of the blade is an argument that the dead are not yet finished speaking.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Masterless Katana</b><span>Weapon</span></li>
+                <li><b>Ronin&rsquo;s Kasa</b><span>Helmet</span></li>
+                <li><b>Banner-Torn Do</b><span>Armor</span></li>
+                <li><b>Draw-Hand Kote</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Crit Damage &middot; Lingering Wound: Iaido bleeds the target for 25% of the cut over 3 turns</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Find the Seam: Iaido ignores ALL of the target&rsquo;s Defense</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; No Lord, No Master: an Iaido that kills resets its own cooldown (once per turn)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-stone-garden">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Stone Garden</span>
+            <span class="cdx-set__meta">RONIN &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">He raked the gravel each dawn for thirty years and learned the lesson the stones teach: do not move first. Let the storm arrive, spend itself, and break. Then answer.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Still-Mind Menpo</b><span>Helmet</span></li>
+                <li><b>Garden Stone Do</b><span>Armor</span></li>
+                <li><b>Rooted Suneate</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; Patient Stone: each riposte banks 1 additional Focus</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense &middot; Water Does Not Break: you answer every blow that lands, even unbraced (counters while not Defending deal half)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x271D;&#xFE0F; <span>PALADIN</span></p>
+        <details class="cdx-set" id="set-divine-aegis">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Divine Aegis</span>
+            <span class="cdx-set__meta">PALADIN &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Sacred armor blessed by the light, empowering Holy Smite as a purifying force.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Lightbringer</b><span>Weapon</span></li>
+                <li><b>Divine Aegis</b><span>Shield</span></li>
+                <li><b>Sacred Plate</b><span>Armor</span></li>
+                <li><b>Halo Crown</b><span>Helmet</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +25 Defense, +10% Block</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Holy Smite removes all debuffs</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Smite overkill damage heals at 100%</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-crusader-s-judgment">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Crusader&rsquo;s Judgment</span>
+            <span class="cdx-set__meta">PALADIN &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Battle-worn armor that channels Smite into a mark of divine judgment.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Hammer of Judgment</b><span>Weapon</span></li>
+                <li><b>Symbol of Faith</b><span>Amulet</span></li>
+                <li><b>Gauntlets of Retribution</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20 Attack, +30% Crit Damage</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Smite marks target, -25% damage from marked</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F52E; <span>MAGE</span></p>
+        <details class="cdx-set" id="set-archmage-s-regalia">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Archmage&rsquo;s Regalia</span>
+            <span class="cdx-set__meta">MAGE &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Robes worn by the greatest archmages, amplifying Fireball to devastating heights.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Staff of the Archmage</b><span>Weapon</span></li>
+                <li><b>Archmage&rsquo;s Vestment</b><span>Armor</span></li>
+                <li><b>Crown of Infinite Wisdom</b><span>Helmet</span></li>
+                <li><b>Arcane Focus</b><span>Amulet</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +25% Spell Damage, +1 MP</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Fireball burn 60%, 4 turns</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Burning enemies explode on death (30% max HP AOE)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-barrier-weaver">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Barrier Weaver</span>
+            <span class="cdx-set__meta">MAGE &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Enchanted cloth that channels mana with perfect efficiency.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Warding Scepter</b><span>Weapon</span></li>
+                <li><b>Arcane Bulwark</b><span>Shield</span></li>
+                <li><b>Ring of Warding</b><span>Ring</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +2 MP, +10 Defense</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Fireball costs 1 MP instead of 2</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x26A1; <span>STORMCALLER</span></p>
+        <details class="cdx-set" id="set-tempest-s-reach">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Tempest&rsquo;s Reach</span>
+            <span class="cdx-set__meta">STORMCALLER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">The old storm-callers said lightning is only greedy &mdash; it always wants one more throat to find. This regalia teaches it to want harder.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Fulgurite Rod</b><span>Weapon</span></li>
+                <li><b>Stormcaller&rsquo;s Circlet</b><span>Helmet</span></li>
+                <li><b>Arcwoven Robes</b><span>Armor</span></li>
+                <li><b>Conduit Pendant</b><span>Amulet</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +10 Spell Damage &middot; Sky-Splitter: Chain Lightning leaps to +1 additional foe</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Unbroken Current: Chain Lightning&rsquo;s arcs strike for their FULL hit</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; Unbroken Circuit: a Chain Lightning arc that kills resets its own cooldown (once per turn)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-stormwarden-s-aegis">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Stormwarden&rsquo;s Aegis</span>
+            <span class="cdx-set__meta">STORMCALLER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">The wardens stood at the sky-gates and did not flinch. To strike one was to argue with the weather &mdash; and the weather always answers last.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Stormward Rod</b><span>Weapon</span></li>
+                <li><b>Grounding Signet</b><span>Ring</span></li>
+                <li><b>Stormwarden&rsquo;s Aegis</b><span>Shield</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; Overcharged Ward: Static Shroud&rsquo;s return-shock deals an extra 50% of your Attack</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense &middot; Rolling Concussion: Thunderclap&rsquo;s stun lasts 1 turn longer</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F43A; <span>BEASTMASTER</span></p>
+        <details class="cdx-set" id="set-wildcaller-s-regalia">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Wildcaller&rsquo;s Regalia</span>
+            <span class="cdx-set__meta">BEASTMASTER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Hides and totems of the great pack-callers &mdash; the wild answers those who wear them.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Wildcaller&rsquo;s Cleaver</b><span>Weapon</span></li>
+                <li><b>Wildcaller&rsquo;s Hide</b><span>Armor</span></li>
+                <li><b>Wildcaller&rsquo;s Totem</b><span>Amulet</span></li>
+                <li><b>Wildcaller&rsquo;s Band</b><span>Ring</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Attack, +10% Max HP</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance, +15% Max HP</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Pets strike twice each turn, +10% Attack</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-mooncursed-pelt">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Mooncursed Pelt</span>
+            <span class="cdx-set__meta">BEASTMASTER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Torn from a beast that would not die &mdash; the moon&rsquo;s curse still burns in every thread.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Mooncursed Mask</b><span>Helmet</span></li>
+                <li><b>Mooncursed Hide</b><span>Armor</span></li>
+                <li><b>Mooncursed Treads</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +12% Crit Chance, +8% Lifesteal</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Werewolf Form lasts longer and hits harder, +10% Attack</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x23F3; <span>CHRONOMANCER</span></p>
+        <details class="cdx-set" id="set-hourglass-regalia">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Hourglass Regalia</span>
+            <span class="cdx-set__meta">CHRONOMANCER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Silver-chased vestments that hum with borrowed seconds. Every strike lands a beat ahead.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Hourglass Scepter</b><span>Weapon</span></li>
+                <li><b>Hourglass Crown</b><span>Helmet</span></li>
+                <li><b>Hourglass Vestments</b><span>Armor</span></li>
+                <li><b>Hourglass Gauntlets</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Crit Damage</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Momentum: start battles with +4 Time, kept between battles on a floor</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Spell Damage &middot; Temporal Echo: Quicken&rsquo;s extra actions deal +50% damage</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-warden-of-hours">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Warden of Hours</span>
+            <span class="cdx-set__meta">CHRONOMANCER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Plate that remembers every blow before it falls. The Warden stands outside the moment, untouched.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Warden&rsquo;s Helm</b><span>Helmet</span></li>
+                <li><b>Warden&rsquo;s Aegis</b><span>Armor</span></li>
+                <li><b>Warden&rsquo;s Greaves</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; Foreseen Aegis: Foresight also grants a 20% max-HP shield</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense &middot; Second Sight: Foresight negates the first TWO enemy attacks</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F9DB; <span>VAMPIRE</span></p>
+        <details class="cdx-set" id="set-bloodlord-s-raiment">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Bloodlord&rsquo;s Raiment</span>
+            <span class="cdx-set__meta">VAMPIRE &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Ancient garb of vampire nobility, amplifying the power of Bite.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Crimson Fang</b><span>Weapon</span></li>
+                <li><b>Bloodlord&rsquo;s Mantle</b><span>Armor</span></li>
+                <li><b>Bloodstone Pendant</b><span>Amulet</span></li>
+                <li><b>Sanguine Seal</b><span>Ring</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Lifesteal, +20 Attack</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Bite overhealing converts to shield (30% HP cap)</li>
+                <li><span class="cdx-bonus__n">4-PC</span> All attacks lifesteal vs bleeding enemies</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-nightstalker-s-shroud">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Nightstalker&rsquo;s Shroud</span>
+            <span class="cdx-set__meta">VAMPIRE &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Cloak of pure darkness that spreads the affliction of Bite.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Shroud of Endless Night</b><span>Armor</span></li>
+                <li><b>Hood of the Nightstalker</b><span>Helmet</span></li>
+                <li><b>Nightwalker Boots</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Dodge, +15% Extra Attack</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Bite bleed spreads to adjacent enemies</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F480; <span>NECROMANCER</span></p>
+        <details class="cdx-set" id="set-soul-harvester">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Soul Harvester</span>
+            <span class="cdx-set__meta">NECROMANCER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Dark robes that amplify Soul Drain, accelerating soul collection.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Reaper&rsquo;s Scythe</b><span>Weapon</span></li>
+                <li><b>Soulweaver&rsquo;s Robe</b><span>Armor</span></li>
+                <li><b>Crown of the Damned</b><span>Helmet</span></li>
+                <li><b>Phylactery</b><span>Amulet</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Lifesteal, +15 Spell Damage</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Soul Drain grants 2 souls instead of 1</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Soul Drain +10% damage per soul (up to +100%)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-death-s-embrace">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Death&rsquo;s Embrace</span>
+            <span class="cdx-set__meta">NECROMANCER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Cursed garments that raise the slain as ghostly avengers.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Bonechill Scythe</b><span>Weapon</span></li>
+                <li><b>Deathgrip Ring</b><span>Ring</span></li>
+                <li><b>Grave Walker Boots</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +25 Attack, +8% Crit Chance</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Soul Drain kills summon ghost (50% ATK attack)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1FA93; <span>BERSERKER</span></p>
+        <details class="cdx-set" id="set-deathwish">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Deathwish</span>
+            <span class="cdx-set__meta">BERSERKER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Cursed armor that channels killing fury through Battle Cry.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Deathbringer</b><span>Weapon</span></li>
+                <li><b>Berserker&rsquo;s Rage</b><span>Armor</span></li>
+                <li><b>Helm of Fury</b><span>Helmet</span></li>
+                <li><b>Bloodied Grips</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +30 Attack, +10% Crit</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Battle Cry also grants +25% crit chance</li>
+                <li><span class="cdx-bonus__n">4-PC</span> Kills during Battle Cry extend duration +1 turn</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-warlord-s-fury">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">Warlord&rsquo;s Fury</span>
+            <span class="cdx-set__meta">BERSERKER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Blood-soaked armor that amplifies Battle Cry the closer to death.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Warlord&rsquo;s Cleaver</b><span>Weapon</span></li>
+                <li><b>Warlord&rsquo;s Buckler</b><span>Shield</span></li>
+                <li><b>Warpath Treads</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20 Attack, +30 Max HP</li>
+                <li><span class="cdx-bonus__n">3-PC</span> Battle Cry scales with missing HP (+1% ATK per 1%)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+    </div>
     <div class="cdx-section">
       <h2 class="cdx-h" id="divine-skills">DIVINE SKILLS</h2>
       <p class="cdx-p">These are not class skills. A <strong>divine item</strong> grants one, and it occupies its
