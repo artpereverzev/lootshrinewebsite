@@ -39,7 +39,7 @@
 
   <url>
     <loc>https://lootshrine.com/news/</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -57,6 +57,17 @@
     <image:image>
       <image:loc>https://lootshrine.com/avatar.jpeg</image:loc>
       <image:title>Tim Pereverzev — solo developer of LootShrine</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://lootshrine.com/codex/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lootshrine.com/scr_classes.jpg</image:loc>
+      <image:title>LootShrine class selection — fourteen classes</image:title>
     </image:image>
   </url>
 

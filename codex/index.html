@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codex — LootShrine classes, skills &amp; skill trees</title>
+  <meta name="description" content="Complete LootShrine reference: all 14 classes with passives, class slots, active skills and full 60-node skill trees — 840 nodes in total — plus every divine skill. Generated from the game data for build planning." />
+  <meta name="author" content="LootShrine" />
+  <meta name="keywords" content="LootShrine classes, LootShrine skill tree, LootShrine build guide, Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster, Monk, Ranger, Chronomancer, Ronin, Stormcaller, divine skills" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1A1A2E" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://lootshrine.com/codex/" />
+
+
+  <!-- Apple Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=6757924460" />
+  <meta name="apple-mobile-web-app-title" content="LootShrine" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="LootShrine" />
+  <meta property="og:title" content="LootShrine Codex — every class, skill and skill tree" />
+  <meta property="og:description" content="All 14 classes, 840 skill-tree nodes, and every divine skill. The complete build-planning reference." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lootshrine.com/codex/" />
+  <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LootShrine Codex — every class, skill and skill tree" />
+  <meta name="twitter:description" content="All 14 classes, 840 skill-tree nodes, and every divine skill." />
+  <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<style>
+:root {
+  --bg-void:     #0A0A0F;
+  --bg-dark:     #0D0D15;
+  --bg-base:     #1A1A2E;
+  --bg-card:     #1E1E28;
+  --bg-raised:   #242438;
+
+  --text-hi:     #F5F5FA;
+  --text-mid:    #A0A0C0;
+  --text-lo:     #505068;
+
+  --gold:        #FFD700;
+  --gold-dim:    #8A6F00;
+  --gold-glow:   rgba(255,215,0,0.15);
+
+  --green:       #22C55E;
+
+  --font-pixel:  "Press Start 2P", monospace;
+  --font-body:   "Syne", sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --content-w:   860px;
+  --gutter:      clamp(16px, 4vw, 40px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-void);
+  color: var(--text-hi);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* Scanlines */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── NAV ─────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500;
+  background: rgba(10,10,15,0.88);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid rgba(255,215,0,0.1);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(8px, 1.5vw, 16px);
+}
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(255,215,0,0.5);
+  white-space: nowrap;
+  line-height: 1;
+}
+.nav__logo-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.nav__logo small {
+  display: block;
+  font-size: 6px;
+  color: var(--text-lo);
+  margin-top: 5px;
+  letter-spacing: 0.22em;
+}
+.nav__links {
+  display: flex; align-items: center;
+  gap: clamp(6px, 0.9vw, 14px);
+  list-style: none;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+.nav__links a {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-mid);
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav__links a:hover,
+.nav__links a.active { color: var(--gold); }
+.nav__btn {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold);
+  color: var(--bg-void);
+  padding: 8px 12px;
+  border: 2px solid var(--gold);
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+.nav__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.nav__btn:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 16px rgba(255,215,0,0.2);
+}
+
+/* ── LANGUAGE SWITCHER ───────────────────────────── */
+.lang { position: relative; flex-shrink: 0; margin-left: 10px; }
+.lang__btn {
+  font-family: var(--font-pixel); font-size: 8px; color: var(--text-mid);
+  letter-spacing: 0.06em; padding: 9px 10px;
+  border: 1px solid rgba(255,215,0,0.25); background: transparent;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s; cursor: pointer;
+}
+.lang__btn:hover { color: var(--gold); border-color: var(--gold); }
+.lang__btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+.lang__menu {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0;
+  background: rgba(10,10,15,0.97);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,215,0,0.25);
+  min-width: 132px; list-style: none; padding: 4px; z-index: 600;
+}
+.lang__menu.open { display: block; }
+.lang__menu a {
+  display: block; font-family: var(--font-pixel); font-size: 8px;
+  color: var(--text-mid); padding: 10px; letter-spacing: 0.08em;
+  transition: background 0.15s, color 0.15s;
+}
+.lang__menu a:hover { background: rgba(255,215,0,0.1); color: var(--gold); }
+.lang__menu a.active { color: var(--gold); }
+.nav__mobile-lang {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding-top: 16px; margin-top: 4px;
+  border-top: 1px solid rgba(255,215,0,0.12);
+}
+.nav__mobile-lang a {
+  font-family: var(--font-pixel); font-size: 8px; color: var(--text-lo);
+  letter-spacing: 0.1em; padding: 7px 11px;
+  border: 1px solid rgba(255,215,0,0.2);
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav__mobile-lang a:hover, .nav__mobile-lang a.active { color: var(--gold); border-color: var(--gold); }
+.footer__lang {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  width: 100%; padding-top: 20px; margin-top: 4px;
+  border-top: 1px solid rgba(255,215,0,0.08);
+}
+.footer__lang a {
+  font-family: var(--font-pixel); font-size: 6px; color: var(--text-lo);
+  letter-spacing: 0.12em; transition: color 0.2s;
+}
+.footer__lang a:hover, .footer__lang a.active { color: var(--gold); }
+
+/* Equal-height header controls: App Store / Discord / language */
+.nav__btn, .lang__btn, .nav__discord {
+  height: 34px;
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.nav__discord {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  margin-left: 10px;
+  padding: 0;
+  border: 1px solid rgba(255,215,0,0.25);
+  background: transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.nav__discord img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  image-rendering: auto;
+}
+.nav__discord:hover {
+  border-color: var(--gold);
+  background: rgba(255,215,0,0.08);
+}
+@media (max-width: 1100px) { .nav__discord { display: none; } }
+
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--gold);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav__mobile {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: rgba(10,10,15,0.97);
+  border-bottom: 1px solid rgba(255,215,0,0.12);
+  padding: 24px var(--gutter);
+  flex-direction: column;
+  gap: 20px;
+}
+.nav__mobile.open { display: flex; }
+.nav__mobile a {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-mid);
+  letter-spacing: 0.1em;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.07);
+}
+.nav__mobile a:last-child { border-bottom: none; }
+.nav__mobile a.active { color: var(--gold); }
+
+@media (max-width: 1100px) {
+  .nav__links, .nav__btn, .lang { display: none; }
+  .nav__toggle { display: flex; }
+}
+
+/* ── CONTENT ─────────────────────────────────────── */
+.container {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.page-header {
+  padding: 120px var(--gutter) 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header__bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,215,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.page-header__vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 10%, var(--bg-void) 100%);
+}
+.page-header__content { position: relative; z-index: 1; }
+.page-header__tag {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  display: block;
+  opacity: 0.85;
+}
+.page-header__title {
+  font-family: var(--font-pixel);
+  font-size: clamp(16px, 3vw, 26px);
+  line-height: 1.6;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,215,0,0.35);
+  margin-bottom: 12px;
+}
+.page-header__date {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.15em;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
+}
+
+/* Policy content */
+.policy {
+  padding: 48px var(--gutter) 80px;
+}
+.policy__section {
+  margin-bottom: 48px;
+}
+.policy__section:last-child { margin-bottom: 0; }
+
+.policy__heading {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255,215,0,0.1);
+}
+
+.policy__text {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.policy__text:last-child { margin-bottom: 0; }
+
+.policy__text strong {
+  color: var(--text-hi);
+}
+
+.policy__list {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 14px;
+  padding-left: 0;
+  list-style: none;
+}
+.policy__list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+}
+.policy__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+/* Highlight box */
+.policy__highlight {
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.15);
+  padding: 24px;
+  margin-bottom: 14px;
+}
+.policy__highlight .policy__text { margin-bottom: 0; }
+
+/* Contact card */
+.policy__contact {
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.15);
+  padding: 28px;
+  text-align: center;
+  margin-top: 48px;
+}
+.policy__contact-label {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-lo);
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+.policy__contact-email {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(255,215,0,0.3);
+}
+.policy__contact-email:hover {
+  text-shadow: 0 0 30px rgba(255,215,0,0.6);
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+.footer {
+  padding: 40px var(--gutter) 32px;
+  border-top: 1px solid rgba(255,215,0,0.1);
+  background: var(--bg-void);
+}
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer__logo { font-family: var(--font-pixel); font-size: 11px; color: var(--gold); }
+.footer__copy {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
+  line-height: 2;
+  text-align: center;
+}
+.footer__links { display: flex; gap: 20px; list-style: none; }
+.footer__links a {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-lo);
+  letter-spacing: 0.12em;
+  transition: color 0.2s;
+}
+.footer__links a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .footer__inner { flex-direction: column; text-align: center; }
+  .footer__links { justify-content: center; }
+}
+
+/* ── CODEX ───────────────────────────────────────── */
+.codex { padding: 40px var(--gutter) 80px; }
+.cdx-stats {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 8px;
+}
+.cdx-stats span {
+  font-family: var(--font-pixel); font-size: 7px; color: var(--gold);
+  letter-spacing: 0.14em; padding: 9px 12px;
+  border: 1px solid rgba(255,215,0,0.22); background: rgba(255,215,0,0.04);
+}
+.cdx-section { margin-bottom: 48px; }
+.cdx-h {
+  font-family: var(--font-pixel); font-size: 11px; color: var(--gold);
+  letter-spacing: 0.06em; line-height: 1.7; margin-bottom: 18px;
+  padding-bottom: 12px; border-bottom: 2px solid rgba(255,215,0,0.12);
+  scroll-margin-top: 80px;
+}
+.cdx-p {
+  font-family: var(--font-body); font-size: clamp(14px,1.2vw,16px);
+  color: var(--text-mid); line-height: 1.9; margin-bottom: 14px;
+}
+.cdx-p strong { color: var(--text-hi); }
+.cdx-p em { color: var(--gold); font-style: normal; }
+.cdx-callout {
+  background: var(--bg-card); border-left: 3px solid var(--gold);
+  padding: 18px 22px; margin: 16px 0;
+  font-family: var(--font-body); font-size: 15px; color: var(--text-mid); line-height: 1.8;
+}
+.cdx-callout strong { color: var(--gold); }
+/* quick jump */
+.cdx-jump { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 32px; }
+.cdx-jump a {
+  font-family: var(--font-pixel); font-size: 7px; color: var(--text-mid);
+  letter-spacing: 0.1em; padding: 8px 10px;
+  border: 1px solid rgba(255,215,0,0.16); transition: color .15s, border-color .15s, background .15s;
+}
+.cdx-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(255,215,0,0.06); }
+/* unlock table */
+.cdx-table { width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 14px; }
+.cdx-table th {
+  font-family: var(--font-pixel); font-size: 7px; color: var(--gold); letter-spacing: 0.12em;
+  text-align: left; padding: 10px 8px; border-bottom: 2px solid rgba(255,215,0,0.22); white-space: nowrap;
+}
+.cdx-table td { padding: 10px 8px; border-bottom: 1px solid rgba(255,215,0,0.08); color: var(--text-mid); vertical-align: top; }
+.cdx-table__floor { font-family: var(--font-pixel); font-size: 7px; color: var(--text-lo); letter-spacing: .08em; white-space: nowrap; }
+.cdx-table__cls   { font-family: var(--font-pixel); font-size: 8px; color: var(--text-hi); letter-spacing: .06em; white-space: nowrap; }
+.cdx-table__pas   { font-size: 13px; line-height: 1.6; }
+.cdx-table tr:last-child td { border-bottom: none; }
+.cdx-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 700px) {
+  .cdx-table { min-width: 620px; }
+  .cdx-table th, .cdx-table td { padding: 8px 6px; }
+}
+/* class accordion */
+.cdx-class { background: var(--bg-card); border: 2px solid rgba(255,215,0,0.14); margin-bottom: 12px; scroll-margin-top: 76px; }
+.cdx-class[open] { border-color: rgba(255,215,0,0.3); }
+.cdx-class:hover { border-color: rgba(255,215,0,0.26); }
+.cdx-class__head {
+  display: flex; align-items: center; gap: 16px; padding: 16px 46px 16px 16px;
+  cursor: pointer; list-style: none; position: relative; user-select: none;
+}
+.cdx-class__head::-webkit-details-marker { display: none; }
+.cdx-class__head::after {
+  content: '+'; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-pixel); font-size: 15px; color: var(--gold); line-height: 1;
+}
+.cdx-class[open] .cdx-class__head::after { content: '\2212'; }
+.cdx-class__portrait {
+  width: 46px; height: 46px; flex-shrink: 0; overflow: hidden;
+  border: 1px solid rgba(255,215,0,0.25); background: var(--bg-raised);
+  display: flex; align-items: center; justify-content: center;
+}
+.cdx-class__portrait img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+.cdx-class__glyph { font-size: 20px; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.cdx-class__id { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.cdx-class__name { font-family: var(--font-pixel); font-size: 11px; color: var(--text-hi); letter-spacing: 0.05em; line-height: 1.4; }
+.cdx-class__unlock { font-family: var(--font-pixel); font-size: 6px; color: var(--text-lo); letter-spacing: 0.16em; line-height: 1.6; }
+.cdx-class__body { padding: 4px 16px 22px; }
+/* facts */
+.cdx-facts { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.12); margin-bottom: 22px; }
+@media (min-width: 720px) { .cdx-facts { grid-template-columns: 1fr 1fr; } }
+.cdx-fact { background: var(--bg-raised); padding: 14px 16px; }
+.cdx-fact__k { font-family: var(--font-pixel); font-size: 6px; color: var(--gold); letter-spacing: 0.18em; margin-bottom: 8px; }
+.cdx-fact__v { font-family: var(--font-body); font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+.cdx-sub {
+  font-family: var(--font-pixel); font-size: 8px; color: var(--gold); letter-spacing: 0.14em;
+  margin: 22px 0 12px; padding-bottom: 8px; border-bottom: 1px dashed rgba(255,215,0,0.18);
+}
+.cdx-note { font-family: var(--font-body); font-size: 13px; color: var(--text-lo); font-style: italic; margin-bottom: 12px; line-height: 1.7; }
+/* skills */
+.cdx-skill { background: var(--bg-raised); border-left: 2px solid var(--gold); padding: 12px 14px; margin-bottom: 8px; }
+.cdx-skill__n { font-family: var(--font-pixel); font-size: 8px; color: var(--text-hi); letter-spacing: 0.05em; line-height: 1.6; margin-bottom: 6px; }
+.cdx-skill__c { color: var(--text-lo); font-size: 6px; letter-spacing: 0.1em; }
+.cdx-skill__d { font-family: var(--font-body); font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+/* tree */
+.cdx-tree { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 820px) { .cdx-tree { grid-template-columns: 1fr 1fr; } }
+.cdx-branch { background: var(--bg-void); border: 1px solid rgba(255,215,0,0.1); border-top: 2px solid var(--gold); padding: 14px 16px 16px; }
+.cdx-branch--off { border-top-color: #EF4444; }
+.cdx-branch--def { border-top-color: #60A5FA; }
+.cdx-branch--uti { border-top-color: #22C55E; }
+.cdx-branch--mas { border-top-color: #C084FC; }
+.cdx-branch__h { font-family: var(--font-pixel); font-size: 8px; letter-spacing: 0.16em; margin-bottom: 12px; color: var(--text-hi); }
+.cdx-branch--off .cdx-branch__h { color: #EF4444; }
+.cdx-branch--def .cdx-branch__h { color: #60A5FA; }
+.cdx-branch--uti .cdx-branch__h { color: #22C55E; }
+.cdx-branch--mas .cdx-branch__h { color: #C084FC; }
+.cdx-tier { font-family: var(--font-pixel); font-size: 6px; color: var(--text-lo); letter-spacing: 0.16em; margin: 14px 0 8px; }
+.cdx-tier:first-of-type { margin-top: 0; }
+.cdx-nodes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+.cdx-nodes li {
+  font-family: var(--font-body); font-size: 13.5px; color: var(--text-mid); line-height: 1.65;
+  padding-left: 14px; position: relative;
+}
+.cdx-nodes li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: var(--gold); opacity: .7; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.cdx-nodes li b { color: var(--text-hi); font-weight: 700; }
+.cdx-nodes li.minor { opacity: .62; font-size: 12.5px; }
+.cdx-nodes li.minor::before { clip-path: none; width: 4px; height: 4px; opacity: .4; top: 9px; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://lootshrine.com/codex/#page",
+  "url": "https://lootshrine.com/codex/",
+  "name": "LootShrine Codex — classes, skills and skill trees",
+  "description": "Complete reference for all 14 LootShrine classes: passives, class slots, active skills and full 60-node skill trees, plus every divine skill.",
+  "inLanguage": "en-US",
+  "isPartOf": { "@id": "https://lootshrine.com/#website" },
+  "about": { "@id": "https://lootshrine.com/#game" },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "LootShrine", "item": "https://lootshrine.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Codex", "item": "https://lootshrine.com/codex/" }
+    ]
+  }
+}
+</script>
+</head>
+
+
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">
+      <img src="../apple-icon-180x180.png" class="nav__logo-icon" alt="LootShrine" width="32" height="32" decoding="async">
+      <span>
+        LOOTSHRINE
+        <small>&#9656; PIXEL RPG</small>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="/#about">OVERVIEW</a></li>
+      <li><a href="/codex/" class="active">CODEX</a></li>
+      <li><a href="/#gameplay">GAMEPLAY</a></li>
+      <li><a href="/#features">FEATURES</a></li>
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/devlog/">DEVLOG</a></li>
+      <li><a href="/about/">ABOUT</a></li>
+      <li><a href="/press/">PRESS</a></li>
+      <li><a href="/privacy/">PRIVACY</a></li>
+    </ul>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="nav__btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      APP STORE
+    </a>
+    <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" class="nav__discord" aria-label="Discord" title="Discord">
+      <img src="../discord_icon.png" alt="Discord" width="18" height="18" decoding="async">
+    </a>
+    <div class="lang">
+      <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        EN
+      </button>
+      <ul class="lang__menu" id="langMenu">
+        <li><a href="/codex/" class="active" hreflang="en">ENGLISH</a></li>
+        <li><a href="/ru/" hreflang="ru">РУССКИЙ</a></li>
+        <li><a href="/ko/" hreflang="ko">한국어</a></li>
+        <li><a href="/ja/" hreflang="ja">日本語</a></li>
+      </ul>
+    </div>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile">
+    <a href="/#about">OVERVIEW</a>
+    <a href="/codex/" class="active">CODEX</a>
+    <a href="/#gameplay">GAMEPLAY</a>
+    <a href="/#features">FEATURES</a>
+    <a href="/news/">NEWS</a>
+    <a href="/devlog/">DEVLOG</a>
+    <a href="/about/">ABOUT</a>
+    <a href="/press/">PRESS</a>
+    <a href="/privacy/">PRIVACY</a>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" style="color: var(--gold); margin-top: 8px;">&#9656; DOWNLOAD ON APP STORE</a>
+    <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" style="color: var(--gold);">&#9656; DISCORD</a>
+    <div class="nav__mobile-lang">
+      <a href="/codex/" class="active" hreflang="en">EN</a>
+      <a href="/ru/" hreflang="ru">РУС</a>
+      <a href="/ko/" hreflang="ko">한국어</a>
+      <a href="/ja/" hreflang="ja">日本語</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HEADER -->
+<section class="page-header">
+  <div class="page-header__bg"></div>
+  <div class="page-header__vignette"></div>
+  <div class="page-header__content">
+    <span class="page-header__tag">// GAME REFERENCE</span>
+    <h1 class="page-header__title">CODEX</h1>
+    <p class="page-header__sub" style="margin-bottom:22px;">
+      Every class, every skill, every node &mdash; generated straight from the game&rsquo;s data,
+      so what you read here is exactly what the game shows.
+    </p>
+    <div class="cdx-stats">
+      <span>14 CLASSES</span><span>17 CLASS SKILLS</span><span>7 DIVINE SKILLS</span><span>840 NODES</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="codex">
+  <div class="container">
+
+    <div class="cdx-section">
+      <h2 class="cdx-h" id="how-to-read">HOW TO READ THIS</h2>
+      <p class="cdx-p">Every class has a <strong>passive</strong> that is always on, a unique
+        <strong>9th equipment slot</strong> only that class can use, exactly <strong>one active skill</strong>,
+        and a <strong>skill tree of 60 nodes</strong>.</p>
+      <div class="cdx-callout">
+        <strong>One skill per class.</strong> Every class gets a single active skill and that never changes &mdash;
+        there is no skill unlocking or swapping. <strong>Stormcaller is the one exception:</strong> it carries all
+        four storm spells at once, each on its own cooldown, and you long-press the skill button to choose which
+        one is loaded. You still cast one at a time.
+      </div>
+      <p class="cdx-p">Separately, a <strong>divine item</strong> can grant a divine skill, which sits in its own
+        slot alongside your class skill. Those are listed at the end.</p>
+      <p class="cdx-p">Skill trees split into four branches &mdash; Offense, Defense, Utility, Mastery &mdash;
+        across four tiers gated by character level: <em>Tier 1 at level 1, Tier 2 at 5, Tier 3 at 10,
+        Ultimate at 15.</em> Dimmed entries are small stat traits (+3% crit, +5% attack); the rest change how
+        the class plays.</p>
+    </div>
+
+    <div class="cdx-section">
+      <h2 class="cdx-h" id="unlock-order">UNLOCK ORDER</h2>
+      <div class="cdx-scroll">
+      <table class="cdx-table">
+        <thead><tr><th>FLOOR</th><th>CLASS</th><th>ACTIVE SKILL</th><th>PASSIVE</th></tr></thead>
+        <tbody>
+          <tr><td class="cdx-table__floor">Default</td><td class="cdx-table__cls"><strong>Knight</strong></td><td>Bulwark</td><td class="cdx-table__pas">15% chance to block incoming attacks completely.</td></tr>
+          <tr><td class="cdx-table__floor">Default</td><td class="cdx-table__cls"><strong>Rogue</strong></td><td>Backstab</td><td class="cdx-table__pas">10% chance to dodge attacks. Critical hits deal 75% bonus damage.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 15</td><td class="cdx-table__cls"><strong>Alchemist</strong></td><td>Brew Surge</td><td class="cdx-table__pas">Absorb buffs are 30% stronger and last 1 turn longer. +1 active absorb buff slot. +10% sacrifice value at shrine.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 20</td><td class="cdx-table__cls"><strong>Monk</strong></td><td>Hundred Fists</td><td class="cdx-table__pas">Each attack builds a Combo (max 10): +3% damage per stack. Defending breaks the flow and halves your Combo. At full Combo, strikes may hit twice.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 20</td><td class="cdx-table__cls"><strong>Ranger</strong></td><td>Hunter&rsquo;s Volley</td><td class="cdx-table__pas">Attacks against a Marked target cannot miss; at max Marks they always crit. Taking no damage in a round sharpens your next shot (+1 Mark).</td></tr>
+          <tr><td class="cdx-table__floor">Floor 20</td><td class="cdx-table__cls"><strong>Ronin</strong></td><td>Iaido: Drawing Cut</td><td class="cdx-table__pas">Defending counters incoming blows and builds Focus. Below 40% HP, gain crit and lifesteal.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 25</td><td class="cdx-table__cls"><strong>Paladin</strong></td><td>Holy Smite</td><td class="cdx-table__pas">12% block chance. Blocking heals 15% of blocked damage and reflects 100% back. +20% healing effectiveness.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 30</td><td class="cdx-table__cls"><strong>Mage</strong></td><td>Fireball</td><td class="cdx-table__pas">Spells deal bonus damage based on Spell Damage stat. Start with 5 MP.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 30</td><td class="cdx-table__cls"><strong>Stormcaller</strong></td><td>Chain Lightning, Static Shroud, Thunderclap, Eye of the Storm</td><td class="cdx-table__pas">Basic attacks arc to one additional enemy. Zari commands a kit of storm spells, each honed by its own path of mastery.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 35</td><td class="cdx-table__cls"><strong>Beastmaster</strong></td><td>Werewolf Form</td><td class="cdx-table__pas">Forge a bond with wild beasts that fight at your side. Call on primal fury to shift the tide of battle.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 40</td><td class="cdx-table__cls"><strong>Chronomancer</strong></td><td>Quicken</td><td class="cdx-table__pas">The first enemy attack each battle is fully negated &mdash; he saw it coming &mdash; and negating it grants Time. He also banks a little Time at the start of every battle.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 40</td><td class="cdx-table__cls"><strong>Vampire</strong></td><td>Vampire Bite</td><td class="cdx-table__pas">Heal for 15% of all damage dealt. Attacks have a chance to confuse enemies.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 45</td><td class="cdx-table__cls"><strong>Necromancer</strong></td><td>Soul Drain</td><td class="cdx-table__pas">Collect Souls from slain enemies (max 10). Each Soul: +3% damage, +2% lifesteal, +5 HP. 8% base lifesteal.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 50</td><td class="cdx-table__cls"><strong>Berserker</strong></td><td>Battle Cry</td><td class="cdx-table__pas">Deal 1% more damage for each 1% of missing health. +50% double strike chance below 30% HP.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="cdx-section">
+      <h2 class="cdx-h" id="classes">CLASSES</h2>
+      <nav class="cdx-jump" aria-label="Jump to class">
+        <a href="#knight">KNIGHT</a>
+        <a href="#rogue">ROGUE</a>
+        <a href="#alchemist">ALCHEMIST</a>
+        <a href="#monk">MONK</a>
+        <a href="#ranger">RANGER</a>
+        <a href="#ronin">RONIN</a>
+        <a href="#paladin">PALADIN</a>
+        <a href="#mage">MAGE</a>
+        <a href="#stormcaller">STORMCALLER</a>
+        <a href="#beastmaster">BEASTMASTER</a>
+        <a href="#chronomancer">CHRONOMANCER</a>
+        <a href="#vampire">VAMPIRE</a>
+        <a href="#necromancer">NECROMANCER</a>
+        <a href="#berserker">BERSERKER</a>
+      </nav>
+      <details class="cdx-class" id="knight">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../knight_portrait.jpg" alt="Knight" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F6E1;&#xFE0F;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">KNIGHT</span><span class="cdx-class__unlock">Available from the start</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">15% chance to block incoming attacks completely.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Defense, Block Chance &amp; Max HP. Rally your troops behind the Iron Order&rsquo;s standard.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Bulwark <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Create a powerful shield absorbing damage for 3 turns.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Keen Edge</b> &mdash; Keen steel. +4% crit chance.</li>
+                <li class="minor"><b>Sharper Edge</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Steady Hand</b> &mdash; +5% attack.</li>
+                <li><b>First Strike</b> &mdash; Open with authority. First attack deals +25% damage.</li>
+                <li class="minor"><b>Battle Fury</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Razor&rsquo;s Edge</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Armor Crusher</b> &mdash; Precision strikes. Crits ignore 25% enemy DEF. Crits also leave them Vulnerable (+20% damage taken, 3t).</li>
+                <li class="minor"><b>Piercing Crit</b> &mdash; +5% crit damage.</li>
+                <li class="minor"><b>Killing Blow</b> &mdash; +5% attack.</li>
+                <li><b>Momentum</b> &mdash; Momentum. Kills grant +20% ATK for 2 turns.</li>
+                <li class="minor"><b>Bloodlust</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Crit Specialist</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Executioner</b> &mdash; No mercy. Enemies below 12% HP are instantly executed.</li>
+                <li><b>Warlord</b> &mdash; Victory breeds power. Kills grant +20% ATK, +8% crit for 2 turns.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Blade Storm</b> &mdash; Every attack strikes twice. Each hit crits independently.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Thick Armor</b> &mdash; Sturdy plate. +5% DEF.</li>
+                <li class="minor"><b>Plate Backing</b> &mdash; +4% DEF.</li>
+                <li class="minor"><b>Conditioning</b> &mdash; +5% max HP.</li>
+                <li><b>Spiked Shield</b> &mdash; Spiked armor. Reflect 10 flat damage to attackers.</li>
+                <li class="minor"><b>Hardened Hide</b> &mdash; +4% DEF.</li>
+                <li class="minor"><b>Sturdy Frame</b> &mdash; +5% max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Iron Skin</b> &mdash; Iron skin. -8% damage taken. Below 40% HP: +8% DEF.</li>
+                <li class="minor"><b>Reinforced Stance</b> &mdash; +5% DEF.</li>
+                <li class="minor"><b>Endurance</b> &mdash; +6% max HP.</li>
+                <li><b>Retaliation</b> &mdash; Punish every blow. 15% counter-attack chance on hit.</li>
+                <li class="minor"><b>Mirror Plating</b> &mdash; +5% DEF.</li>
+                <li class="minor"><b>Tempered Will</b> &mdash; +6% max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Fortress</b> &mdash; Immovable wall. Start combat with 15% HP shield. -5% damage taken.</li>
+                <li><b>Retribution</b> &mdash; Armor fights back. 20% counter-attack chance. +15 thorns.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Immortal Guardian</b> &mdash; Cheat death once: revive at 30% HP. +15% DEF.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Vigor</b> &mdash; Warrior&rsquo;s vitality. +8% max HP.</li>
+                <li class="minor"><b>Hale</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Slow Mend</b> &mdash; +2 life regen per turn.</li>
+                <li><b>Regeneration</b> &mdash; Wounds close. +3 life regen per turn.</li>
+                <li class="minor"><b>Bloodied Blade</b> &mdash; +2 life on hit.</li>
+                <li class="minor"><b>Vampiric Edge</b> &mdash; +3% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Warrior&rsquo;s Heart</b> &mdash; Vitality enhances healing. +12% HP. Potions heal 10% more.</li>
+                <li class="minor"><b>Robust</b> &mdash; +25 flat HP.</li>
+                <li class="minor"><b>Mending Pulse</b> &mdash; +3 life regen per turn.</li>
+                <li><b>Battle Recovery</b> &mdash; Kills mend wounds. Heal 6% max HP on kill.</li>
+                <li class="minor"><b>Hungering Steel</b> &mdash; +3 life on hit.</li>
+                <li class="minor"><b>Sanguine</b> &mdash; +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Colossus</b> &mdash; Mountain of HP. +50 flat HP. Start with 8% HP shield.</li>
+                <li><b>Second Wind</b> &mdash; Refuse to fall. Below 30%: heal 15% max HP once per combat.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Living Fortress</b> &mdash; Living fortress. +30% max HP. Start with 20% HP shield.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Reinforced Shield</b> &mdash; Thicker barriers. Bulwark shield +25% stronger.</li>
+                <li class="minor"><b>Bracing</b> &mdash; +4% DEF.</li>
+                <li class="minor"><b>Shield Strike</b> &mdash; +4% attack.</li>
+                <li><b>Quick Fortify</b> &mdash; Faster deployment. Bulwark CD -1.</li>
+                <li class="minor"><b>Steadfast</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Tempered Plate</b> &mdash; +4% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Shield Bash</b> &mdash; Shield empowers blade. +20% ATK while shielded.</li>
+                <li class="minor"><b>Heavy Plate</b> &mdash; +5% DEF.</li>
+                <li class="minor"><b>Crushing Aegis</b> &mdash; +5% attack.</li>
+                <li><b>Reactive Shielding</b> &mdash; Instinctive protection. Bulwark CD -1, +1 turn duration.</li>
+                <li class="minor"><b>Resolute</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Granite Stance</b> &mdash; +5% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Aegis Explosion</b> &mdash; Shield detonates. Deals stored shield value as AoE on expire.</li>
+                <li><b>Eternal Guard</b> &mdash; Iron guard. While shielded: -15% damage taken, stun immune.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Iron Bastion</b> &mdash; Iron Bastion. Bulwark +50% shield. +10% lifesteal while shielded.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="rogue">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../rogue_portrait.jpg" alt="Rogue" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F5E1;&#xFE0F;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">ROGUE</span><span class="cdx-class__unlock">Available from the start</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">10% chance to dodge attacks. Critical hits deal 75% bonus damage.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Crit Chance, Crit Damage &amp; Extra Attack. Coat your blades in lethal toxins.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Backstab <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Strike from the shadows for devastating damage, then vanish &mdash; the next enemy attack misses you completely.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Honed Edge</b> &mdash; A blade is only as patient as the hand that holds it. +5% crit chance.</li>
+                <li class="minor"><b>Whetted Steel</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Iron Wrist</b> &mdash; +5% attack.</li>
+                <li><b>First Blood</b> &mdash; The duel is decided before it begins. First attack deals +25% damage.</li>
+                <li class="minor"><b>Sure Grip</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Merciless</b> &mdash; +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Through The Armor</b> &mdash; The cut finds the seam, not the plate. Critical hits ignore half the target&rsquo;s defense. +5% attack.</li>
+                <li class="minor"><b>Killing Angle</b> &mdash; +8% crit damage.</li>
+                <li class="minor"><b>Follow Through</b> &mdash; +5% attack.</li>
+                <li><b>No Second Chance</b> &mdash; A stumbling foe has already lost. +20% damage to stunned enemies. +5% attack.</li>
+                <li class="minor"><b>Cold Certainty</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Killing Intent</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Drawing Breath</b> &mdash; Every held moment feeds the draw. Iaido deals +15% more damage per Focus spent. +8% attack.</li>
+                <li><b>Mercy Stroke</b> &mdash; The beaten are not made to suffer. Instantly kill enemies below 18% HP. +15% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Severing</b> &mdash; One breath. One arc. Nothing on the other side. Iaido deals +25% more damage per Focus, instantly kill enemies below 20% HP, and +10% attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Set Stance</b> &mdash; Rooted before the first step is taken. Start each battle with a 15% Max HP shield.</li>
+                <li class="minor"><b>Lacquered Plate</b> &mdash; +4% defense.</li>
+                <li class="minor"><b>Steady Breath</b> &mdash; +5% Max HP.</li>
+                <li><b>Falling Leaf</b> &mdash; Do not block what you can simply not be there for. +8% dodge.</li>
+                <li class="minor"><b>Light Step</b> &mdash; +3% dodge.</li>
+                <li class="minor"><b>Weathered Hide</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Immovable</b> &mdash; The mountain does not flinch at rain. Take 8% less damage. +6% Max HP.</li>
+                <li class="minor"><b>Braced Footing</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Weathered Frame</b> &mdash; +6% max HP.</li>
+                <li><b>Answering Steel</b> &mdash; Every blow you take is a question. Answer it. Riposte deals +15% of your Attack. +5% dodge.</li>
+                <li class="minor"><b>Unflinching</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Iron Discipline</b> &mdash; +25 flat HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Counterstance Mastery</b> &mdash; The guard is not a wall. It is a coiled spring. Riposte deals +20% of your Attack and you take 8% less damage.</li>
+                <li><b>Cornered Blade</b> &mdash; A masterless sword is sharpest with its back to the wall. Take 10% less damage and +10% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Mirror Of Steel</b> &mdash; Strike him and you strike yourself. Riposte deals +30% of your Attack, revive once at 35% HP, and +10% Max HP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Field Dressing</b> &mdash; No lord&rsquo;s healer rides with you. +3 Life Regen.</li>
+                <li class="minor"><b>Drinking Steel</b> &mdash; +3% lifesteal.</li>
+                <li class="minor"><b>Hard Living</b> &mdash; +5% Max HP.</li>
+                <li><b>Sellsword&rsquo;s Purse</b> &mdash; Honor does not buy rice. +10% gold find.</li>
+                <li class="minor"><b>Appraiser&rsquo;s Eye</b> &mdash; +5% magic find.</li>
+                <li class="minor"><b>Lessons Of The Road</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Blood For Breath</b> &mdash; A fallen foe is a moment to inhale. Killing an enemy heals 5% Max HP. +5% Max HP.</li>
+                <li class="minor"><b>Old Scars</b> &mdash; +4% lifesteal.</li>
+                <li class="minor"><b>Slow Breathing</b> &mdash; +3 life regen per turn.</li>
+                <li><b>Spoils Of The Duel</b> &mdash; The dead have no use for coin. Killing an enemy grants bonus gold. +5% magic find.</li>
+                <li class="minor"><b>Lean Years</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Wanderer&rsquo;s Eye</b> &mdash; +8% magic find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Meditation</b> &mdash; Stillness is not rest. It is preparation. Bank +1 extra Focus each time you Defend. +5% lifesteal.</li>
+                <li><b>Deep Well</b> &mdash; A longer draw for a longer patience. +1 max Focus and +10% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Masterless Way</b> &mdash; No lord, no banner, no debts. Bank +1 more Focus per Defend, kills heal 5% Max HP, and +15% gold find.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Discipline</b> &mdash; The guard is where the sword is sharpened. Bank +1 extra Focus each time you Defend.</li>
+                <li class="minor"><b>Clear Mind</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Quiet Strength</b> &mdash; +5% attack.</li>
+                <li><b>Swift Draw</b> &mdash; The sword leaves the sheath before the eye follows. +5% extra attack.</li>
+                <li class="minor"><b>Wandering Endurance</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Reading The Blade</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Coiled Patience</b> &mdash; Held breath becomes force. +8% extra attack.</li>
+                <li class="minor"><b>Zanshin</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Sharpened Focus</b> &mdash; +5% crit damage.</li>
+                <li><b>Unspent Stillness</b> &mdash; Not every drop of calm leaves with the cut. Iaido keeps half your Focus instead of spending it all. +5% attack.</li>
+                <li class="minor"><b>Perfect Form</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Flowing Draw</b> &mdash; +5% attack speed.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Bottomless Calm</b> &mdash; There is always more stillness to draw from. +1 max Focus and +8% attack.</li>
+                <li><b>One Cut, One Life</b> &mdash; A lifetime of waiting, spent in a single arc. Iaido deals +15% more damage per Focus and +10% extra attack.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Mind Like Still Water</b> &mdash; The pond is cut, and closes again unbroken. Iaido strikes EVERY enemy on the field for its FULL damage, deals +10% more damage per Focus, and +1 max Focus.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="alchemist">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../alchemist_1.jpg" alt="Alchemist" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x2697;&#xFE0F;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">ALCHEMIST</span><span class="cdx-class__unlock">Clear floor 15</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Absorb buffs are 30% stronger and last 1 turn longer. +1 active absorb buff slot. +10% sacrifice value at shrine.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Healing Power &amp; Lifesteal. A bubbling distillation vessel that brews power from absorbed essence.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Brew Surge <span class="cdx-skill__c">1 MP, 6 turn cooldown</span></p><p class="cdx-skill__d">Hurl every active brew at all enemies. Deals 2.0&ndash;3.5× AoE damage and grants up to +60% ATK / +40% Crit Chance for 3 turns. Scales with absorb buffs consumed (requires at least one).</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Volatile Reagents</b> &mdash; Drinking an MP potion detonates 8 splash damage across the enemy line. +5 spell damage.</li>
+                <li class="minor"><b>Crystalline Mind</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Refined Spark</b> &mdash; +5% crit damage.</li>
+                <li><b>Toxic Spill</b> &mdash; Spilled potions seep into wounds. Drinking an HP potion also poisons the nearest enemy for 2% maxHP × 3 turns.</li>
+                <li class="minor"><b>Quickened Hand</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Searing Mix</b> &mdash; +5 spell damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Bottled Lightning</b> &mdash; MP potions arc to the mind. MP potion grants +20% crit chance for 3 turns. +5% crit chance.</li>
+                <li class="minor"><b>Volatile Reagent</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Sharp Reaction</b> &mdash; +8% crit damage.</li>
+                <li><b>Cascade</b> &mdash; Reactions chain through the line. Basic attacks poison (3 dmg × 3t). Poison has 20% chance to spread on tick.</li>
+                <li class="minor"><b>Lethal Compound</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Acid Edge</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Reactive Catalyst</b> &mdash; Critical reactions ignite reagents. Crits bleed 3% maxHP for 3 turns and detonate all DoTs on the target. DoTs extend by 1 turn on hit. +10 spell damage.</li>
+                <li><b>Lingering Toxin</b> &mdash; Toxins refuse to fade. +30% damage vs bleeding/poisoned enemies. Attacks corrode (4/turn + armor melt, 3t). DoTs extend by 1 turn on hit. +10 spell damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Overdose</b> &mdash; Carry the cure to its limit. Brew Surge deals +10% damage per HP/MP potion you still carry. +30 spell damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Iron Stomach</b> &mdash; Body adapts to its own poisons. 8% damage reduction. +3 life regen.</li>
+                <li class="minor"><b>Hardy Body</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Inner Resilience</b> &mdash; +5% max HP.</li>
+                <li><b>Tonic Shield</b> &mdash; Healing draughts harden the skin. HP potion grants a 30% maxHP shield.</li>
+                <li class="minor"><b>Reflective Glass</b> &mdash; +4% block chance.</li>
+                <li class="minor"><b>Steady Hand</b> &mdash; +4% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Sympathetic Sip</b> &mdash; Reagents cross-react. HP potion also refunds 1 MP. MP potion also heals 5% maxHP.</li>
+                <li class="minor"><b>Restorative Tonic</b> &mdash; +3 HP regen.</li>
+                <li class="minor"><b>Vital Reserve</b> &mdash; +6% max HP.</li>
+                <li><b>Hardened Skin</b> &mdash; Bitter brews thicken the hide. HP potion grants +30% DEF for 3 turns. +5% defense.</li>
+                <li class="minor"><b>Lasting Cure</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Sturdy Vial</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Overflow Vial</b> &mdash; No drop wasted. HP potion overheal converts to a temporary shield. +10% max HP.</li>
+                <li><b>Liquid Courage</b> &mdash; Bottled fury fuels the fight. HP potion grants +30% ATK for 3 turns. +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Universal Cure</b> &mdash; The final antidote. Revive once per run at 50% HP. +5% lifesteal.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Cheap Reagents</b> &mdash; The shop knows your face. -15% shop prices.</li>
+                <li class="minor"><b>Frugal Apothecary</b> &mdash; +5% gold find.</li>
+                <li class="minor"><b>Buyer&rsquo;s Eye</b> &mdash; +5% magic find.</li>
+                <li><b>Pre-Brewed Shield</b> &mdash; The alembic stays warm between battles. Start each battle with a 10% maxHP shield.</li>
+                <li class="minor"><b>Deep Mind</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Scholar&rsquo;s Eye</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Bottle Service</b> &mdash; Reagents tumble from broken foes. 10% chance enemy kill drops a free potion. +10% gold find.</li>
+                <li class="minor"><b>Market Knowledge</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Sharp Trade</b> &mdash; +5% magic find.</li>
+                <li><b>Bigger Vials</b> &mdash; More shelves on the alembic rack. +1 max absorb slot per battle.</li>
+                <li class="minor"><b>Ample Stocks</b> &mdash; +3 gold per kill.</li>
+                <li class="minor"><b>Wise Investment</b> &mdash; +8% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Bounty Catalyst</b> &mdash; Prepared brews shield the merchant. Start each battle with a 15% maxHP shield. +5 gold per kill.</li>
+                <li><b>Liquid Knowledge</b> &mdash; Mastery makes every reagent potent. Absorbed items grant +10% extra stat strength. +10% magic find.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Philosopher&rsquo;s Stone</b> &mdash; The final transmutation. +1 max absorb slot. +25% gold and magic find.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Catalyst Memory</b> &mdash; The alembic remembers the first reagent of the day. The first absorb each battle is FREE.</li>
+                <li class="minor"><b>Concentrated</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Stable Form</b> &mdash; +5% max HP.</li>
+                <li><b>Recursive Distillation</b> &mdash; Some essence always lingers. 25% chance Brew Surge keeps one consumed absorb buff.</li>
+                <li class="minor"><b>Pure Focus</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Mind Clarity</b> &mdash; +5 spell damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Volatile Surge</b> &mdash; Brew Surge cycles faster. -1 turn skill cooldown. +10 spell damage.</li>
+                <li class="minor"><b>Refined Will</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Steady Burn</b> &mdash; +5% crit damage.</li>
+                <li><b>Reagent Mastery</b> &mdash; Every drop counts twice. +20% potion healing.</li>
+                <li class="minor"><b>Studied Form</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Adept Hand</b> &mdash; +1 max MP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Residue</b> &mdash; The brew leaves a lasting stain. Brew Surge poisons every enemy hit (5 dmg × 3 turns). +10% attack.</li>
+                <li><b>Twin Flask</b> &mdash; Two flasks, one cast. Brew Surge fires its AoE damage burst twice.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Master Brew</b> &mdash; The final recipe. +30 spell damage. -1 turn skill cooldown. +20% crit damage.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="monk">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../monk_portrait.jpg" alt="Monk" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F94B;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">MONK</span><span class="cdx-class__unlock">Clear floor 20</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Each attack builds a Combo (max 10): +3% damage per stack. Defending breaks the flow and halves your Combo. At full Combo, strikes may hit twice.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Crit Damage &amp; Extra Attack. Sacred prayer beads that keep your combo flowing between blows.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Hundred Fists <span class="cdx-skill__c">1 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Unleash a flurry of blows, spending your Combo to deal damage that grows with the stacks consumed.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Iron Palm</b> &mdash; Your strikes bite deeper. +1% damage per Combo stack.</li>
+                <li class="minor"><b>Focused Strikes</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Tempered Fist</b> &mdash; +5% attack.</li>
+                <li><b>Twin Palm</b> &mdash; Blows come in pairs. Build +1 extra Combo per attack.</li>
+                <li class="minor"><b>Quick Hands</b> &mdash; +5% extra attack.</li>
+                <li class="minor"><b>Loose Stance</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Rising Dragon</b> &mdash; Momentum swells. +2 max Combo and +1% more damage per Combo stack.</li>
+                <li class="minor"><b>Killing Intent</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Heavy Hands</b> &mdash; +6% attack.</li>
+                <li><b>Cascade Strikes</b> &mdash; Precision feeds the chain. Crits build +1 Combo, and +10% flurry chance at max Combo.</li>
+                <li class="minor"><b>Flowing Motion</b> &mdash; +6% extra attack.</li>
+                <li class="minor"><b>Sharp Focus</b> &mdash; +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>River&rsquo;s Might</b> &mdash; The current is unstoppable. +2% more damage per stack, and at max Combo every hit crits.</li>
+                <li><b>Thousand Palms</b> &mdash; An unending torrent. +25% flurry chance at max Combo and +1 more Combo per attack.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Unrelenting Torrent</b> &mdash; The current cannot be stopped. +5 max Combo and a further +2% damage per stack &mdash; on top of River’s Might, for +4% in total.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Wind Step</b> &mdash; Flow around the blow. +8% dodge.</li>
+                <li class="minor"><b>Hardened</b> &mdash; +4% defense.</li>
+                <li class="minor"><b>Deep Breath</b> &mdash; +5% Max HP.</li>
+                <li><b>Rooted Stance</b> &mdash; Stand like the mountain. +10% Max HP.</li>
+                <li class="minor"><b>Light Feet</b> &mdash; +3% dodge.</li>
+                <li class="minor"><b>Calm Mind</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Redirect</b> &mdash; Turn force aside. When hit, 30% chance to counter. +5% dodge.</li>
+                <li class="minor"><b>Rooted</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Unbending</b> &mdash; +5% defense.</li>
+                <li><b>Iron Discipline</b> &mdash; The chain never breaks. Defending no longer clears your Combo. +5% defense.</li>
+                <li class="minor"><b>Evasive</b> &mdash; +4% dodge.</li>
+                <li class="minor"><b>Fluid Guard</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Mirror Stance</b> &mdash; Become untouchable. When hit, 50% chance to counter. +10% dodge.</li>
+                <li><b>Immovable</b> &mdash; Nothing moves you. Take 10% less damage and +10% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Unshakable Mountain</b> &mdash; You do not fall and you do not break. Revive once at 35% HP, and +15% defense.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Chi Flow</b> &mdash; Violence becomes vigor. Heal 0.5% of damage per Combo stack.</li>
+                <li class="minor"><b>Inner Peace</b> &mdash; +3% lifesteal.</li>
+                <li class="minor"><b>Steady Hand</b> &mdash; +3% crit chance.</li>
+                <li><b>Momentum</b> &mdash; Open in motion. Start each battle with 2 Combo.</li>
+                <li class="minor"><b>Keen Sense</b> &mdash; +5% magic find.</li>
+                <li class="minor"><b>Disciplined</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Meditation</b> &mdash; Breath restores. Combo lifesteal grows to 1% per stack, and regen 3 HP each turn.</li>
+                <li class="minor"><b>Serenity</b> &mdash; +4% lifesteal.</li>
+                <li class="minor"><b>Focus</b> &mdash; +5% Max HP.</li>
+                <li><b>Rolling Start</b> &mdash; Hit the ground running. Start battles with 4 Combo. +5% gold find.</li>
+                <li class="minor"><b>Swift Learner</b> &mdash; +6% XP bonus.</li>
+                <li class="minor"><b>Fortune&rsquo;s Fist</b> &mdash; +8% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>One With All</b> &mdash; Body and battle as one. Combo lifesteal reaches 2% per stack. +5% lifesteal.</li>
+                <li><b>Endless Chain</b> &mdash; The chain never ends. Combo carries across floors, and kills build +1 Combo.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Perpetual Motion</b> &mdash; The chain never rests. Start battles with 5 Combo, and kills build one more Combo &mdash; +2 per kill together with Endless Chain.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Empty Hand</b> &mdash; The finisher comes sooner. -1 turn skill cooldown. +5% attack.</li>
+                <li class="minor"><b>Ki Surge</b> &mdash; +10% crit damage.</li>
+                <li class="minor"><b>Chained Breath</b> &mdash; +5% attack.</li>
+                <li><b>Flowing Kata</b> &mdash; Every kill feeds the form. Kills build +1 Combo.</li>
+                <li class="minor"><b>Enduring</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Resolve</b> &mdash; +4% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Rushing Wind</b> &mdash; Sharpen the killing blow. Hundred Fists +5% damage per Combo, and -1 turn skill cooldown.</li>
+                <li class="minor"><b>Deadly Focus</b> &mdash; +12% crit damage.</li>
+                <li class="minor"><b>Precision</b> &mdash; +4% crit chance.</li>
+                <li><b>Endless Fists</b> &mdash; Don&rsquo;t stop swinging. Hundred Fists keeps half your Combo instead of spending it all.</li>
+                <li class="minor"><b>Iron Will</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Grit</b> &mdash; +3% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Perfect Strike</b> &mdash; A flawless finish. Hundred Fists +8% damage per Combo and ignores defense.</li>
+                <li><b>Unbroken Chain</b> &mdash; The chain outlives the blow. Hundred Fists keeps 75% of your Combo. +8% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Ten Thousand Fists</b> &mdash; The perfect finish. Hundred Fists +10% damage per Combo, and -1 turn skill cooldown.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="ranger">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../ranger_portrait.jpg" alt="Ranger" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F3F9;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">RANGER</span><span class="cdx-class__unlock">Clear floor 20</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Attacks against a Marked target cannot miss; at max Marks they always crit. Taking no damage in a round sharpens your next shot (+1 Mark).</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Crit Chance &amp; Extra Attack. A hunter&rsquo;s sigil that brands your prey and deepens every Mark.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Hunter&rsquo;s Volley <span class="cdx-skill__c">1 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Loose a volley that Marks every enemy, then detonate all Marks on your target for a burst of damage.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Precise Shot</b> &mdash; A steadier aim finds the gaps. +5% crit chance.</li>
+                <li class="minor"><b>Keen Eye</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Drawn Bow</b> &mdash; +5% attack.</li>
+                <li><b>Barbed Arrows</b> &mdash; Serrated heads tear on the way out. Attacks apply a light Bleed.</li>
+                <li class="minor"><b>Heavy Shot</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Deadly Aim</b> &mdash; +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Armor Piercer</b> &mdash; Broadhead tips punch through plate. Critical hits ignore half the target&rsquo;s defense. +4% crit chance.</li>
+                <li class="minor"><b>Sharpshooter</b> &mdash; A steady eye finds the gap. +4% crit chance. +12% Accuracy (cancels enemy Evasion).</li>
+                <li class="minor"><b>Full Draw</b> &mdash; +6% attack.</li>
+                <li><b>Concussive Shot</b> &mdash; Reeling prey can&rsquo;t defend. +20% damage to stunned enemies. +5% attack.</li>
+                <li class="minor"><b>Lethality</b> &mdash; +10% crit damage.</li>
+                <li class="minor"><b>Power Draw</b> &mdash; +6% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Hemorrhage</b> &mdash; Your arrows leave wounds that won&rsquo;t close. Attacks apply a heavy Bleed. +8% attack.</li>
+                <li><b>Executioner&rsquo;s Aim</b> &mdash; Finish the wounded before they run. Instantly kill enemies below 20% HP. +15% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Killing Spree</b> &mdash; Death follows your aim. Crits ignore all defense, and +10% attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Light Step</b> &mdash; Stay one pace ahead of the strike. +8% dodge.</li>
+                <li class="minor"><b>Fleet</b> &mdash; +3% dodge.</li>
+                <li class="minor"><b>Wind-Read</b> &mdash; +5% Max HP.</li>
+                <li><b>Thornbrush</b> &mdash; Those who close on you bleed for it. +5 Thorns.</li>
+                <li class="minor"><b>Hardy</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Braced</b> &mdash; +4% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Evasive Roll</b> &mdash; Tumble clear and reset your footing. After being hit, +15% dodge for 2 turns. +6% dodge.</li>
+                <li class="minor"><b>Nimble</b> &mdash; +4% dodge.</li>
+                <li class="minor"><b>Guarded</b> &mdash; +5% defense.</li>
+                <li><b>Thornbrush Traps</b> &mdash; Snares and brambles ring your position. +8 Thorns and +5% defense.</li>
+                <li class="minor"><b>Sturdy</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Ironbark</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Vanish</b> &mdash; When cornered, you melt into cover. Below 35% HP, gain a large defense bonus. +10% dodge.</li>
+                <li><b>Camouflage</b> &mdash; The wilds hide their hunter. Take 10% less damage and +10% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Ghost Walker</b> &mdash; They can never catch what they can&rsquo;t see. +15% dodge, revive once at 35% HP, and +10% Max HP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Poison Arrows</b> &mdash; Coat your tips in venom. Attacks apply Poison.</li>
+                <li class="minor"><b>Bloodletter</b> &mdash; +3% lifesteal.</li>
+                <li class="minor"><b>Field Rations</b> &mdash; +3 Life Regen.</li>
+                <li><b>Scavenger</b> &mdash; Nothing on the trail goes to waste. +10% gold find.</li>
+                <li class="minor"><b>Tracker</b> &mdash; +5% magic find.</li>
+                <li class="minor"><b>Woodlore</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Toxic Coating</b> &mdash; A deadlier brew clings to every shaft. Attacks apply a stronger Poison and +3% lifesteal.</li>
+                <li class="minor"><b>Vital Draw</b> &mdash; +4% lifesteal.</li>
+                <li class="minor"><b>Leeching Barbs</b> &mdash; +3 Life on Hit.</li>
+                <li><b>Hunter&rsquo;s Bounty</b> &mdash; The best pelts fetch a fine price. Killing an enemy grants bonus gold. +5% magic find.</li>
+                <li class="minor"><b>Keen Learner</b> &mdash; +6% XP bonus.</li>
+                <li class="minor"><b>Prospector</b> &mdash; +8% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Field Dressing</b> &mdash; Every kill is a moment to bind your wounds. Killing an enemy heals 5% Max HP. +5% Max HP.</li>
+                <li><b>Pack Hunter</b> &mdash; You never stalk just one. Apply +1 extra Mark per attack. +10% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Apex Predator</b> &mdash; The top of the food chain. Kills heal 5% Max HP and grant bonus gold, and apply +1 extra Mark per attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Hunter&rsquo;s Mark</b> &mdash; The hunt begins in earnest. +1 max Mark and +1 Mark applied per attack.</li>
+                <li class="minor"><b>Focused Hunt</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Steady Nerve</b> &mdash; +5% attack.</li>
+                <li><b>Keen Instinct</b> &mdash; You read the moment to loose. Apply +1 extra Mark per attack.</li>
+                <li class="minor"><b>Enduring Hunt</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Marksman</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Cull the Weak</b> &mdash; Wounded prey is prey undone. Marked enemies below 20% HP take +30% damage from you.</li>
+                <li class="minor"><b>Merciless</b> &mdash; +12% crit damage.</li>
+                <li class="minor"><b>Predator</b> &mdash; +4% crit chance.</li>
+                <li><b>Ricochet</b> &mdash; Your shots find fresh targets when prey drops. +1 max Mark, +4% crit chance, and -1 turn skill cooldown.</li>
+                <li class="minor"><b>Bloodhound</b> &mdash; +10% crit damage.</li>
+                <li class="minor"><b>Relentless</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Killing Ground</b> &mdash; No quarter on your hunting field. +2 max Marks, +1 Mark per attack, and +5% crit chance.</li>
+                <li><b>Master Hunter</b> &mdash; The perfect stalker never misses a beat. +1 max Mark, +1 Mark per attack, and +15% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Open Season</b> &mdash; Everything is prey now. +2 max Marks, +1 Mark per attack, Marked enemies below 20% HP take +30% damage, and +5% crit chance.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="ronin">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../ronin_portrait.jpg" alt="Ronin" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F977;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">RONIN</span><span class="cdx-class__unlock">Clear floor 20</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Defending counters incoming blows and builds Focus. Below 40% HP, gain crit and lifesteal.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Crit Damage &amp; Max HP. A worn whetstone that keeps the blade honed: +1 Focus whenever you Defend, +2 Focus cap, +20% riposte damage, and the first Iaido of every battle always critically strikes.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Iaido: Drawing Cut <span class="cdx-skill__c">3 turn cooldown</span></p><p class="cdx-skill__d">Unsheathe in a single breath, spending all Focus for one devastating cut. The deeper the Focus, the deeper the wound &mdash; at full Focus the draw always strikes true.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Precision</b> &mdash; Sharp eye. +5% crit chance.</li>
+                <li class="minor"><b>Hawkeye</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Lethal Strikes</b> &mdash; +5% crit damage.</li>
+                <li><b>Toxin Coating</b> &mdash; Venomous blades. Basic attacks poison (3 dmg, 2 turns).</li>
+                <li class="minor"><b>Venomwright</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Apothecary</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Killing Blow</b> &mdash; Smell blood. +30% damage vs enemies below 40% HP.</li>
+                <li class="minor"><b>Pinpoint</b> &mdash; Strike the seam. +4% crit chance. +10% Accuracy (cancels enemy Evasion).</li>
+                <li class="minor"><b>Brutal Edge</b> &mdash; +8% crit damage.</li>
+                <li><b>Festering Wounds</b> &mdash; Critical cuts bleed. Crits apply bleed (15% ATK/turn, 3 turns).</li>
+                <li class="minor"><b>Predator</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Cruel Cut</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Assassinate</b> &mdash; One clean strike. Enemies below 15% HP are executed.</li>
+                <li><b>Virulence</b> &mdash; Poison lingers. DoTs extend 1 turn on hit. +20% vs bleeding. Crits inflict Mortal Wound &mdash; they can&rsquo;t heal (3t).</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Death Mark</b> &mdash; Death mark. First attack: +100% damage. +50% crit damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Evasion</b> &mdash; Hard to pin down. +6% dodge chance.</li>
+                <li class="minor"><b>Quickstep</b> &mdash; +3% dodge chance.</li>
+                <li class="minor"><b>Lithe</b> &mdash; +5% max HP.</li>
+                <li><b>Riposte</b> &mdash; Turn defense to offense. 15% counter-attack chance.</li>
+                <li class="minor"><b>Counter Edge</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Reflexes</b> &mdash; +3% dodge chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Smoke Screen</b> &mdash; Vanish. After being hit: +15% dodge for 2 turns.</li>
+                <li class="minor"><b>Phantom Step</b> &mdash; +4% dodge chance.</li>
+                <li class="minor"><b>Resilient Frame</b> &mdash; +6% max HP.</li>
+                <li><b>Counter-Strike</b> &mdash; Punish every miss. 25% counter-attack chance.</li>
+                <li class="minor"><b>Vicious Strike</b> &mdash; +5% crit damage.</li>
+                <li class="minor"><b>Slippery</b> &mdash; +4% dodge chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Elusive</b> &mdash; Untouchable. +12% dodge chance.</li>
+                <li><b>Blade Dance</b> &mdash; Each dodge empowers. 30% counter-attack. +5% crit.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Phantom</b> &mdash; Phantom. +15% dodge. -15% damage taken.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Pickpocket</b> &mdash; Sticky fingers. +12% bonus gold.</li>
+                <li class="minor"><b>Coin Sense</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Glittering Eye</b> &mdash; +5% magic find.</li>
+                <li><b>Quick Reflexes</b> &mdash; Always first. +8% extra attack.</li>
+                <li class="minor"><b>Sleek Form</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Sharp Eyes</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Treasure Hunter</b> &mdash; Nose for treasure. +8% magic find. -10% shop prices.</li>
+                <li class="minor"><b>Greedy Heart</b> &mdash; +10% gold find.</li>
+                <li class="minor"><b>Lucky Strikes</b> &mdash; +6% magic find.</li>
+                <li><b>Flurry</b> &mdash; Two strikes in one. 15% double-strike chance.</li>
+                <li class="minor"><b>Cyclone</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Whirling</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Master Thief</b> &mdash; Every kill pays. +5 gold on kill. +5% magic find.</li>
+                <li><b>Blinding Speed</b> &mdash; Blur of steel. 10% double-strike. +10% extra attack.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Opportunist</b> &mdash; Master thief. -25% shop prices. +20% gold.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Twisted Blade</b> &mdash; Deeper wounds. Backstab +25% damage.</li>
+                <li class="minor"><b>Wicked Edge</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Heartseeker</b> &mdash; +5% crit damage.</li>
+                <li><b>Shadow Ready</b> &mdash; Shadow recovery. Backstab CD -1.</li>
+                <li class="minor"><b>Fleet Foot</b> &mdash; +3% dodge chance.</li>
+                <li class="minor"><b>Quick Draw</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Ambush</b> &mdash; Perfect ambush. Backstab always crits.</li>
+                <li class="minor"><b>Slayer</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Devastate</b> &mdash; +8% crit damage.</li>
+                <li><b>Ghost Step</b> &mdash; Vanish after striking. Backstab CD -1. +5% dodge.</li>
+                <li class="minor"><b>Wraith</b> &mdash; +4% dodge chance.</li>
+                <li class="minor"><b>Surgical</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Eviscerate</b> &mdash; Wounds never close. Backstab applies bleed (30% ATK, 3 turns).</li>
+                <li><b>Shadow Dance</b> &mdash; Momentum carries. After Backstab: next attack +50% damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Perfect Assassination</b> &mdash; Perfect kill. Backstab hits twice. +25% damage.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="paladin">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../paladin_portrait.jpg" alt="Paladin" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x271D;&#xFE0F;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">PALADIN</span><span class="cdx-class__unlock">Clear floor 25</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">12% block chance. Blocking heals 15% of blocked damage and reflects 100% back. +20% healing effectiveness.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Defense, Life Regen &amp; Max HP. A blessed fragment radiating divine protection.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Holy Smite <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Strike with holy light, dealing heavy damage and healing yourself. +50% damage vs undead/demons.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Sacred Blade</b> &mdash; Holy steel. +5% ATK.</li>
+                <li class="minor"><b>Holy Edge</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Devout Strike</b> &mdash; +5% crit damage.</li>
+                <li><b>Mark of Justice</b> &mdash; Divine brand. 20% chance to mark (8% bonus dmg, 3 turns).</li>
+                <li class="minor"><b>Hunter&rsquo;s Grip</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Marked Foe</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Righteous Fury</b> &mdash; Restoration fuels vengeance. +8% ATK. Crits heal 5% HP.</li>
+                <li class="minor"><b>Sanctified Blade</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Righteous Edge</b> &mdash; +8% crit damage.</li>
+                <li><b>Judgment Cascade</b> &mdash; Judgment lingers. Crit extends marks +1 turn. +10% mark chance (4% bonus, 3t).</li>
+                <li class="minor"><b>Justicar&rsquo;s Aim</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Vigilant Eye</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Divine Wrath</b> &mdash; Divine wrath. Crits ignore 25% DEF. +25% crit damage. Crits also leave them Vulnerable (+20% damage taken, 3t).</li>
+                <li><b>Inquisitor</b> &mdash; None escape. +10% mark chance (7% bonus dmg, 4 turns).</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Avenger</b> &mdash; Avenger. +30% ATK. 100% mark chance (15% bonus, 2 turns).</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Shield of Faith</b> &mdash; Faith shields you. +8% block chance.</li>
+                <li class="minor"><b>Faithful Guard</b> &mdash; +4% block chance.</li>
+                <li class="minor"><b>Tempered Plate</b> &mdash; +4% DEF.</li>
+                <li><b>Blessed Recovery</b> &mdash; Divine mending. +10% healing effectiveness.</li>
+                <li class="minor"><b>Devotion</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Sanctuary</b> &mdash; +4% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Holy Block</b> &mdash; Holy block. +5% block. Heal 3% HP on kill.</li>
+                <li class="minor"><b>Bulwark</b> &mdash; +5% block chance.</li>
+                <li class="minor"><b>Iron Faith</b> &mdash; +5% DEF.</li>
+                <li><b>Lay on Hands</b> &mdash; Overflow protects. +15% healing. Start with 8% HP shield.</li>
+                <li class="minor"><b>Blessed Vigor</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Holy Ward</b> &mdash; +5% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Aegis of Light</b> &mdash; Retribution shield. +10% block. 25% counter-attack.</li>
+                <li><b>Beacon of Hope</b> &mdash; Beacon of hope. +15% healing. Potions heal 15% more.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Divine Intervention</b> &mdash; Divine intervention. Below 20%: full heal. +20% DEF. Once per combat.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Blessed Start</b> &mdash; Divine favor. Start combat with +8% ATK for 3 turns.</li>
+                <li class="minor"><b>Morning Light</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Crusader&rsquo;s Eye</b> &mdash; +3% crit chance.</li>
+                <li><b>Aura of Might</b> &mdash; Holy presence. +4% ATK, +4% DEF.</li>
+                <li class="minor"><b>Might&rsquo;s Edge</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Aura&rsquo;s Veil</b> &mdash; +4% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Consecration</b> &mdash; Holy ground. Enemies start -10% DEF (2t). +5% ATK (3t).</li>
+                <li class="minor"><b>Hallowed Ground</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Sanctified Aim</b> &mdash; +4% crit chance.</li>
+                <li><b>Holy Oil</b> &mdash; Anointed blade. HP potions grant +30% crit damage for 4 turns.</li>
+                <li class="minor"><b>Anointed Steel</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Holy Bulwark</b> &mdash; +5% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Greater Blessing</b> &mdash; Greater blessing. Start: +12% ATK (3t), 10% HP shield.</li>
+                <li><b>Smite Draught</b> &mdash; Holy strikes. MP potions: ignore 20% enemy DEF for 3 turns.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Beacon of Light</b> &mdash; Beacon of Light. Start: 15% HP shield, +10% ATK (3t), full MP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Empowered Smite</b> &mdash; Brighter smite. Holy Smite +20% damage.</li>
+                <li class="minor"><b>Radiant Will</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Punishing Light</b> &mdash; +5% crit damage.</li>
+                <li><b>Swift Justice</b> &mdash; Swift justice. Holy Smite CD -1.</li>
+                <li class="minor"><b>Calm Focus</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Holy Eye</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Searing Light</b> &mdash; Searing brand. Smite guarantees mark for 4 turns.</li>
+                <li class="minor"><b>Sunbeam</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Searing Crit</b> &mdash; +8% crit damage.</li>
+                <li><b>Holy Fervor</b> &mdash; Holy fervor. Smite CD -1. Smite heals 8% HP.</li>
+                <li class="minor"><b>Reservoir</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Vigilant Aim</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Blinding Smite</b> &mdash; Blinding light. Smite stuns 1 turn. +15% Smite damage.</li>
+                <li><b>Sustained Grace</b> &mdash; Grace lingers. After Smite: next 2 attacks heal 5% HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Wrath of the Heavens</b> &mdash; Wrath of the Heavens. Smite hits ALL. Each heals 10%. +25% Smite damage.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="mage">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../mage_portrait.jpg" alt="Mage" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F52E;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">MAGE</span><span class="cdx-class__unlock">Clear floor 30</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Spells deal bonus damage based on Spell Damage stat. Start with 5 MP.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Mana &amp; Crit Damage. Ancient tome brimming with forbidden knowledge.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Fireball <span class="cdx-skill__c">2 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Hurl a massive ball of fire at all enemies, setting them ablaze.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Focused Mind</b> &mdash; Sharper focus. +5 spell damage.</li>
+                <li class="minor"><b>Clarity</b> &mdash; +3 spell damage.</li>
+                <li class="minor"><b>Arcane Edge</b> &mdash; +5% crit damage.</li>
+                <li><b>Searing Touch</b> &mdash; Igniting strikes. Basic attacks burn (3 dmg, 2 turns).</li>
+                <li class="minor"><b>Burning Will</b> &mdash; +3 spell damage.</li>
+                <li class="minor"><b>Spark Touch</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Arcane Amplification</b> &mdash; Arcane surge. +15% damage vs enemies above 60% HP.</li>
+                <li class="minor"><b>Resonance</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Cataclysm</b> &mdash; +8% crit damage.</li>
+                <li><b>Wildfire</b> &mdash; Fire spreads. 30% chance burn jumps to another enemy.</li>
+                <li class="minor"><b>Conflagration</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Hot Streak</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Overcharge</b> &mdash; Devastating crits. +50% crit damage. +10 spell damage.</li>
+                <li><b>Immolation</b> &mdash; Burning is fragile. +20% damage vs burning enemies.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Archmage</b> &mdash; Archmage. +30 spell damage. Spell kills refund 1 MP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Mana Barrier</b> &mdash; Arcane ward. Start combat with 10% HP shield.</li>
+                <li class="minor"><b>Sturdy Caster</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Mana Reserve</b> &mdash; +1 max MP.</li>
+                <li><b>Chilling Presence</b> &mdash; Cold aura. Enemies start with -8% DEF for 3 turns.</li>
+                <li class="minor"><b>Frostbound</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Ice Plate</b> &mdash; +4% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Arcane Absorption</b> &mdash; Energy recycled. +5% HP shield on start. +1 MP on kill.</li>
+                <li class="minor"><b>Constitution</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Deep Channel</b> &mdash; +1 max MP.</li>
+                <li><b>Frost Armor</b> &mdash; Ice bites back. 10% stun chance. 10% counter-attack.</li>
+                <li class="minor"><b>Glacial Vigor</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Frozen Carapace</b> &mdash; +5% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Prismatic Barrier</b> &mdash; Prismatic barrier. 20% HP shield. +10% ATK while shielded.</li>
+                <li><b>Permafrost</b> &mdash; Winter&rsquo;s embrace. 12% stun chance. -8% damage taken. Attacks chill (freeze at 4 stacks).</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Invulnerability</b> &mdash; Near death: immune 2 turns, +50% heal, +2 MP. Once per combat.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Deep Reserves</b> &mdash; Deeper reserves. +1 max MP.</li>
+                <li class="minor"><b>Wellspring</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Endless Pool</b> &mdash; +1 max MP.</li>
+                <li><b>Alchemist&rsquo;s Touch</b> &mdash; Alchemist&rsquo;s touch. MP potions restore +1 extra MP.</li>
+                <li class="minor"><b>Hardy Body</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Channeled Mind</b> &mdash; +1 max MP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Fortifying Brew</b> &mdash; Fortifying brew. HP potions also grant 15% max HP shield.</li>
+                <li class="minor"><b>Stout Heart</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Bottomless</b> &mdash; +1 max MP.</li>
+                <li><b>Elixir of Iron</b> &mdash; Iron elixir. HP potions grant +20% DEF for 3 turns.</li>
+                <li class="minor"><b>Vigorous</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Mind Over Matter</b> &mdash; +1 max MP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Arcane Torrent</b> &mdash; Arcane torrent. After casting a spell: next attack +50% damage.</li>
+                <li><b>Mana Shield</b> &mdash; Mana shield. -3% damage taken per current MP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Infinite Power</b> &mdash; Infinite power. +2 max MP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Intensify</b> &mdash; Hotter flames. Fireball +20% damage.</li>
+                <li class="minor"><b>Kindle</b> &mdash; +3 spell damage.</li>
+                <li class="minor"><b>Combust</b> &mdash; +5 spell damage.</li>
+                <li><b>Quick Ignition</b> &mdash; Quick ignition. Fireball CD -1.</li>
+                <li class="minor"><b>Mind Pool</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Quick Mind</b> &mdash; +3 spell damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Inferno</b> &mdash; Lingering fire. Fireball burn +2 turns, +20% burn damage.</li>
+                <li class="minor"><b>Smolder</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Wildflame</b> &mdash; +8 spell damage.</li>
+                <li><b>Rapid Fire</b> &mdash; Rapid fire. Fireball CD -1, +30% damage.</li>
+                <li class="minor"><b>Cascade</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Quickfire</b> &mdash; +5 spell damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Armor Melt</b> &mdash; Flames melt steel. Fireball ignores 30% DEF. +10% vs burning.</li>
+                <li><b>Pyromaniac</b> &mdash; Pyromaniac. Fireball kills refund 1 MP. Burns can crit. Critical hits detonate all DoTs on the target.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Firestorm</b> &mdash; Firestorm. Fireball casts twice. Burns stack. +25% vs burning.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="stormcaller">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../stormcaller_portrait.jpg" alt="Stormcaller" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x26A1;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">STORMCALLER</span><span class="cdx-class__unlock">Clear floor 30</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Basic attacks arc to one additional enemy. Zari commands a kit of storm spells, each honed by its own path of mastery.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Max HP &amp; Mana. A crackling totem that gathers the storm &mdash; a lightning rod for the tempest Zari commands.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILLS &MDASH; ALL FOUR CARRIED AT ONCE</h4>
+          <p class="cdx-note">Each keeps its own cooldown. Long-press the skill button to choose which is loaded.</p>
+          <div class="cdx-skill"><p class="cdx-skill__n">Chain Lightning <span class="cdx-skill__c">2 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Loose a bolt that strikes an enemy and leaps to another.</p></div>
+          <div class="cdx-skill"><p class="cdx-skill__n">Static Shroud <span class="cdx-skill__c">3 MP, 4 turn cooldown</span></p><p class="cdx-skill__d">Cloak yourself in crackling static, shielding you for several turns.</p></div>
+          <div class="cdx-skill"><p class="cdx-skill__n">Thunderclap <span class="cdx-skill__c">4 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Slam a crack of thunder across the field, dazing every enemy.</p></div>
+          <div class="cdx-skill"><p class="cdx-skill__n">Eye of the Storm <span class="cdx-skill__c">5 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Gather a tempest over the whole field that grows deadlier the longer it rages.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Forking Bolt</b> &mdash; The lightning wants to split. Let it. +5% crit chance.</li>
+                <li class="minor"><b>Charged Point</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Live Wire</b> &mdash; +5% attack.</li>
+                <li><b>First Strike</b> &mdash; The storm opens the duel before the foe hears the thunder. First attack deals +25% damage.</li>
+                <li class="minor"><b>Storm Focus</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Arc Precision</b> &mdash; +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Wider Arc</b> &mdash; The bolt no longer settles for the shortest leap. Every arc &mdash; Chain Lightning and Conductor &mdash; deals +15% more. +5% attack.</li>
+                <li class="minor"><b>Conductive Edge</b> &mdash; +8% crit damage.</li>
+                <li class="minor"><b>Arc Amplifier</b> &mdash; +5% attack.</li>
+                <li><b>Find The Ground</b> &mdash; Lightning always finds the fastest way in. Critical hits ignore half the target&rsquo;s defense. +5% attack.</li>
+                <li class="minor"><b>Killing Charge</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Static Precision</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Split The Sky</b> &mdash; One more throat for the lightning to find. Chain Lightning leaps to +1 additional foe. +8% attack.</li>
+                <li><b>Fulgurite</b> &mdash; What the bolt leaves behind is glass. Instantly kill enemies below 18% HP. +15% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Long Chain</b> &mdash; One bolt, and the whole field falls in sequence. Chain Lightning leaps to +2 additional foes, instantly kills enemies below 20% HP, and +10% attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Charged Ward</b> &mdash; Step onto the field already wreathed in static. Start each battle with a 15% Max HP shield.</li>
+                <li class="minor"><b>Insulated Plate</b> &mdash; +4% defense.</li>
+                <li class="minor"><b>Storm Vigor</b> &mdash; +5% Max HP.</li>
+                <li><b>Deflecting Field</b> &mdash; Do not ground what you can simply not be there for. +8% dodge.</li>
+                <li class="minor"><b>Quickfoot Current</b> &mdash; +3% dodge.</li>
+                <li class="minor"><b>Weathered Coil</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Grounded Stance</b> &mdash; The blow passes through you to the earth. Take 8% less damage. +6% Max HP.</li>
+                <li class="minor"><b>Faraday Skin</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Insulated Core</b> &mdash; +6% max HP.</li>
+                <li><b>Answering Spark</b> &mdash; Every blow that lands closes a circuit. Static Shroud shocks for +20% of your Attack. +5% dodge.</li>
+                <li class="minor"><b>Grounded Nerve</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Storm Anchor</b> &mdash; +25 flat HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Living Capacitor</b> &mdash; The cloak holds a heavier charge, and answers harder. Static Shroud shocks for +25% of your Attack and you take 8% less damage.</li>
+                <li><b>Stormhide</b> &mdash; The tempest wears you as its armour. Take 10% less damage and +10% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Eye Of The Cyclone</b> &mdash; Strike the storm and the storm strikes back twofold. Static Shroud shocks for +40% of your Attack, revive once at 35% HP, and +10% Max HP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Rolling Thunder</b> &mdash; The daze lingers long after the crack. +20% damage to stunned enemies.</li>
+                <li class="minor"><b>Deafening</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Static Buildup</b> &mdash; +2 max MP.</li>
+                <li><b>Quick Discharge</b> &mdash; The storm gathers faster than any sky should allow. Storm spells recover 1 turn sooner.</li>
+                <li class="minor"><b>Restless Sky</b> &mdash; +5% magic find.</li>
+                <li class="minor"><b>Charged Coffers</b> &mdash; +10% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Concussive Field</b> &mdash; Thunder rattles even the braced. +15% damage to stunned enemies and +8 Spell Damage.</li>
+                <li class="minor"><b>Thunderhead</b> &mdash; +8 Spell Damage.</li>
+                <li class="minor"><b>Storm Surge</b> &mdash; +5% attack.</li>
+                <li><b>Third Wire</b> &mdash; One more path for the current to leap along. Your Conductor passive arcs to +1 additional foe. +8 Spell Damage.</li>
+                <li class="minor"><b>Ion Trail</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Stormchaser&rsquo;s Luck</b> &mdash; +8% magic find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Eye Of The Needle</b> &mdash; Strike the dazed where they cannot flinch away. +25% damage to stunned enemies and +8% attack.</li>
+                <li><b>Endless Storm</b> &mdash; The clouds never fully disperse. Storm spells recover 1 more turn sooner and +10% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Perpetual Storm</b> &mdash; The tempest never truly leaves the sky. Storm spells recover 1 more turn sooner, your Conductor passive arcs to +1 additional foe, and +15% gold find.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Gathering Clouds</b> &mdash; The sky remembers every turn it rages. Eye of the Storm&rsquo;s tempest grows +10% harder each round.</li>
+                <li class="minor"><b>Clear Air</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Storm Might</b> &mdash; +5% attack.</li>
+                <li><b>Live Current</b> &mdash; The charge never quite leaves your hands. +5% extra attack.</li>
+                <li class="minor"><b>Stormborn</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Reading The Sky</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Deepening Pressure</b> &mdash; The eye pulls harder at the air around it. +8% extra attack.</li>
+                <li class="minor"><b>Charged Silence</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Overcharge</b> &mdash; +5% crit damage.</li>
+                <li><b>Branching Path</b> &mdash; The current forks wider without being asked. Your Conductor passive arcs to +1 additional foe. +5% attack.</li>
+                <li class="minor"><b>Perfect Ground</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Chain Momentum</b> &mdash; +5% attack speed.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Supercell</b> &mdash; There is always more storm to summon. Eye of the Storm grows +15% harder each round and +8% attack.</li>
+                <li><b>Fulmination</b> &mdash; Every arc burns a shade brighter. All your arcs deal +15% more and +10% extra attack.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Wrath Of The Sky</b> &mdash; The eye opens on everything at once. Eye of the Storm grows +20% harder each round, all your arcs deal +15% more, your Conductor passive arcs to +1 more foe, and +10% attack.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="beastmaster">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../beastmaster_portrait.jpg" alt="Beastmaster" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F43A;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">BEASTMASTER</span><span class="cdx-class__unlock">Clear floor 35</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Forge a bond with wild beasts that fight at your side. Call on primal fury to shift the tide of battle.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack &amp; Max HP. A carved totem that channels the strength of the wild pack.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Werewolf Form <span class="cdx-skill__c">1 MP, 4 turn cooldown</span></p><p class="cdx-skill__d">Unleash the beast within: +60% Attack, +15% Crit Chance and lifesteal for 3 turns.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Pack Fury</b> &mdash; The pack fights harder at your side. Pets deal +15% damage. +5% attack.</li>
+                <li class="minor"><b>Sharpened Fangs</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Killer Instinct</b> &mdash; +3% crit chance.</li>
+                <li><b>Frenzied Talons</b> &mdash; Fast beasts land a flurry of blows. Pets have a 20% chance to strike a second time.</li>
+                <li class="minor"><b>Quick Claws</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Raw Aggression</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Bloodhound</b> &mdash; Your beasts learn to find the throat. Pets deal +25% damage and gain +10% crit chance. +5% attack.</li>
+                <li class="minor"><b>Feral Edge</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Hunter&rsquo;s Eye</b> &mdash; +4% crit chance.</li>
+                <li><b>Rending Assault</b> &mdash; Every opening is exploited. Pets have a 30% chance to strike twice and deal +15% damage.</li>
+                <li class="minor"><b>Predator&rsquo;s Focus</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Savage Might</b> &mdash; +6% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Alpha&rsquo;s Roar</b> &mdash; The pack answers your call as one. Pets deal +40% damage and +15% crit chance. +10% attack.</li>
+                <li><b>Relentless Pack</b> &mdash; The beasts never let up. Pets have a 45% chance to strike twice and deal +25% damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>For the Throat</b> &mdash; The pack goes for the kill. Pets deal +50% damage. +20% attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Thick Hide</b> &mdash; Your beasts grow rugged. Pets gain +20% Max HP. +5% Max HP.</li>
+                <li class="minor"><b>Hardy Beast</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Warden&rsquo;s Grit</b> &mdash; +4% defense.</li>
+                <li><b>Draw Aggro</b> &mdash; The beasts snarl and bait. +15% chance enemies attack the pack instead of you.</li>
+                <li class="minor"><b>Guardian Stance</b> &mdash; +4% defense.</li>
+                <li class="minor"><b>Steadfast</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Ironfur</b> &mdash; Pelts turn aside blades. Pets gain +35% Max HP. +6% Max HP.</li>
+                <li class="minor"><b>Deep Reserves</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Bulwark Bond</b> &mdash; +5% defense.</li>
+                <li><b>Snarling Wall</b> &mdash; A Cave Bear joins your roster &mdash; an armored wall for the pack. Long-press your class skill in battle to choose which companions fight. +25% chance enemies attack the pack, and pets gain +20% Max HP.</li>
+                <li class="minor"><b>Bonded Vigor</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Braced Line</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Undying Pack</b> &mdash; The pack drags you back from the brink. Pets gain +50% Max HP and you revive once at 40% HP. +10% Max HP.</li>
+                <li><b>Loyal Shield</b> &mdash; The pack throws itself before you. +35% chance enemies attack the pack, and pets gain +30% Max HP. +8% defense.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Pack Endures</b> &mdash; The bond defies death. Revive once per run at 50% HP. Pets +30% Max HP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Shared Kill</b> &mdash; The pack&rsquo;s kills feed you. Pets heal you for 10% of the damage they deal.</li>
+                <li class="minor"><b>Blood Bond</b> &mdash; +3% lifesteal.</li>
+                <li class="minor"><b>Spoils of the Hunt</b> &mdash; +5% gold find.</li>
+                <li><b>Growing Pack</b> &mdash; Your bond calls another. +5% gold find, groundwork for a second companion.</li>
+                <li class="minor"><b>Wild Rapport</b> &mdash; +5% magic find.</li>
+                <li class="minor"><b>Keen Tracker</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Vital Feast</b> &mdash; Every wound the pack opens mends yours. Pets heal you for 18% of damage dealt. +3% lifesteal.</li>
+                <li class="minor"><b>Deep Sustain</b> &mdash; +4% lifesteal.</li>
+                <li class="minor"><b>Rich Quarry</b> &mdash; +8% gold find.</li>
+                <li><b>Second Companion</b> &mdash; A Bloodhawk joins the hunt, and your pack grows to two. Long-press your class skill in battle to choose which companions fight.</li>
+                <li class="minor"><b>Twin Bond</b> &mdash; Pets +10% Max HP.</li>
+                <li class="minor"><b>Coordinated Hunt</b> &mdash; Pets +10% damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Sanguine Pack</b> &mdash; The bond runs deep as blood. Pets heal you for 30% of damage dealt. +5% lifesteal.</li>
+                <li><b>Wolfpack</b> &mdash; Two beasts, one will. Pets deal +20% damage and heal you for 12% of damage dealt.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Unbreakable Bond</b> &mdash; Every kill your pack makes restores you. Pets heal you for 40% of damage dealt and deal +25% damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Feral Surge</b> &mdash; The change comes easier. Werewolf Form lasts +1 turn. +5% attack.</li>
+                <li class="minor"><b>Primal Vigor</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Wild Strength</b> &mdash; +5% attack.</li>
+                <li><b>Lone Instincts</b> &mdash; You rely on your own claws. +10% attack.</li>
+                <li class="minor"><b>Self-Reliance</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Killer&rsquo;s Poise</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Savage Transformation</b> &mdash; The beast burns hotter. Werewolf Form buffs +20% and -1 cooldown. +5% crit chance.</li>
+                <li class="minor"><b>Moon-Touched</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Beast Vitality</b> &mdash; +6% Max HP.</li>
+                <li><b>Predator&rsquo;s Solitude</b> &mdash; The hunt is yours alone. Werewolf Form buffs +15%. +8% attack.</li>
+                <li class="minor"><b>Lone Might</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Solitary Endurance</b> &mdash; +6% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Apex Beast</b> &mdash; The transformation reaches its peak. Werewolf Form buffs +35%, lasts +2 turns, and -1 cooldown. +8% attack.</li>
+                <li><b>Lone Predator</b> &mdash; You hunt alone &mdash; no pack, all power. Dismiss your pets permanently. +25% attack, +15% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Blood Moon</b> &mdash; Under the blood moon the beast never sleeps. Werewolf Form lasts the whole battle and its buffs are +40% stronger.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="chronomancer">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../chronomancer_portrait.jpg" alt="Chronomancer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x23F3;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">CHRONOMANCER</span><span class="cdx-class__unlock">Clear floor 40</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">The first enemy attack each battle is fully negated &mdash; he saw it coming &mdash; and negating it grants Time. He also banks a little Time at the start of every battle.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Max HP, Attack &amp; Mana. A cracked hourglass that trickles Time into every turn and deepens the well you draw from.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Quicken <span class="cdx-skill__c">1 MP, 2 turn cooldown</span></p><p class="cdx-skill__d">Bend the turn. Spend Time to take an immediate extra action &mdash; 4 Time for +1, 8 Time for +2.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Quickened Blade</b> &mdash; Time bends toward the strike. +5% crit chance.</li>
+                <li class="minor"><b>Sharpened Instant</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Pressing Tempo</b> &mdash; +5% attack.</li>
+                <li><b>Foreseen Opening</b> &mdash; You already know where it falls. First attack deals +25% damage.</li>
+                <li class="minor"><b>Arcane Cadence</b> &mdash; +8 Spell Damage.</li>
+                <li class="minor"><b>Deadly Timing</b> &mdash; +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Accelerated Strikes</b> &mdash; You strike in the gaps between moments. Critical hits ignore half the target&rsquo;s defense. +5% attack.</li>
+                <li class="minor"><b>Honed Moment</b> &mdash; +8% crit damage.</li>
+                <li class="minor"><b>Compressed Instant</b> &mdash; +5% attack.</li>
+                <li><b>Stopped Clock</b> &mdash; Time falters for the reeling. +20% damage to stunned enemies. +5% attack.</li>
+                <li class="minor"><b>Momentum</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Predictive Strike</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Overclock</b> &mdash; Every blow winds the clock. Bank +1 extra Time per basic attack. +8% attack.</li>
+                <li><b>Temporal Execution</b> &mdash; End them before the moment passes. Instantly kill enemies below 18% HP. +15% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Time Fracture</b> &mdash; Shatter the moment. Instantly kill enemies below 20% HP, crits ignore all defense, and +10% attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Premonition</b> &mdash; You see the first blow coming. Start each battle with a 15% Max HP shield.</li>
+                <li class="minor"><b>Braced For It</b> &mdash; +4% defense.</li>
+                <li class="minor"><b>Steady Breath</b> &mdash; +5% Max HP.</li>
+                <li><b>Slipstream</b> &mdash; Step half a moment sideways. +8% dodge.</li>
+                <li class="minor"><b>Fleeting Step</b> &mdash; +3% dodge.</li>
+                <li class="minor"><b>Hardened Hours</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Foreseen Blow</b> &mdash; Half a second&rsquo;s warning is enough. Take 8% less damage. +6% Max HP.</li>
+                <li class="minor"><b>Guarded Future</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Braided Timeline</b> &mdash; +6% max HP.</li>
+                <li><b>Rewound Reflex</b> &mdash; Take the hit, undo the mistake. After being hit, +15% dodge for 2 turns. +5% dodge.</li>
+                <li class="minor"><b>Unshaken</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Anchored Now</b> &mdash; +25 flat HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Event Horizon</b> &mdash; Nothing reaches you unforeseen. Start each battle with a 20% Max HP shield and take 8% less damage.</li>
+                <li><b>Timeless Guard</b> &mdash; Outside of time, nothing lands. Take 10% less damage and +10% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Frozen Instant</b> &mdash; Step outside the flow of time. +15% dodge, revive once at 35% HP, and +10% Max HP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Borrowed Seconds</b> &mdash; Steal a moment to mend. +3 Life Regen.</li>
+                <li class="minor"><b>Lingering Vigor</b> &mdash; +3% lifesteal.</li>
+                <li class="minor"><b>Second Breath</b> &mdash; +5% Max HP.</li>
+                <li><b>Timekeeper&rsquo;s Purse</b> &mdash; Foresight pays. +10% gold find.</li>
+                <li class="minor"><b>Chrono-Sight</b> &mdash; +5% magic find.</li>
+                <li class="minor"><b>Wisdom Of Ages</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Stolen Moment</b> &mdash; A death buys a heartbeat of respite. Killing an enemy heals 5% Max HP. +5% Max HP.</li>
+                <li class="minor"><b>Renewed</b> &mdash; +4% lifesteal.</li>
+                <li class="minor"><b>Steady Pulse</b> &mdash; +3 life regen per turn.</li>
+                <li><b>Salvaged Time</b> &mdash; Nothing is wasted in the loop. Killing an enemy grants bonus gold. +5% magic find.</li>
+                <li class="minor"><b>Fortune&rsquo;s Tick</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Borrowed Luck</b> &mdash; +8% magic find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Time Heals</b> &mdash; The current mends all wounds. +5 Life Regen and +5% lifesteal.</li>
+                <li><b>Hoarded Time</b> &mdash; You bank the hours others waste. Efficient Quicken: −1 Time cost per action. +10% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Eternal Moment</b> &mdash; Live forever in the space between seconds. Kills heal 5% Max HP, +5 Life Regen, and +15% gold find.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Timekeeper&rsquo;s Gift</b> &mdash; The hourglass fills faster in your hands. Bank +1 extra Time per basic attack.</li>
+                <li class="minor"><b>Focused Flow</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Steady Tempo</b> &mdash; +5% attack.</li>
+                <li><b>Borrowed Time</b> &mdash; Act between the ticks. +5% extra attack.</li>
+                <li class="minor"><b>Enduring Now</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Quick Thinker</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Banked Seconds</b> &mdash; Stockpiled time sharpens the swing. +8% extra attack.</li>
+                <li class="minor"><b>Relentless Clock</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Precise Tempo</b> &mdash; +5% crit damage.</li>
+                <li><b>Efficient Rewind</b> &mdash; You wring more from every second. Quicken costs 1 less Time per action. +5% attack.</li>
+                <li class="minor"><b>Tempo Master</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Accelerando</b> &mdash; +5% attack speed.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Runaway Mainspring</b> &mdash; The spring winds past its stop. Bank another +1 Time per basic attack, stacking with your other Time gains. +8% attack.</li>
+                <li><b>Timekeeper&rsquo;s Mastery</b> &mdash; Master of the flow of moments. +10% extra attack and +5% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Endless Hour</b> &mdash; Time bows to the Timekeeper. Quicken costs 1 less Time per action, +10% extra attack, and +5% attack.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="vampire">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../vampire_portrait.jpg" alt="Vampire" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F9DB;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">VAMPIRE</span><span class="cdx-class__unlock">Clear floor 40</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Heal for 15% of all damage dealt. Attacks have a chance to confuse enemies.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Lifesteal, Attack &amp; Crit Chance. Drink deep and never hunger again.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Vampire Bite <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Bite an enemy, dealing heavy damage, draining life force, and causing deep bleeding.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Predatory Instinct</b> &mdash; Hunger sharpens. Below 60% HP: +15% ATK.</li>
+                <li class="minor"><b>Hunger</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Bloodthirst</b> &mdash; +3% crit chance.</li>
+                <li><b>Serrated Fangs</b> &mdash; Every strike bleeds. Basic attacks apply bleed (4 dmg, 2 turns).</li>
+                <li class="minor"><b>Tearing Strikes</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Cruelty</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Blood Frenzy</b> &mdash; Deadlier when hurt. Below 50% HP: +25% ATK.</li>
+                <li class="minor"><b>Wrath</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Killing Edge</b> &mdash; +4% crit chance.</li>
+                <li><b>Deep Cuts</b> &mdash; Wounds fester. +15% vs bleeding. Crits bleed (10% ATK, 2 turns).</li>
+                <li class="minor"><b>Carnage</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Vicious Cut</b> &mdash; +8% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Death&rsquo;s Door</b> &mdash; Edge of death. Below 25% HP: +20% ATK, +10% crit.</li>
+                <li><b>Exsanguinate</b> &mdash; Blood flows. +20% vs bleeding. Attacks bleed (3 dmg, 3 turns). Crits inflict Mortal Wound &mdash; they can&rsquo;t heal (3t).</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Blood God</b> &mdash; Blood God. +25% lifesteal. +20% ATK.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Blood Elixir</b> &mdash; Blood elixir. HP potions grant regen (10% HP/turn, 4 turns).</li>
+                <li class="minor"><b>Iron Skin</b> &mdash; +4% DEF.</li>
+                <li class="minor"><b>Stout</b> &mdash; +5% max HP.</li>
+                <li><b>Siphon</b> &mdash; Deeper drink. +5% lifesteal.</li>
+                <li class="minor"><b>Bloody Edge</b> &mdash; +2 life on hit.</li>
+                <li class="minor"><b>Crimson Thirst</b> &mdash; +3% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Volatile Potion</b> &mdash; Volatile potion. MP potions grant +30% splash damage for 2 turns.</li>
+                <li class="minor"><b>Fortified</b> &mdash; +5% DEF.</li>
+                <li class="minor"><b>Vigorous</b> &mdash; +6% max HP.</li>
+                <li><b>Draining Aura</b> &mdash; Draining presence. +5% lifesteal. +3 life on hit.</li>
+                <li class="minor"><b>Hungering Edge</b> &mdash; +3 life on hit.</li>
+                <li class="minor"><b>Sanguine Pact</b> &mdash; +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Undead Resilience</b> &mdash; Undead resilience. -10% damage taken. Below 30% HP: +10% DEF.</li>
+                <li><b>Feast</b> &mdash; The kill is the meal. Heal 12% HP on kill. +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Eternal</b> &mdash; Eternal. Revive once per run at 40% HP. +15% lifesteal.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Mesmerize</b> &mdash; Piercing gaze. 8% stun chance on attack.</li>
+                <li class="minor"><b>Hypnotic Strikes</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Focused Will</b> &mdash; +3% crit chance.</li>
+                <li><b>Night Hunter</b> &mdash; Swift and profitable. +10% gold. +8% extra attack.</li>
+                <li class="minor"><b>Stalker</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Quickfang</b> &mdash; +4% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Domination</b> &mdash; Domination. +15% damage vs stunned. +5% stun chance.</li>
+                <li class="minor"><b>Iron Will</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Predator Eyes</b> &mdash; +4% crit chance.</li>
+                <li><b>Predator&rsquo;s Pace</b> &mdash; Two bites in one. 12% double-strike chance.</li>
+                <li class="minor"><b>Coin Sense</b> &mdash; +10% gold find.</li>
+                <li class="minor"><b>Pounce</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Paralyzing Gaze</b> &mdash; Paralyzing gaze. +10% stun. +15% vs stunned.</li>
+                <li><b>Apex Predator</b> &mdash; Apex predator. 8% double-strike. +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Mind Control</b> &mdash; Mind control. 20% stun chance. +25% gold.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Deeper Fangs</b> &mdash; Savage feeding. Bite +25% damage.</li>
+                <li class="minor"><b>Bite Force</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Sip</b> &mdash; +3% lifesteal.</li>
+                <li><b>Quick Lunge</b> &mdash; Quick lunge. Bite CD -1.</li>
+                <li class="minor"><b>Eager Fang</b> &mdash; +3% lifesteal.</li>
+                <li class="minor"><b>Sharp Eye</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Savage Bite</b> &mdash; Savage bite. Bite bleed +2 turns, +15% bleed damage.</li>
+                <li class="minor"><b>Crushing Jaws</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Drink Deep</b> &mdash; +5% lifesteal.</li>
+                <li><b>Insatiable</b> &mdash; Insatiable. Bite CD -1. Bite heals +10% more.</li>
+                <li class="minor"><b>Crimson Pact</b> &mdash; +5% lifesteal.</li>
+                <li class="minor"><b>Death Sense</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Hemorrhage</b> &mdash; Twice the blood. Bite applies double bleed. +20% bleed damage.</li>
+                <li><b>Blood Rush</b> &mdash; Blood rush. After Bite: next 2 attacks gain 30% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Exsanguination</b> &mdash; Exsanguination. Bite executes below 20% HP. +30% Bite damage. Kill resets CD to 2.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="necromancer">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../necromancer_portrait.jpg" alt="Necromancer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F480;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">NECROMANCER</span><span class="cdx-class__unlock">Clear floor 45</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Collect Souls from slain enemies (max 10). Each Soul: +3% damage, +2% lifesteal, +5 HP. 8% base lifesteal.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Thorns &amp; Magic Find. Crystallized souls trapped for eternity.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Soul Drain <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Drain life force from an enemy. Always grants 1 Soul. If target dies, gain bonus Soul and refund mana.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Decay</b> &mdash; Necrotic touch. Attacks poison (4 dmg, 2 turns).</li>
+                <li class="minor"><b>Withering Touch</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Cruel Mind</b> &mdash; +5% crit damage.</li>
+                <li><b>Dark Power</b> &mdash; Darker energies. +5 spell damage.</li>
+                <li class="minor"><b>Dark Surge</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Eye of Ruin</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Spreading Plague</b> &mdash; Contagious plague. 25% poison spread on tick. Poison (3 dmg, 3t).</li>
+                <li class="minor"><b>Bleak Power</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Vile Edge</b> &mdash; +8% crit damage.</li>
+                <li><b>Soul Burst</b> &mdash; Souls amplify magic. +10 spell damage. +5% crit. Attacks ignite soulfire (4% max HP/turn, 3t).</li>
+                <li class="minor"><b>Soul Echo</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Cold Calculation</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Pestilence</b> &mdash; Rot weakens all. Poison (5 dmg, 3t). Enemies start -10% DEF. Attacks corrode (4/turn + armor melt, 3t).</li>
+                <li><b>Death&rsquo;s Hand</b> &mdash; Critical dark magic. +15 spell damage. +25% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Herald of Death</b> &mdash; Herald of Death. +30 spell damage. +100% vs below 20% HP.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Vampiric Touch</b> &mdash; Draw life from wounds. +5% lifesteal.</li>
+                <li class="minor"><b>Crimson Sip</b> &mdash; +3% lifesteal.</li>
+                <li class="minor"><b>Pale Vigor</b> &mdash; +5% max HP.</li>
+                <li><b>Bone Shield</b> &mdash; Bone barrier. Start combat with 8% HP shield.</li>
+                <li class="minor"><b>Ossified</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Bone Plate</b> &mdash; +4% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Soul Siphon</b> &mdash; Souls sustain. Heal 5% on kill. +5% lifesteal.</li>
+                <li class="minor"><b>Bloody Pulse</b> &mdash; +5% lifesteal.</li>
+                <li class="minor"><b>Dread Vitality</b> &mdash; +6% max HP.</li>
+                <li><b>Bone Armor</b> &mdash; Bone armor. +8% DEF. +5% HP shield on start.</li>
+                <li class="minor"><b>Sepulchral</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Carrion Plate</b> &mdash; +5% DEF.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Life Tap</b> &mdash; Endless draining. +10% lifesteal. Heal 8% on kill.</li>
+                <li><b>Necrotic Barrier</b> &mdash; Necrotic barrier. 12% HP shield. +10% ATK while shielded.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Lichdom</b> &mdash; Lichdom. Revive once per run at 40% HP. +20 spell damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Soul Elixir</b> &mdash; Souls empower potions. HP potion: +3% ATK per soul for 3 turns.</li>
+                <li class="minor"><b>Inner Well</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Sigil Lore</b> &mdash; +5 spell damage.</li>
+                <li><b>Dark Ritual</b> &mdash; Forbidden channeling. +1 max MP.</li>
+                <li class="minor"><b>Forbidden Lore</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Tomb Raider</b> &mdash; +8% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Soul Collector</b> &mdash; Greater capacity. +3 max souls. +5% soul chance on attack.</li>
+                <li class="minor"><b>Deep Reservoir</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Arcane Bond</b> &mdash; +8 spell damage.</li>
+                <li><b>Grave Robber</b> &mdash; Death pays. +1 MP on kill. +12% gold.</li>
+                <li class="minor"><b>Dark Reservoir</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Grim Spoils</b> &mdash; +10% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Spectral Draught</b> &mdash; Spectral shields. MP potion: +3% DEF per soul for 3 turns.</li>
+                <li><b>Death&rsquo;s Bounty</b> &mdash; Death&rsquo;s bounty. +5 gold on kill. +8% magic find. +1 MP on crit.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Lord of the Dead</b> &mdash; Lord of the Dead. +5 max souls. Souls 50% more effective.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Hungry Souls</b> &mdash; Ravenous spirits. Soul Drain +25% damage.</li>
+                <li class="minor"><b>Soul Hunger</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Cruel Drain</b> &mdash; +5% crit damage.</li>
+                <li><b>Dark Focus</b> &mdash; Faster draining. Soul Drain CD -1.</li>
+                <li class="minor"><b>Mind&rsquo;s Edge</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Necrotic Aim</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Corrupting Drain</b> &mdash; Corrupting drain. Drain poisons (10 dmg, 3 turns).</li>
+                <li class="minor"><b>Spectral Edge</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Withering Crit</b> &mdash; +8% crit damage.</li>
+                <li><b>Endless Hunger</b> &mdash; Insatiable. Drain CD -1. Drain heals +15%.</li>
+                <li class="minor"><b>Boundless Mind</b> &mdash; +1 max MP.</li>
+                <li class="minor"><b>Dread Eye</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Soul Rip</b> &mdash; Mass harvest. Drain grants +1 extra soul. +15% damage.</li>
+                <li><b>Draining Presence</b> &mdash; Lingering drain. After Drain: next 2 attacks heal 20% of damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Soul Annihilation</b> &mdash; Soul Annihilation. Drain hits ALL. +1 soul per hit. Spends souls: +15% damage each.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="berserker">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../berserker_portrait.jpg" alt="Berserker" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1FA93;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">BERSERKER</span><span class="cdx-class__unlock">Clear floor 50</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Deal 1% more damage for each 1% of missing health. +50% double strike chance below 30% HP.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Extra Attack &amp; Crit Damage. Tribal markings that fuel battle rage.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Battle Cry <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Let out a fierce cry, massively boosting attack power.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Bloodlust</b> &mdash; Pain fuels power. Below 80% HP: +10% ATK.</li>
+                <li class="minor"><b>Wrath</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Killing Edge</b> &mdash; +3% crit chance.</li>
+                <li><b>Reckless Swing</b> &mdash; Reckless abandon. +5% crit chance, +10% crit damage.</li>
+                <li class="minor"><b>Wild Eye</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Brutal</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Death Wish</b> &mdash; Embrace the void. Below 50% HP: +15% ATK.</li>
+                <li class="minor"><b>Brute Force</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Vital Strike</b> &mdash; +4% crit chance.</li>
+                <li><b>Savage Strikes</b> &mdash; Savage strikes. +20% splash damage. +15% crit damage.</li>
+                <li class="minor"><b>Red Haze</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Slaughter</b> &mdash; +8% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Undying Rage</b> &mdash; Unstoppable fury. Below 25% HP: +25% ATK, +25% crit damage.</li>
+                <li><b>Cleave</b> &mdash; Everything suffers. +30% splash damage. +10% ATK.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Berserker&rsquo;s Wrath</b> &mdash; Berserker&rsquo;s wrath. Below 30% HP: +50% ATK, +30% extra attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Thick Skin</b> &mdash; Built to endure. +8% max HP.</li>
+                <li class="minor"><b>Hardy</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Hide of Iron</b> &mdash; +4% DEF.</li>
+                <li><b>Bloodthirst</b> &mdash; Violence heals. +5% lifesteal.</li>
+                <li class="minor"><b>Bull&rsquo;s Heart</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Drenched Edge</b> &mdash; +3% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Pain Tolerance</b> &mdash; Familiar pain. Below 50% HP: +10% DEF.</li>
+                <li class="minor"><b>Stalwart</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Granite Skin</b> &mdash; +5% DEF.</li>
+                <li><b>Victory Rush</b> &mdash; Each kill mends. Heal 8% HP on kill.</li>
+                <li class="minor"><b>Ironbound</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Ravenous</b> &mdash; +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Last Stand</b> &mdash; Not yet. Below 20%: heal 15% once. Below 30% HP: +15% DEF.</li>
+                <li><b>Carnage</b> &mdash; Butcher&rsquo;s feast. Heal 12% on kill. +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Deathless</b> &mdash; Deathless. Revive once per run at 15% HP. +30% ATK.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Rage Tonic</b> &mdash; Fury in a bottle. HP potions grant +25% ATK for 4 turns.</li>
+                <li class="minor"><b>Berserker&rsquo;s Vigor</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Tonic Edge</b> &mdash; +3% crit chance.</li>
+                <li><b>Pillage</b> &mdash; Take everything. +10% gold. +6% extra attack.</li>
+                <li class="minor"><b>Spoils</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Marauder</b> &mdash; +4% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Berserker Brew</b> &mdash; Liquid rage. MP potions grant +20% crit chance for 4 turns.</li>
+                <li class="minor"><b>Liquid Fury</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Adrenaline</b> &mdash; +4% crit chance.</li>
+                <li><b>Bloodletter</b> &mdash; Savage speed. 15% double-strike chance.</li>
+                <li class="minor"><b>Looter</b> &mdash; +10% gold find.</li>
+                <li class="minor"><b>Conqueror</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Terror</b> &mdash; The weak cower. +25% vs below 30% HP. 8% stun chance.</li>
+                <li><b>Relentless</b> &mdash; Relentless. 10% double-strike. Crits heal 5% HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Warlord</b> &mdash; Warlord. Kills grant +3% permanent ATK. +15% gold.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &amp;mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Thunderous Cry</b> &mdash; Sharpened senses. Battle Cry grants +10% crit.</li>
+                <li class="minor"><b>War Voice</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Bared Fang</b> &mdash; +3% crit chance.</li>
+                <li><b>Quick Rally</b> &mdash; Faster rallying. Battle Cry CD -1.</li>
+                <li class="minor"><b>Iron Lungs</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Battle Eye</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &amp;mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Inspiring Rage</b> &mdash; Rage sustains. Battle Cry grants +10% lifesteal.</li>
+                <li class="minor"><b>Hoarse Roar</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Bloodshot</b> &mdash; +4% crit chance.</li>
+                <li><b>Endless Fury</b> &mdash; Eternal rage. Battle Cry CD -1, +1 turn duration.</li>
+                <li class="minor"><b>Roaring Heart</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Killing Cadence</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &amp;mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Blood Cry</b> &mdash; Kills feed fury. Kills extend Battle Cry by 1 turn.</li>
+                <li><b>Intimidating Shout</b> &mdash; Intimidating shout. Battle Cry reduces enemy ATK by 10%.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate&amp;mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Avatar of War</b> &mdash; Avatar of War. Battle Cry: +20% crit, +10% lifesteal, +1 turn. Crits ignore 20% DEF.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="cdx-section">
+      <h2 class="cdx-h" id="divine-skills">DIVINE SKILLS</h2>
+      <p class="cdx-p">These are not class skills. A <strong>divine item</strong> grants one, and it occupies its
+        own slot, so you can cast it in addition to your class skill.</p>
+        <div class="cdx-skill"><p class="cdx-skill__n">Apocalypse <span class="cdx-skill__c">8 turn cooldown</span></p><p class="cdx-skill__d">Deal 200% damage to ALL enemies. Devastate the battlefield with divine wrath.</p></div>
+        <div class="cdx-skill"><p class="cdx-skill__n">Divine Judgment <span class="cdx-skill__c">10 turn cooldown</span></p><p class="cdx-skill__d">Mark an enemy for death. After 3 turns, they die instantly. Bosses take 50% max HP damage instead.</p></div>
+        <div class="cdx-skill"><p class="cdx-skill__n">Vampiric Embrace <span class="cdx-skill__c">6 turn cooldown</span></p><p class="cdx-skill__d">Steal 30% of target&rsquo;s current HP as damage and healing.</p></div>
+        <div class="cdx-skill"><p class="cdx-skill__n">Summon Shadow <span class="cdx-skill__c">12 turn cooldown</span></p><p class="cdx-skill__d">Summon a shadow clone that attacks for 50% of your damage for 5 turns.</p></div>
+        <div class="cdx-skill"><p class="cdx-skill__n">Chaos Rift <span class="cdx-skill__c">15 turn cooldown</span></p><p class="cdx-skill__d">Tear reality for a random powerful effect: full heal, instant kill, double damage, or invincibility.</p></div>
+        <div class="cdx-skill"><p class="cdx-skill__n">Starfall <span class="cdx-skill__c">10 turn cooldown</span></p><p class="cdx-skill__d">Call down three impacts over three turns, each dealing 120% attack power to all enemies.</p></div>
+        <div class="cdx-skill"><p class="cdx-skill__n">Primordial Surge <span class="cdx-skill__c">12 turn cooldown</span></p><p class="cdx-skill__d">Restore all mana. Your next 3 skills cost nothing.</p></div>
+    </div>
+
+    <div class="cdx-callout" style="margin-top:40px;">
+      Generated from the LootShrine game data. If anything here disagrees with the game, <strong>the game is
+      right</strong> &mdash; tell me at <a href="mailto:support@lootshrine.com" style="color:var(--gold);border-bottom:1px solid rgba(255,215,0,0.3);">support@lootshrine.com</a>
+      or on <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" style="color:var(--gold);border-bottom:1px solid rgba(255,215,0,0.3);">Discord</a> and it&rsquo;ll be fixed.
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__logo">LOOTSHRINE</div>
+    <div class="footer__copy">
+      &copy; 2026 LOOTSHRINE. ALL RIGHTS RESERVED.<br>
+      MADE BY <a href="/about/" style="color: var(--gold);">TIM PEREVERZEV</a>.
+    </div>
+    <ul class="footer__links">
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/devlog/">DEVLOG</a></li>
+      <li><a href="/about/">ABOUT</a></li>
+      <li><a href="/press/">PRESS</a></li>
+      <li><a href="/privacy/">PRIVACY</a></li>
+      <li><a href="mailto:support@lootshrine.com">CONTACT</a></li>
+    </ul>
+    <div class="footer__lang">
+      <a href="/codex/" class="active" hreflang="en">ENGLISH</a>
+      <a href="/ru/" hreflang="ru">РУССКИЙ</a>
+      <a href="/ko/" hreflang="ko">한국어</a>
+      <a href="/ja/" hreflang="ja">日本語</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+/* ── Language dropdown ──────────────────────────────────── */
+(function() {
+  var btn = document.getElementById('langBtn');
+  var menu = document.getElementById('langMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function(e) {
+    if (!menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
+/* ── Mobile nav ─────────────────────────────────────────── */
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMobile');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { menu.classList.remove('open'); });
+  });
+})();
+
+/* ── Nav border on scroll ───────────────────────────────── */
+(function() {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,215,0,0.18)' : 'rgba(255,215,0,0.10)';
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
