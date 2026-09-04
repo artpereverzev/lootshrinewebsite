@@ -853,11 +853,253 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.6.4 -->
+      <!-- v1.6.5 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.6.4</span>
+          <span class="news-card__version">v1.6.5</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">MERCHANT REWORK</span>
+        </div>
+        <h2 class="news-card__title">THE MERCHANT DEALS &mdash; THE SKILL TREE IS GONE, 105 CONTRACTS TAKE ITS PLACE</h2>
+        <p class="news-card__lead">
+          Hey, it&rsquo;s Tim. This one <strong>replaces a system rather than adding one</strong>. Levelling the
+          merchant used to mean spending a point on a small permanent bonus. It worked, and it was boring, because
+          there was never a wrong answer &mdash; you took the discount, then the other discount, and the screen asked
+          you nothing. From this build on, levelling him deals you three contracts and you sign one. And running
+          underneath it, the part I&rsquo;m less pleased about &mdash; <em>while I had the merchant in pieces I found
+          three places where the economy had no ceiling, and one Soul Forge upgrade that has never once done the thing
+          its name says.</em> &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE LEVEL-UP REWARD IS NOW A CONTRACT</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Every time the merchant levels, he deals you <strong style="color:var(--gold)">three contracts</strong> and you sign one. There are <strong style="color:var(--text-hi)">105 of them</strong>.</li>
+            <li>A contract is not a stat. It rewrites a rule for as long as it runs: what the shop stocks, what it charges, whether rerolls cost anything, whether you can sell at all, what shows up on a boss floor, what you&rsquo;re allowed to pay with. Some are straightforwardly good with a price attached. Some are a genuine trade where the right answer depends on the run you&rsquo;re actually having.</li>
+            <li><strong style="color:var(--text-hi)">Your first three land at the start of the run.</strong> He&rsquo;s level 1 too, and it always felt strange that the man following you down the tower had nothing to say until floor 6 or so. Now the first decision happens before the first fight.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">ONE SIGNING PER FLOOR</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>You can sign <strong style="color:var(--text-hi)">one contract per floor</strong>, no exceptions.</li>
+            <li>He can absolutely level three or four times on a good floor, and when he does, the extra offers wait for you rather than evaporating &mdash; you&rsquo;ll see the pending count, and you&rsquo;ll get them on the floors that follow.</li>
+            <li>The reasoning: a single great floor was handing over four rule changes at once, and four simultaneous rewrites don&rsquo;t read as four decisions. They read as noise, and then as a build you didn&rsquo;t design so much as receive. Spread out, each contract gets a few floors to actually be true before the next one lands on top of it.</li>
+            <li><em>This is the change I&rsquo;m least sure about, and it&rsquo;s the one I&rsquo;d most like to hear about.</em></li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">CONTRACTS EXPIRE &mdash; AND SHORTER MEANS STRONGER</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Most contracts run <strong style="color:var(--text-hi)">5 to 20 floors</strong> and then lapse.</li>
+            <li><strong style="color:var(--gold)">Shorter terms are deliberately stronger.</strong> A five-floor contract will do things a twenty-floor one is never allowed to do &mdash; the Full Catalogue&rsquo;s whole stock, opened up, for five floors. Duration is a balance lever, which means a contract can be tuned by changing how long it lasts rather than by weakening what it does.</li>
+            <li><strong style="color:var(--text-hi)">Seventeen are permanent</strong>, and each one has a reason rather than a mood. The rule, stated once: <em>a contract has to outlive the moment it settles.</em> Anything you paid for up front, anything that pays out at a boss floor, at a shrine awakening, or at the run-end soul count, and anything that deliberately pivots at a certain depth &mdash; none of those can be given a term, because a term could end before the payoff ever arrives. A contract that took your gold on floor 8 and lapsed on floor 20 without delivering isn&rsquo;t a hard bargain, it&rsquo;s a bug with flavour text.</li>
+            <li>In battle, signed contracts sit in the buff strip with <strong style="color:var(--text-hi)">the number of floors they have left</strong> on them. Tap one for the full text.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FOUR THINGS TO PAY WITH</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Gold is no longer the only way to buy something.</li>
+            <li><strong style="color:var(--text-hi)">Blood</strong> &mdash; 1 HP per 10 gold. It converts from the <em>discounted</em> price, so every discount you&rsquo;ve earned still counts, and it can never kill you: a purchase that would leave you at zero is refused rather than allowed through as a dramatic mistake.</li>
+            <li><strong style="color:var(--text-hi)">Souls</strong> &mdash; 1 soul essence per 5 gold. The souls you&rsquo;d otherwise be spending in the Soul Forge, spent here instead.</li>
+            <li><strong style="color:var(--text-hi)">Mana</strong> &mdash; a flat 1 MP for any item in the shop, whatever it costs. Regardless of rarity. It is exactly as strong as it sounds and the contracts that grant it are priced accordingly.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">WHAT A CONTRACT CAN ACTUALLY DO</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>
+              A sample rather than a list, because most of the fun is finding out:
+              <ul class="news-card__sub">
+                <li>Stock that runs several floors deeper than you are, so a floor-20 shop sells floor-35 goods.</li>
+                <li>A shop that stocks <strong>nothing but set pieces</strong>, or nothing but one item at a time.</li>
+                <li>Free rerolls &mdash; or rerolls that get <em>cheaper</em> the longer you keep pulling.</li>
+                <li>A free Legendary handed over every floor, or a Divine on every boss floor.</li>
+                <li>Selling switched off entirely, in exchange for something worth more than selling.</li>
+                <li>Theft: the merchant taking a cut, or taking an item, in exchange for prices no honest trader would offer.</li>
+              </ul>
+            </li>
+            <li><strong style="color:var(--text-hi)">22 are class-exclusive.</strong> Your Necromancer and your Knight do not see the same table, which is the point &mdash; a contract that rewrites how Soul Drain works has no business being offered to a Paladin.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">NOTHING WAS TAKEN OFF YOU</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Every merchant skill you have already unlocked <strong style="color:var(--gold)">still works exactly as it did</strong>. The tree is gone as the level-up reward; the things you bought with it are not gone.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE SHOP HAD NO CEILING</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>This is a nerf, and I&rsquo;d rather explain it than let you find it.</li>
+            <li>Shop prices were being discounted by seven different things at once &mdash; Haggler skills, the bulk discount, the loyalty discount that grows every floor, a merchant artifact, your relationship with him, a quest reward, and a skill-tree node. Each of those was written at a different time, and <strong style="color:var(--text-hi)">nothing anywhere added them up and checked the total.</strong></li>
+            <li>They sum past 100%. Not in some exotic edge case &mdash; with an ordinary mid-run build. Past 100% every item in the shop costs one gold, which means gold stops being a constraint somewhere around the middle of a run, which means every shop visit for the rest of that run has the same answer: buy all of it.</li>
+            <li>
+              Three things changed:
+              <ul class="news-card__sub">
+                <li><strong style="color:var(--gold)">One function computes the discount now, and it is capped at 80%.</strong> Every one of those seven terms still applies and still lands its full effect on its own. Only the pile-up is cut.</li>
+                <li><strong style="color:var(--text-hi)">There&rsquo;s a floor as well as a ceiling.</strong> Contracts whose <em>cost</em> is a price surcharge could stack the other way to 2.3&times; &mdash; a Heavenly item at three and a half times list, which no contract ever printed. Surcharges now cap at double list price.</li>
+                <li><strong style="color:var(--text-hi)">A hostile merchant can now actually charge you more.</strong> The relationship modifier was being read inside out: &ldquo;hostile, +15% prices&rdquo; was applied as a multiplier on your <em>discount</em>, so the worst possible relationship could only ever erode a discount you already had. It could never once raise a price above list. The comment said one thing and the code did another for a long time.</li>
+              </ul>
+            </li>
+            <li>Sellback got the same treatment &mdash; three sell-price contracts could stack to <strong style="color:var(--text-hi)">275% of list</strong> against an 80% purchase discount, which is not a build, it&rsquo;s a printing press. Sellback is capped at 90%.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">SOUL HARVEST HAS BEEN FEEDING THE WRONG STAT</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>This one is just a bug, and an embarrassing one.</li>
+            <li><strong style="color:var(--text-hi)">Soul Harvest</strong> &mdash; the Soul Forge upgrade that costs 800 souls at the first level and escalates hard across five &mdash; says it increases the Soul Essence you earn. It has never done that. It was writing to <strong style="color:var(--gold)">hero XP</strong> instead. Every soul anyone has ever spent on it bought a stat it does not advertise, and the stat it does advertise never moved.</li>
+            <li>
+              It grants Soul Essence now, as it always said. And because I had to go and look:
+              <ul class="news-card__sub">
+                <li><strong>Soul Gain has its own row on the hero screen</strong>, so you can see the multiplier rather than trusting it.</li>
+                <li><strong>The merchant&rsquo;s XP bonus has its own row too</strong>, next to it.</li>
+                <li>If you actually wanted the hero XP, there&rsquo;s now an upgrade that honestly does that &mdash; see below.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">ELITE MAGIC FIND NOW DRAINS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Also a nerf, also originally a bug.</li>
+            <li>Killing an elite grants a one-time Magic Find bonus for the next shop &mdash; <strong style="color:var(--text-hi)">+12% per elite modifier</strong>, and the description has always said <em>one-time</em>. The line that cleared it was unreachable, so it never cleared. The bonus accumulated for the entire run.</li>
+            <li>The shop&rsquo;s item-upgrade chance saturates at 40%, so <strong style="color:var(--text-hi)">four elite modifiers pinned every shop and every reroll at the ceiling for the rest of the climb.</strong> Deep runs were quietly running with permanently maxed shop luck.</li>
+            <li>It now drains once per floor, which is what &ldquo;one-time use per shop generation&rdquo; said all along. Read it as a real deep-run loot nerf, because that&rsquo;s what it is.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">AUTO-SELL</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Pick a rarity and everything below it turns straight into gold instead of filling your bag.</li>
+            <li><strong style="color:var(--text-hi)">Settings &rarr; LOOT FILTER.</strong> Switch on <strong>AUTO-SELL LOOT</strong>, then choose what to <strong>KEEP FROM</strong>. It&rsquo;s off by default and nothing sells until you turn it on, and favourited items are never touched.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LEGENDARY QUESTS PAY SOULS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Legendary quests now pay <strong style="color:var(--text-hi)">Soul Essence</strong> on top of their gold and XP, scaled to the size of the quest. They were the longest commitments on the board and the only reward they offered was more of the currency you were already drowning in by the time you finished one.</li>
+            <li>The souls icon sits alongside gold and XP on the quest card, in the same style.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THREE NEW LEADERBOARDS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Speedrun: Floor 30</strong> &mdash; the short board. Not everyone wants to prove something over four hours.</li>
+            <li><strong style="color:var(--text-hi)">Speedrun: Floor 120</strong> &mdash; the long one. Beyond the Origin, start to finish.</li>
+            <li><strong style="color:var(--text-hi)">Essence Drinker</strong> &mdash; items absorbed, lifetime. Absorbing has never been counted anywhere, and some of you play almost entirely that way.</li>
+            <li>Global and per class, like everything else on the boards. And the main menu&rsquo;s leaderboard line now shows your <strong style="color:var(--text-hi)">Tower Climber</strong> rank rather than your Highest Floor &mdash; the lifetime board is the one that describes most players better.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">21 ACHIEVEMENTS, 20 AVATARS</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Covering full rarity sets, quests turned in, Word Fragments collected, and floors climbed &mdash; each with a portrait to go with it.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">TWO NEW SOUL FORGE UPGRADES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">Veteran&rsquo;s Insight</strong> (Fortune) &mdash; more hero XP out of every fight. The honest version of what Soul Harvest was accidentally doing.</li>
+            <li><strong style="color:var(--text-hi)">Deeper Inkwell</strong> (Words) &mdash; <strong style="color:var(--gold)">doubled from six levels to twelve.</strong> The Author&rsquo;s Word was capped low enough that composing a long sentence meant giving up on ever having a spare glyph. There&rsquo;s a lot more Ink available now.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE FIGHT READS BETTER</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">A killing blow lands on screen before the run ends.</strong> The game used to cut to the summary the instant your HP hit zero, so the hit that actually killed you was never drawn. The battle now holds for a beat &mdash; the blow lands, the screen reacts, <em>then</em> the run ends.</li>
+            <li><strong style="color:var(--text-hi)">Damage-over-time gets its own beat.</strong> Burn and bleed ticks were resolving underneath the attack that triggered them, so the number flashed inside another number and read as noise. They take their own moment now.</li>
+            <li><strong style="color:var(--text-hi)">Quest progress is readable mid-battle</strong>, on the merchant&rsquo;s Progress tab, drawn as pinned notes rather than rows. Claimable quests sort to the top instead of falling to the bottom, which was making a finished quest look like a missing one.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--text-hi)">The tutorial&rsquo;s ATTACK button did nothing.</strong> On a fresh install, on the very first fight. It&rsquo;s hard to overstate how bad a first impression that is, and it&rsquo;s fixed.</li>
+            <li><strong style="color:var(--text-hi)">A first-launch soft-lock.</strong> Skipping through the intro slides fast enough could land you on an empty battlefield with no enemies and no skip button and no way out. The cause was cloud sync writing back a snapshot of your progress taken <em>before</em> two round trips finished, which quietly reverted the tutorial to &ldquo;not running&rdquo; while the tutorial was, in fact, running. It only ever happened on a first launch, which is exactly the wrong audience for it.</li>
+            <li><strong style="color:var(--text-hi)">A completed legendary quest could vanish instead of waiting to be claimed.</strong> You&rsquo;d finish the hundredth boss and the quest would delete itself rather than sitting at the shrine with a reward on it. Claimed quest IDs are shared across all your devices while the quest list itself is per-device, so a reinstall could leave a live quest sitting next to a ledger entry saying it had already been paid.</li>
+            <li><strong style="color:var(--text-hi)">Quest reward numbers wrapped onto two lines</strong> &mdash; &ldquo;+4500&rdquo; rendering as &ldquo;+450&rdquo; above &ldquo;0&rdquo;, which is a worse number in every direction.</li>
+            <li><strong style="color:var(--text-hi)">Contracts that promised things they didn&rsquo;t deliver.</strong> A long tail of these, caught before release: costs written as gains, effects with nothing reading them, negative modifiers whose only job was to fail a check. Every implemented contract&rsquo;s text now matches an effect that something actually consumes.</li>
+            <li><strong style="color:var(--text-hi)">Item detail buttons now grey out when a contract forbids the action</strong> &mdash; EQUIP under a rarity cap, and SACRIFICE (including the bulk options) under a contract that has taken sacrificing away from you. They used to look available and silently do nothing.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">LOCALIZATION</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Everything above &mdash; 105 contract names with their gain and cost lines, the new upgrades, the leaderboards, the achievements, the loot filter, and every new label and alert &mdash; ships <strong style="color:var(--text-hi)">day one in all 10 supported languages</strong>: English, German, Spanish, French, Italian, Japanese, Korean, Portuguese (Brazil), Russian, and Simplified Chinese.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">KEEP CLIMBING</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Three things in this build are changes I&rsquo;m genuinely unsure about, and you&rsquo;ll meet all three long before I do: <strong style="color:var(--text-hi)">the one-contract-per-floor limit</strong>, <strong style="color:var(--text-hi)">the 80% discount ceiling</strong>, and <strong style="color:var(--text-hi)">elite Magic Find no longer stacking all run</strong>. Tell me how they land &mdash; especially the first one, because it&rsquo;s a pacing call rather than a maths one and pacing is the thing I can&rsquo;t test alone. Find me on <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" style="color:var(--gold); border-bottom:1px solid rgba(255,215,0,0.3);">Discord</a>.</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          A DEAL THAT COSTS YOU NOTHING IS NOT A DEAL. SEVERAL OF MINE WEREN&rsquo;T, AND THEY ARE ALL NAMED ABOVE. KEEP CLIMBING. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.6.4 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.6.4</span>
           <span class="news-card__badge">IDENTITY + REBALANCE</span>
         </div>
         <h2 class="news-card__title">THE LONG CLIMB &mdash; TITLES, LIFETIME LEADERBOARDS, SIX DEATH ANIMATIONS &amp; TWO REBALANCES</h2>
@@ -1064,7 +1306,7 @@ body::after {
       </article>
 
       <!-- v1.6.3 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.3</span>
           <span class="news-card__badge">CONTENT + FIXES</span>
@@ -1242,7 +1484,7 @@ body::after {
       </article>
 
       <!-- v1.6.2 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.2</span>
           <span class="news-card__badge">SHRINE REWORK</span>
@@ -1339,7 +1581,7 @@ body::after {
       </article>
 
       <!-- v1.6.1 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.1</span>
           <span class="news-card__badge">PERFORMANCE &amp; FIXES</span>
