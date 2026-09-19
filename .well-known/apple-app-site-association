@@ -9,17 +9,55 @@
             "comment": "Ghost challenge invites — opens challenge sheet with code"
           },
           {
+            "/": "/build/*",
+            "comment": "Shared build links — opens the build viewer with the code"
+          },
+          {
             "/": "/eternal-climb",
             "comment": "App Store In-App Event card — character select with Eternal Climb preselected"
           },
           {
             "/": "/mode/*",
-            "comment": "Generic mode preselect (e.g. /mode/eternalClimb)"
+            "comment": "Generic mode preselect (e.g. /mode/adventure, /mode/eternalClimb)"
           },
           {
-            "/": "/alchemist",
-            "comment": "Alchemist class preselect"
-          }
+            "/": "/heroes",
+            "comment": "Character select, nothing preselected — Event Deep Link for Author's Word and Merchant Deals"
+          },
+          {
+            "/": "/character-select",
+            "comment": "Alias of /heroes"
+          },
+          {
+            "/": "/roster",
+            "comment": "Alias of /heroes"
+          },
+          {
+            "/": "/character/*",
+            "comment": "Two-segment class preselect (e.g. /character/monk)"
+          },
+          {
+            "/": "/knight",
+            "comment": "Single-segment class preselect — the 16 below mirror CharacterClass.allCases"
+          },
+          { "/": "/rogue" },
+          { "/": "/mage" },
+          { "/": "/vampire" },
+          { "/": "/berserker" },
+          { "/": "/paladin" },
+          { "/": "/necromancer" },
+          { "/": "/alchemist" },
+          { "/": "/beastmaster" },
+          { "/": "/monk" },
+          { "/": "/ranger" },
+          { "/": "/chronomancer" },
+          { "/": "/ronin" },
+          { "/": "/stormcaller" },
+          {
+            "/": "/chandler",
+            "comment": "Kalzania DLC hero — opens character select; the DLC gate is enforced in-app"
+          },
+          { "/": "/mason" }
         ]
       }
     ]
