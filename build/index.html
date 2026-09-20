@@ -2,27 +2,44 @@
 <!--
   lootshrine.com/build/index.html
 
-  A CLONE of /challenge/index.html. Everything structural — the CSS, the card
-  markup, the fonts, the icon, the button, the copy-to-clipboard handler — is
-  byte-identical on purpose, so the two pages stay visually the same and any
-  drift between them is obvious in a diff.
+  A CLONE of /challenge/index.html. The CSS, the card markup, the fonts, the
+  icon and the App Store button are byte-identical on purpose, so the two pages
+  stay visually the same and drift between them is obvious in a diff.
 
-  Only these differ, and each one is marked  <<< BUILD  below:
+  Differences, each marked  <<< BUILD  below:
     · the title / description / og / twitter strings
-    · the headline, the body copy and the code label
+    · the headline and the body copy
     · the JS sentinel ('BUILD' instead of 'CHALLENGE')
     · the custom-scheme host (lootshrine://build)
     · the footer note — shared builds live 365 days, challenges 7
 
-  404.html forwards /build/<CODE> to /build/?code=<CODE>, the same way it
-  already does for /challenge/.
+  And one that is NOT cosmetic. The challenge page prints a CODE to type in,
+  because the app has a code-entry screen for challenges
+  (EnterChallengeCodeView). It has NO such screen for builds —
+  SharedBuildLoaderView is reachable only from a link. So this page shows the
+  LINK: an <a> that opens the app via the custom scheme, copyable by the
+  platform's own long-press. Printing a build code would send the player
+  hunting for a field that does not exist. The copy handler, the
+  "OR ENTER CODE IN-APP" line and the 22px code style all went with it.
+
+  App side needs NOTHING. Already shipped in the same shape as challenge:
+    · AASA claims /build/*                    WEB_apple-app-site-association.json
+    · handleUniversalLink parses /build/CODE  LootShrineApp.swift:911
+    · handleDeepLink takes lootshrine://build?code= AND /CODE   :734
+    · shareURL emits https://lootshrine.com/build/CODE          SharedBuildService.swift:388
+
+  One change outside this file: 404.html forwards /challenge/<CODE> to
+  /challenge/?code=<CODE>. Add /build/ to that same pattern list, or the path
+  form 404s with nowhere to go.
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LootShrine — Shared Build</title>                                              <!-- <<< BUILD -->
-  <meta name="description" content="Someone shared their LootShrine build! Open the link on iOS to launch the app, or download LootShrine free from the App Store and enter the build code in-app." />
+  <!-- <<< BUILD — no "enter the code in-app" here, unlike challenge: builds
+       have no code-entry screen, the link is the only way in. -->
+  <meta name="description" content="Someone shared their LootShrine build! Open the link on iOS to launch the app, or download LootShrine free from the App Store and open the link again." />
 
   <!-- Per-player URLs — keep out of search index -->
   <meta name="robots" content="noindex, nofollow" />
@@ -138,14 +155,22 @@
       letter-spacing: 0.2em;
       margin-bottom: 8px;
     }
+    /* <<< BUILD — the challenge page shows a 22px CODE to type in. A build has
+       no code-entry screen in the app, so this shows the LINK instead: smaller,
+       wrapping, and an <a> rather than a <p>. */
     .code {
+      display: block;
       font-family: var(--font-pixel);
-      font-size: 22px;
+      font-size: 11px;
+      line-height: 1.7;
       color: var(--gold);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      word-break: break-all;
       user-select: all;
       cursor: pointer;
     }
+    .code:hover { text-decoration: underline; }
     .code-hint {
       font-family: var(--font-pixel);
       font-size: 5px;
@@ -223,26 +248,35 @@
     <p class="subtitle">LOOTSHRINE</p>
     <p class="desc">
       Someone shared the gear, skills and Word behind their run!
-      Open LootShrine and enter the code below to view it.
+      Install LootShrine, then open this link again to view it.
     </p>
+    <!-- <<< BUILD — a LINK, not a code.
+         The challenge page shows a code because the app has a code-entry screen
+         (EnterChallengeCodeView). There is no such screen for builds:
+         SharedBuildLoaderView is reachable ONLY from a link. Printing a build
+         code would send the player hunting for a field that does not exist.
+         So the box holds the link itself: tappable now (opens the app via the
+         custom scheme if it's installed), and copyable for after they install. -->
     <div class="code-box">
-      <p class="code-label">BUILD CODE</p>                                              <!-- <<< BUILD -->
-      <p class="code" id="buildCode" onclick="copyCode()">------</p>
-      <p class="code-hint" id="copyHint">TAP TO COPY</p>
+      <p class="code-label">BUILD LINK</p>
+      <a class="code" id="buildLink" href="#">lootshrine.com/build/</a>
+      <p class="code-hint" id="copyHint">TAP TO OPEN &middot; LONG-PRESS TO COPY</p>
     </div>
     <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       GET LOOTSHRINE
     </a>
     <p class="reassure">FREE DOWNLOAD &middot; FIRST 10 FLOORS FREE</p>
-    <p class="or">OR ENTER CODE IN-APP</p>
-    <a href="/" class="btn-secondary">VISIT LOOTSHRINE.COM</a>
+    <!-- <<< BUILD — challenge says "OR ENTER CODE IN-APP". There is no build
+         code-entry screen, so the second route is the link above, not typing. -->
+    <p class="or">ALREADY INSTALLED?</p>
+    <a href="#" id="openInApp" class="btn-secondary">OPEN IN LOOTSHRINE</a>
     <p class="footer-note">LINK VALID FOR 1 YEAR</p>                                    <!-- <<< BUILD — SharedBuildService.lifetimeDays = 365 -->
   </div>
 
   <script>
     // ─────────────────────────────────────────────────────────────
-    // Challenge code extraction.
+    // Build code extraction.
     //
     // On modern iOS, Universal Links (configured via
     // /.well-known/apple-app-site-association) auto-open the app for
@@ -252,8 +286,8 @@
     // honor Universal Links.
     //
     // Supported URL shapes:
-    //   /challenge/ABC123        ← direct path
-    //   /challenge/?code=ABC123  ← redirected from 404.html
+    //   /build/AB3K7Q        ← direct path, what the app shares
+    //   /build/?code=AB3K7Q  ← redirected from 404.html
     // ─────────────────────────────────────────────────────────────
     (function() {
       var code = null;
@@ -268,16 +302,29 @@
         if (qCode) code = qCode.toUpperCase();
       }
 
-      var codeEl = document.getElementById('buildCode');
+      var linkEl = document.getElementById('buildLink');
       var hintEl = document.getElementById('copyHint');
+      var openEl = document.getElementById('openInApp');
 
       if (code) {
-        codeEl.textContent = code;
+        // Shown: the canonical shareable URL, which is what the player wants to
+        // keep. Followed: the custom scheme, which is what actually opens the
+        // app from here. Pointing href at the https URL would just reload this
+        // page — iOS does not re-run Universal Link matching for a same-page
+        // navigation the page itself initiated.
+        var appURL = 'lootshrine://build?code=' + encodeURIComponent(code);
+        linkEl.textContent = 'lootshrine.com/build/' + code;
+        linkEl.setAttribute('href', appURL);
+        openEl.setAttribute('href', appURL);
       } else {
-        // No code in URL — soften the UI
-        codeEl.textContent = 'NO CODE';
-        codeEl.style.opacity = '0.5';
-        hintEl.textContent = 'OPEN A BUILD LINK';
+        // No code in URL — soften the UI. Nothing to open, so the secondary
+        // button goes home rather than firing a scheme with no target.
+        linkEl.textContent = 'NO BUILD LINK';
+        linkEl.style.opacity = '0.5';
+        linkEl.removeAttribute('href');
+        hintEl.textContent = 'OPEN A SHARED BUILD LINK';
+        openEl.setAttribute('href', '/');
+        openEl.textContent = 'VISIT LOOTSHRINE.COM';
       }
 
       // Custom-scheme fallback for in-app browsers (Telegram, Twitter, etc.)
@@ -285,6 +332,9 @@
       // and only when we have a code. iOS will silently no-op if the app isn't
       // installed; on macOS/Windows it would show a noisy "cannot open" dialog,
       // so we skip there.
+      //
+      // `lootshrine://build?code=` — the app takes the query form first and the
+      // path form second (LootShrineApp.swift:734), same as the challenge arm.
       if (code) {
         var ua = navigator.userAgent || '';
         var isIOS = /iPhone|iPad|iPod/.test(ua) ||
@@ -298,33 +348,20 @@
       }
     })();
 
-    function copyCode() {
-      var codeEl = document.getElementById('buildCode');
-      var hintEl = document.getElementById('copyHint');
-      var text = codeEl.textContent;
-      if (!text || text === '------' || text === 'NO CODE') return;
-
-      var done = function() {
-        hintEl.textContent = 'COPIED!';
-        setTimeout(function() { hintEl.textContent = 'TAP TO COPY'; }, 2000);
-      };
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done).catch(function() {});
-      } else {
-        // Legacy fallback
-        try {
-          var range = document.createRange();
-          range.selectNode(codeEl);
-          var sel = window.getSelection();
-          sel.removeAllRanges();
-          sel.addRange(range);
-          document.execCommand('copy');
-          sel.removeAllRanges();
-          done();
-        } catch (e) {}
-      }
-    }
+    // <<< BUILD — there is deliberately NO copy handler here.
+    //
+    // The challenge page needs one: it renders a code inside a <p>, and a <p>
+    // has no copy affordance of its own. This renders a LINK inside an <a>,
+    // and every platform already gives an <a> one — long-press on iOS, right-
+    // click on desktop, both offering "Copy Link".
+    //
+    // Writing our own was actively worse. A click has to stay free to open the
+    // app, so copy had to hang off long-press; but iOS fires no `contextmenu`,
+    // so it needs a touch timer — and that timer fires ALONGSIDE the native
+    // share sheet rather than instead of it. Two things happen on one gesture,
+    // and the clipboard write silently loses to whatever the sheet does next.
+    //
+    // `user-select: all` on `.code` covers manual selection. Nothing to add.
   </script>
 </body>
 </html>
