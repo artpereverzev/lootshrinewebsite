@@ -6,12 +6,21 @@
   <title>LootShrine</title>
   <script>
     // GitHub Pages serves this 404.html for any unknown path.
-    // If the path is /challenge/CODE or /build/CODE, redirect to that page with
-    // the code as a query param. Otherwise, redirect to homepage.
+    // If the path is /challenge/CODE or /build/CODE, redirect to that section's
+    // page with the code as a query param. Otherwise, redirect to homepage.
+    //
+    // Both app-shared link shapes are PATH form — /challenge/AB3K7Q and
+    // /build/AB3K7Q — because that is what the game emits and what the
+    // Universal Link claims. This file is what makes the path form work for
+    // anyone WITHOUT the app installed. Without a section in the regex below,
+    // its links fall to the else and land on the homepage, which is what
+    // /build/ did before it was added here.
     var path = window.location.pathname;
+    // Group 1 is the section, group 2 is the code — adding the section group
+    // shifted the code from match[1] to match[2].
     var match = path.match(/^\/(challenge|build)\/([A-Za-z0-9]+)\/?$/);
     if (match) {
-      // Rewrite to /<section>/?code=CODE (index.html handles it)
+      // Rewrite to /<section>/?code=CODE (that section's index.html handles it)
       window.location.replace('/' + match[1] + '/?code=' + match[2]);
     } else {
       window.location.replace('/');
