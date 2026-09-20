@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--
+  lootshrine.com/build/index.html
+
+  A CLONE of /challenge/index.html. Everything structural — the CSS, the card
+  markup, the fonts, the icon, the button, the copy-to-clipboard handler — is
+  byte-identical on purpose, so the two pages stay visually the same and any
+  drift between them is obvious in a diff.
+
+  Only these differ, and each one is marked  <<< BUILD  below:
+    · the title / description / og / twitter strings
+    · the headline, the body copy and the code label
+    · the JS sentinel ('BUILD' instead of 'CHALLENGE')
+    · the custom-scheme host (lootshrine://build)
+    · the footer note — shared builds live 365 days, challenges 7
+
+  404.html forwards /build/<CODE> to /build/?code=<CODE>, the same way it
+  already does for /challenge/.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LootShrine — Shared Build</title>                                              <!-- <<< BUILD -->
+  <meta name="description" content="Someone shared their LootShrine build! Open the link on iOS to launch the app, or download LootShrine free from the App Store and enter the build code in-app." />
+
+  <!-- Per-player URLs — keep out of search index -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <meta name="theme-color" content="#1A1A2E" />
+
+  <!-- Apple Smart App Banner (native install bar on iOS Safari) -->
+  <meta name="apple-itunes-app" content="app-id=6757924460" />
+  <meta name="apple-mobile-web-app-title" content="LootShrine" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="LootShrine" />
+  <meta property="og:title" content="LootShrine — Shared Build" />                      <!-- <<< BUILD -->
+  <meta property="og:description" content="Someone shared their build! Tap to view it in LootShrine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lootshrine.com/build/" />
+  <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
+  <meta property="og:image:alt" content="LootShrine — pixel art roguelite RPG for iOS" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LootShrine — Shared Build" />                     <!-- <<< BUILD -->
+  <meta name="twitter:description" content="Someone shared their build! Tap to view it in LootShrine." />
+  <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-void: #0A0A0F;
+      --bg-card: #1E1E28;
+      --gold: #FFD700;
+      --gold-dim: rgba(255,215,0,0.15);
+      --text-hi: #F5F5FA;
+      --text-mid: #A0A0C0;
+      --text-lo: #505068;
+      --font-pixel: "Press Start 2P", monospace;
+      --font-body: "Syne", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-void);
+      color: var(--text-hi);
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
+      pointer-events: none; z-index: 100;
+    }
+    .card {
+      max-width: 420px; width: 100%;
+      background: var(--bg-card);
+      border: 2px solid rgba(255,215,0,0.2);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .brand-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      display: block;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    .title {
+      font-family: var(--font-pixel);
+      font-size: 14px;
+      color: var(--gold);
+      text-shadow: 0 0 30px rgba(255,215,0,0.4);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .subtitle {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      color: var(--text-lo);
+      letter-spacing: 0.2em;
+      margin-bottom: 28px;
+    }
+    .desc {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .code-box {
+      background: rgba(255,215,0,0.06);
+      border: 2px solid rgba(255,215,0,0.25);
+      padding: 16px;
+      margin-bottom: 28px;
+    }
+    .code-label {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      color: var(--text-lo);
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+    .code {
+      font-family: var(--font-pixel);
+      font-size: 22px;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      user-select: all;
+      cursor: pointer;
+    }
+    .code-hint {
+      font-family: var(--font-pixel);
+      font-size: 5px;
+      color: var(--text-lo);
+      margin-top: 8px;
+      letter-spacing: 0.1em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 28px;
+      border: 2px solid var(--gold);
+      background: var(--gold);
+      color: var(--bg-void);
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      background: transparent;
+      color: var(--gold);
+      box-shadow: 0 0 40px rgba(255,215,0,0.3);
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .reassure {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      color: var(--text-lo);
+      letter-spacing: 0.18em;
+      margin-top: 14px;
+      line-height: 1.8;
+    }
+    .or {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      color: var(--text-lo);
+      margin: 24px 0 16px;
+      letter-spacing: 0.15em;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 24px;
+      border: 2px solid rgba(255,215,0,0.2);
+      background: transparent;
+      color: var(--text-mid);
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-note {
+      font-family: var(--font-pixel);
+      font-size: 5px;
+      color: var(--text-lo);
+      margin-top: 24px;
+      letter-spacing: 0.1em;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="/apple-icon-180x180.png" class="brand-icon" alt="LootShrine" width="72" height="72" decoding="async">
+    <h1 class="title">SHARED BUILD</h1>                                                 <!-- <<< BUILD -->
+    <p class="subtitle">LOOTSHRINE</p>
+    <p class="desc">
+      Someone shared the gear, skills and Word behind their run!
+      Open LootShrine and enter the code below to view it.
+    </p>
+    <div class="code-box">
+      <p class="code-label">BUILD CODE</p>                                              <!-- <<< BUILD -->
+      <p class="code" id="buildCode" onclick="copyCode()">------</p>
+      <p class="code-hint" id="copyHint">TAP TO COPY</p>
+    </div>
+    <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      GET LOOTSHRINE
+    </a>
+    <p class="reassure">FREE DOWNLOAD &middot; FIRST 10 FLOORS FREE</p>
+    <p class="or">OR ENTER CODE IN-APP</p>
+    <a href="/" class="btn-secondary">VISIT LOOTSHRINE.COM</a>
+    <p class="footer-note">LINK VALID FOR 1 YEAR</p>                                    <!-- <<< BUILD — SharedBuildService.lifetimeDays = 365 -->
+  </div>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    // Challenge code extraction.
+    //
+    // On modern iOS, Universal Links (configured via
+    // /.well-known/apple-app-site-association) auto-open the app for
+    // /build/* paths when the app is installed. This page is the
+    // fallback shown only when the app is NOT installed, or the user
+    // is on a non-iOS browser, or in an in-app web view that doesn't
+    // honor Universal Links.
+    //
+    // Supported URL shapes:
+    //   /challenge/ABC123        ← direct path
+    //   /challenge/?code=ABC123  ← redirected from 404.html
+    // ─────────────────────────────────────────────────────────────
+    (function() {
+      var code = null;
+
+      var parts = window.location.pathname.replace(/\/+$/, '').split('/');
+      var last = parts[parts.length - 1];
+      if (last && last.toUpperCase() !== 'INDEX.HTML' && last.toUpperCase() !== 'BUILD') {   // <<< BUILD
+        code = last.toUpperCase();
+      }
+      if (!code) {
+        var qCode = new URLSearchParams(window.location.search).get('code');
+        if (qCode) code = qCode.toUpperCase();
+      }
+
+      var codeEl = document.getElementById('buildCode');
+      var hintEl = document.getElementById('copyHint');
+
+      if (code) {
+        codeEl.textContent = code;
+      } else {
+        // No code in URL — soften the UI
+        codeEl.textContent = 'NO CODE';
+        codeEl.style.opacity = '0.5';
+        hintEl.textContent = 'OPEN A BUILD LINK';
+      }
+
+      // Custom-scheme fallback for in-app browsers (Telegram, Twitter, etc.)
+      // that don't trigger Universal Links. Only attempt on iOS-family devices,
+      // and only when we have a code. iOS will silently no-op if the app isn't
+      // installed; on macOS/Windows it would show a noisy "cannot open" dialog,
+      // so we skip there.
+      if (code) {
+        var ua = navigator.userAgent || '';
+        var isIOS = /iPhone|iPad|iPod/.test(ua) ||
+                    (ua.indexOf('Mac') !== -1 && navigator.maxTouchPoints > 1);
+        if (isIOS) {
+          // Use replace() so this attempt doesn't pollute browser history.
+          setTimeout(function() {
+            window.location.replace('lootshrine://build?code=' + encodeURIComponent(code));   // <<< BUILD
+          }, 50);
+        }
+      }
+    })();
+
+    function copyCode() {
+      var codeEl = document.getElementById('buildCode');
+      var hintEl = document.getElementById('copyHint');
+      var text = codeEl.textContent;
+      if (!text || text === '------' || text === 'NO CODE') return;
+
+      var done = function() {
+        hintEl.textContent = 'COPIED!';
+        setTimeout(function() { hintEl.textContent = 'TAP TO COPY'; }, 2000);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function() {});
+      } else {
+        // Legacy fallback
+        try {
+          var range = document.createRange();
+          range.selectNode(codeEl);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand('copy');
+          sel.removeAllRanges();
+          done();
+        } catch (e) {}
+      }
+    }
+  </script>
+</body>
+</html>
