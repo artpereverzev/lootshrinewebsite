@@ -33,6 +33,18 @@
             "comment": "Alias of /heroes"
           },
           {
+            "/": "/addons",
+            "comment": "Add-Ons screen — Event Deep Link for the Kalzania DLC launch. First card whose call to action is a purchase, so it lands where buying happens rather than on the roster. Handled by handleUniversalLink Path 2a-ii."
+          },
+          {
+            "/": "/add-ons",
+            "comment": "Alias of /addons"
+          },
+          {
+            "/": "/dlc",
+            "comment": "Alias of /addons"
+          },
+          {
             "/": "/character/*",
             "comment": "Two-segment class preselect (e.g. /character/monk)"
           },
