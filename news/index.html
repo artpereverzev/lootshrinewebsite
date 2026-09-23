@@ -853,11 +853,81 @@ body::after {
   <div class="container">
     <div class="news__list">
 
-      <!-- v1.7.0 -->
+      <!-- v1.7.1 -->
       <article class="news-card reveal">
         <div class="news-card__header">
-          <span class="news-card__version">v1.7.0</span>
+          <span class="news-card__version">v1.7.1</span>
           <span class="news-card__badge news-card__badge--latest">LATEST</span>
+          <span class="news-card__badge">BUILDS</span>
+        </div>
+        <h2 class="news-card__title">BUILDS YOU CAN HAND TO SOMEONE ELSE &mdash; AND A GAME THAT FINALLY SPEAKS YOUR LANGUAGE ALL THE WAY DOWN</h2>
+        <p class="news-card__lead">
+          Hey, it&rsquo;s Tim. 1.7.0 added a place. This one adds <strong>a thing you can hand to someone
+          else</strong>: the loadout you just died with, as a link, or on a shelf of your own. And then it spends
+          the rest of its length on a bug I&rsquo;d been shipping for the better part of a year without noticing
+          &mdash; <em>if you play LootShrine in anything other than English, your item names have been in English
+          this whole time. So have your skills, your set bonuses and your relics.</em> That&rsquo;s fixed, and
+          I&rsquo;m not pleased about how long it took me to see it. &mdash; <em>Tim (solo developer)</em>
+        </p>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">BUILDS: KEEP THEM, OR SHARE THEM</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Every run summary now has a <strong style="color:var(--text-hi)">builds icon</strong> in the top corner. Publish the loadout you just played and you get a short link &mdash; anyone can open it, no account, no app required.</li>
+            <li>Or save it to your own shelf, <strong style="color:var(--text-hi)">up to 30 builds</strong>, under RIVALS &rarr; SAVED BUILDS. Saving works offline and publishes nothing. These are two deliberately separate actions: <em>sharing doesn&rsquo;t save, and saving doesn&rsquo;t share.</em></li>
+            <li>A shared build opens in <strong style="color:var(--text-hi)">the game&rsquo;s own components, not a screenshot</strong> &mdash; EQUIPMENT with the full stat column, the SKILLS tree as you spent it, the WORDS you had socketed, and the PERKS behind all of it.</li>
+            <li>Hall of the Fallen has a <strong style="color:var(--text-hi)">MINE tab</strong>. Tap one of your own runs and you see the build you fell with. Every fallen run carries its build now, including other people&rsquo;s.</li>
+            <li>The combat log moved to the summary&rsquo;s other top corner, so it&rsquo;s still reachable after the fight instead of only during it.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">THE LANGUAGE BUG, AND WHY IT LASTED SO LONG</h3>
+          </div>
+          <ul class="news-card__list">
+            <li><strong style="color:var(--gold)">Switching language now changes the whole game, without a restart.</strong> Item names, skills, sets and set bonuses, Divine relics, merchant artifacts and contracts, skill-tree nodes, world lore, cosmetics and event dialogue all follow the switch.</li>
+            <li>Here is the honest version of what happened. The language switcher always worked. What didn&rsquo;t was <em>everything built once at launch</em> &mdash; Swift resolves that kind of list a single time per process, so it kept serving whatever language the app started in. It looked perfect in English, which is the language I test in, and it was wrong in the other twelve.</li>
+            <li><strong style="color:var(--text-hi)">Nine battle words</strong> &mdash; BLOCKED, DODGED, CRITICAL, DOUBLE STRIKE and the rest &mdash; were hardcoded English on every device. They&rsquo;re translated now.</li>
+            <li>If you play in German, Russian, Japanese, Korean, Polish, Turkish, Chinese, French, Italian, Spanish or Portuguese: this is the update where the game stops half-speaking to you. <em>Sorry it took this long.</em></li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">FIXES</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>Buffs from events wear real art instead of a system glyph &mdash; six of them had been drawing a generic droplet or pawprint.</li>
+            <li>Donation buffs show their milestone art on every screen, not just some of them.</li>
+            <li><strong style="color:var(--text-hi)">Bat Swarm</strong> no longer promises a dodge bonus it never actually applied. The buff was never there; the text was. Both are gone.</li>
+            <li>Kills from a damage-over-time skill pay their rewards. They were being counted as nobody&rsquo;s kill.</li>
+            <li>Cloud sync says when it fails instead of quietly reporting a refusal as a success.</li>
+            <li>The run summary fits on small screens again. It had grown a button at a time until it didn&rsquo;t.</li>
+          </ul>
+        </div>
+
+        <div class="news-card__section">
+          <div class="news-card__section-head">
+            <h3 class="news-card__section-title">KEEP CLIMBING</h3>
+          </div>
+          <ul class="news-card__list">
+            <li>The thing I most want to see is <strong style="color:var(--text-hi)">a build I wouldn&rsquo;t have made</strong>. That&rsquo;s the entire reason sharing exists &mdash; not to rank loadouts, but to find out what the merge bench and the Word look like in somebody else&rsquo;s hands. Post one.</li>
+            <li>And if you play in a language other than English: tell me what&rsquo;s still wrong. I&rsquo;ve fixed the mechanism, but a mechanism that works can still carry a bad translation, and that one I genuinely can&rsquo;t see from here. Find me on <a href="https://discord.gg/McptmPeddx" target="_blank" rel="noopener" style="color:var(--gold); border-bottom:1px solid rgba(255,215,0,0.3);">Discord</a>.</li>
+          </ul>
+        </div>
+
+        <p class="news-card__outro">
+          A BUILD NOBODY ELSE HAS SEEN IS JUST A RUN THAT ENDED. SEND IT SOMEWHERE. &mdash; TIM
+        </p>
+      </article>
+
+      <!-- v1.7.0 -->
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-card__header">
+          <span class="news-card__version">v1.7.0</span>
           <span class="news-card__badge">KALZANIA</span>
         </div>
         <h2 class="news-card__title">KALZANIA &mdash; A SEALED KINGDOM, TWO NEW HEROES, AND A TOWER THAT FINALLY TALKS BACK</h2>
@@ -1013,7 +1083,7 @@ body::after {
       </article>
 
       <!-- v1.6.5 -->
-      <article class="news-card reveal reveal-delay-1">
+      <article class="news-card reveal reveal-delay-2">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.5</span>
           <span class="news-card__badge">MERCHANT REWORK</span>
@@ -1255,7 +1325,7 @@ body::after {
       </article>
 
       <!-- v1.6.4 -->
-      <article class="news-card reveal reveal-delay-2">
+      <article class="news-card reveal reveal-delay-3">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.4</span>
           <span class="news-card__badge">IDENTITY + REBALANCE</span>
@@ -1464,7 +1534,7 @@ body::after {
       </article>
 
       <!-- v1.6.3 -->
-      <article class="news-card reveal reveal-delay-3">
+      <article class="news-card reveal">
         <div class="news-card__header">
           <span class="news-card__version">v1.6.3</span>
           <span class="news-card__badge">CONTENT + FIXES</span>
