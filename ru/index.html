@@ -1644,7 +1644,9 @@ body::after {
   background: var(--bg-card);
   border: 2px solid rgba(255,215,0,0.25);
 }
-.shorts__player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.shorts__player iframe,
+.shorts__player video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+.shorts__player video { object-fit: cover; }
 .shorts__poster { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .shorts__poster img { width: 100%; height: 100%; object-fit: cover; }
 .shorts__poster .video-play-btn {
@@ -1662,6 +1664,16 @@ body::after {
   margin-top: 14px;
   text-align: center;
 }
+.shorts__yt {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  color: var(--text-mid);
+}
+.shorts__yt:hover { color: var(--gold); }
 .shorts__filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
 .shorts__filter {
   font-family: var(--font-pixel);
@@ -2886,6 +2898,7 @@ body::after {
           </button>
         </div>
         <p class="shorts__now" id="shortsNow">С 1-ГО ПО 100-Й ЭТАЖ ЗА 40 СЕКУНД</p>
+        <a class="shorts__yt" id="shortsYt" href="https://www.youtube.com/shorts/IpvV3IVC_fE" target="_blank" rel="noopener">СМОТРЕТЬ НА YOUTUBE</a>
       </div>
       <div class="shorts__side">
         <div class="shorts__filters" role="tablist">
@@ -2895,39 +2908,42 @@ body::after {
           <button class="shorts__filter" type="button" role="tab" aria-selected="false" data-filter="features">ОСОБЕННОСТИ</button>
         </div>
         <div class="shorts__grid" id="shortsGrid">
-          <!-- To add a Short: copy one button below, set data-yt to the id in
-               youtube.com/shorts/<id>, data-cat (adventure / kalzania / features),
-               the title in data-title and the caption, and add a 540x960 poster
-               to /shorts/. Without a poster the YouTube thumbnail is used. -->
-          <button class="shorts__item active" type="button" aria-pressed="true" data-yt="IpvV3IVC_fE" data-cat="adventure" data-title="С 1-ГО ПО 100-Й ЭТАЖ ЗА 40 СЕКУНД">
+          <!-- To add a Short: copy one button below. Put the video in /shorts/
+               (720x1280 MP4, H.264 + AAC, faststart) and a 540x960 JPG poster
+               beside it; set data-video / data-poster to them, data-yt to the id
+               in youtube.com/shorts/<id> (the "watch on YouTube" link),
+               data-cat (adventure / kalzania / features), and the title in
+               data-title and the caption. The video plays on the site itself:
+               YouTube embeds ask many visitors to sign in first. -->
+          <button class="shorts__item active" type="button" aria-pressed="true" data-video="../shorts/adv2_the_climb.mp4" data-poster="../shorts/adv2_the_climb.jpg" data-yt="IpvV3IVC_fE" data-cat="adventure" data-title="С 1-ГО ПО 100-Й ЭТАЖ ЗА 40 СЕКУНД">
             <img src="../shorts/adv2_the_climb.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/IpvV3IVC_fE/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">ПРИКЛЮЧЕНИЕ</span>С 1-ГО ПО 100-Й ЭТАЖ ЗА 40 СЕКУНД</span>
           </button>
-          <button class="shorts__item" type="button" aria-pressed="false" data-yt="YSeIzVAYpEA" data-cat="adventure" data-title="ВСЕ ДЕСЯТЬ БОССОВ">
+          <button class="shorts__item" type="button" aria-pressed="false" data-video="../shorts/adv1_ten_bosses.mp4" data-poster="../shorts/adv1_ten_bosses.jpg" data-yt="YSeIzVAYpEA" data-cat="adventure" data-title="ВСЕ ДЕСЯТЬ БОССОВ">
             <img src="../shorts/adv1_ten_bosses.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/YSeIzVAYpEA/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">ПРИКЛЮЧЕНИЕ</span>ВСЕ ДЕСЯТЬ БОССОВ</span>
           </button>
-          <button class="shorts__item" type="button" aria-pressed="false" data-yt="FhCQALgFd-w" data-cat="kalzania" data-title="ДЕСЯТЬ РЕГИОНОВ КАЛЬЗАНИИ">
+          <button class="shorts__item" type="button" aria-pressed="false" data-video="../shorts/kz1_ten_regions.mp4" data-poster="../shorts/kz1_ten_regions.jpg" data-yt="FhCQALgFd-w" data-cat="kalzania" data-title="ДЕСЯТЬ РЕГИОНОВ КАЛЬЗАНИИ">
             <img src="../shorts/kz1_ten_regions.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/FhCQALgFd-w/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">КАЛЬЗАНИЯ</span>ДЕСЯТЬ РЕГИОНОВ КАЛЬЗАНИИ</span>
           </button>
-          <button class="shorts__item" type="button" aria-pressed="false" data-yt="-X6DEjBPaho" data-cat="kalzania" data-title="КОРОЛЬ КОРВЕЙН, 50-Й ЭТАЖ">
+          <button class="shorts__item" type="button" aria-pressed="false" data-video="../shorts/kz2_king_corvain.mp4" data-poster="../shorts/kz2_king_corvain.jpg" data-yt="-X6DEjBPaho" data-cat="kalzania" data-title="КОРОЛЬ КОРВЕЙН, 50-Й ЭТАЖ">
             <img src="../shorts/kz2_king_corvain.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/-X6DEjBPaho/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">КАЛЬЗАНИЯ</span>КОРОЛЬ КОРВЕЙН, 50-Й ЭТАЖ</span>
           </button>
-          <button class="shorts__item" type="button" aria-pressed="false" data-yt="u3lFgTaAjTg" data-cat="kalzania" data-title="ЧТО ОСТАВЛЯЕТ БОСС КАЛЬЗАНИИ">
+          <button class="shorts__item" type="button" aria-pressed="false" data-video="../shorts/kz3_boss_loot_camp.mp4" data-poster="../shorts/kz3_boss_loot_camp.jpg" data-yt="u3lFgTaAjTg" data-cat="kalzania" data-title="ЧТО ОСТАВЛЯЕТ БОСС КАЛЬЗАНИИ">
             <img src="../shorts/kz3_boss_loot_camp.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/u3lFgTaAjTg/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">КАЛЬЗАНИЯ</span>ЧТО ОСТАВЛЯЕТ БОСС КАЛЬЗАНИИ</span>
           </button>
-          <button class="shorts__item" type="button" aria-pressed="false" data-yt="xVtSSLjuYc0" data-cat="features" data-title="ОТ ДОБЫЧИ БОССА ДО ГОТОВОГО БИЛДА">
+          <button class="shorts__item" type="button" aria-pressed="false" data-video="../shorts/short2_boss_loot_to_build.mp4" data-poster="../shorts/short2_boss_loot_to_build.jpg" data-yt="xVtSSLjuYc0" data-cat="features" data-title="ОТ ДОБЫЧИ БОССА ДО ГОТОВОГО БИЛДА">
             <img src="../shorts/short2_boss_loot_to_build.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/xVtSSLjuYc0/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">ОСОБЕННОСТИ</span>ОТ ДОБЫЧИ БОССА ДО ГОТОВОГО БИЛДА</span>
           </button>
-          <button class="shorts__item" type="button" aria-pressed="false" data-yt="0M5x0CKv9Tw" data-cat="features" data-title="1 HP. УДАР ПРИНЯЛО МОЁ ЭХО">
+          <button class="shorts__item" type="button" aria-pressed="false" data-video="../shorts/short1_echo_last_stand.mp4" data-poster="../shorts/short1_echo_last_stand.jpg" data-yt="0M5x0CKv9Tw" data-cat="features" data-title="1 HP. УДАР ПРИНЯЛО МОЁ ЭХО">
             <img src="../shorts/short1_echo_last_stand.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/0M5x0CKv9Tw/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">ОСОБЕННОСТИ</span>1 HP. УДАР ПРИНЯЛО МОЁ ЭХО</span>
           </button>
-          <button class="shorts__item" type="button" aria-pressed="false" data-yt="ROlRSQcb5Q0" data-cat="features" data-title="ТЕПЕРЬ И ДЛЯ iPAD">
+          <button class="shorts__item" type="button" aria-pressed="false" data-video="../shorts/short3_now_on_ipad.mp4" data-poster="../shorts/short3_now_on_ipad.jpg" data-yt="ROlRSQcb5Q0" data-cat="features" data-title="ТЕПЕРЬ И ДЛЯ iPAD">
             <img src="../shorts/short3_now_on_ipad.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/ROlRSQcb5Q0/hqdefault.jpg'">
             <span class="shorts__item-cap"><span class="shorts__item-tag">ОСОБЕННОСТИ</span>ТЕПЕРЬ И ДЛЯ iPAD</span>
           </button>
@@ -3379,24 +3395,34 @@ document.addEventListener('keydown', function(e) {
 })();
 
 
-/* ── Gameplay Shorts: a poster first, YouTube only when asked ── */
+/* ── Gameplay Shorts: played from this site, YouTube one tap away ──
+   The videos are files on lootshrine.com, not YouTube embeds: an embedded
+   YouTube player asks many visitors to sign in "to confirm you're not a bot"
+   (VPNs, some countries, no YouTube cookies) and then plays nothing. */
 (function() {
   var player = document.getElementById('shortsPlayer');
   if (!player) return;
   var items = document.querySelectorAll('.shorts__item');
   var filters = document.querySelectorAll('.shorts__filter');
   var nowEl = document.getElementById('shortsNow');
+  var ytEl = document.getElementById('shortsYt');
 
-  function embed(item) {
-    var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + item.getAttribute('data-yt') +
-            '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-    f.title = item.getAttribute('data-title');
-    f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    f.setAttribute('allowfullscreen', '');
-    player.innerHTML = '';
-    player.appendChild(f);
+  function current() { return document.querySelector('.shorts__item.active') || items[0]; }
+  function load(item) {
+    var v = player.querySelector('video');
+    if (!v) {
+      v = document.createElement('video');
+      v.setAttribute('controls', '');
+      v.setAttribute('playsinline', '');
+      v.preload = 'auto';
+      player.innerHTML = '';
+      player.appendChild(v);
+    }
+    v.poster = item.getAttribute('data-poster');
+    v.src = item.getAttribute('data-video');
+    v.setAttribute('aria-label', item.getAttribute('data-title'));
+    var p = v.play();
+    if (p && p.catch) p.catch(function() {});   // autoplay refused: the controls are there
   }
   function select(item) {
     items.forEach(function(i) {
@@ -3405,16 +3431,15 @@ document.addEventListener('keydown', function(e) {
       i.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     if (nowEl) nowEl.textContent = item.getAttribute('data-title');
+    if (ytEl) ytEl.href = 'https://www.youtube.com/shorts/' + item.getAttribute('data-yt');
   }
 
   var poster = player.querySelector('.shorts__poster');
-  if (poster) poster.addEventListener('click', function() {
-    embed(document.querySelector('.shorts__item.active') || items[0]);
-  });
+  if (poster) poster.addEventListener('click', function() { load(current()); });
   items.forEach(function(item) {
     item.addEventListener('click', function() {
       select(item);
-      embed(item);
+      load(item);
       var r = player.getBoundingClientRect();
       if (r.top < 64 || r.bottom > window.innerHeight) {
         player.scrollIntoView({ behavior: 'smooth', block: 'center' });
