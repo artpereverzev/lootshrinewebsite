@@ -495,7 +495,7 @@ body::after {
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav__inner">
-    <a href="/" class="nav__logo">
+    <a href="/ko/" class="nav__logo">
       <img src="../../apple-icon-180x180.png" class="nav__logo-icon" alt="LootShrine" width="32" height="32" decoding="async">
       <span>
         LOOTSHRINE
@@ -504,6 +504,7 @@ body::after {
     </a>
     <ul class="nav__links">
       <li><a href="/ko/#about">개요</a></li>
+      <li><a href="/ko/#kalzania">칼자니아</a></li>
       <li><a href="/codex/">코덱스</a></li>
       <li><a href="/ko/#gameplay">게임플레이</a></li>
       <li><a href="/ko/#features">특징</a></li>
@@ -538,6 +539,7 @@ body::after {
   </div>
   <div class="nav__mobile" id="navMobile">
     <a href="/ko/#about">개요</a>
+    <a href="/ko/#kalzania">칼자니아</a>
     <a href="/codex/">코덱스</a>
     <a href="/ko/#gameplay">게임플레이</a>
     <a href="/ko/#features">특징</a>
@@ -564,7 +566,7 @@ body::after {
   <div class="page-header__content">
     <span class="page-header__tag">// 법적 고지</span>
     <h1 class="page-header__title">개인정보 처리방침</h1>
-    <p class="page-header__date">시행일: 2026년 7월 29일</p>
+    <p class="page-header__date">시행일: 2026년 10월 15일</p>
   </div>
 </section>
 
@@ -576,10 +578,7 @@ body::after {
 
     <div class="policy__highlight">
       <p class="policy__text">
-        <strong>요약:</strong> LootShrine은 여러분의 개인정보를 수집하거나 저장하거나 판매하지 않습니다.
-        광고도 없고, 정보를 수집하는 서드파티 추적기도 없습니다.
-        개인정보를 전혀 수집하지 않는 프라이버시 중심 분석 도구(TelemetryDeck)와
-        구매 처리를 위한 RevenueCat만 사용합니다. 게임 데이터는 기기와 여러분의 iCloud 계정에만 저장됩니다.
+        <strong>요약:</strong> LootShrine은 여러분의 데이터를 판매하지 않으며, 광고를 보여주지 않고, 광고 추적기도 사용하지 않습니다. 개인 데이터를 수집하지 않는 프라이버시 중심 분석(TelemetryDeck)과 구매 관리를 위한 RevenueCat을 사용합니다. 저장 데이터는 여러분의 기기와 iCloud 계정에 남습니다. 일부 <strong>공유 기능</strong> &mdash; 쓰러진 자들의 전당, 에코, 빌드 공유, 친구 챌린지 &mdash; 은 다른 플레이어가 볼 수 있도록 Game Center 닉네임과 런 정보를 게시합니다. 무엇이 게시되는지, 어떻게 끌 수 있는지는 2항에 정확히 적혀 있습니다.
       </p>
     </div>
 
@@ -609,6 +608,18 @@ body::after {
       <p class="policy__text">
         저희는 여러분의 iCloud 데이터에 접근할 수 없습니다. 클라우드 저장 데이터를 읽거나 수정하거나 삭제할 수 없습니다.
       </p>
+      <p class="policy__text">
+        <strong>공유 기능.</strong> 일부 기능은 플레이어들이 서로의 영웅을 볼 수 있도록 존재합니다. 이 기능들은 LootShrine 플레이어라면 누구나 읽을 수 있는 Apple CloudKit의 <strong>공개</strong> 데이터베이스를 사용합니다:
+      </p>
+      <ul class="policy__list">
+        <li><strong>쓰러진 자들의 전당과 에코</strong> &mdash; 3층 이상에서 런이 끝나면, 게임은 Game Center 닉네임(또는 &ldquo;Adventurer&rdquo;), 익명 CloudKit 사용자 ID, 선택한 아바타·프레임·명판, 영웅의 클래스와 빌드, 게임 모드, 도달한 층, 런 통계(시간, 처치 수, 골드, 보스, 희생, HP), 그리고 여러분을 쓰러뜨린 적을 게시합니다. 다른 플레이어는 14일 동안 자신의 쓰러진 자들의 전당에서 그 런을 볼 수 있고, 영원한 등반에서 그 영웅을 에코로 고를 수 있습니다. 누군가 그렇게 하면 그 기록의 카운터가 1 올라갑니다. 이 기능은 <strong>기본적으로 켜져 있으며</strong>, <strong>설정 &rarr; 쓰러진 자들의 전당 &rarr; 내 영웅 공유</strong>에서 끌 수 있습니다.</li>
+        <li><strong>빌드 공유</strong> &mdash; 공유를 누를 때만: 빌드와 그 영웅, 층, 모드, 닉네임과 아바타가 1년 동안 게시됩니다.</li>
+        <li><strong>친구 챌린지</strong> &mdash; 챌린지를 만들거나 수락할 때만: 닉네임, 런 통계와 층별 진행 상황, 결과가 7일 동안 게시됩니다.</li>
+        <li><strong>공개 프로필</strong> &mdash; 리더보드와 전당에 표시할 수 있도록 Game Center 플레이어 ID와 선택한 코스메틱(아바타, 프레임, 명판).</li>
+      </ul>
+      <p class="policy__text">
+        이 중 어느 것에도 실명, 이메일, 위치, 기기 식별자, 연락처는 포함되지 않습니다. 공유된 기록을 만료 전에 삭제하고 싶다면 아래 주소로 이메일을 보내 주세요.
+      </p>
     </div>
 
     <div class="policy__section">
@@ -619,7 +630,7 @@ body::after {
         Game Center 친구 목록은 오직 친구 간 고스트 챌린지 초대를 활성화하기 위해서만 접근합니다.
       </p>
       <p class="policy__text">
-        저희는 여러분의 Game Center 데이터를 저장, 전송하거나 제3자와 공유하지 않습니다.
+        Game Center 닉네임과 플레이어 ID는 2항의 공유 기능에도 사용되어, 다른 플레이어가 어떤 쓰러진 영웅·빌드·챌린지가 누구의 것인지 알 수 있습니다. Game Center 데이터를 판매하거나 제3자와 공유하는 일은 절대 없습니다.
       </p>
     </div>
 
@@ -639,7 +650,7 @@ body::after {
           이름, 이메일 또는 기타 개인정보는 수집하지 않습니다. 자세한 내용은 다음을 참고하세요:
           <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat's Privacy Policy</a>.</li>
         <li><strong>Apple Game Center</strong> &mdash; 리더보드, 업적, 친구 도전 (전적으로 Apple이 관리).</li>
-        <li><strong>Apple CloudKit</strong> &mdash; iCloud 저장 동기화 (전적으로 Apple이 관리).</li>
+        <li><strong>Apple CloudKit</strong> &mdash; iCloud 저장 동기화, 그리고 2항의 공유 기능을 위한 공개 데이터베이스(전적으로 Apple이 관리).</li>
       </ul>
       <p class="policy__text">
         LootShrine은 광고 SDK, 소셜 미디어 추적기, 데이터 브로커, 마케팅 플랫폼을
@@ -659,8 +670,7 @@ body::after {
         구매는 전적으로 선택 사항이며 게임의 어떤 부분을 플레이하는 데도 필요하지 않습니다.
       </p>
       <p class="policy__text">
-        전체 게임 잠금 해제와 선택적 서포터 팩 외에 다른 인앱 구매는 없습니다 &mdash;
-        소모품도, 구독도, 랜덤 박스도, 광고도 없습니다.
+        <strong>칼자니아: 쓰이지 않은 해</strong>는 선택형 유료 확장팩으로, 정식판이 필요한 별도의 50층 캠페인입니다. 정식판 해금, 칼자니아 확장팩, 선택적인 서포터 팩 외에 다른 인앱 구매는 없습니다 &mdash; 소모품도, 구독도, 랜덤 박스도, 광고도 없습니다.
       </p>
       <p class="policy__text">
         모든 구매 거래는 App Store에서 처리되며 다음을 통해 검증됩니다:
@@ -679,9 +689,7 @@ body::after {
     <div class="policy__section">
       <h2 class="policy__heading">6. 아동 개인정보 보호</h2>
       <p class="policy__text">
-        LootShrine은 아동이든 성인이든 어떠한 개인정보도 고의로 수집하지 않습니다.
-        모든 사용자로부터 개인 데이터를 수집하지 않으므로, 이 앱은 COPPA(아동 온라인 개인정보 보호법)
-        및 유사한 규정을 준수합니다.
+        LootShrine은 아동의 개인 정보를 고의로 수집하지 않습니다. 게임에는 계정, 이메일, 가입이 필요 없습니다. 공유 기능에 나타날 수 있는 유일한 식별 정보는 플레이어의 Game Center 닉네임이며, 이는 Apple의 자녀 보호 기능의 적용을 받습니다. 영웅 공유는 언제든지 설정 &rarr; 쓰러진 자들의 전당 &rarr; 내 영웅 공유에서 끌 수 있습니다.
       </p>
     </div>
 
@@ -693,6 +701,9 @@ body::after {
         두 서비스 모두 개인을 식별할 수 있는 정보를 받지 않습니다.
       </p>
       <p class="policy__text">
+        2항에 설명된 공유 기능은 설계상 Game Center 닉네임과 런 정보를 다른 LootShrine 플레이어에게 보여줍니다. 이 데이터는 제3자가 아닌 Apple이 저장하며, 판매되거나 광고에 사용되지 않습니다.
+      </p>
+      <p class="policy__text">
         한 가지 예외는 환불 처리입니다: 환불을 요청하는 경우, 5절에 설명된 제한된 구매-전달 관련 사실이
         요청 해결을 돕기 위해 Apple과 공유됩니다.
       </p>
@@ -701,8 +712,7 @@ body::after {
     <div class="policy__section">
       <h2 class="policy__heading">8. 방침의 변경</h2>
       <p class="policy__text">
-        본 개인정보 처리방침을 업데이트할 경우, 변경 사항은 새로운 시행일과 함께 이 페이지에 게시됩니다.
-        LootShrine은 데이터를 수집하지 않으므로 중대한 변경이 있을 가능성은 낮습니다.
+        이 개인정보 처리방침을 변경하는 경우, 변경 사항은 새로운 시행일과 함께 이 페이지에 게시됩니다.
       </p>
     </div>
 

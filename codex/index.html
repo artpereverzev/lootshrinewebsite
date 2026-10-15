@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Codex — LootShrine classes, skills, skill trees &amp; item sets</title>
-  <meta name="description" content="Complete LootShrine reference: all 14 classes with passives, class slots, active skills and full 60-node skill trees — 840 nodes — plus all 34 item sets with every piece and bonus tier, and every divine skill. Generated from the game data for build planning." />
+  <meta name="description" content="Complete LootShrine reference: all 20 classes with passives, class slots, active skills and full 60-node skill trees — 1,200 nodes — plus all 46 item sets with every piece and bonus tier, and every divine skill. Generated from the game data for build planning." />
   <meta name="author" content="LootShrine" />
-  <meta name="keywords" content="LootShrine classes, LootShrine skill tree, LootShrine build guide, Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster, Monk, Ranger, Chronomancer, Ronin, Stormcaller, divine skills" />
+  <meta name="keywords" content="LootShrine classes, LootShrine skill tree, LootShrine build guide, Knight, Rogue, Alchemist, Monk, Ranger, Ronin, Paladin, Mage, Stormcaller, Beastmaster, Chronomancer, Vampire, Necromancer, Berserker, Puppeteer, Unwriter, Chandler, Mason, Almoner, Apparitor, divine skills" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#1A1A2E" />
 
@@ -21,7 +21,7 @@
   <!-- Open Graph -->
   <meta property="og:site_name" content="LootShrine" />
   <meta property="og:title" content="LootShrine Codex — every class, skill and skill tree" />
-  <meta property="og:description" content="All 14 classes, 840 skill-tree nodes, 34 item sets and every divine skill. The complete build-planning reference." />
+  <meta property="og:description" content="All 20 classes, 1,200 skill-tree nodes, 46 item sets and every divine skill. The complete build-planning reference." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lootshrine.com/codex/" />
   <meta property="og:image" content="https://lootshrine.com/main_menu.jpg" />
@@ -30,7 +30,7 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="LootShrine Codex — every class, skill and skill tree" />
-  <meta name="twitter:description" content="All 14 classes, 840 skill-tree nodes, 34 item sets and every divine skill." />
+  <meta name="twitter:description" content="All 20 classes, 1,200 skill-tree nodes, 46 item sets and every divine skill." />
   <meta name="twitter:image" content="https://lootshrine.com/main_menu.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -662,7 +662,7 @@ body::after {
   "@id": "https://lootshrine.com/codex/#page",
   "url": "https://lootshrine.com/codex/",
   "name": "LootShrine Codex — classes, skills and skill trees",
-  "description": "Complete reference for all 14 LootShrine classes and all 34 item sets: passives, class slots, active skills, 840 skill-tree nodes, set pieces and bonus tiers, plus every divine skill.",
+  "description": "Complete reference for all 20 LootShrine classes and all 46 item sets: passives, class slots, active skills, 1,200 skill-tree nodes, set pieces and bonus tiers, plus every divine skill.",
   "inLanguage": "en-US",
   "isPartOf": { "@id": "https://lootshrine.com/#website" },
   "about": { "@id": "https://lootshrine.com/#game" },
@@ -692,6 +692,7 @@ body::after {
     </a>
     <ul class="nav__links">
       <li><a href="/#about">OVERVIEW</a></li>
+      <li><a href="/#kalzania">KALZANIA</a></li>
       <li><a href="/codex/" class="active">CODEX</a></li>
       <li><a href="/#gameplay">GAMEPLAY</a></li>
       <li><a href="/#features">FEATURES</a></li>
@@ -726,6 +727,7 @@ body::after {
   </div>
   <div class="nav__mobile" id="navMobile">
     <a href="/#about">OVERVIEW</a>
+    <a href="/#kalzania">KALZANIA</a>
     <a href="/codex/" class="active">CODEX</a>
     <a href="/#gameplay">GAMEPLAY</a>
     <a href="/#features">FEATURES</a>
@@ -758,7 +760,7 @@ body::after {
       so what you read here is exactly what the game shows.
     </p>
     <div class="cdx-stats">
-      <span>14 CLASSES</span><span>17 CLASS SKILLS</span><span>7 DIVINE SKILLS</span><span>840 NODES</span><span>34 SETS</span>
+      <span>20 CLASSES</span><span>23 CLASS SKILLS</span><span>7 DIVINE SKILLS</span><span>1,200 NODES</span><span>46 SETS</span>
     </div>
   </div>
 </section>
@@ -804,18 +806,24 @@ body::after {
         <tbody>
           <tr><td class="cdx-table__floor">Default</td><td class="cdx-table__cls"><strong>Knight</strong></td><td>Bulwark</td><td class="cdx-table__pas">15% chance to block incoming attacks completely.</td></tr>
           <tr><td class="cdx-table__floor">Default</td><td class="cdx-table__cls"><strong>Rogue</strong></td><td>Backstab</td><td class="cdx-table__pas">10% chance to dodge attacks. Critical hits deal 75% bonus damage.</td></tr>
-          <tr><td class="cdx-table__floor">Floor 15</td><td class="cdx-table__cls"><strong>Alchemist</strong></td><td>Brew Surge</td><td class="cdx-table__pas">Absorb buffs are 30% stronger and last 1 turn longer. +1 active absorb buff slot. +10% sacrifice value at shrine.</td></tr>
-          <tr><td class="cdx-table__floor">Floor 20</td><td class="cdx-table__cls"><strong>Monk</strong></td><td>Hundred Fists</td><td class="cdx-table__pas">Each attack builds a Combo (max 10): +3% damage per stack. Defending breaks the flow and halves your Combo. At full Combo, strikes may hit twice.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 15</td><td class="cdx-table__cls"><strong>Alchemist</strong></td><td>Brew Surge</td><td class="cdx-table__pas">Absorbed items grant 30% stronger buffs. +8 Attack.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 20</td><td class="cdx-table__cls"><strong>Monk</strong></td><td>Hundred Fists</td><td class="cdx-table__pas">Each attack builds a Combo (max 12): +3% damage per stack. Defending breaks the flow and halves your Combo. At full Combo, strikes may hit twice.</td></tr>
           <tr><td class="cdx-table__floor">Floor 20</td><td class="cdx-table__cls"><strong>Ranger</strong></td><td>Hunter&rsquo;s Volley</td><td class="cdx-table__pas">Attacks against a Marked target cannot miss; at max Marks they always crit. Taking no damage in a round sharpens your next shot (+1 Mark).</td></tr>
           <tr><td class="cdx-table__floor">Floor 20</td><td class="cdx-table__cls"><strong>Ronin</strong></td><td>Iaido: Drawing Cut</td><td class="cdx-table__pas">Defending counters incoming blows and builds Focus. Below 40% HP, gain crit and lifesteal.</td></tr>
           <tr><td class="cdx-table__floor">Floor 25</td><td class="cdx-table__cls"><strong>Paladin</strong></td><td>Holy Smite</td><td class="cdx-table__pas">12% block chance. Blocking heals 15% of blocked damage and reflects 100% back. +20% healing effectiveness.</td></tr>
-          <tr><td class="cdx-table__floor">Floor 30</td><td class="cdx-table__cls"><strong>Mage</strong></td><td>Fireball</td><td class="cdx-table__pas">Spells deal bonus damage based on Spell Damage stat. Start with 5 MP.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 30</td><td class="cdx-table__cls"><strong>Mage</strong></td><td>Fireball</td><td class="cdx-table__pas">Arcane power: +15 Attack. Start with 5 MP.</td></tr>
           <tr><td class="cdx-table__floor">Floor 30</td><td class="cdx-table__cls"><strong>Stormcaller</strong></td><td>Chain Lightning, Static Shroud, Thunderclap, Eye of the Storm</td><td class="cdx-table__pas">Basic attacks arc to one additional enemy. Zari commands a kit of storm spells, each honed by its own path of mastery.</td></tr>
           <tr><td class="cdx-table__floor">Floor 35</td><td class="cdx-table__cls"><strong>Beastmaster</strong></td><td>Werewolf Form</td><td class="cdx-table__pas">Forge a bond with wild beasts that fight at your side. Call on primal fury to shift the tide of battle.</td></tr>
           <tr><td class="cdx-table__floor">Floor 40</td><td class="cdx-table__cls"><strong>Chronomancer</strong></td><td>Quicken</td><td class="cdx-table__pas">The first enemy attack each battle is fully negated &mdash; he saw it coming &mdash; and negating it grants Time. He also banks a little Time at the start of every battle.</td></tr>
-          <tr><td class="cdx-table__floor">Floor 40</td><td class="cdx-table__cls"><strong>Vampire</strong></td><td>Vampire Bite</td><td class="cdx-table__pas">Heal for 15% of all damage dealt. Attacks have a chance to confuse enemies.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 40</td><td class="cdx-table__cls"><strong>Vampire</strong></td><td>Vampire Bite</td><td class="cdx-table__pas">Heal for 15% of the damage you deal with attacks and single-target skills.</td></tr>
           <tr><td class="cdx-table__floor">Floor 45</td><td class="cdx-table__cls"><strong>Necromancer</strong></td><td>Soul Drain</td><td class="cdx-table__pas">Collect Souls from slain enemies (max 10). Each Soul: +3% damage, +2% lifesteal, +5 HP. 8% base lifesteal.</td></tr>
-          <tr><td class="cdx-table__floor">Floor 50</td><td class="cdx-table__cls"><strong>Berserker</strong></td><td>Battle Cry</td><td class="cdx-table__pas">Deal 1% more damage for each 1% of missing health. +50% double strike chance below 30% HP.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 50</td><td class="cdx-table__cls"><strong>Berserker</strong></td><td>Battle Cry</td><td class="cdx-table__pas">Deal 1% more damage for each 1% of missing health.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 100</td><td class="cdx-table__cls"><strong>Puppeteer</strong></td><td>Take the Crown</td><td class="cdx-table__pas">Damaging an enemy banks 1 String, up to a cap. Strings are spent to take a mind, and they stay banked for the whole run.</td></tr>
+          <tr><td class="cdx-table__floor">Floor 110</td><td class="cdx-table__cls"><strong>Unwriter</strong></td><td>Strike the Line</td><td class="cdx-table__pas">Nothing in the tower is load-bearing. You may choose targets in the back row as freely as the front.</td></tr>
+          <tr><td class="cdx-table__floor">Kalzania DLC</td><td class="cdx-table__cls"><strong>Chandler</strong></td><td>Call in the Debt</td><td class="cdx-table__pas">Every purchase, absorb and paid reroll writes a Ledger entry (max 10). Each entry: shop prices -4% and +3% Attack, for the rest of the run.</td></tr>
+          <tr><td class="cdx-table__floor">Kalzania DLC</td><td class="cdx-table__cls"><strong>Mason</strong></td><td>Course and Mortar</td><td class="cdx-table__pas">Merging ignores the matching-item requirement &mdash; any two of the same slot and rarity join, up to Cosmic. Each merge lays a Course (max 12): +2% Attack and +2% Defence, for the rest of the run.</td></tr>
+          <tr><td class="cdx-table__floor">Kalzania DLC</td><td class="cdx-table__cls"><strong>Almoner</strong></td><td>The Last Rite</td><td class="cdx-table__pas">Every item sacrificed at the shrine gives 5 Alms and every kill gives 1 (max 50), kept for the rest of the run: +0.8% Attack each. Sacrificing also refunds a share of the item&rsquo;s value in gold.</td></tr>
+          <tr><td class="cdx-table__floor">Kalzania DLC</td><td class="cdx-table__cls"><strong>Apparitor</strong></td><td>The Roll Is Called</td><td class="cdx-table__pas">Any enemy that changes row is Called for one turn and takes increased damage &mdash; including enemies moved by the front row falling, and by the foe&rsquo;s own teleporters.</td></tr>
         </tbody>
       </table>
       </div>
@@ -838,6 +846,12 @@ body::after {
         <a href="#vampire">VAMPIRE</a>
         <a href="#necromancer">NECROMANCER</a>
         <a href="#berserker">BERSERKER</a>
+        <a href="#puppeteer">PUPPETEER</a>
+        <a href="#unwriter">UNWRITER</a>
+        <a href="#chandler">CHANDLER</a>
+        <a href="#mason">MASON</a>
+        <a href="#almoner">ALMONER</a>
+        <a href="#apparitor">APPARITOR</a>
       </nav>
       <details class="cdx-class" id="knight">
         <summary class="cdx-class__head">
@@ -846,8 +860,8 @@ body::after {
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">15% chance to block incoming attacks completely.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Defense, Block Chance &amp; Max HP. Rally your troops behind the Iron Order&rsquo;s standard.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; SHIELD WALL</p><p class="cdx-fact__v">15% chance to block incoming attacks completely.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; BANNER</p><p class="cdx-fact__v">Defense, Block Chance &amp; Max HP. Rally your troops behind the Iron Order&rsquo;s standard.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Bulwark <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Create a powerful shield absorbing damage for 3 turns.</p></div>
@@ -910,7 +924,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Immortal Guardian</b> &mdash; Cheat death once: revive at 30% HP. +15% DEF.</li>
+                <li><b>Immortal Guardian</b> &mdash; Cheat death once per boss: revive at 30% HP. +15% DEF.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -983,8 +997,8 @@ body::after {
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">10% chance to dodge attacks. Critical hits deal 75% bonus damage.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Crit Chance, Crit Damage &amp; Extra Attack. Coat your blades in lethal toxins.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; SHADOW DANCE</p><p class="cdx-fact__v">10% chance to dodge attacks. Critical hits deal 75% bonus damage.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; POISON VIAL</p><p class="cdx-fact__v">Crit Chance, Crit Damage &amp; Extra Attack. Coat your blades in lethal toxins.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Backstab <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Strike from the shadows for devastating damage, then vanish &mdash; the next enemy attack misses you completely.</p></div>
@@ -997,7 +1011,7 @@ body::after {
                 <li><b>Precision</b> &mdash; Sharp eye. +5% crit chance.</li>
                 <li class="minor"><b>Hawkeye</b> &mdash; +3% crit chance.</li>
                 <li class="minor"><b>Lethal Strikes</b> &mdash; +5% crit damage.</li>
-                <li><b>Toxin Coating</b> &mdash; Venomous blades. Basic attacks poison (3 dmg, 2 turns).</li>
+                <li><b>Toxin Coating</b> &mdash; Venomous blades. Basic attacks poison (1.2% max HP/turn, 2 turns).</li>
                 <li class="minor"><b>Venomwright</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Apothecary</b> &mdash; +3% crit chance.</li>
               </ul>
@@ -1116,45 +1130,45 @@ body::after {
       <details class="cdx-class" id="alchemist">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../alchemist_1.jpg" alt="Alchemist" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x2697;&#xFE0F;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">ALCHEMIST</span><span class="cdx-class__unlock">Clear floor 15</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">ALCHEMIST</span><span class="cdx-class__unlock">Reach floor 15</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Absorb buffs are 30% stronger and last 1 turn longer. +1 active absorb buff slot. +10% sacrifice value at shrine.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Healing Power &amp; Lifesteal. A bubbling distillation vessel that brews power from absorbed essence.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; CONCENTRATED ESSENCE</p><p class="cdx-fact__v">Absorbed items grant 30% stronger buffs. +8 Attack.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; ALEMBIC</p><p class="cdx-fact__v">Attack, Healing Power &amp; Lifesteal. A bubbling distillation vessel that brews power from absorbed essence.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
-          <div class="cdx-skill"><p class="cdx-skill__n">Brew Surge <span class="cdx-skill__c">1 MP, 6 turn cooldown</span></p><p class="cdx-skill__d">Hurl every active brew at all enemies. Deals 2.0&ndash;3.5× AoE damage and grants up to +60% ATK / +40% Crit Chance for 3 turns. Scales with absorb buffs consumed (requires at least one).</p></div>
+          <div class="cdx-skill"><p class="cdx-skill__n">Brew Surge <span class="cdx-skill__c">1 MP + 1&ndash;4 absorb buffs, 6 turn cooldown</span></p><p class="cdx-skill__d">Hurl every active brew at all enemies. Deals 2.0&ndash;3.5× AoE damage and grants up to +60% ATK / +40% Crit Chance for 3 turns. Scales with absorb buffs consumed (requires at least one).</p></div>
           <h4 class="cdx-sub">SKILL TREE</h4>
           <div class="cdx-tree">
             <div class="cdx-branch cdx-branch--off">
               <p class="cdx-branch__h">OFFENSE</p>
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
-                <li><b>Volatile Reagents</b> &mdash; Drinking an MP potion detonates 8 splash damage across the enemy line. +5 spell damage.</li>
-                <li class="minor"><b>Crystalline Mind</b> &mdash; +5 spell damage.</li>
+                <li><b>Volatile Reagents</b> &mdash; Drinking an MP potion detonates 8 splash damage across the enemy line. +5% attack.</li>
+                <li class="minor"><b>Crystalline Mind</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Refined Spark</b> &mdash; +5% crit damage.</li>
                 <li><b>Toxic Spill</b> &mdash; Spilled potions seep into wounds. Drinking an HP potion also poisons the nearest enemy for 2% maxHP × 3 turns.</li>
                 <li class="minor"><b>Quickened Hand</b> &mdash; +3% crit chance.</li>
-                <li class="minor"><b>Searing Mix</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Searing Mix</b> &mdash; +5% attack.</li>
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
                 <li><b>Bottled Lightning</b> &mdash; MP potions arc to the mind. MP potion grants +20% crit chance for 3 turns. +5% crit chance.</li>
-                <li class="minor"><b>Volatile Reagent</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Volatile Reagent</b> &mdash; +6% attack.</li>
                 <li class="minor"><b>Sharp Reaction</b> &mdash; +8% crit damage.</li>
-                <li><b>Cascade</b> &mdash; Reactions chain through the line. Basic attacks poison (3 dmg × 3t). Poison has 20% chance to spread on tick.</li>
-                <li class="minor"><b>Lethal Compound</b> &mdash; +8 spell damage.</li>
+                <li><b>Cascade</b> &mdash; Reactions chain through the line. Basic attacks poison (1.2% max HP/turn × 3t). Poison has 20% chance to spread on tick.</li>
+                <li class="minor"><b>Lethal Compound</b> &mdash; +6% attack.</li>
                 <li class="minor"><b>Acid Edge</b> &mdash; +4% crit chance.</li>
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Reactive Catalyst</b> &mdash; Critical reactions ignite reagents. Crits bleed 3% maxHP for 3 turns and detonate all DoTs on the target. DoTs extend by 1 turn on hit. +10 spell damage.</li>
-                <li><b>Lingering Toxin</b> &mdash; Toxins refuse to fade. +30% damage vs bleeding/poisoned enemies. Attacks corrode (4/turn + armor melt, 3t). DoTs extend by 1 turn on hit. +10 spell damage.</li>
+                <li><b>Reactive Catalyst</b> &mdash; Critical reactions ignite reagents. Crits bleed 3% maxHP for 3 turns and detonate all DoTs on the target. DoTs extend by 1 turn on hit. +8% attack.</li>
+                <li><b>Lingering Toxin</b> &mdash; Toxins refuse to fade. +30% damage vs bleeding/poisoned enemies. Attacks corrode (1.6% max HP/turn + armor melt, 3t). DoTs extend by 1 turn on hit. +8% attack.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Overdose</b> &mdash; Carry the cure to its limit. Brew Surge deals +10% damage per HP/MP potion you still carry. +30 spell damage.</li>
+                <li><b>Overdose</b> &mdash; Carry the cure to its limit. Brew Surge deals +10% damage per HP/MP potion you still carry. +10% attack.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--def">
@@ -1184,7 +1198,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Universal Cure</b> &mdash; The final antidote. Revive once per run at 50% HP. +5% lifesteal.</li>
+                <li><b>Universal Cure</b> &mdash; The final antidote. Revive once per boss at 50% HP. +5% lifesteal.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -1222,15 +1236,15 @@ body::after {
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
                 <li><b>Catalyst Memory</b> &mdash; The alembic remembers the first reagent of the day. The first absorb each battle is FREE.</li>
-                <li class="minor"><b>Concentrated</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Concentrated</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Stable Form</b> &mdash; +5% max HP.</li>
                 <li><b>Recursive Distillation</b> &mdash; Some essence always lingers. 25% chance Brew Surge keeps one consumed absorb buff.</li>
                 <li class="minor"><b>Pure Focus</b> &mdash; +3% crit chance.</li>
-                <li class="minor"><b>Mind Clarity</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Mind Clarity</b> &mdash; +5% attack.</li>
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
-                <li><b>Volatile Surge</b> &mdash; Brew Surge cycles faster. -1 turn skill cooldown. +10 spell damage.</li>
+                <li><b>Volatile Surge</b> &mdash; Brew Surge cycles faster. -1 turn skill cooldown. +8% attack.</li>
                 <li class="minor"><b>Refined Will</b> &mdash; +1 max MP.</li>
                 <li class="minor"><b>Steady Burn</b> &mdash; +5% crit damage.</li>
                 <li><b>Reagent Mastery</b> &mdash; Every drop counts twice. +20% potion healing.</li>
@@ -1239,12 +1253,12 @@ body::after {
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Residue</b> &mdash; The brew leaves a lasting stain. Brew Surge poisons every enemy hit (5 dmg × 3 turns). +10% attack.</li>
+                <li><b>Residue</b> &mdash; The brew leaves a lasting stain. Brew Surge poisons every enemy hit (2% max HP/turn × 3 turns). +10% attack.</li>
                 <li><b>Twin Flask</b> &mdash; Two flasks, one cast. Brew Surge fires its AoE damage burst twice.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Master Brew</b> &mdash; The final recipe. +30 spell damage. -1 turn skill cooldown. +20% crit damage.</li>
+                <li><b>Master Brew</b> &mdash; The final recipe. +10% attack. -1 turn skill cooldown. +20% crit damage.</li>
               </ul>
             </div>
           </div>
@@ -1253,15 +1267,15 @@ body::after {
       <details class="cdx-class" id="monk">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../monk_portrait.jpg" alt="Monk" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F94B;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">MONK</span><span class="cdx-class__unlock">Clear floor 20</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">MONK</span><span class="cdx-class__unlock">Reach floor 20</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Each attack builds a Combo (max 10): +3% damage per stack. Defending breaks the flow and halves your Combo. At full Combo, strikes may hit twice.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Crit Damage &amp; Extra Attack. Sacred prayer beads that keep your combo flowing between blows.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; FLOWING FIST</p><p class="cdx-fact__v">Each attack builds a Combo (max 12): +3% damage per stack. Defending breaks the flow and halves your Combo. At full Combo, strikes may hit twice.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; MONK FOCUS</p><p class="cdx-fact__v">Attack, Crit Damage &amp; Extra Attack. Sacred prayer beads that keep your combo flowing between blows.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
-          <div class="cdx-skill"><p class="cdx-skill__n">Hundred Fists <span class="cdx-skill__c">1 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Unleash a flurry of blows, spending your Combo to deal damage that grows with the stacks consumed.</p></div>
+          <div class="cdx-skill"><p class="cdx-skill__n">Hundred Fists <span class="cdx-skill__c">1 MP + all Combo, 3 turn cooldown</span></p><p class="cdx-skill__d">Unleash a flurry of blows, spending your Combo to deal damage that grows with the stacks consumed.</p></div>
           <h4 class="cdx-sub">SKILL TREE</h4>
           <div class="cdx-tree">
             <div class="cdx-branch cdx-branch--off">
@@ -1291,7 +1305,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Unrelenting Torrent</b> &mdash; The current cannot be stopped. +5 max Combo and a further +2% damage per stack &mdash; on top of River’s Might, for +4% in total.</li>
+                <li><b>Unrelenting Torrent</b> &mdash; The current cannot be stopped. +5 max Combo and a further +2% damage per stack &mdash; on top of River&rsquo;s Might, for +4% in total.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--def">
@@ -1321,7 +1335,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Unshakable Mountain</b> &mdash; You do not fall and you do not break. Revive once at 35% HP, and +15% defense.</li>
+                <li><b>Unshakable Mountain</b> &mdash; You do not fall and you do not break. Revive once per boss at 35% HP, and +15% defense.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -1376,7 +1390,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Perfect Strike</b> &mdash; A flawless finish. Hundred Fists +8% damage per Combo and ignores defense.</li>
+                <li><b>Perfect Strike</b> &mdash; A flawless finish. Hundred Fists +8% damage per Combo and ignores defense. At full Combo it strikes the pressure points: the target is stunned for 1 turn.</li>
                 <li><b>Unbroken Chain</b> &mdash; The chain outlives the blow. Hundred Fists keeps 75% of your Combo. +8% Max HP.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
@@ -1390,12 +1404,12 @@ body::after {
       <details class="cdx-class" id="ranger">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../ranger_portrait.jpg" alt="Ranger" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F3F9;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">RANGER</span><span class="cdx-class__unlock">Clear floor 20</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">RANGER</span><span class="cdx-class__unlock">Reach floor 20</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Attacks against a Marked target cannot miss; at max Marks they always crit. Taking no damage in a round sharpens your next shot (+1 Mark).</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Crit Chance &amp; Extra Attack. A hunter&rsquo;s sigil that brands your prey and deepens every Mark.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; DEADEYE</p><p class="cdx-fact__v">Attacks against a Marked target cannot miss; at max Marks they always crit. Taking no damage in a round sharpens your next shot (+1 Mark).</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; TRACKER&rsquo;S SIGIL</p><p class="cdx-fact__v">Attack, Crit Chance &amp; Extra Attack. A hunter&rsquo;s sigil that brands your prey and deepens every Mark.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Hunter&rsquo;s Volley <span class="cdx-skill__c">1 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Loose a volley that Marks every enemy, then detonate all Marks on your target for a burst of damage.</p></div>
@@ -1408,7 +1422,7 @@ body::after {
                 <li><b>Precise Shot</b> &mdash; A steadier aim finds the gaps. +5% crit chance.</li>
                 <li class="minor"><b>Keen Eye</b> &mdash; +3% crit chance.</li>
                 <li class="minor"><b>Drawn Bow</b> &mdash; +5% attack.</li>
-                <li><b>Barbed Arrows</b> &mdash; Serrated heads tear on the way out. Attacks apply a light Bleed.</li>
+                <li><b>Barbed Arrows</b> &mdash; Serrated heads tear on the way out. Attacks apply a light Bleed (1.2% max HP/turn, 2 turns).</li>
                 <li class="minor"><b>Heavy Shot</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Deadly Aim</b> &mdash; +10% crit damage.</li>
               </ul>
@@ -1423,7 +1437,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Hemorrhage</b> &mdash; Your arrows leave wounds that won&rsquo;t close. Attacks apply a heavy Bleed. +8% attack.</li>
+                <li><b>Hemorrhage</b> &mdash; Your arrows leave wounds that won&rsquo;t close. Attacks apply a heavy Bleed (2% max HP/turn, 3 turns). +8% attack.</li>
                 <li><b>Executioner&rsquo;s Aim</b> &mdash; Finish the wounded before they run. Instantly kill enemies below 20% HP. +15% crit damage.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
@@ -1458,14 +1472,14 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Ghost Walker</b> &mdash; They can never catch what they can&rsquo;t see. +15% dodge, revive once at 35% HP, and +10% Max HP.</li>
+                <li><b>Ghost Walker</b> &mdash; They can never catch what they can&rsquo;t see. +15% dodge, revive once per boss at 35% HP, and +10% Max HP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
               <p class="cdx-branch__h">UTILITY</p>
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
-                <li><b>Poison Arrows</b> &mdash; Coat your tips in venom. Attacks apply Poison.</li>
+                <li><b>Poison Arrows</b> &mdash; Coat your tips in venom. Attacks apply Poison (1.2% max HP/turn, 3 turns).</li>
                 <li class="minor"><b>Bloodletter</b> &mdash; +3% lifesteal.</li>
                 <li class="minor"><b>Field Rations</b> &mdash; +3 Life Regen.</li>
                 <li><b>Scavenger</b> &mdash; Nothing on the trail goes to waste. +10% gold find.</li>
@@ -1474,7 +1488,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
-                <li><b>Toxic Coating</b> &mdash; A deadlier brew clings to every shaft. Attacks apply a stronger Poison and +3% lifesteal.</li>
+                <li><b>Toxic Coating</b> &mdash; A deadlier brew clings to every shaft. Attacks apply a stronger Poison (2% max HP/turn, 3 turns) and +3% lifesteal.</li>
                 <li class="minor"><b>Vital Draw</b> &mdash; +4% lifesteal.</li>
                 <li class="minor"><b>Leeching Barbs</b> &mdash; +3 Life on Hit.</li>
                 <li><b>Hunter&rsquo;s Bounty</b> &mdash; The best pelts fetch a fine price. Killing an enemy grants bonus gold. +5% magic find.</li>
@@ -1527,15 +1541,15 @@ body::after {
       <details class="cdx-class" id="ronin">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../ronin_portrait.jpg" alt="Ronin" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F977;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">RONIN</span><span class="cdx-class__unlock">Clear floor 20</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">RONIN</span><span class="cdx-class__unlock">Reach floor 20</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Defending counters incoming blows and builds Focus. Below 40% HP, gain crit and lifesteal.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Crit Damage &amp; Max HP. A worn whetstone that keeps the blade honed: +1 Focus whenever you Defend, +2 Focus cap, +20% riposte damage, and the first Iaido of every battle always critically strikes.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; COUNTERSTANCE</p><p class="cdx-fact__v">Defending counters incoming blows and builds Focus. Below 40% HP, gain crit and lifesteal.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; RONIN&rsquo;S WHETSTONE</p><p class="cdx-fact__v">Attack, Crit Damage &amp; Max HP. A worn whetstone that keeps the blade honed: +1 Focus whenever you Defend, +2 Focus cap, +20% riposte damage, and the first Iaido of every battle always critically strikes.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
-          <div class="cdx-skill"><p class="cdx-skill__n">Iaido: Drawing Cut <span class="cdx-skill__c">3 turn cooldown</span></p><p class="cdx-skill__d">Unsheathe in a single breath, spending all Focus for one devastating cut. The deeper the Focus, the deeper the wound &mdash; at full Focus the draw always strikes true.</p></div>
+          <div class="cdx-skill"><p class="cdx-skill__n">Iaido: Drawing Cut <span class="cdx-skill__c">all Focus, 3 turn cooldown</span></p><p class="cdx-skill__d">Unsheathe in a single breath, spending all Focus for one devastating cut. The deeper the Focus, the deeper the wound &mdash; at full Focus the draw always strikes true.</p></div>
           <h4 class="cdx-sub">SKILL TREE</h4>
           <div class="cdx-tree">
             <div class="cdx-branch cdx-branch--off">
@@ -1595,7 +1609,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Mirror Of Steel</b> &mdash; Strike him and you strike yourself. Riposte deals +30% of your Attack, revive once at 35% HP, and +10% Max HP.</li>
+                <li><b>Mirror Of Steel</b> &mdash; Strike him and you strike yourself. Riposte deals +30% of your Attack, revive once per boss at 35% HP, and +10% Max HP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -1651,7 +1665,7 @@ body::after {
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
                 <li><b>Bottomless Calm</b> &mdash; There is always more stillness to draw from. +1 max Focus and +8% attack.</li>
-                <li><b>One Cut, One Life</b> &mdash; A lifetime of waiting, spent in a single arc. Iaido deals +15% more damage per Focus and +10% extra attack.</li>
+                <li><b>One Cut, One Life</b> &mdash; A lifetime of waiting, spent in a single arc. Iaido deals +15% more damage per Focus and leaves its target bleeding for 20% of the cut per turn, 3 turns. +10% extra attack.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
@@ -1664,12 +1678,12 @@ body::after {
       <details class="cdx-class" id="paladin">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../paladin_portrait.jpg" alt="Paladin" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x271D;&#xFE0F;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">PALADIN</span><span class="cdx-class__unlock">Clear floor 25</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">PALADIN</span><span class="cdx-class__unlock">Reach floor 25</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">12% block chance. Blocking heals 15% of blocked damage and reflects 100% back. +20% healing effectiveness.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Defense, Life Regen &amp; Max HP. A blessed fragment radiating divine protection.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; RIGHTEOUS VENGEANCE</p><p class="cdx-fact__v">12% block chance. Blocking heals 15% of blocked damage and reflects 100% back. +20% healing effectiveness.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; HOLY RELIC</p><p class="cdx-fact__v">Defense, Life Regen &amp; Max HP. A blessed fragment radiating divine protection.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Holy Smite <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Strike with holy light, dealing heavy damage and healing yourself. +50% damage vs undead/demons.</p></div>
@@ -1762,7 +1776,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Beacon of Light</b> &mdash; Beacon of Light. Start: 15% HP shield, +10% ATK (3t), full MP.</li>
+                <li><b>Beacon of Light</b> &mdash; Beacon of Light. Start: 15% HP shield, +10% ATK (3t). +2 max MP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--mas">
@@ -1770,7 +1784,7 @@ body::after {
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
                 <li><b>Empowered Smite</b> &mdash; Brighter smite. Holy Smite +20% damage.</li>
-                <li class="minor"><b>Radiant Will</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Radiant Will</b> &mdash; +3% attack.</li>
                 <li class="minor"><b>Punishing Light</b> &mdash; +5% crit damage.</li>
                 <li><b>Swift Justice</b> &mdash; Swift justice. Holy Smite CD -1.</li>
                 <li class="minor"><b>Calm Focus</b> &mdash; +1 max MP.</li>
@@ -1779,7 +1793,7 @@ body::after {
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
                 <li><b>Searing Light</b> &mdash; Searing brand. Smite guarantees mark for 4 turns.</li>
-                <li class="minor"><b>Sunbeam</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Sunbeam</b> &mdash; +3% attack.</li>
                 <li class="minor"><b>Searing Crit</b> &mdash; +8% crit damage.</li>
                 <li><b>Holy Fervor</b> &mdash; Holy fervor. Smite CD -1. Smite heals 8% HP.</li>
                 <li class="minor"><b>Reservoir</b> &mdash; +1 max MP.</li>
@@ -1801,12 +1815,12 @@ body::after {
       <details class="cdx-class" id="mage">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../mage_portrait.jpg" alt="Mage" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F52E;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">MAGE</span><span class="cdx-class__unlock">Clear floor 30</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">MAGE</span><span class="cdx-class__unlock">Reach floor 30</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Spells deal bonus damage based on Spell Damage stat. Start with 5 MP.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Mana &amp; Crit Damage. Ancient tome brimming with forbidden knowledge.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; ARCANE MASTERY</p><p class="cdx-fact__v">Arcane power: +15 Attack. Start with 5 MP.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; GRIMOIRE</p><p class="cdx-fact__v">Attack, Mana &amp; Crit Damage. Ancient tome brimming with forbidden knowledge.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Fireball <span class="cdx-skill__c">2 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Hurl a massive ball of fire at all enemies, setting them ablaze.</p></div>
@@ -1816,30 +1830,30 @@ body::after {
               <p class="cdx-branch__h">OFFENSE</p>
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
-                <li><b>Focused Mind</b> &mdash; Sharper focus. +5 spell damage.</li>
-                <li class="minor"><b>Clarity</b> &mdash; +3 spell damage.</li>
+                <li><b>Focused Mind</b> &mdash; Sharper focus. +5% attack.</li>
+                <li class="minor"><b>Clarity</b> &mdash; +4% attack.</li>
                 <li class="minor"><b>Arcane Edge</b> &mdash; +5% crit damage.</li>
-                <li><b>Searing Touch</b> &mdash; Igniting strikes. Basic attacks burn (3 dmg, 2 turns).</li>
-                <li class="minor"><b>Burning Will</b> &mdash; +3 spell damage.</li>
+                <li><b>Searing Touch</b> &mdash; Igniting strikes. Basic attacks burn (1.2% max HP/turn, 2 turns).</li>
+                <li class="minor"><b>Burning Will</b> &mdash; +4% attack.</li>
                 <li class="minor"><b>Spark Touch</b> &mdash; +3% crit chance.</li>
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
                 <li><b>Arcane Amplification</b> &mdash; Arcane surge. +15% damage vs enemies above 60% HP.</li>
-                <li class="minor"><b>Resonance</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Resonance</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Cataclysm</b> &mdash; +8% crit damage.</li>
                 <li><b>Wildfire</b> &mdash; Fire spreads. 30% chance burn jumps to another enemy.</li>
-                <li class="minor"><b>Conflagration</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Conflagration</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Hot Streak</b> &mdash; +4% crit chance.</li>
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Overcharge</b> &mdash; Devastating crits. +50% crit damage. +10 spell damage.</li>
+                <li><b>Overcharge</b> &mdash; Devastating crits. +50% crit damage. +8% attack.</li>
                 <li><b>Immolation</b> &mdash; Burning is fragile. +20% damage vs burning enemies.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Archmage</b> &mdash; Archmage. +30 spell damage. Spell kills refund 1 MP.</li>
+                <li><b>Archmage</b> &mdash; Archmage. +10% attack. Kills refund 1 MP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--def">
@@ -1869,7 +1883,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Invulnerability</b> &mdash; Near death: immune 2 turns, +50% heal, +2 MP. Once per combat.</li>
+                <li><b>Invulnerability</b> &mdash; Near death: immune 2 turns, +50% heal. Once per combat. +2 max MP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -1899,7 +1913,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Infinite Power</b> &mdash; Infinite power. +2 max MP.</li>
+                <li><b>Infinite Power</b> &mdash; Infinite power. The first spell of each battle is free. +2 max MP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--mas">
@@ -1907,20 +1921,20 @@ body::after {
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
                 <li><b>Intensify</b> &mdash; Hotter flames. Fireball +20% damage.</li>
-                <li class="minor"><b>Kindle</b> &mdash; +3 spell damage.</li>
-                <li class="minor"><b>Combust</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Kindle</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Combust</b> &mdash; +5% attack.</li>
                 <li><b>Quick Ignition</b> &mdash; Quick ignition. Fireball CD -1.</li>
                 <li class="minor"><b>Mind Pool</b> &mdash; +1 max MP.</li>
-                <li class="minor"><b>Quick Mind</b> &mdash; +3 spell damage.</li>
+                <li class="minor"><b>Quick Mind</b> &mdash; +4% attack.</li>
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
                 <li><b>Inferno</b> &mdash; Lingering fire. Fireball burn +2 turns, +20% burn damage.</li>
-                <li class="minor"><b>Smolder</b> &mdash; +5 spell damage.</li>
-                <li class="minor"><b>Wildflame</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Smolder</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Wildflame</b> &mdash; +6% attack.</li>
                 <li><b>Rapid Fire</b> &mdash; Rapid fire. Fireball CD -1, +30% damage.</li>
                 <li class="minor"><b>Cascade</b> &mdash; +1 max MP.</li>
-                <li class="minor"><b>Quickfire</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Quickfire</b> &mdash; +5% attack.</li>
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
@@ -1938,14 +1952,14 @@ body::after {
       <details class="cdx-class" id="stormcaller">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../stormcaller_portrait.jpg" alt="Stormcaller" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x26A1;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">STORMCALLER</span><span class="cdx-class__unlock">Clear floor 30</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">STORMCALLER</span><span class="cdx-class__unlock">Reach floor 30</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Basic attacks arc to one additional enemy. Zari commands a kit of storm spells, each honed by its own path of mastery.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Max HP &amp; Mana. A crackling totem that gathers the storm &mdash; a lightning rod for the tempest Zari commands.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; CONDUCTOR</p><p class="cdx-fact__v">Basic attacks arc to one additional enemy. Zari commands a kit of storm spells, each honed by its own path of mastery.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; TEMPEST TOTEM</p><p class="cdx-fact__v">Attack, Max HP &amp; Mana. A crackling totem that gathers the storm &mdash; a lightning rod for the tempest Zari commands.</p></div>
           </div>
-          <h4 class="cdx-sub">ACTIVE SKILLS &MDASH; ALL FOUR CARRIED AT ONCE</h4>
+          <h4 class="cdx-sub">ACTIVE SKILLS &mdash; ALL FOUR CARRIED AT ONCE</h4>
           <p class="cdx-note">Each keeps its own cooldown. Long-press the skill button to choose which is loaded.</p>
           <div class="cdx-skill"><p class="cdx-skill__n">Chain Lightning <span class="cdx-skill__c">2 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Loose a bolt that strikes an enemy and leaps to another.</p></div>
           <div class="cdx-skill"><p class="cdx-skill__n">Static Shroud <span class="cdx-skill__c">3 MP, 4 turn cooldown</span></p><p class="cdx-skill__d">Cloak yourself in crackling static, shielding you for several turns.</p></div>
@@ -1959,28 +1973,28 @@ body::after {
               <ul class="cdx-nodes">
                 <li><b>Forking Bolt</b> &mdash; The lightning wants to split. Let it. +5% crit chance.</li>
                 <li class="minor"><b>Charged Point</b> &mdash; +3% crit chance.</li>
-                <li class="minor"><b>Live Wire</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Live Wire</b> &mdash; +4% attack.</li>
                 <li><b>First Strike</b> &mdash; The storm opens the duel before the foe hears the thunder. First attack deals +25% damage.</li>
-                <li class="minor"><b>Storm Focus</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Storm Focus</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Arc Precision</b> &mdash; +10% crit damage.</li>
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
-                <li><b>Wider Arc</b> &mdash; The bolt no longer settles for the shortest leap. Every arc &mdash; Chain Lightning and Conductor &mdash; deals +15% more. +5% attack.</li>
+                <li><b>Wider Arc</b> &mdash; The bolt no longer settles for the shortest leap. Every arc &mdash; Chain Lightning and Conductor &mdash; deals +15% more. +4% attack.</li>
                 <li class="minor"><b>Conductive Edge</b> &mdash; +8% crit damage.</li>
-                <li class="minor"><b>Arc Amplifier</b> &mdash; +5% attack.</li>
-                <li><b>Find The Ground</b> &mdash; Lightning always finds the fastest way in. Critical hits ignore half the target&rsquo;s defense. +5% attack.</li>
-                <li class="minor"><b>Killing Charge</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Arc Amplifier</b> &mdash; +4% attack.</li>
+                <li><b>Find The Ground</b> &mdash; Lightning always finds the fastest way in. Critical hits ignore half the target&rsquo;s defense. +4% attack.</li>
+                <li class="minor"><b>Killing Charge</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Static Precision</b> &mdash; +4% crit chance.</li>
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Split The Sky</b> &mdash; One more throat for the lightning to find. Chain Lightning leaps to +1 additional foe. +8% attack.</li>
+                <li><b>Split The Sky</b> &mdash; One more throat for the lightning to find. Chain Lightning leaps to +1 additional foe. +6% attack.</li>
                 <li><b>Fulgurite</b> &mdash; What the bolt leaves behind is glass. Instantly kill enemies below 18% HP. +15% crit damage.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>The Long Chain</b> &mdash; One bolt, and the whole field falls in sequence. Chain Lightning leaps to +2 additional foes, instantly kills enemies below 20% HP, and +10% attack.</li>
+                <li><b>The Long Chain</b> &mdash; One bolt, and the whole field falls in sequence. Chain Lightning leaps to +2 additional foes, instantly kills enemies below 20% HP, and +8% attack.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--def">
@@ -2010,7 +2024,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Eye Of The Cyclone</b> &mdash; Strike the storm and the storm strikes back twofold. Static Shroud shocks for +40% of your Attack, revive once at 35% HP, and +10% Max HP.</li>
+                <li><b>Eye Of The Cyclone</b> &mdash; Strike the storm and the storm strikes back twofold. Static Shroud shocks for +40% of your Attack, revive once per boss at 35% HP, and +10% Max HP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -2018,7 +2032,7 @@ body::after {
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
                 <li><b>Rolling Thunder</b> &mdash; The daze lingers long after the crack. +20% damage to stunned enemies.</li>
-                <li class="minor"><b>Deafening</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Deafening</b> &mdash; +4% attack.</li>
                 <li class="minor"><b>Static Buildup</b> &mdash; +2 max MP.</li>
                 <li><b>Quick Discharge</b> &mdash; The storm gathers faster than any sky should allow. Storm spells recover 1 turn sooner.</li>
                 <li class="minor"><b>Restless Sky</b> &mdash; +5% magic find.</li>
@@ -2026,16 +2040,16 @@ body::after {
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
-                <li><b>Concussive Field</b> &mdash; Thunder rattles even the braced. +15% damage to stunned enemies and +8 Spell Damage.</li>
-                <li class="minor"><b>Thunderhead</b> &mdash; +8 Spell Damage.</li>
-                <li class="minor"><b>Storm Surge</b> &mdash; +5% attack.</li>
-                <li><b>Third Wire</b> &mdash; One more path for the current to leap along. Your Conductor passive arcs to +1 additional foe. +8 Spell Damage.</li>
+                <li><b>Concussive Field</b> &mdash; Thunder rattles even the braced. +15% damage to stunned enemies and +2% Attack.</li>
+                <li class="minor"><b>Thunderhead</b> &mdash; +2% Attack.</li>
+                <li class="minor"><b>Storm Surge</b> &mdash; +4% attack.</li>
+                <li><b>Third Wire</b> &mdash; One more path for the current to leap along. Your Conductor passive arcs to +1 additional foe. +2% Attack.</li>
                 <li class="minor"><b>Ion Trail</b> &mdash; +8% gold find.</li>
                 <li class="minor"><b>Stormchaser&rsquo;s Luck</b> &mdash; +8% magic find.</li>
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Eye Of The Needle</b> &mdash; Strike the dazed where they cannot flinch away. +25% damage to stunned enemies and +8% attack.</li>
+                <li><b>Eye Of The Needle</b> &mdash; Strike the dazed where they cannot flinch away. +25% damage to stunned enemies and +6% attack.</li>
                 <li><b>Endless Storm</b> &mdash; The clouds never fully disperse. Storm spells recover 1 more turn sooner and +10% gold find.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
@@ -2049,7 +2063,7 @@ body::after {
               <ul class="cdx-nodes">
                 <li><b>Gathering Clouds</b> &mdash; The sky remembers every turn it rages. Eye of the Storm&rsquo;s tempest grows +10% harder each round.</li>
                 <li class="minor"><b>Clear Air</b> &mdash; +3% crit chance.</li>
-                <li class="minor"><b>Storm Might</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Storm Might</b> &mdash; +4% attack.</li>
                 <li><b>Live Current</b> &mdash; The charge never quite leaves your hands. +5% extra attack.</li>
                 <li class="minor"><b>Stormborn</b> &mdash; +5% Max HP.</li>
                 <li class="minor"><b>Reading The Sky</b> &mdash; +3% crit chance.</li>
@@ -2059,18 +2073,18 @@ body::after {
                 <li><b>Deepening Pressure</b> &mdash; The eye pulls harder at the air around it. +8% extra attack.</li>
                 <li class="minor"><b>Charged Silence</b> &mdash; +4% crit chance.</li>
                 <li class="minor"><b>Overcharge</b> &mdash; +5% crit damage.</li>
-                <li><b>Branching Path</b> &mdash; The current forks wider without being asked. Your Conductor passive arcs to +1 additional foe. +5% attack.</li>
-                <li class="minor"><b>Perfect Ground</b> &mdash; +5% attack.</li>
+                <li><b>Branching Path</b> &mdash; The current forks wider without being asked. Your Conductor passive arcs to +1 additional foe. +4% attack.</li>
+                <li class="minor"><b>Perfect Ground</b> &mdash; +4% attack.</li>
                 <li class="minor"><b>Chain Momentum</b> &mdash; +5% attack speed.</li>
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Supercell</b> &mdash; There is always more storm to summon. Eye of the Storm grows +15% harder each round and +8% attack.</li>
+                <li><b>Supercell</b> &mdash; There is always more storm to summon. Eye of the Storm grows +15% harder each round and +6% attack.</li>
                 <li><b>Fulmination</b> &mdash; Every arc burns a shade brighter. All your arcs deal +15% more and +10% extra attack.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Wrath Of The Sky</b> &mdash; The eye opens on everything at once. Eye of the Storm grows +20% harder each round, all your arcs deal +15% more, your Conductor passive arcs to +1 more foe, and +10% attack.</li>
+                <li><b>Wrath Of The Sky</b> &mdash; The eye opens on everything at once. Eye of the Storm grows +20% harder each round, all your arcs deal +15% more, your Conductor passive arcs to +1 more foe, and +8% attack.</li>
               </ul>
             </div>
           </div>
@@ -2079,12 +2093,12 @@ body::after {
       <details class="cdx-class" id="beastmaster">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../beastmaster_portrait.jpg" alt="Beastmaster" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F43A;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">BEASTMASTER</span><span class="cdx-class__unlock">Clear floor 35</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">BEASTMASTER</span><span class="cdx-class__unlock">Reach floor 35</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Forge a bond with wild beasts that fight at your side. Call on primal fury to shift the tide of battle.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack &amp; Max HP. A carved totem that channels the strength of the wild pack.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; PACK BOND</p><p class="cdx-fact__v">Forge a bond with wild beasts that fight at your side. Call on primal fury to shift the tide of battle.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; BEAST TOTEM</p><p class="cdx-fact__v">Attack &amp; Max HP. A carved totem that channels the strength of the wild pack.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Werewolf Form <span class="cdx-skill__c">1 MP, 4 turn cooldown</span></p><p class="cdx-skill__d">Unleash the beast within: +60% Attack, +15% Crit Chance and lifesteal for 3 turns.</p></div>
@@ -2106,7 +2120,7 @@ body::after {
                 <li><b>Bloodhound</b> &mdash; Your beasts learn to find the throat. Pets deal +25% damage and gain +10% crit chance. +5% attack.</li>
                 <li class="minor"><b>Feral Edge</b> &mdash; +6% attack.</li>
                 <li class="minor"><b>Hunter&rsquo;s Eye</b> &mdash; +4% crit chance.</li>
-                <li><b>Rending Assault</b> &mdash; Every opening is exploited. Pets have a 30% chance to strike twice and deal +15% damage.</li>
+                <li><b>Rending Assault</b> &mdash; Every opening is exploited. Pets have a 30% chance to strike twice, deal +15% damage, and their claws make the target bleed for 15% of the hit per turn, 2 turns.</li>
                 <li class="minor"><b>Predator&rsquo;s Focus</b> &mdash; +4% crit chance.</li>
                 <li class="minor"><b>Savage Might</b> &mdash; +6% attack.</li>
               </ul>
@@ -2142,12 +2156,12 @@ body::after {
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Undying Pack</b> &mdash; The pack drags you back from the brink. Pets gain +50% Max HP and you revive once at 40% HP. +10% Max HP.</li>
+                <li><b>Undying Pack</b> &mdash; The pack drags you back from the brink. Pets gain +50% Max HP and you revive once per boss at 40% HP. +10% Max HP.</li>
                 <li><b>Loyal Shield</b> &mdash; The pack throws itself before you. +35% chance enemies attack the pack, and pets gain +30% Max HP. +8% defense.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>The Pack Endures</b> &mdash; The bond defies death. Revive once per run at 50% HP. Pets +30% Max HP.</li>
+                <li><b>The Pack Endures</b> &mdash; The bond defies death. Revive once per boss at 50% HP. Pets +30% Max HP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -2216,15 +2230,15 @@ body::after {
       <details class="cdx-class" id="chronomancer">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../chronomancer_portrait.jpg" alt="Chronomancer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x23F3;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">CHRONOMANCER</span><span class="cdx-class__unlock">Clear floor 40</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">CHRONOMANCER</span><span class="cdx-class__unlock">Reach floor 40</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">The first enemy attack each battle is fully negated &mdash; he saw it coming &mdash; and negating it grants Time. He also banks a little Time at the start of every battle.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Max HP, Attack &amp; Mana. A cracked hourglass that trickles Time into every turn and deepens the well you draw from.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; FORESIGHT</p><p class="cdx-fact__v">The first enemy attack each battle is fully negated &mdash; he saw it coming &mdash; and negating it grants Time. He also banks a little Time at the start of every battle.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; FRACTURED HOURGLASS</p><p class="cdx-fact__v">Max HP, Attack &amp; Mana. A cracked hourglass that trickles Time into every turn and deepens the well you draw from.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
-          <div class="cdx-skill"><p class="cdx-skill__n">Quicken <span class="cdx-skill__c">1 MP, 2 turn cooldown</span></p><p class="cdx-skill__d">Bend the turn. Spend Time to take an immediate extra action &mdash; 4 Time for +1, 8 Time for +2.</p></div>
+          <div class="cdx-skill"><p class="cdx-skill__n">Quicken <span class="cdx-skill__c">1 MP + 4 Time per extra action, 2 turn cooldown</span></p><p class="cdx-skill__d">Bend the turn. Spend Time to take an immediate extra action &mdash; 4 Time for +1, 8 Time for +2.</p></div>
           <h4 class="cdx-sub">SKILL TREE</h4>
           <div class="cdx-tree">
             <div class="cdx-branch cdx-branch--off">
@@ -2235,7 +2249,7 @@ body::after {
                 <li class="minor"><b>Sharpened Instant</b> &mdash; +3% crit chance.</li>
                 <li class="minor"><b>Pressing Tempo</b> &mdash; +5% attack.</li>
                 <li><b>Foreseen Opening</b> &mdash; You already know where it falls. First attack deals +25% damage.</li>
-                <li class="minor"><b>Arcane Cadence</b> &mdash; +8 Spell Damage.</li>
+                <li class="minor"><b>Arcane Cadence</b> &mdash; +3% Attack.</li>
                 <li class="minor"><b>Deadly Timing</b> &mdash; +10% crit damage.</li>
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
@@ -2243,7 +2257,7 @@ body::after {
                 <li><b>Accelerated Strikes</b> &mdash; You strike in the gaps between moments. Critical hits ignore half the target&rsquo;s defense. +5% attack.</li>
                 <li class="minor"><b>Honed Moment</b> &mdash; +8% crit damage.</li>
                 <li class="minor"><b>Compressed Instant</b> &mdash; +5% attack.</li>
-                <li><b>Stopped Clock</b> &mdash; Time falters for the reeling. +20% damage to stunned enemies. +5% attack.</li>
+                <li><b>Stopped Clock</b> &mdash; Time falters for the reeling. Quicken chills every enemy (+1 Chill; enough Chill freezes). +20% damage to stunned enemies. +5% attack.</li>
                 <li class="minor"><b>Momentum</b> &mdash; +6% attack.</li>
                 <li class="minor"><b>Predictive Strike</b> &mdash; +4% crit chance.</li>
               </ul>
@@ -2284,7 +2298,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Frozen Instant</b> &mdash; Step outside the flow of time. +15% dodge, revive once at 35% HP, and +10% Max HP.</li>
+                <li><b>Frozen Instant</b> &mdash; Step outside the flow of time. +15% dodge, revive once per boss at 35% HP, and +10% Max HP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -2353,12 +2367,12 @@ body::after {
       <details class="cdx-class" id="vampire">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../vampire_portrait.jpg" alt="Vampire" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F9DB;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">VAMPIRE</span><span class="cdx-class__unlock">Clear floor 40</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">VAMPIRE</span><span class="cdx-class__unlock">Reach floor 40</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Heal for 15% of all damage dealt. Attacks have a chance to confuse enemies.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Lifesteal, Attack &amp; Crit Chance. Drink deep and never hunger again.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; BLOOD DRAIN</p><p class="cdx-fact__v">Heal for 15% of the damage you deal with attacks and single-target skills.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; BLOOD CHALICE</p><p class="cdx-fact__v">Lifesteal, Attack &amp; Crit Chance. Drink deep and never hunger again.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Vampire Bite <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Bite an enemy, dealing heavy damage, draining life force, and causing deep bleeding.</p></div>
@@ -2371,7 +2385,7 @@ body::after {
                 <li><b>Predatory Instinct</b> &mdash; Hunger sharpens. Below 60% HP: +15% ATK.</li>
                 <li class="minor"><b>Hunger</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Bloodthirst</b> &mdash; +3% crit chance.</li>
-                <li><b>Serrated Fangs</b> &mdash; Every strike bleeds. Basic attacks apply bleed (4 dmg, 2 turns).</li>
+                <li><b>Serrated Fangs</b> &mdash; Every strike bleeds. Basic attacks apply bleed (1.6% max HP/turn, 2 turns).</li>
                 <li class="minor"><b>Tearing Strikes</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Cruelty</b> &mdash; +5% crit damage.</li>
               </ul>
@@ -2387,7 +2401,7 @@ body::after {
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
                 <li><b>Death&rsquo;s Door</b> &mdash; Edge of death. Below 25% HP: +20% ATK, +10% crit.</li>
-                <li><b>Exsanguinate</b> &mdash; Blood flows. +20% vs bleeding. Attacks bleed (3 dmg, 3 turns). Crits inflict Mortal Wound &mdash; they can&rsquo;t heal (3t).</li>
+                <li><b>Exsanguinate</b> &mdash; Blood flows. +20% vs bleeding. Attacks bleed (1.2% max HP/turn, 3 turns). Crits inflict Mortal Wound &mdash; they can&rsquo;t heal (3t).</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
@@ -2421,7 +2435,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Eternal</b> &mdash; Eternal. Revive once per run at 40% HP. +15% lifesteal.</li>
+                <li><b>Eternal</b> &mdash; Eternal. Revive once per boss at 40% HP. +15% lifesteal.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -2490,12 +2504,12 @@ body::after {
       <details class="cdx-class" id="necromancer">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../necromancer_portrait.jpg" alt="Necromancer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F480;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">NECROMANCER</span><span class="cdx-class__unlock">Clear floor 45</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">NECROMANCER</span><span class="cdx-class__unlock">Reach floor 45</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Collect Souls from slain enemies (max 10). Each Soul: +3% damage, +2% lifesteal, +5 HP. 8% base lifesteal.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Spell Damage, Thorns &amp; Magic Find. Crystallized souls trapped for eternity.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; SOUL HARVEST</p><p class="cdx-fact__v">Collect Souls from slain enemies (max 10). Each Soul: +3% damage, +2% lifesteal, +5 HP. 8% base lifesteal.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; SOUL GEM</p><p class="cdx-fact__v">Attack, Thorns &amp; Magic Find. Crystallized souls trapped for eternity.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Soul Drain <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Drain life force from an enemy. Always grants 1 Soul. If target dies, gain bonus Soul and refund mana.</p></div>
@@ -2505,30 +2519,30 @@ body::after {
               <p class="cdx-branch__h">OFFENSE</p>
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
-                <li><b>Decay</b> &mdash; Necrotic touch. Attacks poison (4 dmg, 2 turns).</li>
-                <li class="minor"><b>Withering Touch</b> &mdash; +5 spell damage.</li>
+                <li><b>Decay</b> &mdash; Necrotic touch. Attacks poison (1.6% max HP/turn, 2 turns).</li>
+                <li class="minor"><b>Withering Touch</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Cruel Mind</b> &mdash; +5% crit damage.</li>
-                <li><b>Dark Power</b> &mdash; Darker energies. +5 spell damage.</li>
-                <li class="minor"><b>Dark Surge</b> &mdash; +5 spell damage.</li>
+                <li><b>Dark Power</b> &mdash; Darker energies. +5% attack.</li>
+                <li class="minor"><b>Dark Surge</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Eye of Ruin</b> &mdash; +3% crit chance.</li>
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
-                <li><b>Spreading Plague</b> &mdash; Contagious plague. 25% poison spread on tick. Poison (3 dmg, 3t).</li>
-                <li class="minor"><b>Bleak Power</b> &mdash; +8 spell damage.</li>
+                <li><b>Spreading Plague</b> &mdash; Contagious plague. 25% poison spread on tick. Poison (1.2% max HP/turn, 3t).</li>
+                <li class="minor"><b>Bleak Power</b> &mdash; +6% attack.</li>
                 <li class="minor"><b>Vile Edge</b> &mdash; +8% crit damage.</li>
-                <li><b>Soul Burst</b> &mdash; Souls amplify magic. +10 spell damage. +5% crit. Attacks ignite soulfire (4% max HP/turn, 3t).</li>
-                <li class="minor"><b>Soul Echo</b> &mdash; +8 spell damage.</li>
+                <li><b>Soul Burst</b> &mdash; Souls amplify magic. +8% attack. +5% crit. Attacks ignite soulfire (4% max HP/turn, 3t).</li>
+                <li class="minor"><b>Soul Echo</b> &mdash; +6% attack.</li>
                 <li class="minor"><b>Cold Calculation</b> &mdash; +4% crit chance.</li>
               </ul>
               <p class="cdx-tier">Tier 3 &mdash; level 10</p>
               <ul class="cdx-nodes">
-                <li><b>Pestilence</b> &mdash; Rot weakens all. Poison (5 dmg, 3t). Enemies start -10% DEF. Attacks corrode (4/turn + armor melt, 3t).</li>
-                <li><b>Death&rsquo;s Hand</b> &mdash; Critical dark magic. +15 spell damage. +25% crit damage.</li>
+                <li><b>Pestilence</b> &mdash; Rot weakens all. Poison (2% max HP/turn, 3t). Enemies start -10% DEF. Attacks corrode (1.6% max HP/turn + armor melt, 3t).</li>
+                <li><b>Death&rsquo;s Hand</b> &mdash; Critical dark magic. +8% attack. +25% crit damage.</li>
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Herald of Death</b> &mdash; Herald of Death. +30 spell damage. +100% vs below 20% HP.</li>
+                <li><b>Herald of Death</b> &mdash; Herald of Death. +10% attack. +100% vs below 20% HP.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--def">
@@ -2558,7 +2572,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Lichdom</b> &mdash; Lichdom. Revive once per run at 40% HP. +20 spell damage.</li>
+                <li><b>Lichdom</b> &mdash; Lichdom. Revive once per boss at 40% HP. +8% attack.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -2567,7 +2581,7 @@ body::after {
               <ul class="cdx-nodes">
                 <li><b>Soul Elixir</b> &mdash; Souls empower potions. HP potion: +3% ATK per soul for 3 turns.</li>
                 <li class="minor"><b>Inner Well</b> &mdash; +1 max MP.</li>
-                <li class="minor"><b>Sigil Lore</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Sigil Lore</b> &mdash; +5% attack.</li>
                 <li><b>Dark Ritual</b> &mdash; Forbidden channeling. +1 max MP.</li>
                 <li class="minor"><b>Forbidden Lore</b> &mdash; +1 max MP.</li>
                 <li class="minor"><b>Tomb Raider</b> &mdash; +8% gold find.</li>
@@ -2576,7 +2590,7 @@ body::after {
               <ul class="cdx-nodes">
                 <li><b>Soul Collector</b> &mdash; Greater capacity. +3 max souls. +5% soul chance on attack.</li>
                 <li class="minor"><b>Deep Reservoir</b> &mdash; +1 max MP.</li>
-                <li class="minor"><b>Arcane Bond</b> &mdash; +8 spell damage.</li>
+                <li class="minor"><b>Arcane Bond</b> &mdash; +6% attack.</li>
                 <li><b>Grave Robber</b> &mdash; Death pays. +1 MP on kill. +12% gold.</li>
                 <li class="minor"><b>Dark Reservoir</b> &mdash; +1 max MP.</li>
                 <li class="minor"><b>Grim Spoils</b> &mdash; +10% gold find.</li>
@@ -2596,7 +2610,7 @@ body::after {
               <p class="cdx-tier">Tier 1 &mdash; level 1</p>
               <ul class="cdx-nodes">
                 <li><b>Hungry Souls</b> &mdash; Ravenous spirits. Soul Drain +25% damage.</li>
-                <li class="minor"><b>Soul Hunger</b> &mdash; +5 spell damage.</li>
+                <li class="minor"><b>Soul Hunger</b> &mdash; +5% attack.</li>
                 <li class="minor"><b>Cruel Drain</b> &mdash; +5% crit damage.</li>
                 <li><b>Dark Focus</b> &mdash; Faster draining. Soul Drain CD -1.</li>
                 <li class="minor"><b>Mind&rsquo;s Edge</b> &mdash; +1 max MP.</li>
@@ -2604,8 +2618,8 @@ body::after {
               </ul>
               <p class="cdx-tier">Tier 2 &mdash; level 5</p>
               <ul class="cdx-nodes">
-                <li><b>Corrupting Drain</b> &mdash; Corrupting drain. Drain poisons (10 dmg, 3 turns).</li>
-                <li class="minor"><b>Spectral Edge</b> &mdash; +8 spell damage.</li>
+                <li><b>Corrupting Drain</b> &mdash; Corrupting drain. Drain poisons (2% max HP/turn, 3 turns).</li>
+                <li class="minor"><b>Spectral Edge</b> &mdash; +6% attack.</li>
                 <li class="minor"><b>Withering Crit</b> &mdash; +8% crit damage.</li>
                 <li><b>Endless Hunger</b> &mdash; Insatiable. Drain CD -1. Drain heals +15%.</li>
                 <li class="minor"><b>Boundless Mind</b> &mdash; +1 max MP.</li>
@@ -2627,12 +2641,12 @@ body::after {
       <details class="cdx-class" id="berserker">
         <summary class="cdx-class__head">
           <span class="cdx-class__portrait"><img src="../berserker_portrait.jpg" alt="Berserker" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1FA93;</span></span>
-          <span class="cdx-class__id"><span class="cdx-class__name">BERSERKER</span><span class="cdx-class__unlock">Clear floor 50</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">BERSERKER</span><span class="cdx-class__unlock">Reach floor 50</span></span>
         </summary>
         <div class="cdx-class__body">
           <div class="cdx-facts">
-            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE</p><p class="cdx-fact__v">Deal 1% more damage for each 1% of missing health. +50% double strike chance below 30% HP.</p></div>
-            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT</p><p class="cdx-fact__v">Attack, Extra Attack &amp; Crit Damage. Tribal markings that fuel battle rage.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; DEATH WISH</p><p class="cdx-fact__v">Deal 1% more damage for each 1% of missing health.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; WAR PAINT</p><p class="cdx-fact__v">Attack, Extra Attack &amp; Crit Damage. Tribal markings that fuel battle rage.</p></div>
           </div>
           <h4 class="cdx-sub">ACTIVE SKILL</h4>
           <div class="cdx-skill"><p class="cdx-skill__n">Battle Cry <span class="cdx-skill__c">1 MP, 5 turn cooldown</span></p><p class="cdx-skill__d">Let out a fierce cry, massively boosting attack power.</p></div>
@@ -2695,7 +2709,7 @@ body::after {
               </ul>
               <p class="cdx-tier">Ultimate &mdash; level 15</p>
               <ul class="cdx-nodes">
-                <li><b>Deathless</b> &mdash; Deathless. Revive once per run at 15% HP. +30% ATK.</li>
+                <li><b>Deathless</b> &mdash; Deathless. Revive once per boss at 15% HP. +30% ATK.</li>
               </ul>
             </div>
             <div class="cdx-branch cdx-branch--uti">
@@ -2761,6 +2775,830 @@ body::after {
           </div>
         </div>
       </details>
+      <details class="cdx-class" id="puppeteer">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../puppeteer_portrait.jpg" alt="Puppeteer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F3AD;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">PUPPETEER</span><span class="cdx-class__unlock">Reach floor 100</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; WHISPER</p><p class="cdx-fact__v">Damaging an enemy banks 1 String, up to a cap. Strings are spent to take a mind, and they stay banked for the whole run.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; THE CROWN</p><p class="cdx-fact__v">Accuracy, Max HP &amp; Defense. A circlet of blackened iron, sized for no head in particular. It is not worn by the one who owns it.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Take the Crown <span class="cdx-skill__c">1 MP + 3 Strings, 3 turn cooldown</span></p><p class="cdx-skill__d">Spend 3 Strings and 1 MP. One non-boss enemy fights on your side for 2 turns &mdash; you cannot target it, enemies can, and unless you have Abdication it returns to its own side when the crown lapses, keeping every wound.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Hold The Note</b> &mdash; A mind lets go slowly if you do not hurry it. +1 String at the start of each battle, and +3% attack.</li>
+                <li class="minor"><b>Steady Pull</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Even Tension</b> &mdash; +4% accuracy.</li>
+                <li><b>Light Fingers</b> &mdash; Less thread for the same knot. +6% crit chance.</li>
+                <li class="minor"><b>Quick Work</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Sure Touch</b> &mdash; +4% accuracy.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>A Longer Sentence</b> &mdash; The crown sits a beat past where it should. Take the Crown holds +1 turn, and +6% attack.</li>
+                <li class="minor"><b>Practised Grip</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>No Slack</b> &mdash; +5% crit chance.</li>
+                <li><b>Fewer Threads</b> &mdash; You have stopped over-tying them. Take the Crown costs 1 less String, and +8% crit damage.</li>
+                <li class="minor"><b>Clean Knot</b> &mdash; +6% crit damage.</li>
+                <li class="minor"><b>Second Nature</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>The Long Reign</b> &mdash; They forget there was ever a before. Take the Crown holds a further +1 turn, and +10% attack.</li>
+                <li><b>Barely A Touch</b> &mdash; The crown is on before the thought finishes. Take the Crown costs 1 less String again, and +12% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Coronation</b> &mdash; It stops being a loan. Take the Crown holds one turn longer still, and +10% attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Something To Look At</b> &mdash; A second shape on the field is a second decision. +5% Max HP, and when an enemy hits you while a puppet stands, the puppet strikes it back (once per enemy turn).</li>
+                <li class="minor"><b>Stand Behind</b> &mdash; +8% Max HP.</li>
+                <li class="minor"><b>Braced</b> &mdash; +6% defence.</li>
+                <li><b>Worth Keeping</b> &mdash; A body you mean to hand back can take a few knocks first. Defending while a puppet stands puts it in front of you: until your next turn, enemies attack the puppet instead of you.</li>
+                <li class="minor"><b>Padded</b> &mdash; +6% defence.</li>
+                <li class="minor"><b>Hardy</b> &mdash; +8% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Look At Them Instead</b> &mdash; The crowned one is talking, and talking draws the eye. Enemies are 20% more likely to go for the puppet, and +8% Max HP.</li>
+                <li class="minor"><b>Let Them Swing</b> &mdash; +6% defence.</li>
+                <li class="minor"><b>Deep Breath</b> &mdash; +3 life regen.</li>
+                <li><b>Armoured By Yours</b> &mdash; What is on you is on them. The puppet takes damage against YOUR defence when yours is better, and +8% defence.</li>
+                <li class="minor"><b>Second Skin</b> &mdash; +8% Max HP.</li>
+                <li class="minor"><b>Set Jaw</b> &mdash; +6% defence.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Nobody Looks At The Hand</b> &mdash; They are all watching the puppet. Enemies are a further 25% more likely to go for it, and you take 6% less damage.</li>
+                <li><b>Held Together</b> &mdash; Whatever is holding you up is holding them up. +12% Max HP, and take 6% less damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Two Of You</b> &mdash; There is a second person here as far as anyone swinging is concerned. Enemies are 30% more likely to go for the puppet, you gain +12% Max HP, and you take 6% less damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>More Line</b> &mdash; You keep more of it coiled. +1 to the String cap.</li>
+                <li class="minor"><b>Tidy Spool</b> &mdash; +4% accuracy.</li>
+                <li class="minor"><b>Long Reach</b> &mdash; +5% attack.</li>
+                <li><b>Every Touch Counts</b> &mdash; A graze is contact, and contact is enough. +8% accuracy.</li>
+                <li class="minor"><b>Light Contact</b> &mdash; +4% accuracy.</li>
+                <li class="minor"><b>Follow Through</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>A Full Hand</b> &mdash; Enough thread to be choosing rather than hoping. +1 to the String cap, and +6% attack.</li>
+                <li class="minor"><b>Wound Tight</b> &mdash; +5% crit chance.</li>
+                <li class="minor"><b>Kept Dry</b> &mdash; +25 flat HP.</li>
+                <li><b>Two Threads At Once</b> &mdash; One touch, two holds. +1 String per enemy damaged, and +5% attack.</li>
+                <li class="minor"><b>Deft</b> &mdash; +5% extra attack chance.</li>
+                <li class="minor"><b>Unhurried</b> &mdash; +25 flat HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>The Whole Reel</b> &mdash; There is always another length. +1 to the String cap again, and +20% magic find.</li>
+                <li><b>They Leave It Behind</b> &mdash; What dies here leaves its thread in your hand. +1 String for each enemy YOU kill, and +15% gold.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Is Not A Thread</b> &mdash; Everything touched is held. +1 to the String cap, +1 String per enemy you damage, and +1 more for each one you kill.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Lend It Your Arm</b> &mdash; It swings with something of yours in it. The puppet&rsquo;s strike adds 15% of your Attack.</li>
+                <li class="minor"><b>Shared Weight</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Borrowed Speed</b> &mdash; +5% extra attack chance.</li>
+                <li><b>Nothing Is Wasted</b> &mdash; What you let go of comes back changed. Drinking an HP potion in battle banks 2 Strings.</li>
+                <li class="minor"><b>Thrifty</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Patient</b> &mdash; +3 life regen.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Wearing You</b> &mdash; While it wears the crown it fights the way you do. The puppet&rsquo;s strike adds a further 25% of your Attack, and the threads cut: its strikes make their target bleed for 25% of the hit per turn, 2 turns. +6% attack.</li>
+                <li class="minor"><b>No Wasted Motion</b> &mdash; +6% crit chance.</li>
+                <li class="minor"><b>Hard Hands</b> &mdash; +8% crit damage.</li>
+                <li><b>The Threads Return</b> &mdash; A puppet that falls lets go of everything at once, and it all comes back up the line. A puppet&rsquo;s death heals you 8% of Max HP, and +6% Max HP.</li>
+                <li class="minor"><b>Wider Hands</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Unbothered</b> &mdash; +6% defence.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Twice Over</b> &mdash; There was never a reason it should only move once. The puppet strikes twice each turn.</li>
+                <li><b>All Of It Comes Back</b> &mdash; You were never going to give it away. A puppet&rsquo;s death heals a further 10% of Max HP, and +10% healing.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Regency</b> &mdash; You stopped borrowing them some time ago. The puppet&rsquo;s strike adds a further 30% of your Attack, and its death heals you 12% of Max HP.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="unwriter">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../unwriter_portrait.jpg" alt="Unwriter" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x2712;&#xFE0F;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">UNWRITER</span><span class="cdx-class__unlock">Reach floor 110</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; NOTHING IS LOAD-BEARING</p><p class="cdx-fact__v">Nothing in the tower is load-bearing. You may choose targets in the back row as freely as the front.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; THE MARGIN</p><p class="cdx-fact__v">Crit Damage, Crit Chance &amp; Attack. The blank edge of a page, where the writing was going to go and then did not.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Strike the Line <span class="cdx-skill__c">1 MP + 1 Blank, 4 turn cooldown</span></p><p class="cdx-skill__d">Spend 1 Blank and 1 MP. One enemy in either row is struck from the page and removed &mdash; no threshold, no roll. Bosses cannot be unwritten and take heavy damage instead. Erasing closes the line: the rear rank is pulled forward.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Read The Margin</b> &mdash; The note in the margin is the one that meant it. Enemies start each battle with -8% defence for 3 turns.</li>
+                <li class="minor"><b>Fine Nib</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Small Hand</b> &mdash; +4% accuracy.</li>
+                <li><b>Unguarded</b> &mdash; Nobody at the back is expecting to be read. +6% crit chance.</li>
+                <li class="minor"><b>Cold Eye</b> &mdash; +5% crit chance.</li>
+                <li class="minor"><b>Pressed Through</b> &mdash; +8% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Hides Back There</b> &mdash; Standing behind someone was never protection, only distance. +20% damage to the rear rank, and +5% attack.</li>
+                <li class="minor"><b>Long Sight</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Sure Line</b> &mdash; +4% accuracy.</li>
+                <li><b>Caught Mid-Sentence</b> &mdash; They had not finished being something yet. Basic attacks have +20% crit chance against the rear rank, and +10% crit damage.</li>
+                <li class="minor"><b>Deep Cut</b> &mdash; +10% crit damage.</li>
+                <li class="minor"><b>No Warning</b> &mdash; +5% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>The Back Of The Page</b> &mdash; That is where the real text is. A further +30% damage to the rear rank, and +8% attack.</li>
+                <li><b>Struck Out Entirely</b> &mdash; A line through a line. Basic attacks gain a further +25% crit chance against the rear rank, and +15% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Is Load-Bearing</b> &mdash; She was right the first time. A further +40% damage to the rear rank, and +25% crit chance there on basic attacks.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Thin Margins</b> &mdash; There is not much of her, and most of it is elsewhere. +8% dodge, and a dodge writes 1 Blank (once per enemy turn).</li>
+                <li class="minor"><b>Slight</b> &mdash; +6% dodge.</li>
+                <li class="minor"><b>Unremarkable</b> &mdash; +8% Max HP.</li>
+                <li><b>Hard Backing</b> &mdash; Something has to hold the page. Defending with a Blank in hand spends it to strike out the next blow entirely, once per battle.</li>
+                <li class="minor"><b>Bound</b> &mdash; +6% defence.</li>
+                <li class="minor"><b>Reinforced</b> &mdash; +8% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Not Worth Writing Down</b> &mdash; The eye slides past. After being hit, +15% dodge for 2 turns, and +8% Max HP.</li>
+                <li class="minor"><b>Quiet</b> &mdash; +6% dodge.</li>
+                <li class="minor"><b>Steady</b> &mdash; +6% defence.</li>
+                <li><b>Weight Of Paper</b> &mdash; A ream is heavier than anyone expects. +10% defence, and +8% Max HP.</li>
+                <li class="minor"><b>Stitched</b> &mdash; +3 life regen.</li>
+                <li class="minor"><b>Set Type</b> &mdash; +6% defence.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Between The Lines</b> &mdash; Where she stands is not on the page at all. +10% dodge, and take 8% less damage.</li>
+                <li><b>The Spine Holds</b> &mdash; Whatever else goes, the spine holds. +12% Max HP, and take 6% less damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Not In The Text</b> &mdash; Look for her in the record and there is a gap where the name goes. +12% dodge, +12% Max HP, and take 8% less damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Wider Margin</b> &mdash; Room for a second correction. +1 to the Blank cap.</li>
+                <li class="minor"><b>Clean Sheet</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Sharpened</b> &mdash; +5% attack.</li>
+                <li><b>Faster Reader</b> &mdash; She reads the next line before the ink is dry. Drinking an MP potion in battle writes 1 Blank.</li>
+                <li class="minor"><b>Skim</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Marked Place</b> &mdash; +4% accuracy.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Arrive Written</b> &mdash; You start the page already holding one. Start each battle with +1 Blank, and +6% attack.</li>
+                <li class="minor"><b>Ready Hand</b> &mdash; +4% accuracy.</li>
+                <li class="minor"><b>Unhurried Pen</b> &mdash; +6% Max HP.</li>
+                <li><b>Twice In The Margin</b> &mdash; One pass, two notes. +1 Blank whenever you reach the rear rank, and +5% attack.</li>
+                <li class="minor"><b>Loose Grip</b> &mdash; +5% extra attack chance.</li>
+                <li class="minor"><b>Short Pause</b> &mdash; +6% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Two Corrections</b> &mdash; Both of them planned. +1 to the Blank cap again, and +8% attack.</li>
+                <li><b>The Pen Never Lifts</b> &mdash; One long correction with no break in it. -1 turn on Strike the Line, and +8% attack.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Room To Work</b> &mdash; There is always another blank. +1 to the Blank cap, +1 Blank whenever you reach the rear rank, and -1 turn on Strike the Line.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Errata</b> &mdash; Even the fixed things were written by someone. +6% attack.</li>
+                <li class="minor"><b>Heavier Stroke</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Firm Hand</b> &mdash; +4% accuracy.</li>
+                <li><b>Economical</b> &mdash; You waste very little ink. +15% gold.</li>
+                <li class="minor"><b>Careful</b> &mdash; +4% accuracy.</li>
+                <li class="minor"><b>Unspent</b> &mdash; +6% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>A Deeper Cut</b> &mdash; What cannot be removed can still be shortened. Strike the Line cuts bosses for +4% more of their Max HP, and the ink runs: every enemy left in the struck rank corrodes for 3 turns. +6% attack.</li>
+                <li class="minor"><b>Twice Checked</b> &mdash; +6% crit chance.</li>
+                <li class="minor"><b>No Appeal Here Either</b> &mdash; +8% crit damage.</li>
+                <li><b>The Page Is Still Blank</b> &mdash; Some corrections cost nothing at all. 30% chance an erase hands its Blank straight back, and +5% attack.</li>
+                <li class="minor"><b>Lighter</b> &mdash; +6% dodge.</li>
+                <li class="minor"><b>Rested</b> &mdash; +3 life regen.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Second Printing</b> &mdash; A thing already half struck out is easy to finish. Strike the Line cuts a boss below 40% HP twice, and cuts every boss for +4% more of their Max HP.</li>
+                <li><b>One Less Thing</b> &mdash; The world is quieter by exactly one thing, and you feel it. An erase heals 10% of Max HP, and a further 20% chance to refund.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Final Draft</b> &mdash; Nothing in it that does not need to be. Strike the Line cuts bosses for +6% more of their Max HP, and every erase heals 10% of Max HP.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <h3 class="cdx-sub" style="margin-top:32px;">KALZANIA DLC</h3>
+      <p class="cdx-note">These four heroes come with the paid expansion <em>Kalzania: The Unspent Year</em>. They are not unlocked by floors &mdash; owning the expansion unlocks all four at once.</p>
+      <details class="cdx-class" id="chandler">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../chandler_portrait.jpg" alt="Chandler" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F4D2;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">CHANDLER</span><span class="cdx-class__unlock">Requires Kalzania: The Unspent Year (paid DLC)</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; RUNNING ACCOUNT</p><p class="cdx-fact__v">Every purchase, absorb and paid reroll writes a Ledger entry (max 10). Each entry: shop prices -4% and +3% Attack, for the rest of the run.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; DAYBOOK</p><p class="cdx-fact__v">Gold Find, Magic Find &amp; Attack. Every entry in it was opened on the first of Greening and not one was ever closed. The margins are immaculate.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Call in the Debt <span class="cdx-skill__c">1 MP + gold (up to 75 × floor), 3 turn cooldown</span></p><p class="cdx-skill__d">Spend gold as ammunition. Hurl your purse at every enemy &mdash; damage scales with the gold spent, and every 200 gold writes another Ledger entry.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Loose Change</b> &mdash; A coin is a coin until you throw it. Your attacks spend 15 gold for +6% damage, and +4% attack.</li>
+                <li class="minor"><b>Sharp Practice</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Fine Print</b> &mdash; +3% crit chance.</li>
+                <li><b>Bad Debt</b> &mdash; Money owed is money that hurts. Call in the Debt deals +15% more damage.</li>
+                <li class="minor"><b>Coin On Edge</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Weighted Purse</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Throwing Money</b> &mdash; She has never respected it and it has never minded. Your attacks spend a further 25 gold for +10% damage, and +8% crit damage.</li>
+                <li class="minor"><b>Hard Bargain</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Closing Terms</b> &mdash; +8% crit damage.</li>
+                <li><b>Due On Demand</b> &mdash; She does not send a second notice. Call in the Debt comes off cooldown 1 turn sooner and leaves every enemy it hits Vulnerable (+15% damage taken, 2 turns).</li>
+                <li class="minor"><b>Struck Coin</b> &mdash; +5% crit damage.</li>
+                <li class="minor"><b>Full Weight</b> &mdash; +6% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>The Whole Float</b> &mdash; Nothing held back for the morning. Your attacks spend a further 35 gold for +14% damage, and +5% crit chance.</li>
+                <li><b>Payment In Full</b> &mdash; Anything already failing is already finished. Call in the Debt kills outright below 15% HP, and +6% attack.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Settlement Day</b> &mdash; Every account in the room comes due at once. Call in the Debt kills outright below 20% HP, refunds 35% of the gold thrown for each kill, and carries 25 more gold per floor.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Kept Reserve</b> &mdash; Never spend the last of it. That is the first rule. Begin each battle with a ward worth 5% of your gold, capped at 40% of Max HP, and +6% Max HP.</li>
+                <li class="minor"><b>Sound Footing</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Ledger Weight</b> &mdash; +5% defense.</li>
+                <li><b>Goods In Kind</b> &mdash; Nothing happens to her for free. The first hit you take each enemy turn earns 2 gold per floor, and killing an enemy heals 3% Max HP.</li>
+                <li class="minor"><b>Thick Ledger</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Light On Her Feet</b> &mdash; +3% dodge.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Underwritten</b> &mdash; A risk priced correctly is a risk survived. Take 1% less damage per Ledger entry, and Defending re-arms your purse ward at half strength (once per battle).</li>
+                <li class="minor"><b>Padded Coat</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Steady Hand</b> &mdash; +4% defense.</li>
+                <li><b>Damages</b> &mdash; She bills for the bruise. Being hit has a 12% chance each enemy turn to write a Ledger entry, and +5% dodge.</li>
+                <li class="minor"><b>Reinforced Spine</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Careful Footing</b> &mdash; +4% dodge.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Written Off</b> &mdash; The loss was budgeted for. A further 5% of your gold becomes ward each battle, to the same 40% cap, and take 6% less damage.</li>
+                <li><b>Insured Against Loss</b> &mdash; What the ward did not spend, it returns. 50% of an unspent ward comes back as gold when the battle ends, and +8% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Left Owing</b> &mdash; She has already paid for this. Once per run a killing blow instead costs every coin you carry and leaves you at 35% HP; a further 5% of your gold becomes ward each battle, to the same 40% cap, and take 10% less damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Wholesale</b> &mdash; She has bought from worse. +1% off per Ledger entry and +10% gold find.</li>
+                <li class="minor"><b>Coin Sense</b> &mdash; +8% gold find.</li>
+                <li class="minor"><b>Practiced Eye</b> &mdash; +6% magic find.</li>
+                <li><b>Petty Cash</b> &mdash; Small entries are still entries. Drinking a potion in battle writes a Ledger entry (once per battle).</li>
+                <li class="minor"><b>Quick Reckoning</b> &mdash; +5% gold find.</li>
+                <li class="minor"><b>Neat Hand</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Preferred Client</b> &mdash; The merchant has started keeping things back for her. +1% Attack per Ledger entry and +8% magic find.</li>
+                <li class="minor"><b>Deep Pockets</b> &mdash; +10% gold find.</li>
+                <li class="minor"><b>Appraiser&rsquo;s Eye</b> &mdash; +5% magic find.</li>
+                <li><b>Death And Taxes</b> &mdash; Some things owe you whether they meant to or not. 8% of kills write a Ledger entry.</li>
+                <li class="minor"><b>Wider Margins</b> &mdash; +8% XP bonus.</li>
+                <li class="minor"><b>Running Total</b> &mdash; +8% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Trade Secret</b> &mdash; She knows what he paid for it, and what it cost her to find out. That first hit each enemy turn earns a further 3 gold per floor, and +12% gold find.</li>
+                <li><b>Bound In Full Calf</b> &mdash; A bigger book, and better kept. +1 to the Ledger cap and +10% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Ninth Century</b> &mdash; The habit of nine hundred years, finally pointed at something. +1 to the Ledger cap, a further 12% of kills write an entry, and a further 25% of an unspent ward returns as gold.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Kept Books</b> &mdash; The entries are worth keeping. +1% Attack per Ledger entry.</li>
+                <li class="minor"><b>Ruled Lines</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Clean Columns</b> &mdash; +8% gold find.</li>
+                <li><b>First Of Greening</b> &mdash; The day the books opened. Start each battle with +10% Attack for 3 turns.</li>
+                <li class="minor"><b>Good Standing</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Bright Coin</b> &mdash; +3% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Double Entry</b> &mdash; Every figure written twice, and both of them true. Your attacks spend a further 15 gold for +5% damage, and +6% magic find.</li>
+                <li class="minor"><b>Firm Nib</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Immaculate Margins</b> &mdash; +6% magic find.</li>
+                <li><b>Terms Of Trade</b> &mdash; The price of dealing with her is that she deals back. Call in the Debt carries 15 more gold per floor, and +5% attack.</li>
+                <li class="minor"><b>Hard Currency</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Counted Twice</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Audited</b> &mdash; Checked, and checked again, and correct. +1 to the Ledger cap and +12% gold find.</li>
+                <li><b>The Line Drawn Under</b> &mdash; One clean stroke, and the column is closed. Call in the Debt deals +20% more damage and +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Everything Is For Sale</b> &mdash; Including this. Call in the Debt deals +30% more damage, your attacks spend a further 20 gold for +8% damage, and it comes off cooldown 1 turn sooner.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="mason">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../mason_portrait.jpg" alt="Mason" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F9F1;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">MASON</span><span class="cdx-class__unlock">Requires Kalzania: The Unspent Year (paid DLC)</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; TRUE BOND</p><p class="cdx-fact__v">Merging ignores the matching-item requirement &mdash; any two of the same slot and rarity join, up to Cosmic. Each merge lays a Course (max 12): +2% Attack and +2% Defence, for the rest of the run.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; PLUMB LINE</p><p class="cdx-fact__v">Magic Find, Defence &amp; Max HP. It hangs true in a kingdom where nothing else does. He kept it for the reassurance, which is not what it is for.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">Course and Mortar <span class="cdx-skill__c">1 MP + all Courses, 2 turn cooldown</span></p><p class="cdx-skill__d">Lay a course between you and the world. Spend Courses for a shield worth 6% of max HP each, and your next attack hits 15% harder per Course spent.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Dropped Course</b> &mdash; He sets it down harder than he needs to. A merge during a battle hits every enemy for 30% of your Attack (once per turn), and +5% attack.</li>
+                <li class="minor"><b>Set Hand</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Dressed Stone</b> &mdash; +4% crit chance.</li>
+                <li><b>Honest Labour</b> &mdash; The work is what keeps him upright. A merge heals 6% of Max HP (once per turn), and +8% crit damage.</li>
+                <li class="minor"><b>Chisel Edge</b> &mdash; +3% crit chance.</li>
+                <li class="minor"><b>Heavy Maul</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Full Weight</b> &mdash; Nine hundred years of practice putting stone exactly where it hurts. A merge hits for a further 35% of your Attack (once per turn), and +8% crit damage.</li>
+                <li class="minor"><b>Squared Off</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Sharp Arris</b> &mdash; +8% crit damage.</li>
+                <li><b>The Hammer Falls</b> &mdash; One blow, and the whole room feels which way the load went. A merge hits for a further 35% of your Attack (once per turn), the blow Course and Mortar loads stuns its target for 1 turn, and +5% crit chance.</li>
+                <li class="minor"><b>Long Reach</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>True Swing</b> &mdash; +5% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Two Courses At Once</b> &mdash; He was always going to need both. Every merge lays 1 extra Course, and +6% attack.</li>
+                <li><b>Without Breaking Stride</b> &mdash; He has laid stone in worse weather than this. The first merge each battle grants an extra action, and +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Whole Wall</b> &mdash; It goes up all at once, and something is always standing where it lands. A merge hits for a further 50% of your Attack (once per turn), lays 1 more Course on every merge, and +10% attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Bedded In</b> &mdash; Nothing moves that was set properly. A merge grants a shield worth 6% of Max HP (once per turn), and +5% defense.</li>
+                <li class="minor"><b>Broad Footing</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Rubble Core</b> &mdash; +5% defense.</li>
+                <li><b>Slaked Lime</b> &mdash; Left to sit a year, the way it should be. Course and Mortar shields 2% more per Course spent, and Defending lays 1 Course (twice per battle).</li>
+                <li class="minor"><b>Steady Course</b> &mdash; +5% max HP.</li>
+                <li class="minor"><b>Braced Frame</b> &mdash; +4% block chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Coursed Rubble</b> &mdash; Ugly, and it will outlast the pretty ones. A merge shields a further 8% of Max HP (once per turn), and +6% Max HP.</li>
+                <li class="minor"><b>Thick Bed</b> &mdash; +6% max HP.</li>
+                <li class="minor"><b>Well Coursed</b> &mdash; +4% defense.</li>
+                <li><b>Struck Joints</b> &mdash; Water runs off it instead of into it. Course and Mortar shields a further 2% per Course spent, and while its shield holds, attackers take 25% of what it absorbs.</li>
+                <li class="minor"><b>Deep Bed</b> &mdash; +6% Max HP.</li>
+                <li class="minor"><b>Set Square</b> &mdash; +5% block chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Buttressed</b> &mdash; The load goes into the ground, where it belongs. A merge heals a further 6% of Max HP (once per turn), and take 8% less damage.</li>
+                <li><b>Dry Stone</b> &mdash; No mortar at all, and it has stood nine hundred years. A merge shields a further 8% of Max HP (once per turn), and when Course and Mortar&rsquo;s shield breaks, the wall falls on the front rank for 50% of the shield&rsquo;s size.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Gets Through</b> &mdash; He has built for this exact blow, several hundred times. A merge shields a further 10% of Max HP and heals a further 8% (once per turn), and take 10% less damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>True To The Line</b> &mdash; A stone cut right is worth two cut fast. Merged items are 10% stronger, and +8% magic find.</li>
+                <li class="minor"><b>Quarry Eye</b> &mdash; +6% magic find.</li>
+                <li class="minor"><b>Full Hod</b> &mdash; +8% gold find.</li>
+                <li><b>Foundation Course</b> &mdash; Everything above it depends on this one. +1 to the Course cap.</li>
+                <li class="minor"><b>Wide Bed</b> &mdash; +5% Max HP.</li>
+                <li class="minor"><b>Steady Hands</b> &mdash; +5% XP bonus.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>A Day&rsquo;s Work</b> &mdash; He does not stop because the floor did. Clearing a floor lays 1 Course, and +10% magic find.</li>
+                <li class="minor"><b>Sorted Stone</b> &mdash; +8% magic find.</li>
+                <li class="minor"><b>Loaded Barrow</b> &mdash; +10% gold find.</li>
+                <li><b>Two At A Time</b> &mdash; Some days the stone simply agrees with him. 8% of merges climb two rarities instead of one, and +6% Max HP.</li>
+                <li class="minor"><b>Long Apprenticeship</b> &mdash; +8% XP bonus.</li>
+                <li class="minor"><b>Sound Stone</b> &mdash; +6% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Struck From Better Stone</b> &mdash; He kept the good block back for this. Merged items keep 1 more affix than their rarity allows, and +10% magic find.</li>
+                <li><b>Built To Be Lived In</b> &mdash; Not a monument. A house. Merged items come out 1 level higher, and +6% defense.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>It All Goes Up</b> &mdash; Give him the stone and stand back. +1 to the Course cap, a further 10% of merges climb twice, and merged items keep 1 more affix.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Level And Plumb</b> &mdash; Check it twice; the wall keeps the answer forever. +1% Attack and +1% Defence per Course.</li>
+                <li class="minor"><b>Marked Stone</b> &mdash; +4% attack.</li>
+                <li class="minor"><b>Even Bed</b> &mdash; +4% defense.</li>
+                <li><b>Salvage</b> &mdash; Half a wall knocked down is half a wall you already own. Course and Mortar leaves 20% of the Courses standing.</li>
+                <li class="minor"><b>Ballast</b> &mdash; +25 flat HP.</li>
+                <li class="minor"><b>Cold Chisel</b> &mdash; +4% block chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Dressed Stone</b> &mdash; The face is worked before it ever reaches the wall. Merged items are a further 10% stronger, and +6% defense.</li>
+                <li class="minor"><b>Clean Joint</b> &mdash; +6% magic find.</li>
+                <li class="minor"><b>Firm Course</b> &mdash; +6% Max HP.</li>
+                <li><b>The Lodge Provides</b> &mdash; Send word and another one comes up the road. Lay 1 more Course each time a floor is cleared. +6% Max HP.</li>
+                <li class="minor"><b>Second Course</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Mortar Board</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Set And Cured</b> &mdash; Left alone long enough to become permanent. +1 to the Course cap, and merged items come out 1 level higher.</li>
+                <li><b>The Wall Remembers</b> &mdash; Nine hundred years is a long apprenticeship. Every merge lays 1 extra Course, and +6% block chance.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>It Goes Back Up</b> &mdash; Knock it down. He has the whole year. Course and Mortar leaves a further 30% of the Courses standing, +1 to the Course cap, and +10% attack.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="almoner">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../almoner_portrait.jpg" alt="Almoner" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F932;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">ALMONER</span><span class="cdx-class__unlock">Requires Kalzania: The Unspent Year (paid DLC)</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; PAID FORWARD</p><p class="cdx-fact__v">Every item sacrificed at the shrine gives 5 Alms and every kill gives 1 (max 50), kept for the rest of the run: +0.8% Attack each. Sacrificing also refunds a share of the item&rsquo;s value in gold.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; ALMS-DISH</p><p class="cdx-fact__v">Healing Power, Magic Find &amp; Attack. Shallow bronze, worn bright at one edge from nine hundred years of being held out. It has never once been carried home full.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">The Last Rite <span class="cdx-skill__c">1 MP + up to 5 Alms, 3 turn cooldown</span></p><p class="cdx-skill__d">Read one page of the book. Spend up to 5 Alms: all enemies take 25% of your Attack per Alm spent, and you heal for a third of the damage dealt.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Weighed, Not Counted</b> &mdash; It is not how many she gave. It is what each one was worth. +5% Attack, and each kill puts 1 more Alm in the dish.</li>
+                <li class="minor"><b>Open Hand</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Kept Vigil</b> &mdash; +4% crit chance.</li>
+                <li><b>First Reading</b> &mdash; She does not wait for the room to go quiet. The Last Rite deals +10%.</li>
+                <li class="minor"><b>Dry Ink</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Thin Candle</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>The Ledger of the Dead</b> &mdash; Every name she paid for is a name that answers when she calls. +6% Attack, +8% crit damage.</li>
+                <li class="minor"><b>Bare Shelves</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Nothing Spare</b> &mdash; +8% crit damage.</li>
+                <li><b>The Whole Register</b> &mdash; Not a name skipped, not a debt rounded down. The Last Rite deals +15%, and +6% Attack.</li>
+                <li class="minor"><b>Sure Voice</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Last Page</b> &mdash; +8% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Poverty Sharpens</b> &mdash; She owns nothing at all now, and it has made her dangerous. While the dish is empty: +20% Attack and +15% crit damage.</li>
+                <li><b>Nothing Held Back</b> &mdash; The dish goes over entirely. The Last Rite deals a further +20% and sets Soulfire on every enemy it strikes (3% of Max HP per turn, 3 turns), and +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Last Reading</b> &mdash; Everything she ever gave away, spent in one breath. The Last Rite deals a further +15%, and +10% Attack.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Vigil Robes</b> &mdash; Wool that has sat through nine hundred winters of other people&rsquo;s grief. +5% Max HP, and the first time each battle a hit leaves you below 40% HP, the dish fills by 10 Alms.</li>
+                <li class="minor"><b>Patched Hem</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Long Watch</b> &mdash; +5% Max HP.</li>
+                <li><b>Alms Return</b> &mdash; What she gave away comes back to her as breath. The Rite returns +10% more of the damage it deals.</li>
+                <li class="minor"><b>Warm Broth</b> &mdash; +3 life regen.</li>
+                <li class="minor"><b>Clean Linen</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Left To Take</b> &mdash; She carries nothing a blow can break. Take 9% less damage, and Defending puts 5 Alms in the dish (twice per battle).</li>
+                <li class="minor"><b>Cold Stone</b> &mdash; +6% defense.</li>
+                <li class="minor"><b>Full Cup</b> &mdash; +25 flat HP.</li>
+                <li><b>Mercy Is A Debt</b> &mdash; Owed in both directions. +15% healing received, and +5% Max HP.</li>
+                <li class="minor"><b>Steady Pulse</b> &mdash; +3 life regen.</li>
+                <li class="minor"><b>Quiet Hands</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>The Office of the Dead</b> &mdash; She has buried everyone. The hour holds no novelty for her. Take 10% less damage, +10% Max HP.</li>
+                <li><b>The Rite Repays</b> &mdash; The whole gift comes home at once. The Rite returns +15% more of the damage, and +5% lifesteal.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Left To Lose</b> &mdash; Nine hundred years of other people&rsquo;s grief and none of her own. +12% Max HP, take 10% less damage, +15% healing received.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>A Wider Dish</b> &mdash; She gives in pairs now. The dead do not queue. +5 Alms per item given.</li>
+                <li class="minor"><b>Early Rounds</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Light Load</b> &mdash; +5% Max HP.</li>
+                <li><b>The Altar Gives Change</b> &mdash; Coin comes back off the stone, which nobody will explain. +10% salvage gold.</li>
+                <li class="minor"><b>Deep Sleeve</b> &mdash; +10% gold find.</li>
+                <li class="minor"><b>Good Eye</b> &mdash; +8% magic find.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Both Hands Open</b> &mdash; Nothing is carried out of the cathedral that was not carried in. +5 to the Alms cap, and +6% Attack.</li>
+                <li class="minor"><b>Known Face</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Sure Step</b> &mdash; +6% defense.</li>
+                <li><b>Burial Fees</b> &mdash; Somebody has to be paid, and it may as well be the one doing the burying. +10% salvage gold, +10% gold find.</li>
+                <li class="minor"><b>Counted Twice</b> &mdash; +8% magic find.</li>
+                <li class="minor"><b>Kept Receipts</b> &mdash; +10% XP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>The Cathedral Keeps Count</b> &mdash; The house remembers what she gave, on the days she does not. +10% XP, +10% magic find.</li>
+                <li><b>The Tithe Returns</b> &mdash; Nine hundred years of paying in. The ledger finally pays out. +15% salvage gold, +15% gold find.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Debt Is Settled</b> &mdash; Kalzania owes her nothing, which in a year that will not end is the only wealth there is. +15% salvage gold, +20% gold find, +10% magic find.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Deeper Bronze</b> &mdash; The dish was always deeper than it looked. +5 to the Alms cap.</li>
+                <li class="minor"><b>Even Hand</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Firm Grip</b> &mdash; +4% crit chance.</li>
+                <li><b>No Waiting</b> &mdash; The rite does not keep the dead standing about. -1 turn on The Last Rite.</li>
+                <li class="minor"><b>Short Prayer</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Practised Grief</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Nothing Is Too Small</b> &mdash; A copper buys a name its rites as surely as a crown does. +0.2% Attack per Alm.</li>
+                <li class="minor"><b>No Arrears</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Clear Account</b> &mdash; +8% crit damage.</li>
+                <li><b>Said Standing</b> &mdash; No chair, no pause, no second breath. -1 more turn on The Last Rite, and +5% Attack.</li>
+                <li class="minor"><b>Next Name</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Unbroken Vigil</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Told In Full</b> &mdash; Counted to the last coin, and every coin already spent. +0.2% Attack per Alm, and +10% Attack.</li>
+                <li><b>The Book Never Closes</b> &mdash; There is always one more name, and she has never once stopped reading. The Rite returns +10% more of the damage, and +10% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Paid In Full</b> &mdash; The dish is empty, the book is closed, and she is still standing in front of it. +5 to the Alms cap, and +12% Attack.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="cdx-class" id="apparitor">
+        <summary class="cdx-class__head">
+          <span class="cdx-class__portrait"><img src="../apparitor_portrait.jpg" alt="Apparitor" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="cdx-class__glyph" style="display:none">&#x1F4DC;</span></span>
+          <span class="cdx-class__id"><span class="cdx-class__name">APPARITOR</span><span class="cdx-class__unlock">Requires Kalzania: The Unspent Year (paid DLC)</span></span>
+        </summary>
+        <div class="cdx-class__body">
+          <div class="cdx-facts">
+            <div class="cdx-fact"><p class="cdx-fact__k">PASSIVE &middot; CALLED BY NAME</p><p class="cdx-fact__v">Any enemy that changes row is Called for one turn and takes increased damage &mdash; including enemies moved by the front row falling, and by the foe&rsquo;s own teleporters.</p></div>
+            <div class="cdx-fact"><p class="cdx-fact__k">CLASS SLOT &middot; THE ROLL</p><p class="cdx-fact__v">Accuracy, Crit Damage &amp; Attack. Names, on a spindle, in a hand that stopped being anyone&rsquo;s. The roll is not the authority. Reading it aloud is.</p></div>
+          </div>
+          <h4 class="cdx-sub">ACTIVE SKILL</h4>
+          <div class="cdx-skill"><p class="cdx-skill__n">The Roll Is Called <span class="cdx-skill__c">1 MP, 3 turn cooldown</span></p><p class="cdx-skill__d">Read the names aloud. The back rank is called to the front and the front rank dismissed behind it &mdash; then everyone newly in front takes 90% of your Attack.</p></div>
+          <h4 class="cdx-sub">SKILL TREE</h4>
+          <div class="cdx-tree">
+            <div class="cdx-branch cdx-branch--off">
+              <p class="cdx-branch__h">OFFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Read It Plainly</b> &mdash; A name mumbled is a name unserved. Drinking a potion in battle Calls every enemy in the front rank.</li>
+                <li class="minor"><b>Steady Hand</b> &mdash; +4% accuracy.</li>
+                <li class="minor"><b>Clear Diction</b> &mdash; +5% attack.</li>
+                <li><b>Marked Page</b> &mdash; The corner is turned down before the blow. The first enemy you strike each battle is Called.</li>
+                <li class="minor"><b>Sharp Nib</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Pressed Hard</b> &mdash; +8% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Weight Of Office</b> &mdash; The writ is heavier than the hand that carries it. The Roll Is Called deals +15% and you gain +5% attack.</li>
+                <li class="minor"><b>Carrying Voice</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>No Hesitation</b> &mdash; +4% accuracy.</li>
+                <li><b>Struck Through</b> &mdash; A clean cut is a name read aloud. 35% of critical hits Call the target.</li>
+                <li class="minor"><b>Fresh Ink</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Second Copy</b> &mdash; +4% crit chance.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Final Reading</b> &mdash; No one has ever argued with the last line. The Roll Is Called deals a further +25%, and +8% attack.</li>
+                <li><b>Named And Numbered</b> &mdash; Called foes take a further +8% and cannot heal: being Called inflicts Mortal Wound for 2 turns. Your crits land harder. +15% crit damage.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Both Ranks Answer</b> &mdash; He stops calling them forward one row at a time. The Roll Is Called strikes the rank it dismisses as well &mdash; every cast, not once a run.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--def">
+              <p class="cdx-branch__h">DEFENSE</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Court Dress</b> &mdash; Heavy cloth, worn daily for nine hundred years. +5% Max HP, and an enemy that hits you is Called (one per enemy turn).</li>
+                <li class="minor"><b>Lined Sleeves</b> &mdash; +5% defense.</li>
+                <li class="minor"><b>Long Service</b> &mdash; +5% Max HP.</li>
+                <li><b>Step Aside</b> &mdash; The one he came for is never the one swinging. +8% dodge.</li>
+                <li class="minor"><b>Light Step</b> &mdash; +4% dodge.</li>
+                <li class="minor"><b>Unhurried</b> &mdash; +5% Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Standing Order</b> &mdash; He has been told to finish, and nothing is permitted to stop him. Take 9% less damage, and Defending raises Counter Stance for 3 turns: each hit has a 20% chance to be answered.</li>
+                <li class="minor"><b>Cold Patience</b> &mdash; +6% defense.</li>
+                <li class="minor"><b>Deep Pockets</b> &mdash; +25 flat HP.</li>
+                <li><b>Not On The List</b> &mdash; If your name is not written, he is not interested &mdash; and neither is the blow. +6% dodge, take 7% less damage.</li>
+                <li class="minor"><b>Sidelong</b> &mdash; +4% dodge.</li>
+                <li class="minor"><b>Worn Boots</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Tenure</b> &mdash; The office outlasts the officer. Revive once per battle at 30% HP.</li>
+                <li><b>Between The Lines</b> &mdash; Slip the margin entirely. +8% dodge, and every name struck from the roll mends 8% of your Max HP.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Office Endures</b> &mdash; Nine hundred years of not being the one on the list. +12% dodge, +12% Max HP, and take 8% less damage.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--uti">
+              <p class="cdx-branch__h">UTILITY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Short Docket</b> &mdash; Fewer names, read sooner. -1 turn on The Roll Is Called.</li>
+                <li class="minor"><b>Thumbed Edge</b> &mdash; +4% accuracy.</li>
+                <li class="minor"><b>Kept Place</b> &mdash; +5% attack.</li>
+                <li><b>Said Twice</b> &mdash; A name repeated is a name remembered. Called lasts +1 turn.</li>
+                <li class="minor"><b>Good Memory</b> &mdash; +4% accuracy.</li>
+                <li class="minor"><b>Loud Room</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Practised Hand</b> &mdash; He does not need to find his place. +8% attack and the Roll comes round faster still.</li>
+                <li class="minor"><b>Habit</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Dry Throat</b> &mdash; +20 flat HP.</li>
+                <li><b>Entered In The Margin</b> &mdash; Written down, not just spoken. Called foes take a further +6%.</li>
+                <li class="minor"><b>Clerk&rsquo;s Ear</b> &mdash; +4% crit chance.</li>
+                <li class="minor"><b>Filed Away</b> &mdash; +10% XP.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Continuous Session</b> &mdash; The court does not adjourn. -1 more turn on The Roll Is Called, and -1 on everything else.</li>
+                <li><b>The Record Stands</b> &mdash; Called lasts +1 turn more, and every kill pays the court. +20% gold.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>The Roll Never Closes</b> &mdash; One long reading with no break in it. -1 turn on The Roll Is Called and Called lasts +1 turn.</li>
+              </ul>
+            </div>
+            <div class="cdx-branch cdx-branch--mas">
+              <p class="cdx-branch__h">MASTERY</p>
+              <p class="cdx-tier">Tier 1 &mdash; level 1</p>
+              <ul class="cdx-nodes">
+                <li><b>Spoken Clearly</b> &mdash; The name carries to the back of the hall. Called foes take a further +7%.</li>
+                <li class="minor"><b>Raised Voice</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Firm Tone</b> &mdash; +4% crit chance.</li>
+                <li><b>Summary Judgment</b> &mdash; Some cases do not need hearing. The Roll Is Called finishes Called foes below 6% HP.</li>
+                <li class="minor"><b>Bench Warrant</b> &mdash; +5% attack.</li>
+                <li class="minor"><b>Sealed Order</b> &mdash; +5% defense.</li>
+              </ul>
+              <p class="cdx-tier">Tier 2 &mdash; level 5</p>
+              <ul class="cdx-nodes">
+                <li><b>Cited In Full</b> &mdash; Style, office, and the date of the writ. Called foes take a further +8%, and you strike more often. +8% extra attack.</li>
+                <li class="minor"><b>No Interruption</b> &mdash; +6% attack.</li>
+                <li class="minor"><b>Measured Pace</b> &mdash; +4% accuracy.</li>
+                <li><b>No Continuance</b> &mdash; The court will not be adjourned twice. The Roll Is Called finishes Called foes below 18% HP.</li>
+                <li class="minor"><b>Cold Reading</b> &mdash; +8% crit damage.</li>
+                <li class="minor"><b>Next Case</b> &mdash; +5% attack.</li>
+              </ul>
+              <p class="cdx-tier">Tier 3 &mdash; level 10</p>
+              <ul class="cdx-nodes">
+                <li><b>Read Into The Record</b> &mdash; Nothing said here can be taken back. Called foes take a further +10%, and +10% crit damage.</li>
+                <li><b>Contempt</b> &mdash; Whoever is standing in front of them is also on the list now. The Roll Is Called finishes Called foes below 22% HP, +10% attack.</li>
+              </ul>
+              <p class="cdx-tier">Ultimate &mdash; level 15</p>
+              <ul class="cdx-nodes">
+                <li><b>Discharged</b> &mdash; The sentence was pronounced a long time ago; he is only carrying it out. Called foes take a further +12%, and The Roll Is Called finishes them below 28% HP.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="cdx-section">
@@ -2780,7 +3618,7 @@ body::after {
           <tr><td class="cdx-table__floor">20&ndash;29</td><td>Class + universal, weighted 60% toward universal</td></tr>
           <tr><td class="cdx-table__floor">30+</td><td>Class + universal, weighted 70% toward class</td></tr>
         </tbody></table></div>
-      <h3 class="cdx-sub" style="margin-top:32px;">ALL 34 SETS AT A GLANCE</h3>
+      <h3 class="cdx-sub" style="margin-top:32px;">ALL 46 SETS AT A GLANCE</h3>
       <div class="cdx-scroll"><table class="cdx-table">
         <thead><tr><th>SET</th><th>CLASS</th><th>PCS</th><th>SLOTS</th></tr></thead><tbody>
           <tr><td class="cdx-table__cls"><strong>Fortune&rsquo;s Favor</strong></td><td class="cdx-table__floor"><em>Universal</em></td><td class="cdx-table__floor">3</td><td>Amulet, Ring, Boots</td></tr>
@@ -2817,6 +3655,18 @@ body::after {
           <tr><td class="cdx-table__cls"><strong>Death&rsquo;s Embrace</strong></td><td class="cdx-table__floor">Necromancer</td><td class="cdx-table__floor">3</td><td>Weapon, Ring, Boots</td></tr>
           <tr><td class="cdx-table__cls"><strong>Deathwish</strong></td><td class="cdx-table__floor">Berserker</td><td class="cdx-table__floor">4</td><td>Weapon, Armor, Helmet, Gloves</td></tr>
           <tr><td class="cdx-table__cls"><strong>Warlord&rsquo;s Fury</strong></td><td class="cdx-table__floor">Berserker</td><td class="cdx-table__floor">3</td><td>Weapon, Shield, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Line of Succession</strong></td><td class="cdx-table__floor">Puppeteer</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Understudy</strong></td><td class="cdx-table__floor">Puppeteer</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Clean Copy</strong></td><td class="cdx-table__floor">Unwriter</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Blank Quire</strong></td><td class="cdx-table__floor">Unwriter</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Long Account</strong></td><td class="cdx-table__floor">Chandler (DLC)</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Running Account</strong></td><td class="cdx-table__floor">Chandler (DLC)</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Standing Wall</strong></td><td class="cdx-table__floor">Mason (DLC)</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Trued Bench</strong></td><td class="cdx-table__floor">Mason (DLC)</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Open Hand</strong></td><td class="cdx-table__floor">Almoner (DLC)</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Kept Book</strong></td><td class="cdx-table__floor">Almoner (DLC)</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Long Hall</strong></td><td class="cdx-table__floor">Apparitor (DLC)</td><td class="cdx-table__floor">4</td><td>Weapon, Helmet, Armor, Gloves</td></tr>
+          <tr><td class="cdx-table__cls"><strong>The Standing Writ</strong></td><td class="cdx-table__floor">Apparitor (DLC)</td><td class="cdx-table__floor">3</td><td>Helmet, Armor, Boots</td></tr>
         </tbody></table></div>
       <h3 class="cdx-sub" style="margin-top:32px;">UNIVERSAL SETS</h3>
       <p class="cdx-note">The only sets that can drop before floor 20.</p>
@@ -2854,8 +3704,8 @@ body::after {
                 <li><b>Warrior&rsquo;s Grips</b><span>Gloves</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +12 Attack, +8 Defense</li>
-                <li><span class="cdx-bonus__n">3-PC</span> +40 Max HP, +5% Crit</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Attack, +8% Defense</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +15% Max HP, +5% Crit</li>
               </ul></div>
             </div>
           </div>
@@ -2874,8 +3724,8 @@ body::after {
                 <li><b>Escape Artist Boots</b><span>Boots</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +50 Max HP, +3 Life Regen</li>
-                <li><span class="cdx-bonus__n">3-PC</span> +15 Defense, +8% Dodge</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +18% Max HP, +3 Life Regen</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense, +8% Dodge</li>
               </ul></div>
             </div>
           </div>
@@ -2895,7 +3745,7 @@ body::after {
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
                 <li><span class="cdx-bonus__n">2-PC</span> +2 MP</li>
-                <li><span class="cdx-bonus__n">3-PC</span> +15% Spell Damage, +10% XP</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% XP &middot; Scholar&rsquo;s Focus: your class skill is 25% stronger</li>
               </ul></div>
             </div>
           </div>
@@ -2913,7 +3763,7 @@ body::after {
                 <li><b>Phoenix Ember</b><span>Ring</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> Revive once per floor with 50% HP</li>
+                <li><span class="cdx-bonus__n">2-PC</span> Revive once with 50% HP &mdash; then the set shatters</li>
               </ul></div>
             </div>
           </div>
@@ -2954,7 +3804,7 @@ body::after {
                 <li><b>Fortress Crown</b><span>Helmet</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +25 Defense, +10% Block</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +14% Defense, +10% Block</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Bulwark shield +50% (75% HP)</li>
                 <li><span class="cdx-bonus__n">4-PC</span> Bulwark explodes on break/expire for AOE damage</li>
               </ul></div>
@@ -2975,7 +3825,7 @@ body::after {
                 <li><b>Crusader&rsquo;s March</b><span>Boots</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +20 Thorns, +15 Defense</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +20 Thorns, +8% Defense</li>
                 <li><span class="cdx-bonus__n">3-PC</span> While Bulwark active, +40% ATK on attacks</li>
               </ul></div>
             </div>
@@ -3018,7 +3868,7 @@ body::after {
                 <li><b>Serpent&rsquo;s Coil</b><span>Ring</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +15 Attack, +20% Extra Attack</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +19% Attack, +20% Extra Attack</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Backstab poisons (5% HP/turn, 3 turns)</li>
               </ul></div>
             </div>
@@ -3061,7 +3911,7 @@ body::after {
                 <li><b>Alembic Bulwark</b><span>Shield</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +30 Spell Damage, +10% Crit Chance</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Attack, +10% Crit Chance</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Brew Surge counts each consumed absorb buff as 2 stacks (effective cap doubled)</li>
               </ul></div>
             </div>
@@ -3212,7 +4062,7 @@ body::after {
                 <li><b>Halo Crown</b><span>Helmet</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +25 Defense, +10% Block</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +14% Defense, +10% Block</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Holy Smite removes all debuffs</li>
                 <li><span class="cdx-bonus__n">4-PC</span> Smite overkill damage heals at 100%</li>
               </ul></div>
@@ -3233,7 +4083,7 @@ body::after {
                 <li><b>Gauntlets of Retribution</b><span>Gloves</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +20 Attack, +30% Crit Damage</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +19% Attack, +30% Crit Damage</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Smite marks target, -25% damage from marked</li>
               </ul></div>
             </div>
@@ -3255,7 +4105,7 @@ body::after {
                 <li><b>Arcane Focus</b><span>Amulet</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +25% Spell Damage, +1 MP</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Attack, +1 MP</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Fireball burn 60%, 4 turns</li>
                 <li><span class="cdx-bonus__n">4-PC</span> Burning enemies explode on death (30% max HP AOE)</li>
               </ul></div>
@@ -3276,7 +4126,7 @@ body::after {
                 <li><b>Ring of Warding</b><span>Ring</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +2 MP, +10 Defense</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +2 MP, +8% Defense</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Fireball costs 1 MP instead of 2</li>
               </ul></div>
             </div>
@@ -3298,7 +4148,7 @@ body::after {
                 <li><b>Conduit Pendant</b><span>Amulet</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +10 Spell Damage &middot; Sky-Splitter: Chain Lightning leaps to +1 additional foe</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +8% Attack &middot; Sky-Splitter: Chain Lightning leaps to +1 additional foe</li>
                 <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Unbroken Current: Chain Lightning&rsquo;s arcs strike for their FULL hit</li>
                 <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; Unbroken Circuit: a Chain Lightning arc that kills resets its own cooldown (once per turn)</li>
               </ul></div>
@@ -3386,7 +4236,7 @@ body::after {
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
                 <li><span class="cdx-bonus__n">2-PC</span> +15% Crit Damage</li>
                 <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Momentum: start battles with +4 Time, kept between battles on a floor</li>
-                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Spell Damage &middot; Temporal Echo: Quicken&rsquo;s extra actions deal +50% damage</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack &middot; Temporal Echo: Quicken&rsquo;s extra actions deal +50% damage</li>
               </ul></div>
             </div>
           </div>
@@ -3427,7 +4277,7 @@ body::after {
                 <li><b>Sanguine Seal</b><span>Ring</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +15% Lifesteal, +20 Attack</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Lifesteal, +14% Attack</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Bite overhealing converts to shield (30% HP cap)</li>
                 <li><span class="cdx-bonus__n">4-PC</span> All attacks lifesteal vs bleeding enemies</li>
               </ul></div>
@@ -3470,7 +4320,7 @@ body::after {
                 <li><b>Phylactery</b><span>Amulet</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +10% Lifesteal, +15 Spell Damage</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Lifesteal, +8% Attack</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Soul Drain grants 2 souls instead of 1</li>
                 <li><span class="cdx-bonus__n">4-PC</span> Soul Drain +10% damage per soul (up to +100%)</li>
               </ul></div>
@@ -3491,7 +4341,7 @@ body::after {
                 <li><b>Grave Walker Boots</b><span>Boots</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +25 Attack, +8% Crit Chance</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +16% Attack, +8% Crit Chance</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Soul Drain kills summon ghost (50% ATK attack)</li>
               </ul></div>
             </div>
@@ -3513,7 +4363,7 @@ body::after {
                 <li><b>Bloodied Grips</b><span>Gloves</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +30 Attack, +10% Crit</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +18% Attack, +10% Crit</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Battle Cry also grants +25% crit chance</li>
                 <li><span class="cdx-bonus__n">4-PC</span> Kills during Battle Cry extend duration +1 turn</li>
               </ul></div>
@@ -3534,8 +4384,268 @@ body::after {
                 <li><b>Warpath Treads</b><span>Boots</span></li>
               </ul></div>
               <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
-                <li><span class="cdx-bonus__n">2-PC</span> +20 Attack, +30 Max HP</li>
+                <li><span class="cdx-bonus__n">2-PC</span> +12% Attack, +10% Max HP</li>
                 <li><span class="cdx-bonus__n">3-PC</span> Battle Cry scales with missing HP (+1% ATK per 1%)</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F3AD; <span>PUPPETEER</span></p>
+        <details class="cdx-set" id="set-the-line-of-succession">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Line of Succession</span>
+            <span class="cdx-set__meta">PUPPETEER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Every crown in the tower has been worn by someone who expected to keep it. Vesh has never once expected to keep anything.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Regent&rsquo;s Needle</b><span>Weapon</span></li>
+                <li><b>Veil of Succession</b><span>Helmet</span></li>
+                <li><b>Coronation Coat</b><span>Armor</span></li>
+                <li><b>Kingmaker&rsquo;s Gloves</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Accuracy &middot; Heir Apparent: the first Take the Crown each battle costs no Strings</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Long Live the King: a puppet that dies while crowned passes the crown on for the turns it had left</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; The Crown Falls: when a crown ends, every other enemy takes 20% of the last wearer&rsquo;s Max HP</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-the-understudy">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Understudy</span>
+            <span class="cdx-set__meta">PUPPETEER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Somebody has to stand where the hero stands when the hero cannot. It is a job, and Vesh pays well for it.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Stagehand&rsquo;s Hood</b><span>Helmet</span></li>
+                <li><b>Understudy&rsquo;s Doublet</b><span>Armor</span></li>
+                <li><b>Prompter&rsquo;s Slippers</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; Every Blow a Thread: each hit your puppet takes banks 1 String</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense &middot; Stand-In: once per battle, when a blow would kill you, your puppet falls in your place and you stand at 1 HP</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x2712;&#xFE0F; <span>UNWRITER</span></p>
+        <details class="cdx-set" id="set-the-clean-copy">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Clean Copy</span>
+            <span class="cdx-set__meta">UNWRITER &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">The draft that survives is the one with nothing in it that could be taken out. Alenn has taken out a great deal.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Palimpsest Knife</b><span>Weapon</span></li>
+                <li><b>Copyist&rsquo;s Hood</b><span>Helmet</span></li>
+                <li><b>Fair-Copy Robe</b><span>Armor</span></li>
+                <li><b>Blotting Gloves</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Crit Damage &middot; Blot: an erase leaves the enemies that shared its rank Vulnerable for 2 turns</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Page Turn: an erase that empties the rear rank refunds its Blank</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; Through Both Ranks: Strike the Line also erases the non-boss enemy in the other rank at the same position</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-the-blank-quire">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Blank Quire</span>
+            <span class="cdx-set__meta">UNWRITER &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Sheets bound and never written on. She carries them the way other people carry a spare knife.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Vellum Coif</b><span>Helmet</span></li>
+                <li><b>Quire Vestment</b><span>Armor</span></li>
+                <li><b>Unmarked Soles</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; Spare Leaf: +1 to the Blank cap</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense &middot; Struck From the Record: once per battle, when a blow would kill you, a Blank is spent and you stand at 1 HP</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <h3 class="cdx-sub" style="margin-top:32px;">KALZANIA DLC SETS</h3>
+      <p class="cdx-note">The Kalzania heroes&rsquo; sets drop only for players who own <em>Kalzania: The Unspent Year</em>.</p>
+      <p class="cdx-setgroup">&#x1F4D2; <span>CHANDLER</span></p>
+        <details class="cdx-set" id="set-the-long-account">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Long Account</span>
+            <span class="cdx-set__meta">CHANDLER &middot; DLC &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Nine hundred years of ledgers and not one line struck out. The guild does not forgive a debt; it simply waits, and eventually sends someone to the door.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Reckoning Rod</b><span>Weapon</span></li>
+                <li><b>Auditor&rsquo;s Eyeshade</b><span>Helmet</span></li>
+                <li><b>Coat of Many Pockets</b><span>Armor</span></li>
+                <li><b>Counting Gloves</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Crit Damage &middot; Deep Purse: Call in the Debt carries 50% more gold per floor</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Collected in Full: a kill by Call in the Debt refunds half the gold thrown</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; Called Twice: the purse is thrown a second time, for the same price</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-the-running-account">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Running Account</span>
+            <span class="cdx-set__meta">CHANDLER &middot; DLC &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">She writes while she walks. A column closed is a thing nobody can argue with later, and she has never considered any hour of the day unsuitable for arithmetic.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Ink-Stained Cap</b><span>Helmet</span></li>
+                <li><b>Daybook Jerkin</b><span>Armor</span></li>
+                <li><b>Round-Making Boots</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; A Floor, An Entry: clearing a floor writes a Ledger entry</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense &middot; The Book Between: each Ledger entry also grants +1% Defence</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F9F1; <span>MASON</span></p>
+        <details class="cdx-set" id="set-the-standing-wall">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Standing Wall</span>
+            <span class="cdx-set__meta">MASON &middot; DLC &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Ask which of his walls he is proudest of and he names one you cannot visit, because nobody has ever needed to repair it and nobody remembers who built it.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Lodge Maul</b><span>Weapon</span></li>
+                <li><b>Dustcatcher Hood</b><span>Helmet</span></li>
+                <li><b>Course Apron</b><span>Armor</span></li>
+                <li><b>Mortar-Caked Gloves</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Defense &middot; Deep Foundation: +4 to the Course cap</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Max HP &middot; The Mortar Holds: Course and Mortar&rsquo;s loaded strike lands on your next TWO attacks</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Defense &middot; It Still Stands: Course and Mortar leaves a further 25% of the wall standing</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-the-trued-bench">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Trued Bench</span>
+            <span class="cdx-set__meta">MASON &middot; DLC &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">The wall gets the credit. The bench does the work. He has replaced its top four times and its legs not once, and he would sooner lose the maul.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Setter&rsquo;s Cap</b><span>Helmet</span></li>
+                <li><b>Bench Leathers</b><span>Armor</span></li>
+                <li><b>Scaffold Boots</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +20% Max HP &middot; An Eye for a Pair: far more drops are steered toward a piece you are one away from pairing</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Defense &middot; Trued: a merge&rsquo;s new affixes roll at their maximum value</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F932; <span>ALMONER</span></p>
+        <details class="cdx-set" id="set-the-open-hand">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Open Hand</span>
+            <span class="cdx-set__meta">ALMONER &middot; DLC &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Nine hundred years of handing things to people who cannot take them. The dish goes out full and comes back empty, and she has never once been seen to hesitate at the moment of letting go.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Almsblade</b><span>Weapon</span></li>
+                <li><b>Mourner&rsquo;s Coif</b><span>Helmet</span></li>
+                <li><b>Vigil Weeds</b><span>Armor</span></li>
+                <li><b>Unclenched Hands</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +15% Healing Power &middot; Not All At Once: The Last Rite costs half its Alms (rounded up) and still strikes for all of them</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Attack &middot; Unanswered: The Last Rite ignores Defence entirely</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; Read Twice: the same page is read a second time, for no further Alms</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-the-kept-book">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Kept Book</span>
+            <span class="cdx-set__meta">ALMONER &middot; DLC &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Every name, every fee, every grave-good, in one hand across nine centuries. Nobody audits her. Nobody has ever needed to.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Tally Helm</b><span>Helmet</span></li>
+                <li><b>Ledger Scapular</b><span>Armor</span></li>
+                <li><b>Collector&rsquo;s Tread</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +18% Max HP &middot; Twice Tithed: each tithe tier pays 10 Alms instead of 5</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +15% Magic Find, +15% Gold Find &middot; Counted Double: every item given to the shrine gives double the Alms</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+      <p class="cdx-setgroup">&#x1F4DC; <span>APPARITOR</span></p>
+        <details class="cdx-set" id="set-the-long-hall">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Long Hall</span>
+            <span class="cdx-set__meta">APPARITOR &middot; DLC &middot; 4 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">The hall was built long enough that a name called at one end arrives at the other some time later. This was thought, at the time, to be a courtesy.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Summoner&rsquo;s Blade</b><span>Weapon</span></li>
+                <li><b>Usher&rsquo;s Helm</b><span>Helmet</span></li>
+                <li><b>Court Livery</b><span>Armor</span></li>
+                <li><b>Writ-Bearer&rsquo;s Gloves</b><span>Gloves</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Accuracy &middot; Still Called: the mark does not expire; it holds until the foe dies</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +10% Crit Chance &middot; Unarmoured: The Roll Is Called ignores the Defence of a Called foe</li>
+                <li><span class="cdx-bonus__n">4-PC</span> +15% Attack, +10% Crit Damage &middot; Read Twice: the roll is read a second time, on the same cooldown</li>
+              </ul></div>
+            </div>
+          </div>
+        </details>
+        <details class="cdx-set" id="set-the-standing-writ">
+          <summary class="cdx-set__head">
+            <span class="cdx-set__n">The Standing Writ</span>
+            <span class="cdx-set__meta">APPARITOR &middot; DLC &middot; 3 PC</span>
+          </summary>
+          <div class="cdx-set__body">
+            <p class="cdx-set__flav">Signed, sealed, and never rescinded &mdash; because the court that issued it has not sat in nine hundred years and cannot be convened to withdraw it.</p>
+            <div class="cdx-set__cols">
+              <div><p class="cdx-set__k">PIECES</p><ul class="cdx-pieces">
+                <li><b>Sealed Hood</b><span>Helmet</span></li>
+                <li><b>Process Server&rsquo;s Coat</b><span>Armor</span></li>
+                <li><b>Unhurried Boots</b><span>Boots</span></li>
+              </ul></div>
+              <div><p class="cdx-set__k">BONUSES</p><ul class="cdx-bonuses">
+                <li><span class="cdx-bonus__n">2-PC</span> +10% Dodge &middot; The Whole Hall: The Roll Is Called names every foe, not only the ones it moves</li>
+                <li><span class="cdx-bonus__n">3-PC</span> +12% Attack, +12% Crit Damage &middot; Still Standing: a roll that kills resets its own cooldown</li>
               </ul></div>
             </div>
           </div>

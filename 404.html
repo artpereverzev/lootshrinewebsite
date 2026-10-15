@@ -19,9 +19,25 @@
     // Group 1 is the section, group 2 is the code — adding the section group
     // shifted the code from match[1] to match[2].
     var match = path.match(/^\/(challenge|build)\/([A-Za-z0-9]+)\/?$/);
+    // Every other path the app claims in .well-known/apple-app-site-association
+    // lands on the matching part of the site when the app isn't installed:
+    // /addons (the Kalzania In-App Event link), /heroes, /eternal-climb, /<class>.
+    var p = path.toLowerCase().replace(/\/+$/, '');
+    var HEROES = ['knight','rogue','mage','vampire','berserker','paladin','necromancer','alchemist',
+                  'beastmaster','monk','ranger','chronomancer','ronin','stormcaller','chandler','mason',
+                  'almoner','apparitor','puppeteer','unwriter'];
+    var hero = p.replace(/^\/character\//, '/').slice(1);
     if (match) {
       // Rewrite to /<section>/?code=CODE (that section's index.html handles it)
       window.location.replace('/' + match[1] + '/?code=' + match[2]);
+    } else if (/^\/(addons|add-ons|dlc)$/.test(p)) {
+      window.location.replace('/#kalzania');
+    } else if (/^\/(heroes|character-select|roster)$/.test(p)) {
+      window.location.replace('/#classes');
+    } else if (p === '/eternal-climb' || p === '/mode/eternalclimb') {
+      window.location.replace('/#eternal');
+    } else if (HEROES.indexOf(hero) >= 0) {
+      window.location.replace('/codex/#' + hero);
     } else {
       window.location.replace('/');
     }

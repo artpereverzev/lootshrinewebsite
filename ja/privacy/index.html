@@ -495,7 +495,7 @@ body::after {
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav__inner">
-    <a href="/" class="nav__logo">
+    <a href="/ja/" class="nav__logo">
       <img src="../../apple-icon-180x180.png" class="nav__logo-icon" alt="LootShrine" width="32" height="32" decoding="async">
       <span>
         LOOTSHRINE
@@ -504,6 +504,7 @@ body::after {
     </a>
     <ul class="nav__links">
       <li><a href="/ja/#about">概要</a></li>
+      <li><a href="/ja/#kalzania">カルザニア</a></li>
       <li><a href="/codex/">コーデックス</a></li>
       <li><a href="/ja/#gameplay">ゲームプレイ</a></li>
       <li><a href="/ja/#features">特徴</a></li>
@@ -538,6 +539,7 @@ body::after {
   </div>
   <div class="nav__mobile" id="navMobile">
     <a href="/ja/#about">概要</a>
+    <a href="/ja/#kalzania">カルザニア</a>
     <a href="/codex/">コーデックス</a>
     <a href="/ja/#gameplay">ゲームプレイ</a>
     <a href="/ja/#features">特徴</a>
@@ -564,7 +566,7 @@ body::after {
   <div class="page-header__content">
     <span class="page-header__tag">// 法的事項</span>
     <h1 class="page-header__title">プライバシー<br>ポリシー</h1>
-    <p class="page-header__date">発効日: 2026年7月29日</p>
+    <p class="page-header__date">発効日: 2026年10月15日</p>
   </div>
 </section>
 
@@ -576,10 +578,7 @@ body::after {
 
     <div class="policy__highlight">
       <p class="policy__text">
-        <strong>要約:</strong> LootShrine はあなたの個人データを収集・保存・販売しません。
-        広告はなく、情報を収集するサードパーティのトラッカーもありません。
-        個人データを一切収集しないプライバシー重視の解析（TelemetryDeck）と、
-        購入処理のための RevenueCat のみを使用しています。ゲームデータは端末とあなたの iCloud アカウントに保存されます。
+        <strong>要約:</strong> LootShrine はあなたのデータを販売せず、広告を表示せず、広告トラッカーも使用しません。個人データを収集しないプライバシー重視の分析（TelemetryDeck）と、購入管理のための RevenueCat を使用しています。セーブはあなたの端末と iCloud アカウントに保存されます。一部の<strong>共有機能</strong>&mdash;倒れし者たちの殿堂、エコー、ビルド共有、フレンドチャレンジ&mdash;は、他のプレイヤーが見られるよう Game Center のニックネームとランの情報を公開します。何が公開され、どうすればオフにできるかは第2条に正確に記載しています。
       </p>
     </div>
 
@@ -609,6 +608,18 @@ body::after {
       <p class="policy__text">
         当方はあなたの iCloud データにアクセスできません。クラウドセーブを読み取ることも、変更することも、削除することもできません。
       </p>
+      <p class="policy__text">
+        <strong>共有機能。</strong>一部の機能は、プレイヤー同士が互いの英雄を見られるようにするためのものです。これらは LootShrine のどのプレイヤーでも読める Apple CloudKit の<strong>公開</strong>データベースを使用します：
+      </p>
+      <ul class="policy__list">
+        <li><strong>倒れし者たちの殿堂とエコー</strong> &mdash; 3階以上でランが終わると、ゲームは Game Center のニックネーム（または「Adventurer」）、匿名の CloudKit ユーザー ID、選択したアバター・フレーム・ネームプレート、英雄のクラスとビルド、ゲームモード、到達フロア、ランの統計（時間、撃破数、ゴールド、ボス、犠牲、HP）、そしてあなたを倒したものを公開します。他のプレイヤーは14日間、自分の殿堂でそのランを見ることができ、永遠の登攀でその英雄をエコーとして選べます。誰かがそうすると、その記録のカウンターが1増えます。この機能は<strong>初期状態でオン</strong>で、<strong>設定 &rarr; 斃れし者の殿堂 &rarr; ヒーローを共有する</strong>でオフにできます。</li>
+        <li><strong>ビルド共有</strong> &mdash; 共有をタップしたときのみ：ビルドとその英雄、フロア、モード、ニックネームとアバターを1年間公開します。</li>
+        <li><strong>フレンドチャレンジ</strong> &mdash; チャレンジを作成または受諾したときのみ：ニックネーム、ランの統計とフロアごとの進行、結果を7日間公開します。</li>
+        <li><strong>公開プロフィール</strong> &mdash; リーダーボードと殿堂に表示できるよう、Game Center のプレイヤー ID と選択したコスメティック（アバター、フレーム、ネームプレート）。</li>
+      </ul>
+      <p class="policy__text">
+        これらのいずれにも、本名、メールアドレス、位置情報、端末の識別子、連絡先は含まれません。共有された記録を期限前に削除したい場合は、下記のアドレスまでメールでご連絡ください。
+      </p>
     </div>
 
     <div class="policy__section">
@@ -619,7 +630,7 @@ body::after {
         Game Center のフレンドリストには、フレンド間のゴーストチャレンジ招待を可能にする目的でのみアクセスします。
       </p>
       <p class="policy__text">
-        当方はあなたの Game Center データを保存・送信したり、第三者と共有したりすることはありません。
+        Game Center のニックネームとプレイヤー ID は第2条の共有機能にも使用され、他のプレイヤーが目の前の倒れた英雄・ビルド・チャレンジが誰のものかを確認できます。Game Center のデータを販売したり、第三者と共有したりすることは決してありません。
       </p>
     </div>
 
@@ -639,7 +650,7 @@ body::after {
           購入レシートを処理します。氏名・メールアドレス・その他の個人情報は収集しません。詳細はこちら:
           <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener" style="color: var(--gold); border-bottom: 1px solid rgba(255,215,0,0.3);">RevenueCat's Privacy Policy</a>.</li>
         <li><strong>Apple Game Center</strong> &mdash; リーダーボード、実績、フレンドチャレンジ（すべて Apple が管理）。</li>
-        <li><strong>Apple CloudKit</strong> &mdash; iCloud セーブ同期（すべて Apple が管理）。</li>
+        <li><strong>Apple CloudKit</strong> &mdash; iCloud でのセーブ同期と、第2条の共有機能のための公開データベース（すべて Apple が管理）。</li>
       </ul>
       <p class="policy__text">
         LootShrine は広告 SDK、ソーシャルメディアトラッカー、データブローカー、
@@ -659,8 +670,7 @@ body::after {
         影響を与えることは一切ありません</strong>。購入は完全に任意であり、ゲームのどの部分をプレイするにも必要ありません。
       </p>
       <p class="policy__text">
-        フルゲーム解除と任意のサポーターパック以外に、アプリ内課金はありません &mdash;
-        消耗品も、サブスクリプションも、ルートボックスも、広告もありません。
+        <strong>カルザニア：費えぬ一年</strong>は任意の有料拡張で、製品版が必要な独立した50フロアのキャンペーンです。製品版の解放、カルザニア拡張、任意のサポーターパック以外にアプリ内課金はありません&mdash;消耗品も、サブスクも、ルートボックスも、広告もありません。
       </p>
       <p class="policy__text">
         すべての購入取引は App Store で処理され、次を通じて検証されます:
@@ -679,9 +689,7 @@ body::after {
     <div class="policy__section">
       <h2 class="policy__heading">6. 児童のプライバシー</h2>
       <p class="policy__text">
-        LootShrine は児童・成人を問わず、いかなる個人情報も意図的に収集しません。
-        すべてのユーザーから個人データを収集していないため、本アプリは COPPA
-        （児童オンラインプライバシー保護法）および類似の規制に準拠しています。
+        LootShrine は子どもの個人情報を意図的に収集することはありません。ゲームにはアカウント、メールアドレス、登録は不要です。共有機能に表示されうる唯一の識別情報はプレイヤーの Game Center ニックネームで、これは Apple のペアレンタルコントロールの対象です。英雄の共有は、設定 &rarr; 斃れし者の殿堂 &rarr; ヒーローを共有する、からいつでもオフにできます。
       </p>
     </div>
 
@@ -693,6 +701,9 @@ body::after {
         いずれのサービスも個人を特定できる情報を受け取ることはありません。
       </p>
       <p class="policy__text">
+        第2条の共有機能は、その性質上、Game Center のニックネームとランの情報を他の LootShrine プレイヤーに表示します。このデータは第三者ではなく Apple が保管し、販売や広告に使われることはありません。
+      </p>
+      <p class="policy__text">
         唯一の例外は返金処理です: 返金をリクエストした場合、第 5 節に記載された限定的な
         購入・配信に関する事実が、リクエストの解決のために Apple と共有されます。
       </p>
@@ -702,7 +713,6 @@ body::after {
       <h2 class="policy__heading">8. 本ポリシーの変更</h2>
       <p class="policy__text">
         本プライバシーポリシーを更新する場合、変更内容は新しい発効日とともにこのページに掲載されます。
-        LootShrine はデータを収集しないため、大幅な変更が生じる可能性は低いです。
       </p>
     </div>
 

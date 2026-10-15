@@ -61,7 +61,6 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
 
 <style>
 /* ===================================================================
@@ -1477,6 +1476,255 @@ body::after {
 @media (max-width: 400px) {
   .hero__stat { flex: 1 1 calc(50% - 2px); }
 }
+
+/* ===================================================================
+   2026-10 — 20 HEROES, KALZANIA, GAMEPLAY SHORTS
+=================================================================== */
+/* Hero: the expansion ribbon under the CTAs */
+.hero__new {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px 14px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+  color: var(--text-hi);
+  border: 2px solid rgba(192,132,252,0.45);
+  background: rgba(192,132,252,0.08);
+  transition: border-color 0.2s, background 0.2s;
+  animation: fadeIn 1s var(--ease-out-expo) 0.7s both;
+}
+.hero__new:hover { border-color: var(--purple); background: rgba(192,132,252,0.16); }
+.hero__new b { color: var(--bg-void); background: var(--purple); padding: 4px 6px; font-weight: normal; }
+.hero__new + .hero__trust { margin-top: 18px; }
+
+/* Classes: group labels, DLC badge, a portrait that stays in view */
+.classes__group {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: var(--text-lo);
+  padding: 22px 2px 8px;
+}
+.classes__group:first-child { padding-top: 0; }
+.classes__group--dlc { color: var(--purple); }
+.class-row__badge--dlc { color: var(--purple); border-color: rgba(192,132,252,0.45); }
+.class-row--dlc .class-row__portrait { border-color: rgba(192,132,252,0.4); }
+.classes__visual {
+  position: sticky;
+  top: 96px;
+  height: min(780px, calc(100vh - 128px));
+  min-height: 520px;
+}
+@media (max-width: 800px) {
+  .classes__visual { position: relative; top: auto; height: auto; min-height: 420px; }
+}
+
+/* Kalzania (DLC 1) */
+.kz {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(168,85,247,0.10), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(245,158,11,0.07), transparent 70%),
+    var(--bg-dark);
+}
+.kz .eternal__image { aspect-ratio: 4/5; border-color: rgba(192,132,252,0.35); }
+.kz .eternal__image img { object-position: center 35%; }
+.kz .eternal__image-tag { background: var(--purple); }
+.kz .eternal__chunk { border-left-color: rgba(192,132,252,0.45); }
+.kz__subhead {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+  text-align: center;
+  margin: 72px 0 24px;
+}
+.kz__regions {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.kz__region {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border: 2px solid rgba(255,215,0,0.12);
+  background: var(--bg-card);
+}
+.kz__region img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.kz__region:hover img { transform: scale(1.05); }
+.kz__region figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 30px 10px 10px;
+  background: linear-gradient(transparent, rgba(10,10,15,0.94) 55%);
+}
+.kz__roman { display: block; font-family: var(--font-pixel); font-size: 7px; color: var(--purple); margin-bottom: 6px; }
+.kz__rname { display: block; font-family: var(--font-pixel); font-size: 7px; color: var(--text-hi); line-height: 1.7; }
+.kz__floors { display: block; font-family: var(--font-body); font-size: 11px; color: var(--text-mid); margin-top: 4px; }
+.kz__finale {
+  position: relative;
+  max-width: 1100px;
+  margin: 10px auto 0;
+  aspect-ratio: 21/8;
+  overflow: hidden;
+  border: 2px solid rgba(255,215,0,0.28);
+}
+.kz__finale img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.kz__finale-text {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 48px 24px 22px;
+  text-align: center;
+  background: linear-gradient(transparent, rgba(10,10,15,0.95) 60%);
+}
+.kz__finale-tag { font-family: var(--font-pixel); font-size: 7px; color: var(--purple); letter-spacing: 0.2em; margin-bottom: 10px; }
+.kz__finale-name {
+  font-family: var(--font-pixel);
+  font-size: clamp(14px, 2.4vw, 22px);
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,215,0,0.45), 0 2px 8px rgba(0,0,0,0.9);
+}
+.kz__finale-line { font-family: var(--font-body); font-size: 14px; color: var(--text-mid); margin-top: 10px; }
+.kz__heroes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.kz__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 12px;
+  background: var(--bg-card);
+  border: 2px solid rgba(192,132,252,0.22);
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+.kz__hero:hover { border-color: var(--purple); background: var(--bg-raised); transform: translateY(-3px); }
+.kz__hero img { width: 96px; height: 96px; image-rendering: pixelated; border: 2px solid rgba(255,215,0,0.25); }
+.kz__hero-name { font-family: var(--font-pixel); font-size: 8px; color: var(--gold); line-height: 1.6; }
+.kz__hero-title { font-family: var(--font-body); font-size: 12px; color: var(--text-mid); line-height: 1.45; }
+.kz__cta { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 44px; }
+.kz__cta-note { font-family: var(--font-body); font-size: 14px; color: var(--text-mid); text-align: center; line-height: 1.6; }
+.kz__cta-note strong { color: var(--text-hi); }
+@media (max-width: 900px) {
+  .kz__regions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .kz__region:last-child { grid-column: 2; }
+}
+@media (max-width: 700px) {
+  .kz__regions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kz__region:last-child { grid-column: auto; }
+  .kz__heroes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kz__finale { aspect-ratio: 4/3; }
+}
+
+/* Gameplay Shorts: one player, a playlist beside it */
+.shorts {
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+  margin-top: 48px;
+  text-align: left;
+}
+.shorts__player {
+  position: relative;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.25);
+}
+.shorts__player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.shorts__poster { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.shorts__poster img { width: 100%; height: 100%; object-fit: cover; }
+.shorts__poster .video-play-btn {
+  position: absolute;
+  left: 50%; top: 55%;
+  transform: translate(-50%, -50%);
+  background: rgba(10,10,15,0.6);
+}
+.shorts__poster:hover .video-play-btn { border-color: var(--gold); background: rgba(10,10,15,0.8); }
+.shorts__now {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--gold);
+  line-height: 1.7;
+  margin-top: 14px;
+  text-align: center;
+}
+.shorts__filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.shorts__filter {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  padding: 10px 12px;
+  color: var(--text-mid);
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.15);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.shorts__filter:hover { color: var(--text-hi); border-color: rgba(255,215,0,0.4); }
+.shorts__filter.active { color: var(--bg-void); background: var(--gold); border-color: var(--gold); }
+.shorts__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.shorts__item {
+  position: relative;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 2px solid rgba(255,215,0,0.12);
+  text-align: left;
+  transition: border-color 0.2s;
+}
+.shorts__item[hidden] { display: none; }
+.shorts__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+.shorts__item:hover img { transform: scale(1.04); }
+.shorts__item:hover { border-color: rgba(255,215,0,0.45); }
+.shorts__item.active { border-color: var(--gold); }
+.shorts__item-tag {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 5px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.shorts__item-cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 30px 8px 9px;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  line-height: 1.75;
+  color: var(--text-hi);
+  background: linear-gradient(transparent, rgba(10,10,15,0.94) 45%);
+}
+@media (max-width: 1000px) { .shorts__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 800px) {
+  .shorts { grid-template-columns: 1fr; }
+  .shorts__stage { width: 100%; max-width: 340px; margin: 0 auto; }
+  .shorts__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .shorts__filters { justify-content: center; }
+  .shorts__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+  .shorts__item { flex: 0 0 38%; scroll-snap-align: start; }
+}
+
 </style>
 
 <!-- ===================================================================
@@ -1492,14 +1740,42 @@ body::after {
       "@id": "https://lootshrine.com/#game",
       "name": "LootShrine",
       "alternateName": "LootShrine: Slay. Loot. Sacrifice.",
-      "description": "A free-to-try pixel art roguelite RPG for iOS. Ascend through 120 floors of dark fantasy. Equip, absorb, or sacrifice loot at the shrine for permanent power.",
+      "description": "A free-to-try pixel art roguelite RPG for iPhone and iPad. Ascend through 120 floors of dark fantasy with twenty heroes. Equip, absorb, or sacrifice loot at the shrine for permanent power.",
       "url": "https://lootshrine.com/",
       "image": "https://lootshrine.com/main_menu.jpg",
-      "genre": ["Roguelite", "RPG", "Turn-based", "Dark Fantasy"],
-      "gamePlatform": ["iOS", "iPhone", "iPad"],
+      "genre": [
+        "Roguelite",
+        "RPG",
+        "Turn-based",
+        "Dark Fantasy"
+      ],
+      "gamePlatform": [
+        "iOS",
+        "iPadOS",
+        "iPhone",
+        "iPad"
+      ],
       "applicationCategory": "GameApplication",
       "operatingSystem": "iOS 17+",
-      "inLanguage": ["en", "fr", "de", "it", "ja", "ko", "pt-BR", "ru", "zh-Hans", "es"],
+      "inLanguage": [
+        "en",
+        "de",
+        "es",
+        "fr",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "pl",
+        "pt-BR",
+        "ru",
+        "th",
+        "tr",
+        "uk",
+        "vi",
+        "zh-Hans",
+        "zh-Hant"
+      ],
       "playMode": "SinglePlayer",
       "publisher": {
         "@type": "Organization",
@@ -1530,8 +1806,10 @@ body::after {
       "@id": "https://lootshrine.com/#website",
       "url": "https://lootshrine.com/",
       "name": "LootShrine",
-      "description": "Official site for LootShrine, a pixel art roguelite RPG for iOS.",
-      "publisher": { "@id": "https://lootshrine.com/#org" },
+      "description": "Official site for LootShrine, a pixel art roguelite RPG for iPhone and iPad.",
+      "publisher": {
+        "@id": "https://lootshrine.com/#org"
+      },
       "inLanguage": "en-US"
     },
     {
@@ -1550,73 +1828,82 @@ body::after {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://lootshrine.com/#faq",
+      "@id": "https://lootshrine.com/ko/#faq",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is LootShrine free?",
+          "name": "LOOTSHRINE은 무료인가요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Download from the App Store and play the first 10 floors free, with no signup, no ads, and no time limit. If you defeat the floor 10 boss and want to keep climbing, the full 120-floor game unlocks with a single one-time purchase."
+            "text": "네. App Store에서 다운로드해 처음 10개 층을 무료로 플레이할 수 있습니다. 가입도, 광고도, 시간 제한도 없습니다. 10층 보스를 처치하고 계속 오르고 싶다면, 일회성 구매 한 번으로 120개 층 전체가 열립니다."
           }
         },
         {
           "@type": "Question",
-          "name": "What's included in the free 10 floors?",
+          "name": "무료 10개 층에는 무엇이 포함되나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A complete first chapter: the Knight class, the full combat and shrine systems, the merchant Grimwald, item collection and crafting, full UI in your language, and the floor 10 Gatekeeper boss fight."
+            "text": "완전한 첫 챕터: 기사와 도적 클래스, 전투와 신전 시스템 전체, 상인 그림왈드, 아이템 수집과 제작, 여러분의 언어로 된 전체 UI, 그리고 10층 문지기 보스전까지."
           }
         },
         {
           "@type": "Question",
-          "name": "Are there ads or in-app purchases?",
+          "name": "광고나 인앱 구매가 있나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No ads, ever. The main in-app purchase is the one-time unlock for floors 11–120. There are also optional cosmetic-only Supporter Packs — supporter portraits and frames that never affect gameplay, stats, or balance. No subscriptions, no consumables, no loot boxes, and nothing pay-to-win."
+            "text": "광고는 절대 없습니다. 주된 인앱 구매는 11–120층을 여는 일회성 구매입니다. 칼자니아: 쓰이지 않은 해는 선택형 유료 확장팩으로, 새 영웅 4명이 등장하는 별도의 50층 캠페인이며 정식판이 필요합니다. 선택적인 코스메틱 전용 서포터 팩도 있습니다 — 게임플레이, 스탯, 밸런스에 절대 영향을 주지 않는 서포터 초상화와 프레임입니다. 초상화와 프레임의 대다수는 여전히 업적과 해금을 통해 무료로 얻을 수 있습니다. 구독도, 랜덤 박스도, 페이투윈도 없습니다."
           }
         },
         {
           "@type": "Question",
-          "name": "Does LootShrine work offline?",
+          "name": "칼자니아는 무엇인가요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. After the initial download, the entire game runs fully offline. Saves stay on your device and sync to your iCloud account when you're online."
+            "text": "칼자니아: 쓰이지 않은 해는 LootShrine의 첫 확장팩입니다. 10개 지역에 걸친 별도의 50층 캠페인으로, 새로운 적 110종, 보스 10종, 봉인 6종, 그리고 새 영웅 4명 — 챈들러, 석공, 구휼관, 소환관이 등장합니다. 유료 추가 콘텐츠이며 정식판이 필요합니다. 앱의 메인 메뉴에서 추가 콘텐츠를 여세요."
           }
         },
         {
           "@type": "Question",
-          "name": "Does it sync between iPhone and iPad?",
+          "name": "LOOTSHRINE은 오프라인에서도 되나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Saves sync via iCloud (Apple CloudKit), so you can continue your run on iPhone or iPad with the same progress."
+            "text": "네. 최초 다운로드 이후에는 게임 전체가 완전히 오프라인으로 작동합니다. 저장 데이터는 기기에 남고, 온라인 상태가 되면 iCloud 계정과 동기화됩니다."
           }
         },
         {
           "@type": "Question",
-          "name": "What devices and iOS versions are supported?",
+          "name": "아이폰과 아이패드 간에 동기화되나요？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "LootShrine runs on iPhone and iPad with iOS 17 or later."
+            "text": "네. 저장 데이터가 iCloud(Apple CloudKit)를 통해 동기화되므로, 아이폰이든 아이패드든 같은 진행 상황으로 런을 이어갈 수 있습니다."
           }
         },
         {
           "@type": "Question",
-          "name": "Does LootShrine support Game Center?",
+          "name": "어떤 기기와 iOS 버전을 지원하나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Global and per-class leaderboards plus achievements are available via Apple Game Center."
+            "text": "LootShrine은 iOS 17 이상의 아이폰과 아이패드에서 실행됩니다. 모든 화면에 세로와 가로 모드의 아이패드 전용 레이아웃이 있습니다."
           }
         },
         {
           "@type": "Question",
-          "name": "What languages does LootShrine support?",
+          "name": "LOOTSHRINE은 GAME CENTER를 지원하나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Thirteen languages: English, French, German, Italian, Japanese, Korean, Polish, Portuguese (Brazil), Russian, Simplified Chinese, Spanish, Traditional Chinese, and Turkish. The game uses your device's language automatically and lets you switch in-game."
+            "text": "네. 글로벌 및 클래스별 리더보드와 업적을 Apple Game Center를 통해 이용할 수 있습니다. 최고 층, 최다 처치, 최속 런을 두고 친구들 그리고 전 세계와 겨루세요."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "LOOTSHRINE은 어떤 언어를 지원하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "17개 언어: 영어, 프랑스어, 독일어, 인도네시아어, 이탈리아어, 일본어, 한국어, 폴란드어, 포르투갈어(브라질), 러시아어, 중국어 간체, 스페인어, 태국어, 중국어 번체, 튀르키예어, 우크라이나어, 베트남어. 게임은 기기 언어를 자동으로 사용하며 인게임에서 변경할 수 있습니다."
           }
         }
-      ]
+      ],
+      "inLanguage": "ko"
     }
   ]
 }
@@ -1651,6 +1938,7 @@ body::after {
     </a>
     <ul class="nav__links">
       <li><a href="#about">개요</a></li>
+      <li><a href="#kalzania">칼자니아</a></li>
       <li><a href="/codex/">코덱스</a></li>
       <li><a href="#gameplay">게임플레이</a></li>
       <li><a href="#features">특징</a></li>
@@ -1685,6 +1973,7 @@ body::after {
   </div>
   <div class="nav__mobile" id="navMobile">
     <a href="#about">개요</a>
+    <a href="#kalzania">칼자니아</a>
     <a href="/codex/">코덱스</a>
     <a href="#gameplay">게임플레이</a>
     <a href="#features">특징</a>
@@ -1712,7 +2001,7 @@ body::after {
   <div class="hero__particles" id="particles"></div>
 
   <div class="hero__content">
-    <p class="hero__eyebrow">무료 체험 &middot; iOS 로그라이트 RPG</p>
+    <p class="hero__eyebrow">무료 체험 &middot; 아이폰 &amp; 아이패드 로그라이트 RPG</p>
     <h1 class="hero__title">LOOT<br>SHRINE</h1>
     <p class="hero__title-sub">처치하라. 약탈하라. 바쳐라.</p>
     <p class="hero__tagline">
@@ -1729,7 +2018,8 @@ body::after {
       </a>
       <a href="#gameplay" class="btn-hero btn-hero--secondary">게임플레이 보기</a>
     </div>
-    <p class="hero__trust">무료 다운로드 &middot; iOS 17+ &middot; 오프라인 플레이 &middot; 광고 없음</p>
+    <a href="#kalzania" class="hero__new"><b>NEW</b> 칼자니아: 쓰이지 않은 해 &mdash; 50층, 영웅 4명</a>
+    <p class="hero__trust">무료 다운로드 &middot; 아이폰 &amp; 아이패드 &middot; iOS 17+ &middot; 오프라인 플레이 &middot; 광고 없음</p>
   </div>
 
   <div class="hero__stats">
@@ -1742,11 +2032,11 @@ body::after {
       <span class="hero__stat-label">적</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">14</span>
-      <span class="hero__stat-label">클래스</span>
+      <span class="hero__stat-val">20</span>
+      <span class="hero__stat-label">영웅</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">90+</span>
+      <span class="hero__stat-val">160+</span>
       <span class="hero__stat-label">업적</span>
     </div>
     <div class="hero__stat">
@@ -1785,7 +2075,7 @@ body::after {
           <strong style="color: var(--gold);">신전에 바쳐</strong> 런 내내 지속되는 영구 스탯을 얻을 수 있습니다.
         </p>
         <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
-          한 손으로 즐기는 세로 화면 플레이. 여러분이 조절하는 턴제 템포.
+          아이폰에서는 한 손으로 즐기는 세로 화면, 아이패드에서는 전용 레이아웃. 여러분이 조절하는 턴제 템포.
           세트 보너스를 통한 깊은 아이템 시너지. 매 층이 새로운 퍼즐입니다.
           10개 층마다 수호자 보스가 등장하며 &mdash; 100층에는 기원이, 그 너머 120층에는 기록되지 않은 자가 기다립니다.
         </p>
@@ -1803,7 +2093,7 @@ body::after {
           <div class="about__visual-canvas">
             <div class="about__visual-track" id="aboutBgTrack">
               <div class="about__visual-slide active"><img src="../scr_gameplay.jpg" alt="LootShrine turn-based combat — pixel art hero facing dark fantasy enemies" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_classes.jpg" alt="LootShrine class selection screen — Knight, Rogue, Mage, Paladin, Vampire, Necromancer, Berserker, Alchemist, Beastmaster, Monk, Ranger, Chronomancer, Ronin, Stormcaller" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../scr_classes.jpg" alt="LootShrine 영웅 선택 화면 — 기사부터 말소자까지 영웅 20명" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="../scr_skills.jpg" alt="LootShrine skill tree — class-specific abilities and synergies" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="../scr_item1.jpg" alt="LootShrine inventory and item rarities — equip, absorb, or sacrifice loot" onerror="this.parentElement.style.display='none'"></div>
               <div class="about__visual-slide"><img src="../scr_item2.jpg" alt="LootShrine equipment screen — pixel art item icons and stat comparison" onerror="this.parentElement.style.display='none'"></div>
@@ -1897,96 +2187,97 @@ body::after {
       <div class="classes__left">
         <span class="tag reveal">// 캐릭터 클래스</span>
         <h2 class="section-title reveal reveal-delay-1">당신의<br>영웅을 선택하세요</h2>
-        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">열네 가지의 서로 다른 플레이 스타일. 더 높은 층까지 살아남으면 새로운 클래스가 열립니다.</p>
+        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">스무 명의 영웅. 열여섯 명은 탑을 오르며 해금되고 &mdash; 마지막 두 명은 100층과 110층에서 기다립니다 &mdash; 네 명은 칼자니아 확장팩과 함께 합류합니다.</p>
         <div class="classes__list">
+          <p class="classes__group">기본 게임 &middot; 영웅 16명</p>
           <div class="class-row active reveal reveal-delay-1" data-class-idx="0"
-               onclick="openClassModal('../knight_portrait.jpg','../intro_knight.jpg','KNIGHT','The Last of the Iron Order','&quot;The Order may be gone, but its oath remains. I will not fall.&quot;','DEFAULT')">
+               onclick="openClassModal('../knight_portrait.jpg','../intro_knight.jpg','기사','철의 기사단 최후의 일원','&quot;기사단은 사라졌을지라도, 그 맹세는 남아 있다. 나는 쓰러지지 않으리.&quot;','기본 제공')">
             <div class="class-row__portrait">
-              <img src="../knight_portrait.jpg" alt="Knight" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../knight_portrait.jpg" alt="Knight" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F6E1;&#xFE0F;</div>
             </div>
             <div class="class-row__info">
-              <p class="class-row__name">나이트</p>
+              <p class="class-row__name">기사</p>
               <p class="class-row__tagline">흔들리지 않는다. 반격하는 벽.</p>
             </div>
             <span class="class-row__badge">기본</span>
           </div>
           <div class="class-row reveal reveal-delay-2" data-class-idx="1"
-               onclick="openClassModal('../rogue_portrait.jpg','../intro_rogue.jpg','ROGUE','The Debt Collector','&quot;Everything has a price. I\'m just making sure I\'m not the one who pays.&quot;','DEFAULT')">
+               onclick="openClassModal('../rogue_portrait.jpg','../intro_rogue.jpg','도적','빚 수금원','&quot;모든 것에는 대가가 있다. 나는 그저 그 대가를 치르는 자가 내가 되지 않도록 할 뿐이다.&quot;','기본 제공')">
             <div class="class-row__portrait">
-              <img src="../rogue_portrait.jpg" alt="Rogue" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../rogue_portrait.jpg" alt="Rogue" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F5E1;&#xFE0F;</div>
             </div>
             <div class="class-row__info">
-              <p class="class-row__name">로그</p>
+              <p class="class-row__name">도적</p>
               <p class="class-row__tagline">치명적인 크리티컬. 궁지에 몰리면 사라진다.</p>
             </div>
             <span class="class-row__badge">기본</span>
           </div>
           <div class="class-row reveal reveal-delay-3" data-class-idx="2"
-               onclick="openClassModal('../mage_portrait.jpg','../intro_mage.jpg','MAGE','The Obsessed Scholar','&quot;Knowledge is power. And I intend to know everything.&quot;','UNLOCK: FLOOR 30')">
+               onclick="openClassModal('../mage_portrait.jpg','../intro_mage.jpg','마법사','집착하는 학자','&quot;지식이 곧 힘이다. 그리고 나는 모든 것을 알 작정이다.&quot;','해금: 30층')">
             <div class="class-row__portrait">
-              <img src="../mage_portrait.jpg" alt="Mage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../mage_portrait.jpg" alt="Mage" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F52E;</div>
             </div>
             <div class="class-row__info">
-              <p class="class-row__name">메이지</p>
+              <p class="class-row__name">마법사</p>
               <p class="class-row__tagline">마나로 폭발하는 파괴력. 약하지만 치명적.</p>
             </div>
             <span class="class-row__badge">30층</span>
           </div>
           <div class="class-row reveal reveal-delay-4" data-class-idx="3"
-               onclick="openClassModal('../paladin_portrait.jpg','../intro_paladin.jpg','PALADIN','The Fallen Saint','&quot;I have sinned. But even sinners can still save others.&quot;','UNLOCK: FLOOR 25')">
+               onclick="openClassModal('../paladin_portrait.jpg','../intro_paladin.jpg','성기사','타락한 성자','&quot;나는 죄를 지었다. 그러나 죄인도 여전히 다른 이를 구할 수 있다.&quot;','해금: 25층')">
             <div class="class-row__portrait">
-              <img src="../paladin_portrait.jpg" alt="Paladin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../paladin_portrait.jpg" alt="Paladin" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x271D;&#xFE0F;</div>
             </div>
             <div class="class-row__info">
-              <p class="class-row__name">팔라딘</p>
+              <p class="class-row__name">성기사</p>
               <p class="class-row__tagline">성스러운 전사. 신성한 치유와 보호.</p>
             </div>
             <span class="class-row__badge">25층</span>
           </div>
           <div class="class-row reveal reveal-delay-5" data-class-idx="4"
-               onclick="openClassModal('../vampire_portrait.jpg','../intro_vampire.jpg','VAMPIRE','The Eternal Hunger','&quot;Immortality was a curse. This place makes it a gift.&quot;','UNLOCK: FLOOR 40')">
+               onclick="openClassModal('../vampire_portrait.jpg','../intro_vampire.jpg','뱀파이어','영원한 굶주림','&quot;불멸은 저주였다. 이곳은 그것을 선물로 만든다.&quot;','해금: 40층')">
             <div class="class-row__portrait">
-              <img src="../vampire_portrait.jpg" alt="Vampire" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../vampire_portrait.jpg" alt="Vampire" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F9DB;</div>
             </div>
             <div class="class-row__info">
               <p class="class-row__name">뱀파이어</p>
-              <p class="class-row__tagline">적을 먹이로 삼는다. 광역 혼란 오라.</p>
+              <p class="class-row__tagline">공격할 때마다 회복합니다. 적의 피를 마지막 한 방울까지.</p>
             </div>
             <span class="class-row__badge">40층</span>
           </div>
           <div class="class-row reveal reveal-delay-6" data-class-idx="5"
-               onclick="openClassModal('../necromancer_portrait.jpg','../intro_necromancer.jpg','NECROMANCER','The Soul Merchant','&quot;The dead remember what the living forget. They remember everything.&quot;','UNLOCK: FLOOR 45')">
+               onclick="openClassModal('../necromancer_portrait.jpg','../intro_necromancer.jpg','강령술사','영혼 상인','&quot;죽은 자는 산 자가 잊는 것을 기억한다. 그들은 모든 것을 기억한다.&quot;','해금: 45층')">
             <div class="class-row__portrait">
-              <img src="../necromancer_portrait.jpg" alt="Necromancer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../necromancer_portrait.jpg" alt="Necromancer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F480;</div>
             </div>
             <div class="class-row__info">
-              <p class="class-row__name">네크로맨서</p>
+              <p class="class-row__name">강령술사</p>
               <p class="class-row__tagline">죽은 자를 부린다. 적에게서 생명을 흡수한다.</p>
             </div>
             <span class="class-row__badge">45층</span>
           </div>
           <div class="class-row reveal reveal-delay-7" data-class-idx="6"
-               onclick="openClassModal('../berserker_portrait.jpg','../intro_berserker.jpg','BERSERKER','The Rage Unbound','&quot;Pain fades. Glory is forever. COME AND FACE ME!&quot;','UNLOCK: FLOOR 50')">
+               onclick="openClassModal('../berserker_portrait.jpg','../intro_berserker.jpg','광전사','속박 없는 분노','&quot;고통은 사라진다. 영광은 영원하다. 와서 나와 맞서라!&quot;','해금: 50층')">
             <div class="class-row__portrait">
-              <img src="../berserker_portrait.jpg" alt="Berserker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../berserker_portrait.jpg" alt="Berserker" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1FA93;</div>
             </div>
             <div class="class-row__info">
-              <p class="class-row__name">버서커</p>
+              <p class="class-row__name">광전사</p>
               <p class="class-row__tagline">잃은 체력만큼 피해가 오른다. 빈사 상태에서 가장 치명적.</p>
             </div>
             <span class="class-row__badge">50층</span>
           </div>
           <div class="class-row reveal reveal-delay-8" data-class-idx="7"
-               onclick="openClassModal('../alchemist_1.jpg','../intro_alchemist.jpg','ALCHEMIST','The Essence Hoarder','&quot;Everything dissolves into power. You just need patience &mdash; and a strong enough crucible.&quot;','UNLOCK: FLOOR 15')">
+               onclick="openClassModal('../alchemist_1.jpg','../intro_alchemist.jpg','연금술사','수은의 정신','&quot;모든 조제법은 질문으로 끝난다. 내가 그 답이다.&quot;','해금: 15층')">
             <div class="class-row__portrait">
-              <img src="../alchemist_1.jpg" alt="Alchemist" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../alchemist_1.jpg" alt="Alchemist" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x2697;&#xFE0F;</div>
             </div>
             <div class="class-row__info">
@@ -1996,9 +2287,9 @@ body::after {
             <span class="class-row__badge">15층</span>
           </div>
           <div class="class-row reveal reveal-delay-9" data-class-idx="8"
-               onclick="openClassModal('../beastmaster_portrait.jpg','../intro_beastmaster.jpg','BEASTMASTER','Kael, The Pack Leader','&quot;You mistake the wolf for the leash. The pack chooses. I only run with them.&quot;','UNLOCK: FLOOR 35')">
+               onclick="openClassModal('../beastmaster_portrait.jpg','../intro_beastmaster.jpg','비스트마스터','야생의 수호자','&quot;야생은 복종하지 않는다. 그저 믿는 자를 따를 뿐이다.&quot;','해금: 35층')">
             <div class="class-row__portrait">
-              <img src="../beastmaster_portrait.jpg" alt="Beastmaster" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../beastmaster_portrait.jpg" alt="Beastmaster" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F43A;</div>
             </div>
             <div class="class-row__info">
@@ -2008,98 +2299,183 @@ body::after {
             <span class="class-row__badge">35층</span>
           </div>
           <div class="class-row reveal reveal-delay-10" data-class-idx="9"
-               onclick="openClassModal('../monk_portrait.jpg','../intro_monk.jpg','MONK','Master Jin, The Unbroken Chain','&quot;The temple taught stillness. I chose motion. The chain answers to neither.&quot;','DEFAULT')">
+               onclick="openClassModal('../monk_portrait.jpg','../intro_monk.jpg','몽크','끊이지 않는 사슬','&quot;고요함은 거짓이다. 끊이지 않는 사슬만이 정상에 이른다.&quot;','해금: 20층')">
             <div class="class-row__portrait">
-              <img src="../monk_portrait.jpg" alt="Monk" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../monk_portrait.jpg" alt="Monk" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F94B;</div>
             </div>
             <div class="class-row__info">
               <p class="class-row__name">몽크</p>
               <p class="class-row__tagline">모든 주먹이 콤보를 쌓는다. 그것을 터뜨려 파괴적인 연타로.</p>
             </div>
-            <span class="class-row__badge">기본</span>
+            <span class="class-row__badge">20층</span>
           </div>
           <div class="class-row reveal reveal-delay-11" data-class-idx="10"
-               onclick="openClassModal('../ranger_portrait.jpg','../intro_ranger.jpg','RANGER','Sylva, The Huntress','&quot;Every target tells you where it will die. You just have to listen.&quot;','UNLOCK: FLOOR 60')">
+               onclick="openClassModal('../ranger_portrait.jpg','../intro_ranger.jpg','레인저','사냥꾼','“모든 표적은 자신이 어디서 죽을지 알려준다. 그저 귀 기울이면 된다.”','해금: 20층')">
             <div class="class-row__portrait">
-              <img src="../ranger_portrait.jpg" alt="Ranger" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../ranger_portrait.jpg" alt="Ranger" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F3F9;</div>
             </div>
             <div class="class-row__info">
               <p class="class-row__name">레인저</p>
               <p class="class-row__tagline">사냥감에 표식을 남긴다. 예리한 눈이 모든 사격을 벼린다.</p>
             </div>
-            <span class="class-row__badge">60층</span>
+            <span class="class-row__badge">20층</span>
           </div>
           <div class="class-row reveal reveal-delay-12" data-class-idx="11"
-               onclick="openClassModal('../chronomancer_portrait.jpg','../intro_chronomancer.jpg','CHRONOMANCER','Vael, The Timekeeper','&quot;Time is not a river. It is a page. And every page can be rewritten.&quot;','UNLOCK: FLOOR 70')">
+               onclick="openClassModal('../chronomancer_portrait.jpg','../intro_chronomancer.jpg','크로노맨서','시간지기','&quot;칼날은 저마다의 때에 떨어진다. 나는 그저 그때 다른 곳에 있기를 택할 뿐이다.&quot;','해금: 40층')">
             <div class="class-row__portrait">
-              <img src="../chronomancer_portrait.jpg" alt="Chronomancer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../chronomancer_portrait.jpg" alt="Chronomancer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x23F3;</div>
             </div>
             <div class="class-row__info">
               <p class="class-row__name">크로노맨서</p>
               <p class="class-row__tagline">턴 순서를 비튼다. 후회하는 순간을 되감는다.</p>
             </div>
-            <span class="class-row__badge">70층</span>
+            <span class="class-row__badge">40층</span>
           </div>
           <div class="class-row reveal reveal-delay-13" data-class-idx="12"
-               onclick="openClassModal('../ronin_portrait.jpg','../intro_ronin.jpg','RONIN','Kenzo, The Wandering Blade','&quot;A hundred strikes waste the blade. I need only one.&quot;','UNLOCK: FLOOR 80')">
+               onclick="openClassModal('../ronin_portrait.jpg','../intro_ronin.jpg','로닌','떠도는 칼날','&quot;백 번의 베기는 칼을 낭비할 뿐. 내게 필요한 것은 단 한 번이다.&quot;','해금: 20층')">
             <div class="class-row__portrait">
-              <img src="../ronin_portrait.jpg" alt="Ronin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../ronin_portrait.jpg" alt="Ronin" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x1F977;</div>
             </div>
             <div class="class-row__info">
               <p class="class-row__name">로닌</p>
               <p class="class-row__tagline">일격을 견딘다. 단 한 번의 발도로 답한다.</p>
             </div>
-            <span class="class-row__badge">80층</span>
+            <span class="class-row__badge">20층</span>
           </div>
           <div class="class-row reveal reveal-delay-14" data-class-idx="13"
-               onclick="openClassModal('../stormcaller_portrait.jpg','../intro_stormcaller.jpg','STORMCALLER','Zari, The Tempest','&quot;I do not fight a man. I fight the room he stands in.&quot;','UNLOCK: FLOOR 90')">
+               onclick="openClassModal('../stormcaller_portrait.jpg','../intro_stormcaller.jpg','폭풍술사','폭풍','“나는 한 사람과 싸우지 않는다. 그가 서 있는 방과 싸운다.”','해금: 30층')">
             <div class="class-row__portrait">
-              <img src="../stormcaller_portrait.jpg" alt="Stormcaller" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <img src="../stormcaller_portrait.jpg" alt="Stormcaller" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <div class="class-row__portrait-placeholder" style="display:none">&#x26A1;</div>
             </div>
             <div class="class-row__info">
-              <p class="class-row__name">스톰콜러</p>
+              <p class="class-row__name">폭풍술사</p>
               <p class="class-row__tagline">폭풍을 다룬다. 모든 일격이 다음을 부른다.</p>
             </div>
-            <span class="class-row__badge">90층</span>
+            <span class="class-row__badge">30층</span>
+          </div>
+          <div class="class-row reveal reveal-delay-14" data-class-idx="14"
+               onclick="openClassModal('../puppeteer_portrait.jpg','../intro_puppeteer.jpg','인형술사','당신의 것이 아닌 손','“그들 모두를 이길 수는 없었어. 그러니 애쓰지 말고, 하나를 골라.”','해금: 100층')">
+            <div class="class-row__portrait">
+              <img src="../puppeteer_portrait.jpg" alt="Puppeteer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F3AD;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">인형술사</p>
+              <p class="class-row__tagline">실을 모아 적에게 왕관을 씌우면, 그 적이 곁에서 싸웁니다.</p>
+            </div>
+            <span class="class-row__badge">100층</span>
+          </div>
+          <div class="class-row reveal reveal-delay-14" data-class-idx="15"
+               onclick="openClassModal('../unwriter_portrait.jpg','../intro_unwriter.jpg','말소자','마지막 편집자','“그저 한 줄이었을 뿐이야. 줄은 지워지지.”','해금: 110층')">
+            <div class="class-row__portrait">
+              <img src="../unwriter_portrait.jpg" alt="Unwriter" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x2712;&#xFE0F;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">말소자</p>
+              <p class="class-row__tagline">어느 열이든 공격하고, 적을 페이지에서 지워 버립니다.</p>
+            </div>
+            <span class="class-row__badge">110층</span>
+          </div>
+          <p class="classes__group classes__group--dlc">칼자니아 확장팩 &middot; 영웅 4명</p>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="16"
+               onclick="openClassModal('../chandler_portrait.jpg','../intro_chandler.jpg','챈들러','칼잔 상인조합의 맹원','“모든 것은 팔린다. 관건은 무엇으로 치르는지를 아는 것이다.”','칼자니아 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../chandler_portrait.jpg" alt="Chandler" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F56F;&#xFE0F;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">챈들러</p>
+              <p class="class-row__tagline">살 때마다 다음 구매가 날카로워집니다. 골드가 곧 탄약입니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">칼자니아</span>
+          </div>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="17"
+               onclick="openClassModal('../mason_portrait.jpg','../intro_mason.jpg','석공','석공 조합의 장인','“두 조각. 하나의 벽. 그게 전부다.”','칼자니아 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../mason_portrait.jpg" alt="Mason" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F9F1;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">석공</p>
+              <p class="class-row__tagline">같은 부위·같은 등급의 아이템 두 개를 더 강한 하나로 잇습니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">칼자니아</span>
+          </div>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="18"
+               onclick="openClassModal('../almoner_portrait.jpg','../intro_almoner.jpg','구휼관','대성당 불침번의 구휼관','“해는 끝나지 않는다. 그렇다고 빚을 밀려도 되는 건 아니다.”','칼자니아 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../almoner_portrait.jpg" alt="Almoner" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1FA99;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">구휼관</p>
+              <p class="class-row__tagline">자신의 전리품을 제단에 불사르고, 제단은 힘으로 갚아 줍니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">칼자니아</span>
+          </div>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="19"
+               onclick="openClassModal('../apparitor_portrait.jpg','../intro_apparitor.jpg','소환관','긴 회당의 소환관','“앞으로 나와라. 충분히 기다렸다.”','칼자니아 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../apparitor_portrait.jpg" alt="Apparitor" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F4DC;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">소환관</p>
+              <p class="class-row__tagline">적의 전열과 후열을 맞바꿉니다. 움직인 자는 더 쉽게 쓰러집니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">칼자니아</span>
           </div>
         </div>
       </div>
       <div class="reveal reveal-delay-2" style="height:100%">
         <div class="classes__visual" id="classesVisual">
-          <div class="classes__visual-slide active"><img src="../intro_knight.jpg" alt="Knight" onerror="this.src='../knight_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_rogue.jpg" alt="Rogue" onerror="this.src='../rogue_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_mage.jpg" alt="Mage" onerror="this.src='../mage_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_paladin.jpg" alt="Paladin" onerror="this.src='../paladin_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_vampire.jpg" alt="Vampire" onerror="this.src='../vampire_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_necromancer.jpg" alt="Necromancer" onerror="this.src='../necromancer_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_berserker.jpg" alt="Berserker" onerror="this.src='../berserker_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_alchemist.jpg" alt="Alchemist" onerror="this.src='../alchemist_1.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_beastmaster.jpg" alt="Beastmaster" onerror="this.src='../beastmaster_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_monk.jpg" alt="Monk" onerror="this.src='../monk_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_ranger.jpg" alt="Ranger" onerror="this.src='../ranger_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_chronomancer.jpg" alt="Chronomancer" onerror="this.src='../chronomancer_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_ronin.jpg" alt="Ronin" onerror="this.src='../ronin_portrait.jpg'"></div>
-          <div class="classes__visual-slide"><img src="../intro_stormcaller.jpg" alt="Stormcaller" onerror="this.src='../stormcaller_portrait.jpg'"></div>
+          <div class="classes__visual-slide active"><img src="../intro_knight.jpg" alt="Knight" decoding="async" onerror="this.src='../knight_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img src="../intro_rogue.jpg" alt="Rogue" decoding="async" onerror="this.src='../rogue_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_mage.jpg" alt="Mage" decoding="async" onerror="this.src='../mage_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_paladin.jpg" alt="Paladin" decoding="async" onerror="this.src='../paladin_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_vampire.jpg" alt="Vampire" decoding="async" onerror="this.src='../vampire_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_necromancer.jpg" alt="Necromancer" decoding="async" onerror="this.src='../necromancer_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_berserker.jpg" alt="Berserker" decoding="async" onerror="this.src='../berserker_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_alchemist.jpg" alt="Alchemist" decoding="async" onerror="this.src='../alchemist_1.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_beastmaster.jpg" alt="Beastmaster" decoding="async" onerror="this.src='../beastmaster_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_monk.jpg" alt="Monk" decoding="async" onerror="this.src='../monk_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_ranger.jpg" alt="Ranger" decoding="async" onerror="this.src='../ranger_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_chronomancer.jpg" alt="Chronomancer" decoding="async" onerror="this.src='../chronomancer_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_ronin.jpg" alt="Ronin" decoding="async" onerror="this.src='../ronin_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_stormcaller.jpg" alt="Stormcaller" decoding="async" onerror="this.src='../stormcaller_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_puppeteer.jpg" alt="Puppeteer" decoding="async" onerror="this.src='../puppeteer_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_unwriter.jpg" alt="Unwriter" decoding="async" onerror="this.src='../unwriter_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_chandler.jpg" alt="Chandler" decoding="async" onerror="this.src='../chandler_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_mason.jpg" alt="Mason" decoding="async" onerror="this.src='../mason_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_almoner.jpg" alt="Almoner" decoding="async" onerror="this.src='../almoner_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_apparitor.jpg" alt="Apparitor" decoding="async" onerror="this.src='../apparitor_portrait.jpg'"></div>
           <div class="classes__visual-fade"></div>
-          <div class="classes__visual-label active" data-label-idx="0"><p class="classes__visual-label__name">나이트</p><p class="classes__visual-label__title">THE LAST OF THE IRON ORDER</p></div>
-          <div class="classes__visual-label" data-label-idx="1"><p class="classes__visual-label__name">로그</p><p class="classes__visual-label__title">THE DEBT COLLECTOR</p></div>
-          <div class="classes__visual-label" data-label-idx="2"><p class="classes__visual-label__name">메이지</p><p class="classes__visual-label__title">THE OBSESSED SCHOLAR</p></div>
-          <div class="classes__visual-label" data-label-idx="3"><p class="classes__visual-label__name">팔라딘</p><p class="classes__visual-label__title">THE FALLEN SAINT</p></div>
-          <div class="classes__visual-label" data-label-idx="4"><p class="classes__visual-label__name">뱀파이어</p><p class="classes__visual-label__title">THE ETERNAL HUNGER</p></div>
-          <div class="classes__visual-label" data-label-idx="5"><p class="classes__visual-label__name">네크로맨서</p><p class="classes__visual-label__title">THE SOUL MERCHANT</p></div>
-          <div class="classes__visual-label" data-label-idx="6"><p class="classes__visual-label__name">버서커</p><p class="classes__visual-label__title">THE RAGE UNBOUND</p></div>
-          <div class="classes__visual-label" data-label-idx="7"><p class="classes__visual-label__name">연금술사</p><p class="classes__visual-label__title">THE ESSENCE HOARDER</p></div>
-          <div class="classes__visual-label" data-label-idx="8"><p class="classes__visual-label__name">비스트마스터</p><p class="classes__visual-label__title">KAEL, THE PACK LEADER</p></div>
-          <div class="classes__visual-label" data-label-idx="9"><p class="classes__visual-label__name">몽크</p><p class="classes__visual-label__title">MASTER JIN, THE UNBROKEN CHAIN</p></div>
-          <div class="classes__visual-label" data-label-idx="10"><p class="classes__visual-label__name">레인저</p><p class="classes__visual-label__title">SYLVA, THE HUNTRESS</p></div>
-          <div class="classes__visual-label" data-label-idx="11"><p class="classes__visual-label__name">크로노맨서</p><p class="classes__visual-label__title">VAEL, THE TIMEKEEPER</p></div>
-          <div class="classes__visual-label" data-label-idx="12"><p class="classes__visual-label__name">로닌</p><p class="classes__visual-label__title">KENZO, THE WANDERING BLADE</p></div>
-          <div class="classes__visual-label" data-label-idx="13"><p class="classes__visual-label__name">스톰콜러</p><p class="classes__visual-label__title">ZARI, THE TEMPEST</p></div>
+          <div class="classes__visual-label active" data-label-idx="0"><p class="classes__visual-label__name">기사</p><p class="classes__visual-label__title">철의 기사단 최후의 일원</p></div>
+          <div class="classes__visual-label" data-label-idx="1"><p class="classes__visual-label__name">도적</p><p class="classes__visual-label__title">빚 수금원</p></div>
+          <div class="classes__visual-label" data-label-idx="2"><p class="classes__visual-label__name">마법사</p><p class="classes__visual-label__title">집착하는 학자</p></div>
+          <div class="classes__visual-label" data-label-idx="3"><p class="classes__visual-label__name">성기사</p><p class="classes__visual-label__title">타락한 성자</p></div>
+          <div class="classes__visual-label" data-label-idx="4"><p class="classes__visual-label__name">뱀파이어</p><p class="classes__visual-label__title">영원한 굶주림</p></div>
+          <div class="classes__visual-label" data-label-idx="5"><p class="classes__visual-label__name">강령술사</p><p class="classes__visual-label__title">영혼 상인</p></div>
+          <div class="classes__visual-label" data-label-idx="6"><p class="classes__visual-label__name">광전사</p><p class="classes__visual-label__title">속박 없는 분노</p></div>
+          <div class="classes__visual-label" data-label-idx="7"><p class="classes__visual-label__name">연금술사</p><p class="classes__visual-label__title">수은의 정신</p></div>
+          <div class="classes__visual-label" data-label-idx="8"><p class="classes__visual-label__name">비스트마스터</p><p class="classes__visual-label__title">야생의 수호자</p></div>
+          <div class="classes__visual-label" data-label-idx="9"><p class="classes__visual-label__name">몽크</p><p class="classes__visual-label__title">끊이지 않는 사슬</p></div>
+          <div class="classes__visual-label" data-label-idx="10"><p class="classes__visual-label__name">레인저</p><p class="classes__visual-label__title">사냥꾼</p></div>
+          <div class="classes__visual-label" data-label-idx="11"><p class="classes__visual-label__name">크로노맨서</p><p class="classes__visual-label__title">시간지기</p></div>
+          <div class="classes__visual-label" data-label-idx="12"><p class="classes__visual-label__name">로닌</p><p class="classes__visual-label__title">떠도는 칼날</p></div>
+          <div class="classes__visual-label" data-label-idx="13"><p class="classes__visual-label__name">폭풍술사</p><p class="classes__visual-label__title">폭풍</p></div>
+          <div class="classes__visual-label" data-label-idx="14"><p class="classes__visual-label__name">인형술사</p><p class="classes__visual-label__title">당신의 것이 아닌 손</p></div>
+          <div class="classes__visual-label" data-label-idx="15"><p class="classes__visual-label__name">말소자</p><p class="classes__visual-label__title">마지막 편집자</p></div>
+          <div class="classes__visual-label" data-label-idx="16"><p class="classes__visual-label__name">챈들러</p><p class="classes__visual-label__title">칼잔 상인조합의 맹원</p></div>
+          <div class="classes__visual-label" data-label-idx="17"><p class="classes__visual-label__name">석공</p><p class="classes__visual-label__title">석공 조합의 장인</p></div>
+          <div class="classes__visual-label" data-label-idx="18"><p class="classes__visual-label__name">구휼관</p><p class="classes__visual-label__title">대성당 불침번의 구휼관</p></div>
+          <div class="classes__visual-label" data-label-idx="19"><p class="classes__visual-label__name">소환관</p><p class="classes__visual-label__title">긴 회당의 소환관</p></div>
         </div>
       </div>
     </div>
@@ -2194,17 +2570,16 @@ body::after {
       <span class="tag reveal">// 메타 시스템</span>
       <h2 class="section-title reveal reveal-delay-1">저자의 말</h2>
       <p class="eternal__lead reveal reveal-delay-2">
-        모든 이후의 런에 이어지는 영구 메타 시스템. 기원 너머에서 모은 조각으로 자신만의 <em>말</em>을
-        엮으세요 &mdash; <strong>소켓, 잉크, 그리고 진짜 빌드 선택</strong>.
+        모든 이후의 런에 이어지는 영구 메타 시스템. 말의 상자에서 얻은 조각으로 자신만의 <em>말</em>을 엮으세요 &mdash; 첫 상자는 10층 보스가 떨어뜨립니다 &mdash; <strong>소켓, 잉크, 그리고 진짜 빌드 선택</strong>.
       </p>
     </div>
 
     <div class="eternal__grid">
       <div class="eternal__image reveal reveal-delay-2">
-        <img src="../authors_word.jpg" alt="LootShrine The Author's Word — 37 Fragments, three kinds, composed into a permanent meta"
+        <img src="../authors_word.jpg" alt="LootShrine The Author's Word — 49 Fragments, three kinds, composed into a permanent meta"
              onerror="this.parentElement.style.display='none'">
         <div class="eternal__image-vignette"></div>
-        <div class="eternal__image-tag">37개 조각</div>
+        <div class="eternal__image-tag">49개 조각</div>
       </div>
 
       <div class="eternal__content reveal reveal-delay-3">
@@ -2244,7 +2619,7 @@ body::after {
     </div>
 
     <div class="eternal__pills reveal reveal-delay-4">
-      <div class="pill">37개 조각</div>
+      <div class="pill">49개 조각</div>
       <div class="pill">문양 &middot; 동사 &middot; 절</div>
       <div class="pill">영구 메타</div>
       <div class="pill">병합 또는 분해</div>
@@ -2279,7 +2654,7 @@ body::after {
         <img src="../eternal_climb_low.jpg" alt="LootShrine Eternal Climb mode — pixel art endless tower with stacking curses"
              onerror="this.parentElement.style.display='none'">
         <div class="eternal__image-vignette"></div>
-        <div class="eternal__image-tag">11층부터 해금</div>
+        <div class="eternal__image-tag">20층부터 해금</div>
       </div>
 
       <div class="eternal__content reveal reveal-delay-3">
@@ -2321,10 +2696,18 @@ body::after {
             주화는 메타 진행 탭 <strong>상자</strong>에 사용해 다음 등반을 조금 더 강하게 만드세요.
           </p>
         </div>
+
+        <div class="eternal__chunk">
+          <h3>에코와 무료 수호자 상자</h3>
+          <p>
+            <strong>에코</strong>, 즉 다른 플레이어의 영웅을 골라 곁에서 함께 오르세요. 층마다 2&ndash;4번의 전투가 있고, 적이 전리품을 떨어뜨리며, 모든 수호자는 무료 상자 세 개를 남깁니다: <strong>신성한 상자, 말의 상자, 동전 상자</strong>. 여섯 개의 말 조각은 오직 여기서만 얻을 수 있습니다.
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="eternal__pills reveal reveal-delay-4">
+      <div class="pill">에코</div>
       <div class="pill">층 제한 없음</div>
       <div class="pill">중첩되는 저주</div>
       <div class="pill">고대 주화</div>
@@ -2342,25 +2725,214 @@ body::after {
 
 <div class="divider"></div>
 
-<!-- VIDEO -->
+<!-- KALZANIA (DLC 1) -->
+<section class="eternal kz section" id="kalzania">
+  <div class="container">
+
+    <div class="eternal__hero">
+      <span class="tag reveal">// 확장팩 &middot; DLC 1</span>
+      <h2 class="section-title reveal reveal-delay-1">칼자니아:<br>쓰이지 않은 해</h2>
+      <p class="eternal__lead reveal reveal-delay-2">구백 년 전 코르베인 왕이 한 해를 붙잡아 둔 뒤로, 칼자니아는 같은 가을을 살아왔습니다. <em>새로운 50층 캠페인과 새 영웅 4명</em> &mdash; 첫 번째 유료 확장팩입니다. 정식판이 필요합니다.</p>
+    </div>
+
+    <div class="eternal__grid">
+      <div class="eternal__image kz__image reveal reveal-delay-2">
+        <img src="../kalzania/kalzania_key.jpg" alt="Kalzania: The Unspent Year — a doorway into a kingdom where autumn never ended" loading="lazy" decoding="async"
+             onerror="this.parentElement.style.display='none'">
+        <div class="eternal__image-vignette"></div>
+        <div class="eternal__image-tag">50층 &middot; 10개 지역</div>
+      </div>
+
+      <div class="eternal__content reveal reveal-delay-3">
+        <div class="eternal__chunk">
+          <h3>별도의 50층 캠페인</h3>
+          <p>탑 깊은 곳에서 봉인된 텔레포터가 웅웅거립니다. 그 너머에 <strong>칼자니아</strong>가 열립니다 &mdash; 탑의 연장이 아닌, 등반 곁에 살아 있는 왕국입니다. 다섯 층씩 이어지는 10개 지역, 지역마다 끝을 지키는 보스, 길 위의 이야기, 그리고 고유한 야영지와 상인, 이벤트까지.</p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>새 영웅 4명</h3>
+          <p><strong>챈들러</strong>는 골드를 무기로 씁니다. <strong>석공</strong>은 짝이 맞지 않는 전리품을 하나로 잇습니다. <strong>구휼관</strong>은 자신의 아이템을 불살라 힘을 얻습니다. <strong>소환관</strong>은 적의 전열과 후열을 맞바꿉니다. 모두 고유 스킬과 60개 노드의 스킬 트리를 갖고 있습니다.</p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>새로운 적 110종, 보스 10종</h3>
+          <p>코덱스 항목을 갖춘 완전히 새로운 도감, 그리고 저마다의 페이즈를 지닌 보스 10종. 보스는 <strong>봉인된 상자</strong>, <strong>왕권의 상자</strong>, <strong>영혼의 상자</strong>를 남깁니다. 그리고 50층에서는 코르베인 왕이 기다립니다.</p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>저자의 말을 위한 봉인</h3>
+          <p><strong>봉인 6종</strong> &mdash; 저자의 말에 넣은 다른 조각들을 강화하는 새로운 종류의 조각 &mdash; 이 확장팩과 함께 제공됩니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="kz__subhead reveal">10개 지역</h3>
+    <div class="kz__regions">
+      <figure class="kz__region reveal reveal-delay-1">
+        <img src="../kalzania/region_01_wakingwood.jpg" alt="The Waking Wood" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">I</span><span class="kz__rname">깨어 있는 숲</span><span class="kz__floors">1&ndash;5층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-2">
+        <img src="../kalzania/region_02_unreapedfields.jpg" alt="The Unreaped Fields" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">II</span><span class="kz__rname">거두지 못한 들판</span><span class="kz__floors">6&ndash;10층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-3">
+        <img src="../kalzania/region_03_stillwaterfen.jpg" alt="The Stillwater Fen" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">III</span><span class="kz__rname">고인 물의 늪</span><span class="kz__floors">11&ndash;15층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-4">
+        <img src="../kalzania/region_04_lanternroad.jpg" alt="The Lantern Road" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">IV</span><span class="kz__rname">등불의 길</span><span class="kz__floors">16&ndash;20층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-5">
+        <img src="../kalzania/region_05_quietholds.jpg" alt="The Quiet Holds" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">V</span><span class="kz__rname">고요한 납골당</span><span class="kz__floors">21&ndash;25층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-1">
+        <img src="../kalzania/region_06_kingshunt.jpg" alt="The King&#x27;S Hunt" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">VI</span><span class="kz__rname">왕의 사냥</span><span class="kz__floors">26&ndash;30층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-2">
+        <img src="../kalzania/region_07_ashenring.jpg" alt="The Ashen Ring" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">VII</span><span class="kz__rname">잿빛 고리</span><span class="kz__floors">31&ndash;35층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-3">
+        <img src="../kalzania/region_08_kalzan.jpg" alt="Kalzan, The Unsleeping Town" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">VIII</span><span class="kz__rname">칼잔, 잠들지 않는 마을</span><span class="kz__floors">36&ndash;40층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-4">
+        <img src="../kalzania/region_09_longhall.jpg" alt="The Long Hall" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">IX</span><span class="kz__rname">긴 회랑</span><span class="kz__floors">41&ndash;45층</span></figcaption>
+      </figure>
+      <figure class="kz__region reveal reveal-delay-5">
+        <img src="../kalzania/region_10_cathedral.jpg" alt="The Cathedral Of The Vigil" loading="lazy" decoding="async">
+        <figcaption><span class="kz__roman">X</span><span class="kz__rname">철야의 대성당</span><span class="kz__floors">46&ndash;50층</span></figcaption>
+      </figure>
+    </div>
+    <div class="kz__finale reveal">
+      <img src="../kalzania/corvain_throne.jpg" alt="The throne room of King Corvain, floor 50 of Kalzania" loading="lazy" decoding="async">
+      <div class="kz__finale-text">
+        <p class="kz__finale-tag">50층</p>
+        <p class="kz__finale-name">코르베인 왕</p>
+        <p class="kz__finale-line">왕좌 위의 구백 년. 단 한 번의 싸움.</p>
+      </div>
+    </div>
+
+    <h3 class="kz__subhead reveal">칼자니아의 영웅들</h3>
+    <div class="kz__heroes">
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../chandler_portrait.jpg','../intro_chandler.jpg','챈들러','칼잔 상인조합의 맹원','“모든 것은 팔린다. 관건은 무엇으로 치르는지를 아는 것이다.”','칼자니아 확장팩 · 정식판 필요')">
+        <img src="../chandler_portrait.jpg" alt="Chandler" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">챈들러</span>
+        <span class="kz__hero-title">칼잔 상인조합의 맹원</span>
+      </button>
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../mason_portrait.jpg','../intro_mason.jpg','석공','석공 조합의 장인','“두 조각. 하나의 벽. 그게 전부다.”','칼자니아 확장팩 · 정식판 필요')">
+        <img src="../mason_portrait.jpg" alt="Mason" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">석공</span>
+        <span class="kz__hero-title">석공 조합의 장인</span>
+      </button>
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../almoner_portrait.jpg','../intro_almoner.jpg','구휼관','대성당 불침번의 구휼관','“해는 끝나지 않는다. 그렇다고 빚을 밀려도 되는 건 아니다.”','칼자니아 확장팩 · 정식판 필요')">
+        <img src="../almoner_portrait.jpg" alt="Almoner" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">구휼관</span>
+        <span class="kz__hero-title">대성당 불침번의 구휼관</span>
+      </button>
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../apparitor_portrait.jpg','../intro_apparitor.jpg','소환관','긴 회당의 소환관','“앞으로 나와라. 충분히 기다렸다.”','칼자니아 확장팩 · 정식판 필요')">
+        <img src="../apparitor_portrait.jpg" alt="Apparitor" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">소환관</span>
+        <span class="kz__hero-title">긴 회당의 소환관</span>
+      </button>
+    </div>
+
+    <div class="eternal__pills reveal">
+      <div class="pill">50층</div>
+      <div class="pill">새로운 적 110종</div>
+      <div class="pill">보스 10종</div>
+      <div class="pill">새 영웅 4명</div>
+      <div class="pill">봉인 6종</div>
+      <div class="pill">유료 확장팩</div>
+      <div class="pill">정식판 필요</div>
+    </div>
+
+    <div class="kz__cta reveal">
+      <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="btn-hero btn-hero--primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        APP STORE
+      </a>
+      <p class="kz__cta-note">게임에서: <strong>메인 메뉴 &rarr; 추가 콘텐츠 &rarr; 칼자니아</strong>. 정식판이 필요합니다.</p>
+    </div>
+
+    <p class="eternal__outro reveal">그 해는 끝나지 않았다. 누군가는 그 해를 써야 한다.</p>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VIDEO — GAMEPLAY SHORTS -->
 <section class="video-section section" id="gameplay">
   <div class="container" style="text-align: center;">
-    <span class="tag reveal">// 게임플레이 영상</span>
+    <span class="tag reveal">// 게임플레이 쇼츠</span>
     <h2 class="section-title reveal reveal-delay-1">직접 확인해 보세요</h2>
-    <p class="section-body reveal reveal-delay-2" style="margin: 0 auto; max-width: 540px;">
-      턴제 전투, 전리품 선택, 신전 희생, 그리고 수호자 보스전.
-    </p>
-    <div class="video-container reveal reveal-delay-3">
-      <iframe
-        src="https://www.youtube.com/embed/ds7vGttNuqQ?rel=0&modestbranding=1&playsinline=1"
-        title="LootShrine Gameplay Trailer"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+    <p class="section-body reveal reveal-delay-2" style="margin: 0 auto; max-width: 560px;">게임에서 직접 녹화한 실제 플레이. 쇼츠를 고르면 바로 여기서 재생됩니다.</p>
+    <div class="shorts reveal reveal-delay-3">
+      <div class="shorts__stage">
+        <div class="shorts__player" id="shortsPlayer">
+          <button class="shorts__poster" type="button" aria-label="재생: 40초 만에 1층부터 100층까지">
+            <img src="../shorts/adv2_the_climb.jpg" alt="" width="540" height="960" decoding="async">
+            <span class="video-play-btn"></span>
+          </button>
+        </div>
+        <p class="shorts__now" id="shortsNow">40초 만에 1층부터 100층까지</p>
+      </div>
+      <div class="shorts__side">
+        <div class="shorts__filters" role="tablist">
+          <button class="shorts__filter active" type="button" role="tab" aria-selected="true" data-filter="all">전체</button>
+          <button class="shorts__filter" type="button" role="tab" aria-selected="false" data-filter="adventure">모험</button>
+          <button class="shorts__filter" type="button" role="tab" aria-selected="false" data-filter="kalzania">칼자니아</button>
+          <button class="shorts__filter" type="button" role="tab" aria-selected="false" data-filter="features">기능</button>
+        </div>
+        <div class="shorts__grid" id="shortsGrid">
+          <!-- To add a Short: copy one button below, set data-yt to the id in
+               youtube.com/shorts/<id>, data-cat (adventure / kalzania / features),
+               the title in data-title and the caption, and add a 540x960 poster
+               to /shorts/. Without a poster the YouTube thumbnail is used. -->
+          <button class="shorts__item active" type="button" aria-pressed="true" data-yt="IpvV3IVC_fE" data-cat="adventure" data-title="40초 만에 1층부터 100층까지">
+            <img src="../shorts/adv2_the_climb.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/IpvV3IVC_fE/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">모험</span>40초 만에 1층부터 100층까지</span>
+          </button>
+          <button class="shorts__item" type="button" aria-pressed="false" data-yt="YSeIzVAYpEA" data-cat="adventure" data-title="보스 10종 전부">
+            <img src="../shorts/adv1_ten_bosses.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/YSeIzVAYpEA/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">모험</span>보스 10종 전부</span>
+          </button>
+          <button class="shorts__item" type="button" aria-pressed="false" data-yt="FhCQALgFd-w" data-cat="kalzania" data-title="칼자니아의 10개 지역">
+            <img src="../shorts/kz1_ten_regions.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/FhCQALgFd-w/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">칼자니아</span>칼자니아의 10개 지역</span>
+          </button>
+          <button class="shorts__item" type="button" aria-pressed="false" data-yt="-X6DEjBPaho" data-cat="kalzania" data-title="50층, 코르베인 왕">
+            <img src="../shorts/kz2_king_corvain.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/-X6DEjBPaho/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">칼자니아</span>50층, 코르베인 왕</span>
+          </button>
+          <button class="shorts__item" type="button" aria-pressed="false" data-yt="u3lFgTaAjTg" data-cat="kalzania" data-title="칼자니아 보스의 전리품">
+            <img src="../shorts/kz3_boss_loot_camp.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/u3lFgTaAjTg/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">칼자니아</span>칼자니아 보스의 전리품</span>
+          </button>
+          <button class="shorts__item" type="button" aria-pressed="false" data-yt="xVtSSLjuYc0" data-cat="features" data-title="보스 전리품에서 완성 빌드까지">
+            <img src="../shorts/short2_boss_loot_to_build.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/xVtSSLjuYc0/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">기능</span>보스 전리품에서 완성 빌드까지</span>
+          </button>
+          <button class="shorts__item" type="button" aria-pressed="false" data-yt="0M5x0CKv9Tw" data-cat="features" data-title="HP 1. 에코가 대신 맞았다">
+            <img src="../shorts/short1_echo_last_stand.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/0M5x0CKv9Tw/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">기능</span>HP 1. 에코가 대신 맞았다</span>
+          </button>
+          <button class="shorts__item" type="button" aria-pressed="false" data-yt="ROlRSQcb5Q0" data-cat="features" data-title="이제 아이패드에 맞춰 제작">
+            <img src="../shorts/short3_now_on_ipad.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" onerror="this.src='https://i.ytimg.com/vi/ROlRSQcb5Q0/hqdefault.jpg'">
+            <span class="shorts__item-cap"><span class="shorts__item-tag">기능</span>이제 아이패드에 맞춰 제작</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <div class="divider"></div>
 
@@ -2397,10 +2969,10 @@ body::after {
       </div>
       <div class="feature-tile reveal reveal-delay-1">
         <h3 class="feature-tile__title">아이템 병합</h3>
-        <p class="feature-tile__desc">같은 등급 아이템 두 개를 병합해 상위 등급을 만드세요. 일반부터 고급, 희귀, 영웅, 전설, 신화, 코스믹까지. 신성·저주·세트 아이템만 병합할 수 없습니다.</p>
+        <p class="feature-tile__desc">같은 등급 아이템 두 개를 병합해 상위 등급을 만드세요. 일반부터 고급, 희귀, 영웅, 전설, 신화, 코스믹, 천상까지. 신성·저주·세트 아이템만 병합할 수 없습니다.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-2">
-        <h3 class="feature-tile__title">90+ ACHIEVEMENTS</h3>
+        <h3 class="feature-tile__title">160+ 업적</h3>
         <p class="feature-tile__desc">진행, 전투, 수집, 숨겨진 이정표를 아우르는 업적과 완전한 Game Center 연동.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-3">
@@ -2408,8 +2980,16 @@ body::after {
         <p class="feature-tile__desc">공유 가능한 런 코드로 친구에게 도전하세요. 고스트 런과 경쟁하며 빌드를 정면으로 비교합니다. 승자는 메타 진행용 보너스 영혼을 얻습니다.</p>
       </div>
       <div class="feature-tile reveal reveal-delay-4">
-        <h3 class="feature-tile__title">73+ LEADERBOARDS</h3>
+        <h3 class="feature-tile__title">73+ 리더보드</h3>
         <p class="feature-tile__desc">글로벌 및 클래스별 Game Center 리더보드. 최고 층, 최다 처치, 최속 클리어 등을 두고 경쟁하세요.</p>
+      </div>
+      <div class="feature-tile reveal reveal-delay-5">
+        <h3 class="feature-tile__title">에코</h3>
+        <p class="feature-tile__desc">영원한 등반에서 다른 플레이어의 영웅이 곁에서 함께 오릅니다 &mdash; 쓰러진 자들의 전당, 친구의 빌드 코드, 저장한 빌드에서 고를 수 있습니다. 런마다 한 번, 죽음에 이르는 일격을 대신 받아 줍니다.</p>
+      </div>
+      <div class="feature-tile reveal reveal-delay-6">
+        <h3 class="feature-tile__title">아이폰 &amp; 아이패드</h3>
+        <p class="feature-tile__desc">모든 화면에 세로와 가로 모드의 아이패드 전용 레이아웃이 있습니다. 한 번의 구매로 두 기기 모두에서 플레이하고, iCloud가 저장 데이터를 동기화합니다.</p>
       </div>
     </div>
   </div>
@@ -2429,6 +3009,7 @@ body::after {
       초상화와 프레임을 통해 1인 개발자를 후원할 수 있습니다 &mdash; 게임플레이는 절대 아닙니다.
       구독 없음, 랜덤 박스 없음, 에너지 타이머 없음, 광고 없음, 페이투윈 없음.
     </p>
+    <p class="section-body reveal reveal-delay-2" style="margin: 16px auto 0; max-width: 560px;"><strong style="color: var(--gold);">칼자니아 확장팩</strong>은 별도의 선택 구매입니다 &mdash; 이미 가진 게임에 거는 결제가 아니라, 새로운 캠페인입니다.</p>
     <div class="no-iap__pills reveal reveal-delay-3">
       <div class="pill"><span class="pill-check">&#10003;</span> 10개 층 무료</div>
       <div class="pill"><span class="pill-check">&#10003;</span> 일회성 잠금 해제</div>
@@ -2465,18 +3046,21 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">무료 10개 층에는 무엇이 포함되나요?</summary>
         <p class="faq__a">
-          완전한 첫 챕터: 나이트 클래스, 전투와 신전 시스템 전체, 상인 그림왈드,
-          아이템 수집과 제작, 여러분의 언어로 된 전체 UI, 그리고 10층 문지기 보스전까지.
+          완전한 첫 챕터: 기사와 도적 클래스, 전투와 신전 시스템 전체, 상인 그림왈드, 아이템 수집과 제작, 여러분의 언어로 된 전체 UI, 그리고 10층 문지기 보스전까지.
         </p>
       </details>
 
       <details class="faq__item">
         <summary class="faq__q">광고나 인앱 구매가 있나요?</summary>
         <p class="faq__a">
-          광고는 절대 없습니다. 주된 인앱 구매는 11&ndash;120층을 여는 일회성 구매입니다.
-          <strong>선택적인 코스메틱 전용 서포터 팩</strong>도 있습니다 &mdash; 게임플레이, 스탯,
-          밸런스에 절대 영향을 주지 않는 서포터 초상화와 프레임입니다. 초상화와 프레임의 대다수는
-          여전히 업적과 해금을 통해 무료로 얻을 수 있습니다. 구독도, 랜덤 박스도, 페이투윈도 없습니다.
+          광고는 절대 없습니다. 주된 인앱 구매는 11&ndash;120층을 여는 일회성 구매입니다. <strong>칼자니아: 쓰이지 않은 해</strong>는 선택형 유료 확장팩으로, 새 영웅 4명이 등장하는 별도의 50층 캠페인이며 정식판이 필요합니다. <strong>선택적인 코스메틱 전용 서포터 팩</strong>도 있습니다 &mdash; 게임플레이, 스탯, 밸런스에 절대 영향을 주지 않는 서포터 초상화와 프레임입니다. 초상화와 프레임의 대다수는 여전히 업적과 해금을 통해 무료로 얻을 수 있습니다. 구독도, 랜덤 박스도, 페이투윈도 없습니다.
+        </p>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">칼자니아는 무엇인가요?</summary>
+        <p class="faq__a">
+          <strong>칼자니아: 쓰이지 않은 해</strong>는 LootShrine의 첫 확장팩입니다. 10개 지역에 걸친 별도의 50층 캠페인으로, 새로운 적 110종, 보스 10종, 봉인 6종, 그리고 새 영웅 4명 &mdash; 챈들러, 석공, 구휼관, 소환관이 등장합니다. 유료 추가 콘텐츠이며 정식판이 필요합니다. 앱의 메인 메뉴에서 <strong>추가 콘텐츠</strong>를 여세요.
         </p>
       </details>
 
@@ -2499,7 +3083,7 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">어떤 기기와 iOS 버전을 지원하나요?</summary>
         <p class="faq__a">
-          LootShrine은 iOS 17 이상의 아이폰과 아이패드에서 실행됩니다.
+          LootShrine은 iOS 17 이상의 아이폰과 아이패드에서 실행됩니다. 모든 화면에 세로와 가로 모드의 아이패드 전용 레이아웃이 있습니다.
         </p>
       </details>
 
@@ -2514,9 +3098,7 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">LOOTSHRINE은 어떤 언어를 지원하나요?</summary>
         <p class="faq__a">
-          13개 언어: 영어, 프랑스어, 독일어, 이탈리아어, 일본어, 한국어, 폴란드어, 포르투갈어(브라질),
-          러시아어, 중국어 간체, 스페인어, 중국어 번체, 튀르키예어. 게임은 기기 언어를 자동으로 사용하며
-          인게임에서 변경할 수 있습니다.
+          17개 언어: 영어, 프랑스어, 독일어, 인도네시아어, 이탈리아어, 일본어, 한국어, 폴란드어, 포르투갈어(브라질), 러시아어, 중국어 간체, 스페인어, 태국어, 중국어 번체, 튀르키예어, 우크라이나어, 베트남어. 게임은 기기 언어를 자동으로 사용하며 인게임에서 변경할 수 있습니다.
         </p>
       </details>
 
@@ -2755,12 +3337,18 @@ document.addEventListener('keydown', function(e) {
   var current = 0;
   var timer;
   var hovering = false;
+  // Intro art loads on demand: 20 full-size slides would be ~7 MB up front.
+  function ensure(i) {
+    var im = slides[(i + total) % total].querySelector('img[data-src]');
+    if (im) { im.src = im.getAttribute('data-src'); im.removeAttribute('data-src'); }
+  }
 
   function goTo(idx) {
     slides[current].classList.remove('active');
     labels[current].classList.remove('active');
     rows[current].classList.remove('active');
     current = (idx + total) % total;
+    ensure(current); ensure(current + 1);
     slides[current].classList.add('active');
     labels[current].classList.add('active');
     rows[current].classList.add('active');
@@ -2783,6 +3371,64 @@ document.addEventListener('keydown', function(e) {
     });
   });
   resetTimer();
+})();
+
+
+/* ── Gameplay Shorts: a poster first, YouTube only when asked ── */
+(function() {
+  var player = document.getElementById('shortsPlayer');
+  if (!player) return;
+  var items = document.querySelectorAll('.shorts__item');
+  var filters = document.querySelectorAll('.shorts__filter');
+  var nowEl = document.getElementById('shortsNow');
+
+  function embed(item) {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + item.getAttribute('data-yt') +
+            '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    f.title = item.getAttribute('data-title');
+    f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    f.setAttribute('allowfullscreen', '');
+    player.innerHTML = '';
+    player.appendChild(f);
+  }
+  function select(item) {
+    items.forEach(function(i) {
+      var on = i === item;
+      i.classList.toggle('active', on);
+      i.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (nowEl) nowEl.textContent = item.getAttribute('data-title');
+  }
+
+  var poster = player.querySelector('.shorts__poster');
+  if (poster) poster.addEventListener('click', function() {
+    embed(document.querySelector('.shorts__item.active') || items[0]);
+  });
+  items.forEach(function(item) {
+    item.addEventListener('click', function() {
+      select(item);
+      embed(item);
+      var r = player.getBoundingClientRect();
+      if (r.top < 64 || r.bottom > window.innerHeight) {
+        player.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.getAttribute('data-filter');
+      filters.forEach(function(b) {
+        var on = b === btn;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      items.forEach(function(i) {
+        i.hidden = !(cat === 'all' || i.getAttribute('data-cat') === cat);
+      });
+    });
+  });
 })();
 
 </script>
