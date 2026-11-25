@@ -30,7 +30,9 @@
     if (match) {
       // Rewrite to /<section>/?code=CODE (that section's index.html handles it)
       window.location.replace('/' + match[1] + '/?code=' + match[2]);
-    } else if (/^\/(addons|add-ons|dlc)$/.test(p)) {
+    } else if (/^\/(addons|add-ons|dlc|morrowmarch)$/.test(p)) {
+      window.location.replace('/#morrowmarch');
+    } else if (p === '/kalzania') {
       window.location.replace('/#kalzania');
     } else if (/^\/(heroes|character-select|roster)$/.test(p)) {
       window.location.replace('/#classes');

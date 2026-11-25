@@ -1628,6 +1628,118 @@ body::after {
   .kz__finale { aspect-ratio: 4/3; }
 }
 
+/* Morrowmarch (DLC 2) — 2026-11 */
+.mm {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(132,204,22,0.08), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(56,189,248,0.07), transparent 70%),
+    var(--bg-dark);
+}
+.mm .eternal__image { aspect-ratio: 2/3; border-color: rgba(255,215,0,0.3); }
+.mm .eternal__image img { object-position: center 40%; }
+.mm .eternal__image-tag { background: var(--gold); color: var(--bg-void); }
+.mm .eternal__chunk { border-left-color: rgba(255,215,0,0.4); }
+.mm__motion {
+  display: grid;
+  grid-template-columns: 1.148fr 1.517fr;
+  gap: 10px;
+  max-width: 1100px;
+  margin: 64px auto 0;
+}
+.mm__clip { margin: 0; background: var(--bg-card); border: 2px solid rgba(255,215,0,0.22); }
+.mm__clip video { display: block; width: 100%; height: auto; background: #000; }
+.mm__clip--camp video { aspect-ratio: 960/836; }
+.mm__clip--battle video { aspect-ratio: 800/528; }
+.mm__clip figcaption, .mm__screen figcaption {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+  color: var(--text-hi);
+  padding: 10px 8px;
+  text-align: center;
+}
+.mm__note {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-mid);
+  text-align: center;
+  max-width: 640px;
+  margin: -10px auto 28px;
+  line-height: 1.6;
+}
+.mm__regions {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 22px 12px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.mm__region { margin: 0; text-align: center; }
+.mm__island { position: relative; }
+.mm__island img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 560/316;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,0.55));
+  transition: transform 0.4s ease;
+}
+.mm__region:hover .mm__island img { transform: translateY(-4px) scale(1.04); }
+.mm__q {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  color: var(--purple);
+  text-shadow: 0 0 18px rgba(192,132,252,0.7);
+}
+.mm__region figcaption { padding: 8px 2px 0; }
+.mm__region .kz__rname { font-size: 7px; }
+.mm__region--hidden .kz__rname { color: var(--purple); }
+.mm__rlore { display: block; font-family: var(--font-body); font-size: 11.5px; color: var(--text-mid); line-height: 1.45; margin-top: 5px; }
+.mm__finale { margin-top: 56px; aspect-ratio: 16/9; }
+.mm__finale img { object-position: center 30%; }
+.mm__screens {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.mm__screen { margin: 0; background: var(--bg-card); border: 2px solid rgba(255,215,0,0.14); }
+.mm__screen img { display: block; width: 100%; aspect-ratio: 660/1359; object-fit: cover; }
+.mm__heroes { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 820px; }
+.mm__hero--hidden { cursor: default; border-style: dashed; }
+.mm__hero--hidden:hover { transform: none; background: var(--bg-card); border-color: rgba(192,132,252,0.22); }
+.mm__hidden-portrait {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 26px;
+  color: var(--purple);
+  border: 2px dashed rgba(192,132,252,0.45);
+  background: rgba(192,132,252,0.06);
+}
+@media (max-width: 900px) {
+  .mm__regions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .mm__screens { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .mm__motion { grid-template-columns: 1fr; }
+  .mm__regions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mm__screens { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+  .mm__screen { flex: 0 0 62%; scroll-snap-align: center; }
+  .mm__heroes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mm__finale { aspect-ratio: 4/3; }
+}
+
 /* Gameplay Shorts: one player, a playlist beside it */
 .shorts {
   display: grid;
@@ -1752,7 +1864,7 @@ body::after {
       "@id": "https://lootshrine.com/#game",
       "name": "LootShrine",
       "alternateName": "LootShrine: Slay. Loot. Sacrifice.",
-      "description": "A free-to-try pixel art roguelite RPG for iPhone and iPad. Ascend through 120 floors of dark fantasy with twenty heroes. Equip, absorb, or sacrifice loot at the shrine for permanent power.",
+      "description": "A free-to-try pixel art roguelite RPG for iPhone and iPad. Ascend through 120 floors of dark fantasy with 27 heroes. Equip, absorb, or sacrifice loot at the shrine for permanent power.",
       "url": "https://lootshrine.com/",
       "image": "https://lootshrine.com/main_menu.jpg",
       "genre": [
@@ -1863,7 +1975,7 @@ body::after {
           "name": "광고나 인앱 구매가 있나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "광고는 절대 없습니다. 주된 인앱 구매는 11–120층을 여는 일회성 구매입니다. 칼자니아: 쓰이지 않은 해는 선택형 유료 확장팩으로, 새 영웅 4명이 등장하는 별도의 50층 캠페인이며 정식판이 필요합니다. 선택적인 코스메틱 전용 서포터 팩도 있습니다 — 게임플레이, 스탯, 밸런스에 절대 영향을 주지 않는 서포터 초상화와 프레임입니다. 초상화와 프레임의 대다수는 여전히 업적과 해금을 통해 무료로 얻을 수 있습니다. 구독도, 랜덤 박스도, 페이투윈도 없습니다."
+            "text": "광고는 절대 없습니다. 주된 인앱 구매는 11–120층을 여는 일회성 구매입니다. 칼자니아: 쓰이지 않은 해는 선택형 유료 확장팩으로, 새 영웅 4명이 등장하는 별도의 50층 캠페인이며 정식판이 필요합니다. 두 번째 확장팩 모로우마치는 새 영웅 6명과 함께 17개 지역을 지나는 100층의 여정이며, 역시 정식판이 필요합니다. 선택적인 코스메틱 전용 서포터 팩도 있습니다 — 게임플레이, 스탯, 밸런스에 절대 영향을 주지 않는 서포터 초상화와 프레임입니다. 초상화와 프레임의 대다수는 여전히 업적과 해금을 통해 무료로 얻을 수 있습니다. 구독도, 랜덤 박스도, 페이투윈도 없습니다."
           }
         },
         {
@@ -1872,6 +1984,14 @@ body::after {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "칼자니아: 쓰이지 않은 해는 LootShrine의 첫 확장팩입니다. 10개 지역에 걸친 별도의 50층 캠페인으로, 새로운 적 110종, 보스 10종, 봉인 6종, 그리고 새 영웅 4명 — 챈들러, 석공, 구휼관, 소환관이 등장합니다. 유료 추가 콘텐츠이며 정식판이 필요합니다. 앱의 메인 메뉴에서 추가 콘텐츠를 여세요."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "모로우마치는 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "모로우마치는 LootShrine의 두 번째 확장팩입니다. 걷는 거수 무리의 등 위에서 살아가는 하나의 온전한 세계로, 17개 지역을 지나는 100층의 여정입니다. 지역 주인 17체를 포함한 새로운 적 238종, 길 위의 만남 37가지, 4가지 엔딩, 그리고 새 영웅 6명 — 바람 선견자, 틈새살이, 고철꾼, 늪의 각성자와 숨겨진 영웅 2명이 등장합니다. 유료 추가 콘텐츠이며 정식판이 필요합니다. 앱의 메인 메뉴에서 추가 콘텐츠를 여세요."
           }
         },
         {
@@ -1950,7 +2070,7 @@ body::after {
     </a>
     <ul class="nav__links">
       <li><a href="#about">개요</a></li>
-      <li><a href="#kalzania">칼자니아</a></li>
+      <li><a href="#morrowmarch">확장팩</a></li>
       <li><a href="/codex/">코덱스</a></li>
       <li><a href="#gameplay">게임플레이</a></li>
       <li><a href="#features">특징</a></li>
@@ -1985,7 +2105,7 @@ body::after {
   </div>
   <div class="nav__mobile" id="navMobile">
     <a href="#about">개요</a>
-    <a href="#kalzania">칼자니아</a>
+    <a href="#morrowmarch">확장팩</a>
     <a href="/codex/">코덱스</a>
     <a href="#gameplay">게임플레이</a>
     <a href="#features">특징</a>
@@ -2030,7 +2150,7 @@ body::after {
       </a>
       <a href="#gameplay" class="btn-hero btn-hero--secondary">게임플레이 보기</a>
     </div>
-    <a href="#kalzania" class="hero__new"><b>NEW</b> 칼자니아: 쓰이지 않은 해 &mdash; 50층, 영웅 4명</a>
+    <a href="#morrowmarch" class="hero__new"><b>NEW</b> 모로우마치 &mdash; 걷는 거수들의 등 위에 펼쳐진 세계</a>
     <p class="hero__trust">무료 다운로드 &middot; 아이폰 &amp; 아이패드 &middot; iOS 17+ &middot; 오프라인 플레이 &middot; 광고 없음</p>
   </div>
 
@@ -2040,15 +2160,15 @@ body::after {
       <span class="hero__stat-label">층</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">200+</span>
+      <span class="hero__stat-val">600+</span>
       <span class="hero__stat-label">적</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">20</span>
+      <span class="hero__stat-val">27</span>
       <span class="hero__stat-label">영웅</span>
     </div>
     <div class="hero__stat">
-      <span class="hero__stat-val">160+</span>
+      <span class="hero__stat-val">250+</span>
       <span class="hero__stat-label">업적</span>
     </div>
     <div class="hero__stat">
@@ -2104,14 +2224,15 @@ body::after {
         <div class="about__visual">
           <div class="about__visual-canvas">
             <div class="about__visual-track" id="aboutBgTrack">
-              <div class="about__visual-slide active"><img src="../scr_gameplay.jpg" alt="LootShrine turn-based combat — pixel art hero facing dark fantasy enemies" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_classes.jpg" alt="LootShrine 영웅 선택 화면 — 기사부터 말소자까지 영웅 20명" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_skills.jpg" alt="LootShrine skill tree — class-specific abilities and synergies" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_item1.jpg" alt="LootShrine inventory and item rarities — equip, absorb, or sacrifice loot" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_item2.jpg" alt="LootShrine equipment screen — pixel art item icons and stat comparison" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_leaderboards.jpg" alt="LootShrine Game Center leaderboards — global and per-class rankings" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_metaupgrades.jpg" alt="LootShrine shrine meta upgrades — permanent progression between runs" onerror="this.parentElement.style.display='none'"></div>
-              <div class="about__visual-slide"><img src="../scr_codex_enemies.jpg" alt="LootShrine codex of enemies — bestiary unlocked through play" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide active"><img src="../screens/ko/01_battle.jpg" alt="LootShrine turn-based battle — a hero against a row of pixel art enemies" loading="eager" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/02_heroes.jpg" alt="LootShrine hero select — every hero with a signature item, skill and passive" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/03_bosses.jpg" alt="LootShrine boss fight — a guardian boss raising its shield" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/04_soulforge.jpg" alt="LootShrine Soul Forge — permanent upgrades between runs" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/05_camp.jpg" alt="LootShrine camp — the shrine altar, forge, armory and merchant" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/07_codex.jpg" alt="LootShrine Codex — a bestiary that fills in as you play" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/08_achievements.jpg" alt="LootShrine achievements — goals with point rewards" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/09_word.jpg" alt="LootShrine Word Artifact — a permanent Word composed from fragments" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+              <div class="about__visual-slide"><img src="../screens/ko/10_rivals.jpg" alt="LootShrine rivals — the Hall of the Fallen, friend challenges and saved builds" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>
             </div>
             <div class="about__visual-fade"></div>
           </div>
@@ -2199,7 +2320,7 @@ body::after {
       <div class="classes__left">
         <span class="tag reveal">// 캐릭터 클래스</span>
         <h2 class="section-title reveal reveal-delay-1">당신의<br>영웅을 선택하세요</h2>
-        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">스무 명의 영웅. 열여섯 명은 탑을 오르며 해금되고 &mdash; 마지막 두 명은 100층과 110층에서 기다립니다 &mdash; 네 명은 칼자니아 확장팩과 함께 합류합니다.</p>
+        <p class="section-body reveal reveal-delay-2" style="max-width: 420px;">스물일곱 명의 영웅. 열여섯 명은 탑을 오르며 해금되고 &mdash; 마지막 두 명은 100층과 110층에서 기다립니다 &mdash; 또 한 명은 120층을 정복한 이를 기다립니다. 네 명은 칼자니아 확장팩과 함께, 여섯 명은 모로우마치와 함께 합류하며, 그중 두 명은 숨겨져 있습니다.</p>
         <div class="classes__list">
           <p class="classes__group">기본 게임 &middot; 영웅 16명</p>
           <div class="class-row active reveal reveal-delay-1" data-class-idx="0"
@@ -2443,6 +2564,55 @@ body::after {
             </div>
             <span class="class-row__badge class-row__badge--dlc">칼자니아</span>
           </div>
+          <p class="classes__group classes__group--dlc">모로우마치 확장팩 &middot; 영웅 6명, 숨겨진 영웅 2명</p>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="20"
+               onclick="openClassModal('../windseer_portrait.jpg','../intro_windseer.jpg','바람 선견자','엄니 씨족의 바람 선견자','“바람이 지금이라고 한다. 내가 너라면 귀를 기울이겠다.”','모로우마치 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../windseer_portrait.jpg" alt="바람 선견자" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F32C;&#xFE0F;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">바람 선견자</p>
+              <p class="class-row__tagline">매 턴 바람의 부름에 응합니다. 돌격 한 번에 모인 바람을 전부 쏟습니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">모로우마치</span>
+          </div>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="21"
+               onclick="openClassModal('../crackdweller_portrait.jpg','../intro_crackdweller.jpg','틈새살이','틈새살이','“가져간 거 아니야. 맡아 두는 것뿐이야. 영원히.”','모로우마치 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../crackdweller_portrait.jpg" alt="틈새살이" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F41A;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">틈새살이</p>
+              <p class="class-row__tagline">적의 축복을 훔쳐 걸칩니다. 구르기로 모든 적을 한꺼번에 휩쓸고 지나갑니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">모로우마치</span>
+          </div>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="22"
+               onclick="openClassModal('../scrapper_portrait.jpg','../intro_scrapper.jpg','고철꾼','짤랑골의 고철꾼','“하나만 더. 언제나 하나가 더 있다고.”','모로우마치 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../scrapper_portrait.jpg" alt="고철꾼" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F527;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">고철꾼</p>
+              <p class="class-row__tagline">고철로 장치를 만들고, 상자마다 선택이 하나 더 늘어납니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">모로우마치</span>
+          </div>
+          <div class="class-row class-row--dlc reveal reveal-delay-14" data-class-idx="23"
+               onclick="openClassModal('../mirewaker_portrait.jpg','../intro_mirewaker.jpg','늪의 각성자','늪의 각성자','“해를 기다려라. 그다음에 달려라.”','모로우마치 확장팩 · 정식판 필요')">
+            <div class="class-row__portrait">
+              <img src="../mirewaker_portrait.jpg" alt="늪의 각성자" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="class-row__portrait-placeholder" style="display:none">&#x1F98E;</div>
+            </div>
+            <div class="class-row__info">
+              <p class="class-row__name">늪의 각성자</p>
+              <p class="class-row__tagline">차가울 땐 쉽게 다치지 않고, 따뜻할 땐 매 턴 한 번 더 칩니다.</p>
+            </div>
+            <span class="class-row__badge class-row__badge--dlc">모로우마치</span>
+          </div>
         </div>
       </div>
       <div class="reveal reveal-delay-2" style="height:100%">
@@ -2467,6 +2637,10 @@ body::after {
           <div class="classes__visual-slide"><img data-src="../intro_mason.jpg" alt="Mason" decoding="async" onerror="this.src='../mason_portrait.jpg'"></div>
           <div class="classes__visual-slide"><img data-src="../intro_almoner.jpg" alt="Almoner" decoding="async" onerror="this.src='../almoner_portrait.jpg'"></div>
           <div class="classes__visual-slide"><img data-src="../intro_apparitor.jpg" alt="Apparitor" decoding="async" onerror="this.src='../apparitor_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_windseer.jpg" alt="바람 선견자" decoding="async" onerror="this.src='../windseer_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_crackdweller.jpg" alt="틈새살이" decoding="async" onerror="this.src='../crackdweller_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_scrapper.jpg" alt="고철꾼" decoding="async" onerror="this.src='../scrapper_portrait.jpg'"></div>
+          <div class="classes__visual-slide"><img data-src="../intro_mirewaker.jpg" alt="늪의 각성자" decoding="async" onerror="this.src='../mirewaker_portrait.jpg'"></div>
           <div class="classes__visual-fade"></div>
           <div class="classes__visual-label active" data-label-idx="0"><p class="classes__visual-label__name">기사</p><p class="classes__visual-label__title">철의 기사단 최후의 일원</p></div>
           <div class="classes__visual-label" data-label-idx="1"><p class="classes__visual-label__name">도적</p><p class="classes__visual-label__title">빚 수금원</p></div>
@@ -2488,6 +2662,10 @@ body::after {
           <div class="classes__visual-label" data-label-idx="17"><p class="classes__visual-label__name">석공</p><p class="classes__visual-label__title">석공 조합의 장인</p></div>
           <div class="classes__visual-label" data-label-idx="18"><p class="classes__visual-label__name">구휼관</p><p class="classes__visual-label__title">대성당 불침번의 구휼관</p></div>
           <div class="classes__visual-label" data-label-idx="19"><p class="classes__visual-label__name">소환관</p><p class="classes__visual-label__title">긴 회당의 소환관</p></div>
+          <div class="classes__visual-label" data-label-idx="20"><p class="classes__visual-label__name">바람 선견자</p><p class="classes__visual-label__title">엄니 씨족의 바람 선견자</p></div>
+          <div class="classes__visual-label" data-label-idx="21"><p class="classes__visual-label__name">틈새살이</p><p class="classes__visual-label__title">틈새살이</p></div>
+          <div class="classes__visual-label" data-label-idx="22"><p class="classes__visual-label__name">고철꾼</p><p class="classes__visual-label__title">짤랑골의 고철꾼</p></div>
+          <div class="classes__visual-label" data-label-idx="23"><p class="classes__visual-label__name">늪의 각성자</p><p class="classes__visual-label__title">늪의 각성자</p></div>
         </div>
       </div>
     </div>
@@ -2738,6 +2916,207 @@ body::after {
 <div class="divider"></div>
 
 <!-- KALZANIA (DLC 1) -->
+<section class="eternal kz mm section" id="morrowmarch">
+  <div class="container">
+
+    <div class="eternal__hero">
+      <span class="tag reveal">// 확장팩 &middot; DLC 2</span>
+      <h2 class="section-title reveal reveal-delay-1">모로우마치</h2>
+      <p class="eternal__lead reveal reveal-delay-2">탑 너머에 모로우마치가 있습니다. 걷는 거수 무리의 등 위에서 살아가는 하나의 온전한 세계. <em>17개 지역을 지나는 100층의 여정과 새 영웅 6명</em> &mdash; 두 번째 유료 확장팩입니다. 정식판이 필요합니다.</p>
+    </div>
+
+    <div class="eternal__grid">
+      <div class="eternal__image kz__image reveal reveal-delay-2">
+        <img src="../morrowmarch/mm_key.jpg" alt="모로우마치: 탑의 문 앞에 선 여섯 영웅이 거수들이 걷는 풀의 바다를 바라본다" loading="lazy" decoding="async"
+             onerror="this.parentElement.style.display='none'">
+        <div class="eternal__image-vignette"></div>
+        <div class="eternal__image-tag">100층 &middot; 17개 지역</div>
+      </div>
+
+      <div class="eternal__content reveal reveal-delay-3">
+        <div class="eternal__chunk">
+          <h3>걷는 세계</h3>
+          <p>마을과 사원, 도시 전체가 거수의 등에 실려 움직이고, 모든 전투의 발밑 땅이 살아 있습니다. <strong>네 라운드마다 발밑의 거수가 한 걸음을 내딛습니다</strong>. 방어해서 버티지 못하면 비틀거립니다.</p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>길은 당신이 고른다</h3>
+          <p><strong>지도 탁자</strong>에서 무리가 다음에 향할 곳을 고릅니다. 한 번의 여정은 17개 지역 중 10곳을 지납니다. 전투 사이 길 위에서는 37가지 만남이 기다리고, 샛길은 저마다의 수호자와 신성 아이템이 있는 장소로 이어지며, 당신의 선택이 <strong>4가지 엔딩</strong> 중 하나로 향하는 길을 바꿉니다.</p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>새로운 적 238종, 지역 주인 17체</h3>
+          <p>지역마다 고유한 적과 전장, 음악이 있습니다. 그 끝에는 자신만의 투기장과 필살기를 지닌 <strong>지역 주인</strong>이 기다립니다.</p>
+        </div>
+
+        <div class="eternal__chunk">
+          <h3>함께 떠도는 야영지</h3>
+          <p>길에서 만난 이들이 야영지에 합류하고, 지역마다 한 번씩 호의를 베풉니다. 말의 아티팩트의 새로운 부분인 <strong>후렴</strong>은 박자에 맞춰 울리고, 여정은 <strong>영혼 &times;3</strong>을 줍니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mm__motion">
+      <figure class="mm__clip mm__clip--camp reveal reveal-delay-1">
+        <video data-src="../morrowmarch/loop_camp_night.mp4" poster="../morrowmarch/loop_camp_night.jpg" muted loop playsinline preload="none" aria-label="밤의 야영지"></video>
+        <figcaption>밤의 야영지</figcaption>
+      </figure>
+      <figure class="mm__clip mm__clip--battle reveal reveal-delay-2">
+        <video data-src="../morrowmarch/loop_battle_day.mp4" poster="../morrowmarch/loop_battle_day.jpg" muted loop playsinline preload="none" aria-label="거수의 등 위에서 벌이는 전투"></video>
+        <figcaption>거수의 등 위에서 벌이는 전투</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="kz__subhead reveal">17개 지역, 10단계</h3>
+    <p class="mm__note reveal">한 번의 여정은 그중 10곳을 한 단계씩 지납니다. 세 곳은 이야기가 길을 찾을 때까지 숨겨져 있습니다.</p>
+    <div class="mm__regions">
+      <figure class="mm__region reveal reveal-delay-1">
+        <div class="mm__island"><img src="../morrowmarch/regions/01_saddle.webp" alt="안장" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">I</span><span class="kz__rname">안장</span><span class="kz__floors">1&ndash;10층</span><span class="mm__rlore">헴 할멈의 등 위, 이끼 지붕과 밧줄 다리. 할멈이 걸음을 뗄 땐 꽉 붙잡아라.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-2">
+        <div class="mm__island"><img src="../morrowmarch/regions/02_longgrass.webp" alt="긴 풀숲" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">II</span><span class="kz__rname">긴 풀숲</span><span class="kz__floors">11&ndash;20층</span><span class="mm__rlore">탑보다 높은 풀. 이곳의 사냥꾼은 보기 전에 먼저 귀를 기울인다.</span></figcaption>
+      </figure>
+      <figure class="mm__region mm__region--hidden reveal reveal-delay-3">
+        <div class="mm__island"><img src="../morrowmarch/regions/hidden_02.webp" alt="숨겨진 지역" loading="lazy" decoding="async"><span class="mm__q" aria-hidden="true">?</span></div>
+        <figcaption><span class="kz__roman">II</span><span class="kz__rname">???</span><span class="kz__floors">11&ndash;20층</span><span class="mm__rlore">숨겨진 지역. 길은 이야기가 알고 있습니다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-4">
+        <div class="mm__island"><img src="../morrowmarch/regions/03_bonechoir.webp" alt="뼈의 성가대" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">III</span><span class="kz__rname">뼈의 성가대</span><span class="kz__floors">21&ndash;30층</span><span class="mm__rlore">거수들이 영영 눕는 곳. 바람은 지금도 그 갈비뼈 사이로 노래한다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-5">
+        <div class="mm__island"><img src="../morrowmarch/regions/03_dustwake.webp" alt="흙먼지 자락" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">III</span><span class="kz__rname">흙먼지 자락</span><span class="kz__floors">21&ndash;30층</span><span class="mm__rlore">무리 뒤를 따르는 폭풍. 거수에게서 떨어진 것은 모두 이곳에 이른다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-1">
+        <div class="mm__island"><img src="../morrowmarch/regions/04_yokeworks.webp" alt="멍에 공장" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">IV</span><span class="kz__rname">멍에 공장</span><span class="kz__floors">31&ndash;40층</span><span class="mm__rlore">쇠 야영지와 사슬에 묶인 거수들. 몰이꾼들은 이곳에서 무리를 이끈다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-2">
+        <div class="mm__island"><img src="../morrowmarch/regions/05_saltglass.webp" alt="소금유리 평원" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">V</span><span class="kz__rname">소금유리 평원</span><span class="kz__floors">41&ndash;50층</span><span class="mm__rlore">하늘을 비추는 소금 평원. 무리는 밤에 건넌다. 당신도 그래야 한다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-3">
+        <div class="mm__island"><img src="../morrowmarch/regions/05_wateringmoon.webp" alt="물 마시는 달" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">V</span><span class="kz__rname">물 마시는 달</span><span class="kz__floors">41&ndash;50층</span><span class="mm__rlore">오래된 발자국에 고인 호수. 수상 가옥 마을과 낚싯줄이 둘레를 감싼다.</span></figcaption>
+      </figure>
+      <figure class="mm__region mm__region--hidden reveal reveal-delay-4">
+        <div class="mm__island"><img src="../morrowmarch/regions/hidden_05.webp" alt="숨겨진 지역" loading="lazy" decoding="async"><span class="mm__q" aria-hidden="true">?</span></div>
+        <figcaption><span class="kz__roman">V</span><span class="kz__rname">???</span><span class="kz__floors">41&ndash;50층</span><span class="mm__rlore">숨겨진 지역. 길은 이야기가 알고 있습니다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-5">
+        <div class="mm__island"><img src="../morrowmarch/regions/06_spanbridge.webp" alt="구름다리" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">VI</span><span class="kz__rname">구름다리</span><span class="kz__floors">51&ndash;60층</span><span class="mm__rlore">어깨를 맞대고 걷는 거수들 사이에 매단 밧줄 마을.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-1">
+        <div class="mm__island"><img src="../morrowmarch/regions/07_sinkfields.webp" alt="가라앉는 들판" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">VII</span><span class="kz__rname">가라앉는 들판</span><span class="kz__floors">61&ndash;70층</span><span class="mm__rlore">늙은 거수들이 가라앉은 늪. 그 등 위에 마을들이 서서 기다린다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-2">
+        <div class="mm__island"><img src="../morrowmarch/regions/07_waymarks.webp" alt="이정석" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">VII</span><span class="kz__rname">이정석</span><span class="kz__floors">61&ndash;70층</span><span class="mm__rlore">무리의 가장 오래된 큰길에 선 선돌. 그중 몇은 문을 기억한다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-3">
+        <div class="mm__island"><img src="../morrowmarch/regions/08_matriarch.webp" alt="여가장" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">VIII</span><span class="kz__rname">여가장</span><span class="kz__floors">71&ndash;80층</span><span class="mm__rlore">선두 거수의 어깨 위 신전 마을. 대언자들은 노래로 그녀에게 길을 알린다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-4">
+        <div class="mm__island"><img src="../morrowmarch/regions/09_nightpasture.webp" alt="밤의 목초지" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">IX</span><span class="kz__rname">밤의 목초지</span><span class="kz__floors">81&ndash;90층</span><span class="mm__rlore">별이 가득한 하늘 아래 무리가 잠드는 곳. 그 꿈에는 이빨이 있다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-5">
+        <div class="mm__island"><img src="../morrowmarch/regions/09_hornward.webp" alt="뿔녘 절벽" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">IX</span><span class="kz__rname">뿔녘 절벽</span><span class="kz__floors">81&ndash;90층</span><span class="mm__rlore">풀의 바다는 바위 벽에서 끝난다. 몰이꾼들은 이곳에서 병기를 만들었다.</span></figcaption>
+      </figure>
+      <figure class="mm__region mm__region--hidden reveal reveal-delay-1">
+        <div class="mm__island"><img src="../morrowmarch/regions/hidden_09.webp" alt="숨겨진 지역" loading="lazy" decoding="async"><span class="mm__q" aria-hidden="true">?</span></div>
+        <figcaption><span class="kz__roman">IX</span><span class="kz__rname">???</span><span class="kz__floors">81&ndash;90층</span><span class="mm__rlore">숨겨진 지역. 길은 이야기가 알고 있습니다.</span></figcaption>
+      </figure>
+      <figure class="mm__region reveal reveal-delay-2">
+        <div class="mm__island"><img src="../morrowmarch/regions/10_unwalked.webp" alt="미답의 땅" loading="lazy" decoding="async"></div>
+        <figcaption><span class="kz__roman">X</span><span class="kz__rname">미답의 땅</span><span class="kz__floors">91&ndash;100층</span><span class="mm__rlore">원 안의 흰 돌. 이곳에선 아무것도 자라지 않고, 아무것도 걷지 않는다.</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="kz__finale mm__finale reveal">
+      <img src="../morrowmarch/mm_masters.jpg" alt="풀의 바다 위에 선 모로우마치의 지역 주인 다섯과 그들과 마주한 영웅" loading="lazy" decoding="async">
+      <div class="kz__finale-text">
+        <p class="kz__finale-tag">모든 지역의 끝에서</p>
+        <p class="kz__finale-name">지역 주인 17체</p>
+        <p class="kz__finale-line">저마다 고유한 투기장과 필살기를 지녔습니다.</p>
+      </div>
+    </div>
+
+    <h3 class="kz__subhead reveal">게임 화면</h3>
+    <div class="mm__screens">
+      <figure class="mm__screen reveal reveal-delay-1"><img src="../morrowmarch/shot_camp_day.jpg" alt="야영지" loading="lazy" decoding="async"><figcaption>야영지</figcaption></figure>
+      <figure class="mm__screen reveal reveal-delay-2"><img src="../morrowmarch/shot_battle_day.jpg" alt="전투" loading="lazy" decoding="async"><figcaption>전투</figcaption></figure>
+      <figure class="mm__screen reveal reveal-delay-3"><img src="../morrowmarch/shot_map.jpg" alt="지도 탁자" loading="lazy" decoding="async"><figcaption>지도 탁자</figcaption></figure>
+      <figure class="mm__screen reveal reveal-delay-4"><img src="../morrowmarch/shot_battle_night.jpg" alt="밤의 전투" loading="lazy" decoding="async"><figcaption>밤의 전투</figcaption></figure>
+      <figure class="mm__screen reveal reveal-delay-5"><img src="../morrowmarch/shot_camp_night.jpg" alt="밤의 야영지" loading="lazy" decoding="async"><figcaption>밤의 야영지</figcaption></figure>
+    </div>
+
+    <h3 class="kz__subhead reveal">모로우마치의 영웅들</h3>
+    <div class="kz__heroes mm__heroes">
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../windseer_portrait.jpg','../intro_windseer.jpg','바람 선견자','엄니 씨족의 바람 선견자','“바람이 지금이라고 한다. 내가 너라면 귀를 기울이겠다.”','모로우마치 확장팩 · 정식판 필요')">
+        <img src="../windseer_portrait.jpg" alt="바람 선견자" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">바람 선견자</span>
+        <span class="kz__hero-title">엄니 씨족의 바람 선견자</span>
+      </button>
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../crackdweller_portrait.jpg','../intro_crackdweller.jpg','틈새살이','틈새살이','“가져간 거 아니야. 맡아 두는 것뿐이야. 영원히.”','모로우마치 확장팩 · 정식판 필요')">
+        <img src="../crackdweller_portrait.jpg" alt="틈새살이" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">틈새살이</span>
+        <span class="kz__hero-title">틈새살이</span>
+      </button>
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../scrapper_portrait.jpg','../intro_scrapper.jpg','고철꾼','짤랑골의 고철꾼','“하나만 더. 언제나 하나가 더 있다고.”','모로우마치 확장팩 · 정식판 필요')">
+        <img src="../scrapper_portrait.jpg" alt="고철꾼" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">고철꾼</span>
+        <span class="kz__hero-title">짤랑골의 고철꾼</span>
+      </button>
+      <button class="kz__hero reveal" type="button" onclick="openClassModal('../mirewaker_portrait.jpg','../intro_mirewaker.jpg','늪의 각성자','늪의 각성자','“해를 기다려라. 그다음에 달려라.”','모로우마치 확장팩 · 정식판 필요')">
+        <img src="../mirewaker_portrait.jpg" alt="늪의 각성자" width="96" height="96" loading="lazy">
+        <span class="kz__hero-name">늪의 각성자</span>
+        <span class="kz__hero-title">늪의 각성자</span>
+      </button>
+      <div class="kz__hero mm__hero--hidden reveal">
+        <span class="mm__hidden-portrait" aria-hidden="true">?</span>
+        <span class="kz__hero-name">???</span>
+        <span class="kz__hero-title">숨겨진 영웅</span>
+      </div>
+      <div class="kz__hero mm__hero--hidden reveal">
+        <span class="mm__hidden-portrait" aria-hidden="true">?</span>
+        <span class="kz__hero-name">???</span>
+        <span class="kz__hero-title">숨겨진 영웅</span>
+      </div>
+    </div>
+
+    <div class="eternal__pills reveal">
+      <div class="pill">100층</div>
+      <div class="pill">17개 지역</div>
+      <div class="pill">새로운 적 238종</div>
+      <div class="pill">지역 주인 17체</div>
+      <div class="pill">새 영웅 6명</div>
+      <div class="pill">엔딩 4개</div>
+      <div class="pill">영혼 &times;3</div>
+      <div class="pill">유료 확장팩</div>
+      <div class="pill">정식판 필요</div>
+    </div>
+
+    <div class="kz__cta reveal">
+      <a href="https://apps.apple.com/us/app/lootshrine/id6757924460" target="_blank" rel="noopener" class="btn-hero btn-hero--primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        APP STORE
+      </a>
+      <p class="kz__cta-note">게임에서: <strong>메인 메뉴 &rarr; 추가 콘텐츠 &rarr; 모로우마치</strong>. 정식판이 필요합니다.</p>
+    </div>
+
+    <p class="eternal__outro reveal">무리는 걷는다. 길은 당신의 것이다.</p>
+
+  </div>
+</section>
+
 <section class="eternal kz section" id="kalzania">
   <div class="container">
 
@@ -3069,7 +3448,7 @@ body::after {
       <details class="faq__item">
         <summary class="faq__q">광고나 인앱 구매가 있나요?</summary>
         <p class="faq__a">
-          광고는 절대 없습니다. 주된 인앱 구매는 11&ndash;120층을 여는 일회성 구매입니다. <strong>칼자니아: 쓰이지 않은 해</strong>는 선택형 유료 확장팩으로, 새 영웅 4명이 등장하는 별도의 50층 캠페인이며 정식판이 필요합니다. <strong>선택적인 코스메틱 전용 서포터 팩</strong>도 있습니다 &mdash; 게임플레이, 스탯, 밸런스에 절대 영향을 주지 않는 서포터 초상화와 프레임입니다. 초상화와 프레임의 대다수는 여전히 업적과 해금을 통해 무료로 얻을 수 있습니다. 구독도, 랜덤 박스도, 페이투윈도 없습니다.
+          광고는 절대 없습니다. 주된 인앱 구매는 11&ndash;120층을 여는 일회성 구매입니다. <strong>칼자니아: 쓰이지 않은 해</strong>는 선택형 유료 확장팩으로, 새 영웅 4명이 등장하는 별도의 50층 캠페인이며 정식판이 필요합니다. 두 번째 확장팩 <strong>모로우마치</strong>는 새 영웅 6명과 함께 17개 지역을 지나는 100층의 여정이며, 역시 정식판이 필요합니다. <strong>선택적인 코스메틱 전용 서포터 팩</strong>도 있습니다 &mdash; 게임플레이, 스탯, 밸런스에 절대 영향을 주지 않는 서포터 초상화와 프레임입니다. 초상화와 프레임의 대다수는 여전히 업적과 해금을 통해 무료로 얻을 수 있습니다. 구독도, 랜덤 박스도, 페이투윈도 없습니다.
         </p>
       </details>
 
@@ -3077,6 +3456,13 @@ body::after {
         <summary class="faq__q">칼자니아는 무엇인가요?</summary>
         <p class="faq__a">
           <strong>칼자니아: 쓰이지 않은 해</strong>는 LootShrine의 첫 확장팩입니다. 10개 지역에 걸친 별도의 50층 캠페인으로, 새로운 적 110종, 보스 10종, 봉인 6종, 그리고 새 영웅 4명 &mdash; 챈들러, 석공, 구휼관, 소환관이 등장합니다. 유료 추가 콘텐츠이며 정식판이 필요합니다. 앱의 메인 메뉴에서 <strong>추가 콘텐츠</strong>를 여세요.
+        </p>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__q">모로우마치는 무엇인가요?</summary>
+        <p class="faq__a">
+          <strong>모로우마치</strong>는 LootShrine의 두 번째 확장팩입니다. 걷는 거수 무리의 등 위에서 살아가는 하나의 온전한 세계로, 17개 지역을 지나는 100층의 여정입니다. 지역 주인 17체를 포함한 새로운 적 238종, 길 위의 만남 37가지, 4가지 엔딩, 그리고 새 영웅 6명 &mdash; 바람 선견자, 틈새살이, 고철꾼, 늪의 각성자와 숨겨진 영웅 2명이 등장합니다. 유료 추가 콘텐츠이며 정식판이 필요합니다. 앱의 메인 메뉴에서 <strong>추가 콘텐츠</strong>를 여세요.
         </p>
       </details>
 
@@ -3389,6 +3775,36 @@ document.addEventListener('keydown', function(e) {
   resetTimer();
 })();
 
+
+
+/* ── Morrowmarch clips: load and play only while on screen ── */
+(function() {
+  var vids = document.querySelectorAll('video[data-src]');
+  if (!vids.length) return;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still) return;                       // the posters stay
+  function load(v) {
+    var src = v.getAttribute('data-src');
+    if (src) { v.src = src; v.removeAttribute('data-src'); }
+  }
+  if (!('IntersectionObserver' in window)) {
+    vids.forEach(function(v) { load(v); v.play && v.play().catch(function() {}); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        load(v);
+        var p = v.play();
+        if (p && p.catch) p.catch(function() {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(function(v) { io.observe(v); });
+})();
 
 /* ── Gameplay Shorts: played from this site, YouTube one tap away ──
    The videos are files on lootshrine.com, not YouTube embeds: an embedded
